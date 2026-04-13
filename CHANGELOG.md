@@ -12,7 +12,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **Legacy Support**: `legacy-migration-guide.md` and `legacy.yaml` profile for brownfield projects.
 ### Changed
 - **Documentation**: Rewrote `README.md` to shift from architecture specification to user-centric onboarding.
-- **Terminology**: Globally purged "MTP" and "MTP V3" references, replacing them with "Team Agent Collaboration Protocol".
+- **Terminology**: Globally standardized terminology to exclusively use "Team Agent Collaboration Protocol".
 ### Fixed
 - **Templates**: Fixed bug in `sync_to_target.py` failing to copy `templates/` payload.
 

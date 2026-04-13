@@ -16,7 +16,7 @@ This version drastically lowers the cognitive load required to enforce "anti-hal
 ## 4. Validation Status
 - ✅ **Passed Independent Acceptance**: All script logic and documentation descriptions have undergone strict consistency alignment.
 - ✅ **Sandbox Verification**: Completed isolated injection and teardown rollback tests in a real-world environment.
-- ✅ **Terminology Purged**: Completely removed legacy "MTP" terminology to prevent context collision.
+- ✅ **Terminology Purged**: Standardized all terminology to prevent context collision.
 
 ## 5. Known Limitations
 - **Lack of Auto-Sniffing**: The setup script cannot yet automatically infer whether the target project uses Cursor or Trae; manual intervention or CLI arguments are still required.
