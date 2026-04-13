@@ -1,5 +1,7 @@
 {
-  "status": "pass",
-  "mismatched_files": [],
+  "status": "fail",
+  "mismatched_files": [
+    "setup.sh"
+  ],
   "missing_files": []
 }

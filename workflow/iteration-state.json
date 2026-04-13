@@ -1,0 +1,12 @@
+{
+  "current_iteration": "V0.4",
+  "phase": "Planning",
+  "status": "Kickoff",
+  "previous_iteration": "V0.3",
+  "key_artifacts": [
+    "tasks/v0.4-kickoff.md",
+    "tasks/v0.4-demand-pool.md",
+    "tasks/workflow-orchestrator-evaluation-v0.4.md"
+  ],
+  "carry_overs": []
+}

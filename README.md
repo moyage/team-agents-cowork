@@ -7,14 +7,17 @@
 ## 🚀 新人指引 (First-Touch)
 - **想在 3 分钟内给自己的项目用上？** 👉 [查看 QUICKSTART](QUICKSTART.md)
 - **团队刚刚引入这套规范，我该怎么配合？** 👉 [查看 ONBOARDING](ONBOARDING.md)
+- **想要了解反馈、返修、多轮迭代的闭环机制？** 👉 [查看 Core Collaboration Loop](docs/collaboration-loop.md)
 - **老旧存量项目怎么接入？** 👉 [查看 Legacy Migration Guide](legacy-migration-guide.md)
 - **遇到 Agent 乱写代码或者报错？** 👉 [查看 Troubleshooting](TROUBLESHOOTING.md)
 
 ## 📦 一键安装
-在终端运行交互式安装程序，为目标项目安全注入协议：
+
+你可以无需克隆代码仓库，直接在终端执行网络一键安装（支持基于目录结构的 `Cursor` / `Trae` 自动环境嗅探）：
 ```bash
-./setup.sh
+bash <(curl -sL https://raw.githubusercontent.com/moyage/team-agents-cowork/main/install.sh)
 ```
+*如果你已经克隆了仓库，也可以在本地直接运行 `./setup.sh`。*
 
 ## 🛠 核心能力
 1. **统一门禁**：物理防幻觉探针 (`doctor.py`, `verify_protocol.py`)，不再依赖口头 prompt。

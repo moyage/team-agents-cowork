@@ -3,12 +3,24 @@
 本指南将教你如何非侵入式地为你的**个人项目**注入团队 Agent 协作协议。
 
 ## Step 1: 运行 Setup
-在克隆了本仓库的目录下，执行交互式安装脚本：
+
+### 选项 A：网络一键安装（推荐）
+只需在任何地方（无需提前克隆本仓库），在终端中执行以下命令即可安全注入协议：
+```bash
+# 交互式安装
+bash <(curl -sL https://raw.githubusercontent.com/moyage/team-agents-cowork/main/install.sh)
+
+# 或非交互式一键注入（--ide auto 开启智能环境嗅探）
+bash <(curl -sL https://raw.githubusercontent.com/moyage/team-agents-cowork/main/install.sh) --target ./my-awesome-project --ide auto --profile default
+```
+
+### 选项 B：本地源码安装
+如果你已经克隆了本仓库，也可以进入仓库目录直接执行：
 ```bash
 ./setup.sh
+# 免交互运行并开启自动嗅探：
+# ./setup.sh --target ../my-awesome-project --ide auto --profile default
 ```
-*或者直接通过参数免交互运行：*
-`./setup.sh --target ../my-awesome-project --ide cursor --profile default`
 
 ## Step 2: 验证注入
 前往你的目标项目，你会发现多了以下文件：
