@@ -1,5 +1,8 @@
 # Team Agent Collaboration Protocol (协议工程基座)
 
+![Version](https://img.shields.io/badge/version-v0.3.0%20(Released)-blue)
+![Next](https://img.shields.io/badge/next-v0.4%20(Planning)-orange)
+
 > **停止让 Agent 盲目猜测。用统一的团队协议对齐人与 AI。**
 
 本仓库是 Team Agent Collaboration Protocol 的核心配置源。它提供了一套**可插拔、可验证、防幻觉**的 5-Step 工作流体系，用于桥接“个人 IDE (Cursor/Trae)” 与 “团队复杂项目”。
