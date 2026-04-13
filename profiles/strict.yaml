@@ -1,0 +1,8 @@
+# Strict Team Agent Collaboration Protocol Profile (For core repos)
+version: "1.0"
+tier: "advanced"
+rules:
+  require_verify: true
+  allow_auto_commit: false
+  require_human_approval_for_all_writes: true
+  risk_level: "high"\n

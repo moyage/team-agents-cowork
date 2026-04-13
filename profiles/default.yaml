@@ -1,0 +1,7 @@
+# Default Team Agent Collaboration Protocol Profile
+version: "1.0"
+tier: "standard"
+rules:
+  require_verify: true
+  allow_auto_commit: false
+  risk_level: "moderate"\n

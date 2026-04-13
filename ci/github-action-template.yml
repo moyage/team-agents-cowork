@@ -1,0 +1,11 @@
+name: Team Agent Collaboration Protocol Verification
+on: [pull_request]
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Run Doctor
+        run: ./scripts/doctor.py
+      - name: Verify Protocol
+        run: ./scripts/verify_protocol.py\n
