@@ -1,0 +1,9 @@
+# Legacy Project Profile
+version: "1.0"
+tier: "free"
+rules:
+  require_verify: false
+  allow_auto_commit: false
+  require_human_approval_for_all_writes: false
+  risk_level: "low"
+  fallback_verification: "manual_or_log_diff"
