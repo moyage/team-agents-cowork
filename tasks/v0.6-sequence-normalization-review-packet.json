@@ -1,0 +1,14 @@
+{
+  "task_id": "v0.6-sequence-normalization-amendment",
+  "review_type": "pre-iteration-kickoff-review",
+  "contract_path": "tasks/v0.6-sequence-normalization-amendment.md",
+  "result_path": "workflow/dispatch.json",
+  "review_criteria": [
+    "Verify the amendment explicitly records the executed facts for V0.6-M1 (Repository Hygiene), V0.6-M2 (Historical Archive Consolidation), and V0.6-M3 (Documentation Center Unification).",
+    "Verify the revised canonical milestone map maps the remaining required V0.6 objectives to M4 through M6.",
+    "Verify the kickoff's original commitments (Path/Runtime Hardening, Integration Smoke/Workflow Consistency) are explicitly stated as NOT deleted, but incorporated into the M4-M6 mandatory workstreams and exit criteria.",
+    "Verify all previously approved V0.5 carry-overs (Path Resolution Fragility, Reviewer Output Delivery, Approval Gating Automation) are explicitly preserved in the revised milestone map.",
+    "Verify that NO implementation files or directories are modified by this amendment document."
+  ],
+  "expected_decision_output": "tasks/v0.6-sequence-normalization-review-decision.json"
+}
