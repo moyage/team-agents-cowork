@@ -1,12 +1,11 @@
 {
   "active_iteration": "V0.5",
-  "current_gate": "m3_contract_review_pending",
+  "current_gate": "m3_execution_ready",
   "executor": "Hermes",
-  "reviewer_required": true,
+  "reviewer_required": false,
   "active_task": "v0.5-m3-reviewer-context-api",
   "stop_conditions": [
-    "Proceeding to execution without an approved M3 execution contract",
-    "Self-approving the M3 contract"
+    "Executing implementation without respecting allowed_files boundaries"
   ],
-  "next_expected_artifact": "tasks/v0.5-m3-contract-review-decision.json"
+  "next_expected_artifact": "tasks/v0.5-m3-execution-result.json"
 }
