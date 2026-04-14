@@ -1,0 +1,22 @@
+{
+  "task_id": "v0.6-m5-b-api-path-hardening",
+  "description": "Harden the MCP Context API by removing relative path resolution from __dirname and introducing a PROJECT_ROOT default to process.cwd(), ensuring robustness across different installation directories and initialization environments.",
+  "scope": "Modify 'src/mcp-server/src/index.ts'. Change all usages of 'path.resolve(__dirname, \"...\")' to resolve against a new base directory derived from 'process.env.PROJECT_ROOT || process.cwd()'. This explicitly fixes the fragility of 'get_iteration_state', 'get_execution_diff', and 'get_dispatch_state' tools. Run integration smoke validation internally or via test-client.ts inside and outside the framework repository.",
+  "out_of_scope": "Strictly NO deletion of legacy Python scripts (deprecation assessment only in M5-A). NO modifications to docs, adapter templates, or bootstrap scripts. NO implementation of state mutators or auto-approval logic.",
+  "allowed_files": [
+    "src/mcp-server/src/index.ts"
+  ],
+  "allowed_artifacts": [
+    "tasks/v0.6-m5-b-execution-result.json",
+    "tasks/v0.6-m5-b-result-review-packet.json"
+  ],
+  "required_outputs": [
+    "tasks/v0.6-m5-b-execution-result.json",
+    "tasks/v0.6-m5-b-result-review-packet.json"
+  ],
+  "stop_conditions": [
+    "Attempting to modify any file outside allowed_files.",
+    "Attempting to delete legacy python scripts without explicit authorization.",
+    "Executing without an approved M5-B contract."
+  ]
+}
