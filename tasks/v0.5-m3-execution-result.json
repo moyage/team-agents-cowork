@@ -1,0 +1,12 @@
+{
+  "task_id": "v0.5-m3-reviewer-context-api",
+  "status": "completed",
+  "summary": "Implemented get_execution_diff and get_dispatch_state as strictly read-only MCP tools.",
+  "implementation_changes": [
+    "src/mcp-server/src/index.ts"
+  ],
+  "artifact_changes": [
+    "tasks/v0.5-m3-execution-result.json",
+    "tasks/v0.5-m3-result-review-packet.json"
+  ]
+}

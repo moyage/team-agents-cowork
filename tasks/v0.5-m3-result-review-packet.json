@@ -1,0 +1,15 @@
+{
+  "task_id": "v0.5-m3-reviewer-context-api",
+  "review_type": "post-execution-result-review",
+  "contract_path": "tasks/v0.5-m3-execution-contract.json",
+  "result_path": "tasks/v0.5-m3-execution-result.json",
+  "review_criteria": [
+    "Verify that git diff / git show HEAD strictly matches the execution result artifact.",
+    "Verify that implementation changes are STRICTLY limited to 'src/mcp-server/src/index.ts'.",
+    "Verify that artifact changes are strictly limited to allowed_artifacts.",
+    "Verify that 'get_execution_diff' and 'get_dispatch_state' tools are purely read-only (using fs.readFile and git diff without side effects).",
+    "Verify that there is NO workflow mutation, auto approval logic, or reviewer identity redesign.",
+    "Do NOT reject based on updates to tasks/*.json, as these are naturally exempt workflow metadata."
+  ],
+  "expected_decision_output": "tasks/v0.5-m3-result-review-decision.json"
+}

@@ -58,6 +58,29 @@ server.setRequestHandler(ListToolsRequestSchema, async () => {
           required: ["baseline_commit", "contract_path"],
         },
       },
+      {
+        name: "get_execution_diff",
+        description: "Get the semantic file diffs for a given Git commit or baseline.",
+        inputSchema: {
+          type: "object",
+          properties: {
+            baseline_commit: {
+              type: "string",
+              description: "The baseline Git commit hash or reference to compare against."
+            }
+          },
+          required: ["baseline_commit"],
+        },
+      },
+      {
+        name: "get_dispatch_state",
+        description: "Read the canonical workflow routing state (dispatch.json).",
+        inputSchema: {
+          type: "object",
+          properties: {},
+          required: [],
+        },
+      },
     ],
   };
 });
@@ -108,6 +131,63 @@ const changedFiles = stdout.split('\n').map(f => f.trim()).filter(f => f.length 
           {
             type: "text",
             text: `Failed to verify execution compliance: ${error.message}`,
+          },
+        ],
+        isError: true,
+      };
+    }
+  }
+
+  if (request.params.name === "get_execution_diff") {
+    try {
+      const args = request.params.arguments as any;
+      const baseline_commit = args.baseline_commit;
+      if (!baseline_commit) {
+        throw new Error("baseline_commit is required");
+      }
+
+      const projectRoot = path.resolve(__dirname, "../../");
+      const { stdout } = await execAsync(`git diff ${baseline_commit}`, { cwd: projectRoot });
+
+      return {
+        content: [
+          {
+            type: "text",
+            text: stdout || "No differences found.",
+          },
+        ],
+      };
+    } catch (error: any) {
+      return {
+        content: [
+          {
+            type: "text",
+            text: `Failed to get execution diff: ${error.message}`,
+          },
+        ],
+        isError: true,
+      };
+    }
+  }
+
+  if (request.params.name === "get_dispatch_state") {
+    try {
+      const dispatchPath = path.resolve(__dirname, "../../workflow/dispatch.json");
+      const data = await fs.readFile(dispatchPath, "utf-8");
+      return {
+        content: [
+          {
+            type: "text",
+            text: data,
+          },
+        ],
+      };
+    } catch (error: any) {
+      return {
+        content: [
+          {
+            type: "text",
+            text: `Failed to read dispatch state: ${error.message}`,
           },
         ],
         isError: true,
