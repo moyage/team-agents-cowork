@@ -1,13 +1,14 @@
 {
   "active_iteration": "V0.5",
-  "current_gate": "v0.6_m1_recon_completed",
+  "current_gate": "v0.6_m1_contract_review_pending",
   "executor": "Hermes",
-  "reviewer_required": false,
-  "active_task": null,
+  "reviewer_required": true,
+  "active_task": "v0.6-m1-repository-hygiene",
   "stop_conditions": [
-    "Proceeding to execution without planning the respective milestone"
+    "Proceeding to execution without an approved M1 execution contract",
+    "Self-approving the M1 contract"
   ],
-  "next_expected_artifact": "tasks/v0.6-m1-execution-contract.json",
+  "next_expected_artifact": "tasks/v0.6-m1-contract-review-decision.json",
   "governance_notes": [
     "V0.6 formally kicked off. V0.5 carry-overs and repository normalization goals imported."
   ]

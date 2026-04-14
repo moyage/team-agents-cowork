@@ -1,0 +1,22 @@
+{
+  "task_id": "v0.6-m1-repository-hygiene",
+  "description": "Execute repository hygiene by globally purging macOS .DS_Store artifacts and ensuring they are explicitly ignored in .gitignore.",
+  "scope": "Delete all .DS_Store files tracked in the Git repository and physically present in the workspace. Append '.DS_Store' to the global .gitignore file to prevent future pollution.",
+  "out_of_scope": "Strictly NO archiving of tasks, no modifications to docs or MCP server source code, and no workflow mutation beyond artifact generation.",
+  "allowed_files": [
+    ".gitignore",
+    "**/.DS_Store"
+  ],
+  "allowed_artifacts": [
+    "tasks/v0.6-m1-execution-result.json",
+    "tasks/v0.6-m1-result-review-packet.json"
+  ],
+  "required_outputs": [
+    "tasks/v0.6-m1-execution-result.json",
+    "tasks/v0.6-m1-result-review-packet.json"
+  ],
+  "stop_conditions": [
+    "Attempting to modify or delete any file not explicitly targeted (.DS_Store or .gitignore).",
+    "Executing without an approved M1 contract."
+  ]
+}
