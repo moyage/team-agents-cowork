@@ -26,7 +26,10 @@
     "tasks/v0.6-m3-execution-contract.json",
     "tasks/v0.6-m3-contract-review-decision.json",
     "tasks/v0.6-m3-execution-result.json",
-    "tasks/v0.6-m3-result-review-decision.json"
+    "tasks/v0.6-m3-result-review-decision.json",
+    "tasks/v0.6-sequence-normalization-amendment.md",
+    "tasks/v0.6-sequence-normalization-review-packet.json",
+    "tasks/v0.6-sequence-normalization-review-decision.json"
   ],
   "carry_overs": []
 }
