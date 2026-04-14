@@ -1,0 +1,14 @@
+{
+  "task_id": "v0.5-m4-integration-client",
+  "review_type": "post-execution-result-review",
+  "contract_path": "tasks/v0.5-m4-execution-contract.json",
+  "result_path": "tasks/v0.5-m4-execution-result.json",
+  "review_criteria": [
+    "Verify git show strictly matches the execution result artifact.",
+    "Verify implementation change is STRICTLY limited to 'src/mcp-server/src/test-client.ts'.",
+    "Verify the test client is a read-only consumer, only making tool calls without mutating MCP server capabilities.",
+    "Verify the test client code explicitly handles and prints errors (does not swallow them).",
+    "Verify artifact changes are strictly limited to 'tasks/v0.5-m4-execution-result.json' and 'tasks/v0.5-m4-result-review-packet.json'."
+  ],
+  "expected_decision_output": "tasks/v0.5-m4-result-review-decision.json"
+}
