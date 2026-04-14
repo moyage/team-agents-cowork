@@ -1,0 +1,13 @@
+{
+  "task_id": "v0.5-m2-compliance-api",
+  "review_type": "post-execution-result-review",
+  "contract_path": "tasks/v0.5-m2-execution-contract.json",
+  "result_path": "tasks/v0.5-m2-execution-result.json",
+  "review_criteria": [
+    "Verify that the implemented code in 'src/mcp-server/src/index.ts' correctly matches the contract.",
+    "Verify that no other files were modified in the project.",
+    "Verify that the new tool is strictly read-only and does not mutate workflow state.",
+    "Ensure no auto-approval logic or protocol evolution topics were introduced."
+  ],
+  "expected_decision_output": "tasks/v0.5-m2-result-review-decision.json"
+}
