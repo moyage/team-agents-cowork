@@ -1,0 +1,8 @@
+{
+  "artifact": "tasks/v0.5-m1-execution-contract.json",
+  "status": "blocked",
+  "gate": "m1_contract_review_pending",
+  "reason": "Independent reviewer mechanism is required by V0.4 protocol, but no automated independent reviewer daemon is resolvable in the current local environment. Self-approval by Hermes is strictly forbidden.",
+  "observation": "V0.4 practical validation observation: Batch progression stalls at Phase D (Independent Contract Review) because the loop relies on external independent reviewers. While artifact-driven coordination succeeds, true end-to-end autonomous batching requires either a dual-agent configuration (e.g., Hermes + OpenCode acting as orthogonal verifiers via a designated Reviewer agent script) or explicit human intervention.",
+  "required_action": "Awaiting human reviewer to independently sign tasks/v0.5-m1-contract-review-decision.json to unblock M1 execution."
+}

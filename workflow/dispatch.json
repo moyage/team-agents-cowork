@@ -1,13 +1,13 @@
 {
   "active_iteration": "v0.5",
-  "current_gate": "m1_contract_drafting",
+  "current_gate": "m1_contract_review_pending",
   "executor": "Hermes",
   "reviewer_required": true,
-  "active_task": "v0.5-m1-contract-drafting",
+  "active_task": "v0.5-m1-contract-review",
   "stop_conditions": [
     "Drafting beyond M1 scope.",
     "Attempting execution or implementation of M1 tasks.",
     "Modifying any files outside tasks/ directory."
   ],
-  "next_expected_artifact": "tasks/v0.5-m1-execution-contract.json"
+  "next_expected_artifact": "tasks/v0.5-m1-contract-review-decision.json"
 }

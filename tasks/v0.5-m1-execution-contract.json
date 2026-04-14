@@ -1,0 +1,31 @@
+{
+  "task_id": "v0.5-m1-implementation",
+  "role": "Agent-Executor",
+  "owner": "Hermes",
+  "status": "Assigned",
+  "goal": "Scaffold minimal Native TypeScript MCP Server in src/mcp-server/, integrate @modelcontextprotocol/sdk, and implement read-only get_iteration_state probe.",
+  "allowed_files": [
+    "src/mcp-server/package.json",
+    "src/mcp-server/tsconfig.json",
+    "src/mcp-server/src/index.ts",
+    "tasks/v0.5-m1-execution-result.json"
+  ],
+  "required_outputs": [
+    "src/mcp-server/package.json",
+    "src/mcp-server/tsconfig.json",
+    "src/mcp-server/src/index.ts",
+    "tasks/v0.5-m1-execution-result.json"
+  ],
+  "must_run_commands": [
+    "cd src/mcp-server && npm install",
+    "cd src/mcp-server && npx tsc --noEmit"
+  ],
+  "forbidden_actions": [
+    "Modifying legacy scripts in scripts/",
+    "Modifying schemas in schemas/",
+    "Self-issuing review decisions",
+    "Making mutating/write calls to workflow state",
+    "Full legacy python feature parity migration"
+  ],
+  "acceptance_gate": "m1_contract_review_pending"
+}
