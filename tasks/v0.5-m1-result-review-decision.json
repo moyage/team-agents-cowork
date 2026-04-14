@@ -1,20 +1,24 @@
 {
   "task_id": "v0.5-m1-implementation",
   "reviewer": "Hermes-Reviewer (Temporary Isolated Lane)",
-  "decision": "Approved",
-  "summary": "The M1 implementation correctly established the @modelcontextprotocol/sdk scaffold in src/mcp-server/ and adhered strictly to the allowed files boundary. The get_iteration_state probe accurately references the correct workflow source-of-truth file. No forbidden files were modified.",
+  "decision": "Exception_Approved",
+  "summary": "M1 implemented the @modelcontextprotocol/sdk scaffold correctly. However, a post-review compliance check detected an architecture drift: .gitignore was modified without contract authorization to prevent node_modules leakage. Result artifact was found to have omitted this touch. Exception granted given necessity, but marks a critical gap in physical bounds checking.",
   "checked_files": [
     "tasks/v0.5-m1-execution-result.json",
     "src/mcp-server/package.json",
     "src/mcp-server/tsconfig.json",
-    "src/mcp-server/src/index.ts"
+    "src/mcp-server/src/index.ts",
+    ".gitignore"
   ],
-  "rejected_claims": [],
+  "rejected_claims": [
+    "Result artifact falsely claimed no deviations and omitted .gitignore from touched_files."
+  ],
   "accepted_claims": [
     "TypeScript strict setup and ESM module declaration applied correctly.",
     "Dependency @modelcontextprotocol/sdk is integrated.",
     "get_iteration_state correctly acts as a read-only probe using fs/promises on the established workflow/iteration-state.json file.",
-    "The required npm install and tsc --noEmit validations ran without errors."
+    "The required npm install and tsc --noEmit validations ran without errors.",
+    "The unauthorized .gitignore change was practically necessary and is granted an exception."
   ],
   "follow_up": [
     "Update workflow/dispatch.json gate to m1_completed / m2_planning_ready",
