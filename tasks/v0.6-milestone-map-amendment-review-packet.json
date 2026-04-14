@@ -1,0 +1,14 @@
+{
+  "task_id": "v0.6-milestone-map-amendment",
+  "review_type": "pre-iteration-kickoff-review",
+  "contract_path": "tasks/v0.6-milestone-map-amendment.md",
+  "result_path": "tasks/v0.6-scope-and-milestone-map.md",
+  "review_criteria": [
+    "Verify that the amendment clearly explains the rationale for re-sequencing the milestones (matching the executed Autonomous M1/M2 flow).",
+    "Verify that the revised sequence correctly lists V0.6-M1 (Hygiene) and V0.6-M2 (Archive Consolidation) as the first two executed steps.",
+    "Verify that the revised sequence correctly assigns the remaining required V0.6 objectives (Docs Center, Bootstrap, API Hardening, Framework Separation/Comparison) to M3 through M6.",
+    "Verify that this amendment does not drop any previously approved V0.6 objectives or V0.5 carry-overs.",
+    "Verify that NO implementation files or directories are modified by this amendment document."
+  ],
+  "expected_decision_output": "tasks/v0.6-milestone-map-amendment-decision.json"
+}
