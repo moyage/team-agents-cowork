@@ -1,0 +1,25 @@
+{
+  "task_id": "v0.7-m1-protocol-reframing",
+  "description": "Execute V0.7-M1 by defining the core multi-agent protocol boundaries, scenarios (Personal/Team), and heterogenous environment mapping without writing executable code or moving framework files.",
+  "scope": "Generate two markdown design documents: tasks/v0.7-m1-protocol-reframing.md (defining Executor, Reviewer, Gatekeeper, Coordinator roles and the minimal mandatory core vs adapter layers) and tasks/v0.7-m1-scenario-modeling.md (defining Personal Mode and Team Mode workflows).",
+  "out_of_scope": "Strictly NO MCP server logic implementation, NO workflow state mutations, NO physical relocation to .agent-state/, and NO modification of existing V0.6 docs or protocol files.",
+  "allowed_files": [
+    "tasks/v0.7-m1-protocol-reframing.md",
+    "tasks/v0.7-m1-scenario-modeling.md"
+  ],
+  "allowed_artifacts": [
+    "tasks/v0.7-m1-execution-result.json",
+    "tasks/v0.7-m1-result-review-packet.json"
+  ],
+  "required_outputs": [
+    "tasks/v0.7-m1-protocol-reframing.md",
+    "tasks/v0.7-m1-scenario-modeling.md",
+    "tasks/v0.7-m1-execution-result.json",
+    "tasks/v0.7-m1-result-review-packet.json"
+  ],
+  "stop_conditions": [
+    "Attempting to modify any file outside allowed_files.",
+    "Attempting to write implementation code in src/.",
+    "Executing without an approved M1 contract."
+  ]
+}
