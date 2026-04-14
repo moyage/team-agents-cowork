@@ -1,0 +1,16 @@
+{
+  "task_id": "v0.7-m3-a-feedback-taxonomy",
+  "review_type": "post-execution-result-review",
+  "contract_path": "tasks/v0.7-m3-a-execution-contract.json",
+  "result_path": "tasks/v0.7-m3-a-execution-result.json",
+  "review_criteria": [
+    "Verify git show strictly matches the execution result artifact.",
+    "Verify the implementation changes are limited to creating 'tasks/v0.7-m3-a-feedback-taxonomy.md'.",
+    "Verify the markdown file explicitly defines the taxonomy of failures, how feedback is ingested from physical artifacts, the retrospective artifact model, and the strict rules (e.g., 3-retry threshold) for distinguishing a normal retry from an escalated improvement-case.",
+    "Verify NO implementation of automation scripts or automatic retries occurred.",
+    "Verify NO rewriting of the governance/review mechanism occurred.",
+    "Verify NO modifications to active workflow/dispatch.json or iteration-state.json state semantics occurred.",
+    "Verify artifact changes are strictly limited to allowed_artifacts."
+  ],
+  "expected_decision_output": "tasks/v0.7-m3-a-result-review-decision.json"
+}
