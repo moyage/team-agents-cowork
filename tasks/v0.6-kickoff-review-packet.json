@@ -1,0 +1,15 @@
+{
+  "task_id": "v0.6-kickoff-review",
+  "review_type": "pre-iteration-kickoff-review",
+  "contract_path": "tasks/v0.6-kickoff-packet.md",
+  "result_path": "tasks/v0.6-scope-and-milestone-map.md",
+  "review_criteria": [
+    "Verify that V0.6 is explicitly defined as a new version iteration, not a patch or amendment to V0.5.",
+    "Verify that the V0.5 carry-overs (Path Resolution Fragility, Reviewer Output Delivery, Approval Gating Automation) are explicitly imported into the V0.6 scope.",
+    "Verify that the scope includes repository structure cleanup, docs center creation, 1-click install/bootstrap scripts, and a comparative analysis with 'labs-teamwork-spec'.",
+    "Verify that M5 (Repository Normalization) and M6 (Installability/Bootstrap/Comparison) are explicitly and mandatorily scheduled in the Milestone Map.",
+    "Verify that the kickoff phase strictly performed NO execution, implementation, or file modifications (other than creating the kickoff artifacts).",
+    "Verify that workflow state transitions adhere to the gate discipline (i.e., this review must be approved before advancing)."
+  ],
+  "expected_decision_output": "tasks/v0.6-kickoff-review-decision.json"
+}

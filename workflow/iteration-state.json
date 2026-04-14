@@ -1,41 +1,14 @@
 {
-  "current_iteration": "V0.5",
-  "phase": "Closure",
+  "current_iteration": "V0.6",
+  "phase": "Kickoff",
   "status": "Completed",
-  "previous_iteration": "V0.4",
+  "previous_iteration": "V0.5",
   "key_artifacts": [
-    "tasks/v0.5-kickoff-planning-packet.md",
-    "tasks/v0.5-m1-execution-contract.json",
-    "tasks/v0.5-m1-execution-result.json",
-    "tasks/v0.5-retrospective-note.md",
-    "tasks/v0.5-m2-execution-contract.json",
-    "tasks/v0.5-m2-execution-result.json",
-    "tasks/v0.5-m2-result-review-decision.json",
-    "tasks/v0.5-m2-retrospective-note.md",
-    "tasks/v0.5-m3-reconnaissance-note.md",
-    "tasks/v0.5-m3-planning-input.json",
-    "tasks/v0.5-m3-planning-approval.md",
-    "tasks/v0.5-m3-execution-contract.json",
-    "tasks/v0.5-m3-contract-review-decision.json",
-    "tasks/v0.5-m3-execution-result.json",
-    "tasks/v0.5-m3-result-review-decision.json",
-    "tasks/v0.5-m3-post-closure-correction-decision.json",
-    "tasks/v0.5-m4-kickoff-packet.md",
-    "tasks/v0.5-m4-planning-approval.md",
-    "tasks/v0.5-m4-execution-contract.json",
-    "tasks/v0.5-m4-contract-review-decision.json",
-    "tasks/v0.5-m4-execution-result.json",
-    "tasks/v0.5-m4-result-review-decision.json",
-    "tasks/v0.5-m5-kickoff-packet.md",
-    "tasks/v0.5-m5-planning-approval.md",
-    "tasks/v0.5-m5-execution-contract.json",
-    "tasks/v0.5-m5-contract-review-decision.json",
-    "tasks/v0.5-m5-execution-result.json",
-    "tasks/v0.5-m5-result-review-decision.json"
+    "tasks/v0.6-kickoff-packet.md",
+    "tasks/v0.6-scope-and-milestone-map.md",
+    "tasks/v0.6-risk-register.md",
+    "tasks/v0.6-kickoff-review-packet.json",
+    "tasks/v0.6-kickoff-review-decision.json"
   ],
-  "carry_overs": [
-    "Path Resolution Fragility: get_iteration_state and get_execution_diff still rely on potentially unsafe relative paths.",
-    "Reviewer Output Delivery: Automate the bridge connecting Sub-Agent context directly to M3 MCP endpoints.",
-    "Approval Gating Automation: Generalize a protocol hook to automatically dispatch SubAgent-GPT-5.4 on `_review_pending` state transitions."
-  ]
+  "carry_overs": []
 }

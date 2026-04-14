@@ -1,12 +1,14 @@
 {
   "active_iteration": "V0.5",
-  "current_gate": "v0.5_iteration_completed",
+  "current_gate": "v0.6_kickoff_completed",
   "executor": "Hermes",
   "reviewer_required": false,
   "active_task": null,
-  "stop_conditions": [],
-  "next_expected_artifact": "tasks/v0.6-kickoff-packet.md",
+  "stop_conditions": [
+    "Proceeding to execution without planning the respective milestone"
+  ],
+  "next_expected_artifact": "tasks/v0.6-m1-recon-packet.md",
   "governance_notes": [
-    "Iteration V0.5 formally closed. M1-M5 milestones validated. Retrospective note published."
+    "V0.6 formally kicked off. V0.5 carry-overs and repository normalization goals imported."
   ]
 }
