@@ -1,0 +1,15 @@
+{
+  "iteration": "V0.5",
+  "phase": "M3",
+  "recommended_focus": "Context API: Implement Semantic Diff Tool and Dispatch Inspector",
+  "recommended_scope": [
+    "Add 'get_execution_diff' MCP tool to fetch semantic file diffs for Reviewer agents.",
+    "Add 'get_dispatch_state' MCP tool to read 'workflow/dispatch.json' for Orchestrator agents."
+  ],
+  "constraints_to_maintain": [
+    "All tools must remain strictly read-only.",
+    "No state mutator tools are allowed.",
+    "Do not alter the Team Agent Collaboration Protocol rules."
+  ],
+  "l0_l6_architecture_impact": "None (Read-only expansions to Layer-3 Integration)"
+}

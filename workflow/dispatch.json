@@ -1,9 +1,11 @@
 {
   "active_iteration": "V0.5",
-  "current_gate": "m2_exception_cleared_completed",
+  "current_gate": "m3_reconnaissance_completed",
   "executor": "Hermes",
   "reviewer_required": false,
   "active_task": null,
-  "stop_conditions": [],
-  "next_expected_artifact": "tasks/v0.5-m3-kickoff-packet.md"
+  "stop_conditions": [
+    "Proceeding to execution without an approved M3 execution contract"
+  ],
+  "next_expected_artifact": "tasks/v0.5-m3-execution-contract.json"
 }
