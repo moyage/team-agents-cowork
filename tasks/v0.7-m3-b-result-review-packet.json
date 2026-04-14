@@ -1,0 +1,17 @@
+{
+  "task_id": "v0.7-m3-b-self-repair-model",
+  "review_type": "post-execution-result-review",
+  "contract_path": "tasks/v0.7-m3-b-execution-contract.json",
+  "result_path": "tasks/v0.7-m3-b-execution-result.json",
+  "review_criteria": [
+    "Verify git show strictly matches the execution result artifact.",
+    "Verify the implementation changes are limited to creating 'tasks/v0.7-m3-b-self-repair-model.md'.",
+    "Verify the markdown file explicitly answers the 6 mandatory questions: what can happen automatically, what must be independently approved, how to prevent silent self-modification, how to ensure auditability, how to prevent rubber-stamp review, and how to distinguish a retry from an escalated problem pattern.",
+    "Verify NO implementation of unapproved self-modification logic occurred.",
+    "Verify NO rewriting of the governance, review, or gatekeeper mechanisms themselves occurred.",
+    "Verify NO execution of .agent-state/ migrations or environment adaptations occurred.",
+    "Verify NO modifications to active workflow/dispatch.json or iteration-state.json state models occurred.",
+    "Verify artifact changes are strictly limited to allowed_artifacts."
+  ],
+  "expected_decision_output": "tasks/v0.7-m3-b-result-review-decision.json"
+}

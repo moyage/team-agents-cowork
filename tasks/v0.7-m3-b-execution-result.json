@@ -1,0 +1,13 @@
+{
+  "task_id": "v0.7-m3-b-self-repair-model",
+  "status": "completed",
+  "summary": "Generated tasks/v0.7-m3-b-self-repair-model.md defining the improvement proposal pipeline, governed self-repair model, review gating/escalation rules, and auditability requirements. Explicitly answered the 6 core questions from the M3 directive.",
+  "implementation_changes": [
+    "tasks/v0.7-m3-b-self-repair-model.md"
+  ],
+  "artifact_changes": [
+    "tasks/v0.7-m3-b-execution-result.json",
+    "tasks/v0.7-m3-b-result-review-packet.json"
+  ],
+  "closure_state_changes": []
+}
