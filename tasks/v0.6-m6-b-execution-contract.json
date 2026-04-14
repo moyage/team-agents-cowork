@@ -1,14 +1,14 @@
 {
   "task_id": "v0.6-m6-b-bounded-cleanup",
   "description": "Execute the minimal cleanup and stubbing manifest generated in M6-A to complete Repository Normalization.",
-  "scope": "Move tasks/v0.4-* and tasks/v0.5-* artifacts into .archive/tasks-archive/. For all markdown files in docs/ and protocol/, replace their contents with a deprecation notice pointing to the new documentation/ center. Do NOT delete the docs/ or protocol/ directories. Create the necessary archive directories.",
+  "scope": "Move tasks/v0.4-* and tasks/v0.5-* artifacts into .archive/tasks/v0.5-archive/. For all markdown files in docs/ and protocol/, replace their contents with a deprecation notice pointing to the new documentation/ center. Do NOT delete the docs/ or protocol/ directories. Create the necessary archive directories.",
   "out_of_scope": "Strictly NO deletion of the docs/ or protocol/ directories themselves. NO deletion of V0.4/V0.5 artifacts (must use git mv). NO modification to tasks/v0.6-* artifacts. NO workflow state mutations or framework structural changes.",
   "allowed_files": [
     "tasks/v0.4-**",
     "tasks/v0.5-**",
     "docs/**",
     "protocol/**",
-    ".archive/tasks-archive/**"
+    ".archive/tasks/v0.5-archive/**"
   ],
   "allowed_artifacts": [
     "tasks/v0.6-m6-b-execution-result.json",
