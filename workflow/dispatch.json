@@ -1,13 +1,13 @@
 {
   "active_iteration": "V0.5",
-  "current_gate": "v0.6_continuity_review_pending",
+  "current_gate": "v0.6_m6_a_recon_pending",
   "executor": "Hermes",
-  "reviewer_required": true,
-  "active_task": "v0.6-m4-m5-continuity",
+  "reviewer_required": false,
+  "active_task": null,
   "stop_conditions": [
-    "Proceeding to M6 execution without an approved continuity note"
+    "Proceeding to execution without planning the respective milestone"
   ],
-  "next_expected_artifact": "tasks/v0.6-m4-m5-continuity-decision.json",
+  "next_expected_artifact": "tasks/v0.6-m6-a-recon-packet.md",
   "governance_notes": [
     "V0.6 formally kicked off. V0.5 carry-overs and repository normalization goals imported."
   ]
