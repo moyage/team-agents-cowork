@@ -1,7 +1,7 @@
 {
   "current_iteration": "V0.7",
   "phase": "M4",
-  "status": "Recon Completed",
+  "status": "Completed",
   "previous_iteration": "V0.6",
   "key_artifacts": [
     "tasks/v0.7-kickoff-packet.md",
@@ -38,7 +38,13 @@
     "tasks/v0.7-m3-b-execution-result.json",
     "tasks/v0.7-m3-b-result-review-packet.json",
     "tasks/v0.7-m3-b-result-review-decision.json",
-    "tasks/v0.7-m4-recon-packet.md"
+    "tasks/v0.7-m4-recon-packet.md",
+    "tasks/v0.7-m4-execution-contract.json",
+    "tasks/v0.7-m4-contract-review-decision.json",
+    "tasks/v0.7-m4-environment-adaptation.md",
+    "tasks/v0.7-m4-execution-result.json",
+    "tasks/v0.7-m4-result-review-packet.json",
+    "tasks/v0.7-m4-result-review-decision.json"
   ],
   "carry_overs": [
     "State & Framework Physical Separation",
