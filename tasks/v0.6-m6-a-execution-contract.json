@@ -1,0 +1,27 @@
+{
+  "task_id": "v0.6-m6-a-state-separation-design",
+  "description": "Perform structural comparative analysis with labs-teamwork-spec, design the framework/state separation strategy, and build the M6-B cleanup manifest.",
+  "scope": "Generate three markdown documents capturing the design outputs of the reconnaissance: 1) tasks/v0.6-m6-a-state-separation-design.md, 2) tasks/v0.6-m6-a-comparative-synthesis.md, and 3) tasks/v0.6-m6-a-cleanup-manifest.md. Read references to docs/ and protocol/ to formulate a deprecation/stubbing strategy. Review the target path structure inside labs-teamwork-spec.",
+  "out_of_scope": "Strictly NO execution of deletions, large-scale migrations, or file stubbing. This phase only generates the design and manifest documentation. NO modification to existing workflow, source, or execution files.",
+  "allowed_files": [
+    "tasks/v0.6-m6-a-state-separation-design.md",
+    "tasks/v0.6-m6-a-comparative-synthesis.md",
+    "tasks/v0.6-m6-a-cleanup-manifest.md"
+  ],
+  "allowed_artifacts": [
+    "tasks/v0.6-m6-a-execution-result.json",
+    "tasks/v0.6-m6-a-result-review-packet.json"
+  ],
+  "required_outputs": [
+    "tasks/v0.6-m6-a-state-separation-design.md",
+    "tasks/v0.6-m6-a-comparative-synthesis.md",
+    "tasks/v0.6-m6-a-cleanup-manifest.md",
+    "tasks/v0.6-m6-a-execution-result.json",
+    "tasks/v0.6-m6-a-result-review-packet.json"
+  ],
+  "stop_conditions": [
+    "Attempting to delete or move any existing files.",
+    "Attempting to modify any file outside allowed_files.",
+    "Executing without an approved M6-A contract."
+  ]
+}
