@@ -1,0 +1,12 @@
+{
+  "task_id": "v0.6-m4-m5-continuity",
+  "review_type": "pre-iteration-kickoff-review",
+  "contract_path": "tasks/v0.6-m4-m5-continuity-note.md",
+  "result_path": "tasks/v0.6-m4-m5-continuity-note.md",
+  "review_criteria": [
+    "Verify the continuity note clearly explains the execution relationship between V0.6-M4 and V0.6-M5.",
+    "Verify the note justifies why the M3 path resolution fix (M5) was executed as a separate milestone rather than bundled into the M4 bootstrap work.",
+    "Verify NO implementation files or directories are modified by this document."
+  ],
+  "expected_decision_output": "tasks/v0.6-m4-m5-continuity-decision.json"
+}

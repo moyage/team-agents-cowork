@@ -39,7 +39,10 @@
     "tasks/v0.6-m5-b-execution-contract.json",
     "tasks/v0.6-m5-b-contract-review-decision.json",
     "tasks/v0.6-m5-b-execution-result.json",
-    "tasks/v0.6-m5-b-result-review-decision.json"
+    "tasks/v0.6-m5-b-result-review-decision.json",
+    "tasks/v0.6-m4-m5-continuity-note.md",
+    "tasks/v0.6-m4-m5-continuity-review-packet.json",
+    "tasks/v0.6-m4-m5-continuity-decision.json"
   ],
   "carry_overs": []
 }
