@@ -1,0 +1,23 @@
+{
+  "task_id": "v0.5-m3-reviewer-context-api",
+  "description": "Implement strictly read-only Reviewer Context API natively in the MCP server, specifically adding 'get_execution_diff' and 'get_dispatch_state' tools to securely provide workflow state and semantic diff context for reviewer and orchestrator agents.",
+  "scope": "Add two new MCP tools to src/mcp-server/src/index.ts. 1) get_execution_diff: Accepts a baseline commit hash, runs 'git diff <baseline>', and returns the semantic diff payload. 2) get_dispatch_state: Reads and parses 'workflow/dispatch.json' and returns its contents.",
+  "out_of_scope": "Strictly NO workflow mutation (write APIs). NO auto-approval logic or decision tree implementation. NO redesign of the reviewer identity. NO artifact discovery expansion (beyond dispatch.json). NO protocol evolution topics.",
+  "allowed_files": [
+    "src/mcp-server/src/index.ts"
+  ],
+  "allowed_artifacts": [
+    "tasks/v0.5-m3-execution-result.json",
+    "tasks/v0.5-m3-result-review-packet.json"
+  ],
+  "required_outputs": [
+    "tasks/v0.5-m3-execution-result.json",
+    "tasks/v0.5-m3-result-review-packet.json"
+  ],
+  "stop_conditions": [
+    "Attempting to modify any file outside allowed_files.",
+    "Attempting to modify any artifact outside allowed_artifacts.",
+    "Attempting to implement state mutators or workflow progression APIs.",
+    "Attempting to execute implementation before an explicit, independent contract review decision is provided."
+  ]
+}
