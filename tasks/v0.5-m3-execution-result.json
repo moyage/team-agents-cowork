@@ -8,5 +8,6 @@
   "artifact_changes": [
     "tasks/v0.5-m3-execution-result.json",
     "tasks/v0.5-m3-result-review-packet.json"
-  ]
+  ],
+  "closure_state_changes": []
 }
