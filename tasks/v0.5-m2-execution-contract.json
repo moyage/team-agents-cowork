@@ -4,13 +4,9 @@
   "scope": "Add a new MCP tool to src/mcp-server/src/index.ts. The tool will accept a task baseline commit and a contract path, run 'git diff --name-only <baseline>', read the contract's 'allowed_files', and return an evaluation of any architecture drift/uncontracted file touches.",
   "out_of_scope": "Strictly NO workflow mutation (write APIs). NO auto-approval logic. NO redesign of the reviewer identity. NO protocol evolution topics.",
   "allowed_files": [
-    "src/mcp-server/src/index.ts",
-    "src/mcp-server/package.json",
-    "src/mcp-server/package-lock.json",
-    "tasks/v0.5-m2-execution-result.json"
+    "src/mcp-server/src/index.ts"
   ],
   "required_outputs": [
-    "src/mcp-server/src/index.ts",
     "tasks/v0.5-m2-execution-result.json"
   ],
   "stop_conditions": [
