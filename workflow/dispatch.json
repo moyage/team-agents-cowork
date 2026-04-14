@@ -1,11 +1,14 @@
 {
   "active_iteration": "V0.5",
-  "current_gate": "v0.6_m6_a_completed",
+  "current_gate": "v0.6_m6_b_contract_review_pending",
   "executor": "Hermes",
-  "reviewer_required": false,
-  "active_task": null,
-  "stop_conditions": [],
-  "next_expected_artifact": "tasks/v0.6-m6-b-execution-contract.json",
+  "reviewer_required": true,
+  "active_task": "v0.6-m6-b-bounded-cleanup",
+  "stop_conditions": [
+    "Proceeding to execution without an approved M6-B execution contract",
+    "Self-approving the M6-B contract"
+  ],
+  "next_expected_artifact": "tasks/v0.6-m6-b-contract-review-decision.json",
   "governance_notes": [
     "V0.6 formally kicked off. V0.5 carry-overs and repository normalization goals imported."
   ]
