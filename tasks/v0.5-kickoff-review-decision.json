@@ -1,0 +1,18 @@
+{
+  "artifact": "tasks/v0.5-kickoff-planning-packet.md",
+  "decision": "approved",
+  "gate": "planning_approval",
+  "reviewer": "human",
+  "summary": "V0.5 kickoff planning packet 已批准，planning 材料合规，可以进入 M1 execution contract drafting。",
+  "authorizations": [
+    "Drafting the M1 execution contract"
+  ],
+  "does_not_authorize": [
+    "Starting M1 implementation",
+    "Modifying src/",
+    "Modifying schemas/",
+    "Modifying scripts/",
+    "Modifying workflow/iteration-state.json unless explicitly approved in a later bounded step"
+  ],
+  "next_gate": "m1_contract_drafting"
+}
