@@ -1,13 +1,13 @@
 {
-  "active_iteration": "v0.5",
+  "active_iteration": "V0.5",
   "current_gate": "exception_cleared_m1_completed",
   "executor": "Hermes",
   "reviewer_required": true,
   "active_task": "v0.5-m2-planning",
   "stop_conditions": [
-    "Drafting beyond M1 scope.",
-    "Attempting execution or implementation of M1 tasks.",
-    "Modifying any files outside tasks/ directory."
+    "Drafting execution contracts beyond M2 scope.",
+    "Attempting code execution or file modification outside the tasks/ directory before contract approval.",
+    "Modifying legacy python scripts in workflow/ or scripts/."
   ],
   "next_expected_artifact": "tasks/v0.5-m2-execution-contract.json"
 }

@@ -1,12 +1,13 @@
 {
-  "current_iteration": "V0.4",
-  "phase": "Planning",
-  "status": "Kickoff",
-  "previous_iteration": "V0.3",
+  "current_iteration": "V0.5",
+  "phase": "M2-Planning",
+  "status": "In-Progress",
+  "previous_iteration": "V0.4",
   "key_artifacts": [
-    "tasks/v0.4-kickoff.md",
-    "tasks/v0.4-demand-pool.md",
-    "tasks/workflow-orchestrator-evaluation-v0.4.md"
+    "tasks/v0.5-kickoff-planning-packet.md",
+    "tasks/v0.5-m1-execution-contract.json",
+    "tasks/v0.5-m1-execution-result.json",
+    "tasks/v0.5-retrospective-note.md"
   ],
   "carry_overs": []
 }
