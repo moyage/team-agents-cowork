@@ -1,0 +1,13 @@
+{
+  "active_iteration": "v0.5",
+  "current_gate": "planning_approval_pending",
+  "executor": "Hermes",
+  "reviewer_required": true,
+  "active_task": "v0.5-kickoff-materialization",
+  "stop_conditions": [
+    "Modification of files outside allowed_files.",
+    "Execution of M1 tasks without formal approval.",
+    "Schema definition changes required."
+  ],
+  "next_expected_artifact": "tasks/v0.5-kickoff-review-decision.json"
+}
