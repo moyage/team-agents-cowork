@@ -1,0 +1,76 @@
+#!/usr/bin/env node
+
+import * as fs from 'fs/promises';
+import * as path from 'path';
+import { execSync } from 'child_process';
+import { fileURLToPath } from 'url';
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+const REPO_ROOT = path.resolve(__dirname, '..');
+const TARGET_DIR = process.cwd();
+
+async function isTeamAgentsRepo() {
+  return TARGET_DIR === REPO_ROOT;
+}
+
+async function injectAdapter(adapterName, targetFilename) {
+  const tplPath = path.join(REPO_ROOT, `adapters/${adapterName}`);
+  const destPath = path.join(TARGET_DIR, targetFilename);
+  
+  try {
+    const content = await fs.readFile(tplPath, 'utf8');
+    await fs.writeFile(destPath, content, 'utf8');
+    console.log(`[+] Injected ${targetFilename}`);
+  } catch (err) {
+    console.error(`[-] Failed to inject ${targetFilename}: ${err.message}`);
+  }
+}
+
+async function init() {
+  console.log("🚀 Initializing Team Agents Cowork Framework...");
+  
+  // 1. Build MCP Server
+  console.log("\n📦 Building MCP Server...");
+  try {
+    execSync('npm ci && npm run build', { cwd: path.join(REPO_ROOT, 'src/mcp-server'), stdio: 'inherit' });
+  } catch (err) {
+    console.error("❌ Failed to build MCP server.");
+    process.exit(1);
+  }
+
+  // 2. Inject Adapters
+  console.log("\n🛠 Injecting IDE adapters...");
+  await injectAdapter('CURSOR_RULES.tpl', '.cursorrules');
+  await injectAdapter('CLAUDE_CODE_RULES.tpl', 'CLAUDE.md');
+  await injectAdapter('AGENTS.md.tpl', 'AGENTS.md');
+  
+  // 3. Initialize State (Only if not running inside the framework's own repo to avoid polluting history)
+  if (!(await isTeamAgentsRepo())) {
+    console.log("\n📝 Initializing clean workflow state...");
+    const workflowDir = path.join(TARGET_DIR, 'workflow');
+    const tasksDir = path.join(TARGET_DIR, 'tasks');
+    
+    await fs.mkdir(workflowDir, { recursive: true });
+    await fs.mkdir(tasksDir, { recursive: true });
+    
+    const initialDispatch = {
+      "active_iteration": "V1.0",
+      "current_gate": "kickoff_pending",
+      "executor": "Hermes",
+      "reviewer_required": false,
+      "active_task": null,
+      "stop_conditions": [],
+      "next_expected_artifact": "tasks/v1.0-kickoff-packet.md"
+    };
+    
+    await fs.writeFile(path.join(workflowDir, 'dispatch.json'), JSON.stringify(initialDispatch, null, 2));
+    console.log("[+] Created workflow/dispatch.json");
+  } else {
+    console.log("\n⚠️ Running inside framework repository. Skipping state generation to preserve meta-workflow.");
+  }
+
+  console.log("\n✅ Initialization complete!");
+  console.log("👉 Please review the System Prompt at: documentation/AI_GUIDES/SYSTEM_PROMPT.md");
+}
+
+init().catch(console.error);

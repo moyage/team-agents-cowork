@@ -44,5 +44,6 @@ if [ ! -d "$TARGET_DIR" ]; then
 fi
 
 echo "🔄 Injecting protocol into $TARGET_DIR..."
-python3 ./scripts/sync_to_target.py "$TARGET_DIR" "$IDE" "$PROFILE"
+# DEPRECATED: python3 ./scripts/sync_to_target.py "$TARGET_DIR" "$IDE" "$PROFILE"
+node ./bin/agent-protocol-init
 echo "✅ Setup successfully completed for $TARGET_DIR!"

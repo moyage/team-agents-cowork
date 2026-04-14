@@ -1,0 +1,15 @@
+{
+  "task_id": "v0.6-m4-bootstrap-enablement",
+  "review_type": "post-execution-result-review",
+  "contract_path": "tasks/v0.6-m4-execution-contract.json",
+  "result_path": "tasks/v0.6-m4-execution-result.json",
+  "review_criteria": [
+    "Verify that git show strictly matches the execution result artifact.",
+    "Verify implementation changes are STRICTLY limited to 'install.sh', 'setup.sh', 'bin/agent-protocol-init', and 'adapters/*.tpl'.",
+    "Verify NO modifications were made to the MCP Server logic (src/mcp-server/src/index.ts).",
+    "Verify NO removal of legacy Python scripts or unauthorized refactoring of Markdown content occurred.",
+    "Verify that the generated scripts do NOT statically write workflow state into this repository's tracking index.",
+    "Verify artifact changes are strictly limited to allowed_artifacts."
+  ],
+  "expected_decision_output": "tasks/v0.6-m4-result-review-decision.json"
+}

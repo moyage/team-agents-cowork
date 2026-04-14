@@ -1,0 +1,19 @@
+{
+  "task_id": "v0.6-m4-bootstrap-enablement",
+  "status": "completed",
+  "summary": "Designed and implemented 1-click bootstrap scripts. Created 'bin/agent-protocol-init' Node script to initialize the MCP server, inject IDE rules, and generate a clean state without polluting the framework repository's history. Updated 'install.sh' and 'setup.sh' to point to this new entry. Updated adapter templates to point to the new 'documentation/AI_GUIDES/SYSTEM_PROMPT.md' path.",
+  "implementation_changes": [
+    "bin/agent-protocol-init",
+    "install.sh",
+    "setup.sh",
+    "adapters/AGENTS.md.tpl",
+    "adapters/CLAUDE_CODE_RULES.tpl",
+    "adapters/CURSOR_RULES.tpl",
+    "adapters/TRAE_RULES.tpl"
+  ],
+  "artifact_changes": [
+    "tasks/v0.6-m4-execution-result.json",
+    "tasks/v0.6-m4-result-review-packet.json"
+  ],
+  "closure_state_changes": []
+}

@@ -21,6 +21,7 @@ if [ ! -f "./setup.sh" ]; then
     
     # Execute the actual setup script with all arguments passed
     cd "$TMP_DIR"
+    npm ci --prefix src/mcp-server > /dev/null 2>&1
     exec ./setup.sh "$@"
 else
     # Local mode
