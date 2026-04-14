@@ -18,7 +18,8 @@
     "tasks/v0.5-m3-execution-contract.json",
     "tasks/v0.5-m3-contract-review-decision.json",
     "tasks/v0.5-m3-execution-result.json",
-    "tasks/v0.5-m3-result-review-decision.json"
+    "tasks/v0.5-m3-result-review-decision.json",
+    "tasks/v0.5-m3-post-closure-correction-decision.json"
   ],
   "carry_overs": []
 }
