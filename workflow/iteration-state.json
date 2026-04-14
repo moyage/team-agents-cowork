@@ -18,7 +18,10 @@
     "tasks/v0.6-m2-execution-contract.json",
     "tasks/v0.6-m2-contract-review-decision.json",
     "tasks/v0.6-m2-execution-result.json",
-    "tasks/v0.6-m2-result-review-decision.json"
+    "tasks/v0.6-m2-result-review-decision.json",
+    "tasks/v0.6-milestone-map-amendment.md",
+    "tasks/v0.6-milestone-map-amendment-review-packet.json",
+    "tasks/v0.6-milestone-map-amendment-decision.json"
   ],
   "carry_overs": []
 }
