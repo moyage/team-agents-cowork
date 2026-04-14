@@ -1,0 +1,14 @@
+{
+  "task_id": "v0.6-m3-documentation-center",
+  "review_type": "post-execution-result-review",
+  "contract_path": "tasks/v0.6-m3-execution-contract.json",
+  "result_path": "tasks/v0.6-m3-execution-result.json",
+  "review_criteria": [
+    "Verify that the 'documentation/' directory hierarchy was correctly created (HUMAN_GUIDES, AI_GUIDES, SAMPLES).",
+    "Verify that 'README.md' was modified to act strictly as a minimalist directory navigator.",
+    "Verify that NO existing files in 'docs/' or 'protocol/' were deleted, moved, or renamed.",
+    "Verify that NO MCP server files, runtime environments, or bootstrap scripts were created or modified.",
+    "Verify that artifact changes are strictly limited to allowed_artifacts."
+  ],
+  "expected_decision_output": "tasks/v0.6-m3-result-review-decision.json"
+}
