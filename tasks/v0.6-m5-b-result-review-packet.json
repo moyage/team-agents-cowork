@@ -1,0 +1,14 @@
+{
+  "task_id": "v0.6-m5-b-api-path-hardening",
+  "review_type": "post-execution-result-review",
+  "contract_path": "tasks/v0.6-m5-b-execution-contract.json",
+  "result_path": "tasks/v0.6-m5-b-execution-result.json",
+  "review_criteria": [
+    "Verify git show strictly matches the execution result artifact.",
+    "Verify implementation change is STRICTLY limited to modifying 'dispatchPath' in 'src/mcp-server/src/index.ts'.",
+    "Verify 'src/mcp-server/src/test-client.ts' was NOT modified.",
+    "Verify NO legacy Python scripts were deleted.",
+    "Verify artifact changes are strictly limited to allowed_artifacts."
+  ],
+  "expected_decision_output": "tasks/v0.6-m5-b-result-review-decision.json"
+}
