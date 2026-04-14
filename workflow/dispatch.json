@@ -1,14 +1,11 @@
 {
   "active_iteration": "V0.5",
-  "current_gate": "v0.6_m6_b_result_review_pending",
+  "current_gate": "v0.6_m6_b_completed",
   "executor": "Hermes",
-  "reviewer_required": true,
-  "active_task": "v0.6-m6-b-bounded-cleanup",
-  "stop_conditions": [
-    "Closing M6-B phase without obtaining an Approved result review decision",
-    "Self-approving the result review"
-  ],
-  "next_expected_artifact": "tasks/v0.6-m6-b-result-review-decision.json",
+  "reviewer_required": false,
+  "active_task": null,
+  "stop_conditions": [],
+  "next_expected_artifact": "tasks/v0.6-retrospective-note.md",
   "governance_notes": [
     "V0.6 formally kicked off. V0.5 carry-overs and repository normalization goals imported."
   ]
