@@ -1,0 +1,23 @@
+{
+  "task_id": "v0.7-m5-b-legacy-tooling",
+  "description": "Execute V0.7-M5-B by defining the legacy tooling deprecation roadmap, including explicit criteria for deprecation, retention, and removal.",
+  "scope": "Generate a roadmap document (tasks/v0.7-m5-b-legacy-tooling-roadmap.md) that explicitly maps out the fate of all Python scripts in the scripts/ directory. The document must define the deprecate/retain/remove criteria and ensure workflow state semantic continuity.",
+  "out_of_scope": "Strictly NO actual deletion of Python scripts. NO modifications to existing shell bootstrap scripts. NO modifications to active workflow/dispatch.json or iteration-state.json state models.",
+  "allowed_files": [
+    "tasks/v0.7-m5-b-legacy-tooling-roadmap.md"
+  ],
+  "allowed_artifacts": [
+    "tasks/v0.7-m5-b-execution-result.json",
+    "tasks/v0.7-m5-b-result-review-packet.json"
+  ],
+  "required_outputs": [
+    "tasks/v0.7-m5-b-legacy-tooling-roadmap.md",
+    "tasks/v0.7-m5-b-execution-result.json",
+    "tasks/v0.7-m5-b-result-review-packet.json"
+  ],
+  "stop_conditions": [
+    "Attempting to physically delete any legacy Python scripts.",
+    "Attempting to modify any file outside allowed_files.",
+    "Executing without an approved M5-B contract."
+  ]
+}
