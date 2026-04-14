@@ -1,0 +1,24 @@
+{
+  "task_id": "v0.5-m4-integration-client",
+  "description": "Develop a read-only integration test client (test-client.ts) that connects to the MCP server via stdio and invokes 'get_dispatch_state' and 'get_execution_diff' to validate the M3 Context API.",
+  "scope": "Create 'src/mcp-server/src/test-client.ts'. The script must initialize an MCP client, connect to the local server, call the context tools, and print/assert the results. The goal is to prove an orchestrator/reviewer agent can fetch canonical workflow state and semantic diff context natively through MCP.",
+  "out_of_scope": "Strictly NO modifications to the MCP server (src/mcp-server/src/index.ts). NO workflow mutation or write operations. NO approval automation or reviewer identity redesign. NO protocol evolution topics or changes to existing schema.",
+  "allowed_files": [
+    "src/mcp-server/src/test-client.ts"
+  ],
+  "allowed_artifacts": [
+    "tasks/v0.5-m4-execution-result.json",
+    "tasks/v0.5-m4-result-review-packet.json"
+  ],
+  "required_outputs": [
+    "tasks/v0.5-m4-execution-result.json",
+    "tasks/v0.5-m4-result-review-packet.json"
+  ],
+  "stop_conditions": [
+    "Attempting to modify the MCP server index.ts file.",
+    "Attempting to write to any artifact outside allowed_artifacts.",
+    "Attempting to modify any file outside allowed_files.",
+    "Attempting to implement state mutators or auto-approval logic.",
+    "Executing implementation before an explicit, independent contract review decision is provided."
+  ]
+}

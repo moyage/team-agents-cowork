@@ -1,13 +1,14 @@
 {
   "active_iteration": "V0.5",
-  "current_gate": "m4_reconnaissance_completed",
+  "current_gate": "m4_contract_review_pending",
   "executor": "Hermes",
-  "reviewer_required": false,
-  "active_task": null,
+  "reviewer_required": true,
+  "active_task": "v0.5-m4-integration-client",
   "stop_conditions": [
-    "Proceeding to M4 execution without an approved contract"
+    "Proceeding to execution without an approved M4 execution contract",
+    "Self-approving the M4 contract"
   ],
-  "next_expected_artifact": "tasks/v0.5-m4-execution-contract.json",
+  "next_expected_artifact": "tasks/v0.5-m4-contract-review-decision.json",
   "governance_notes": [
     "M3 execution result artifact amended post-closure (commit 51c4841) to add 'closure_state_changes' field. Validated as a safe exception-cleared amendment."
   ]
