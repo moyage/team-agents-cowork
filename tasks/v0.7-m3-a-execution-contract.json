@@ -1,0 +1,23 @@
+{
+  "task_id": "v0.7-m3-a-feedback-taxonomy",
+  "description": "Execute V0.7-M3-A by designing the data models for failure taxonomy, feedback ingestion, retrospective artifacts, and the retry vs. improvement boundary.",
+  "scope": "Generate a comprehensive design document (tasks/v0.7-m3-a-feedback-taxonomy.md) that defines the taxonomy of failures, how feedback is ingested without breaking governance, the model for retrospective artifacts, and strict rules for distinguishing an automated retry from an escalated improvement-case.",
+  "out_of_scope": "Strictly NO implementation of automation scripts or automatic retries. NO rewriting of the governance/review mechanism. NO .agent-state/ migration. NO modifications to active workflow/dispatch.json semantics.",
+  "allowed_files": [
+    "tasks/v0.7-m3-a-feedback-taxonomy.md"
+  ],
+  "allowed_artifacts": [
+    "tasks/v0.7-m3-a-execution-result.json",
+    "tasks/v0.7-m3-a-result-review-packet.json"
+  ],
+  "required_outputs": [
+    "tasks/v0.7-m3-a-feedback-taxonomy.md",
+    "tasks/v0.7-m3-a-execution-result.json",
+    "tasks/v0.7-m3-a-result-review-packet.json"
+  ],
+  "stop_conditions": [
+    "Attempting to modify any file outside allowed_files.",
+    "Attempting to implement executable scripts.",
+    "Executing without an approved M3-A contract."
+  ]
+}
