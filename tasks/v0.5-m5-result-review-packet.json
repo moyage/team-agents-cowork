@@ -1,0 +1,14 @@
+{
+  "task_id": "v0.5-m5-dispatch-path-fix",
+  "review_type": "post-execution-result-review",
+  "contract_path": "tasks/v0.5-m5-execution-contract.json",
+  "result_path": "tasks/v0.5-m5-execution-result.json",
+  "review_criteria": [
+    "Verify git show strictly matches the execution result artifact.",
+    "Verify implementation change is STRICTLY limited to modifying 'dispatchPath' in 'src/mcp-server/src/index.ts'.",
+    "Verify 'src/mcp-server/src/test-client.ts' was NOT modified.",
+    "Verify 'get_iteration_state' and 'get_execution_diff' paths were NOT incidentally modified.",
+    "Verify artifact changes are strictly limited to allowed_artifacts."
+  ],
+  "expected_decision_output": "tasks/v0.5-m5-result-review-decision.json"
+}

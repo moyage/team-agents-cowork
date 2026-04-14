@@ -172,7 +172,7 @@ const changedFiles = stdout.split('\n').map(f => f.trim()).filter(f => f.length 
 
   if (request.params.name === "get_dispatch_state") {
     try {
-      const dispatchPath = path.resolve(__dirname, "../../workflow/dispatch.json");
+      const dispatchPath = path.resolve(__dirname, "../../../workflow/dispatch.json");
       const data = await fs.readFile(dispatchPath, "utf-8");
       return {
         content: [
