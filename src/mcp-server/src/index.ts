@@ -13,8 +13,6 @@ import { promisify } from "util";
 const execAsync = promisify(exec);
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
-// Both src/ and build/ are 1 level deep inside src/mcp-server/
-const WORKFLOW_STATE_PATH = path.resolve(__dirname, "../../workflow/iteration-state.json");
 
 const server = new Server(
   {
@@ -95,14 +93,14 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
         throw new Error("baseline_commit and contract_path are required");
       }
 
+      const projectRoot = process.env.PROJECT_ROOT || process.cwd();
+
       // Read and parse the contract
-      const contractData = await fs.readFile(contract_path, "utf-8");
+      const absoluteContractPath = path.resolve(projectRoot, contract_path);
+      const contractData = await fs.readFile(absoluteContractPath, "utf-8");
       const contract = JSON.parse(contractData);
       const allowedFiles = contract.allowed_files || [];
 
-      // Get Git diff (name only)
-      // Assuming the root of the repo is 2 levels up from src/mcp-server
-      const projectRoot = path.resolve(__dirname, "../../");
       const { stdout } = await execAsync(`git diff --name-only ${baseline_commit}`, { cwd: projectRoot });
       
 const changedFiles = stdout.split('\n').map(f => f.trim()).filter(f => f.length > 0);
@@ -146,7 +144,7 @@ const changedFiles = stdout.split('\n').map(f => f.trim()).filter(f => f.length 
         throw new Error("baseline_commit is required");
       }
 
-      const projectRoot = path.resolve(__dirname, "../../");
+      const projectRoot = process.env.PROJECT_ROOT || process.cwd();
       const { stdout } = await execAsync(`git diff ${baseline_commit}`, { cwd: projectRoot });
 
       return {
@@ -172,7 +170,8 @@ const changedFiles = stdout.split('\n').map(f => f.trim()).filter(f => f.length 
 
   if (request.params.name === "get_dispatch_state") {
     try {
-      const dispatchPath = path.resolve(__dirname, "../../../workflow/dispatch.json");
+      const projectRoot = process.env.PROJECT_ROOT || process.cwd();
+      const dispatchPath = path.resolve(projectRoot, "workflow/dispatch.json");
       const data = await fs.readFile(dispatchPath, "utf-8");
       return {
         content: [
@@ -197,7 +196,9 @@ const changedFiles = stdout.split('\n').map(f => f.trim()).filter(f => f.length 
 
   if (request.params.name === "get_iteration_state") {
     try {
-      const data = await fs.readFile(WORKFLOW_STATE_PATH, "utf-8");
+      const projectRoot = process.env.PROJECT_ROOT || process.cwd();
+      const iterationPath = path.resolve(projectRoot, "workflow/iteration-state.json");
+      const data = await fs.readFile(iterationPath, "utf-8");
       return {
         content: [
           {
