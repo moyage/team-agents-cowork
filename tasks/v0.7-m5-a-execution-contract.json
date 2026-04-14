@@ -1,0 +1,23 @@
+{
+  "task_id": "v0.7-m5-a-state-separation",
+  "description": "Execute V0.7-M5-A by defining the .agent-state/ separation roadmap, including the target state, intermediate/compatibility state, and rollback paths.",
+  "scope": "Generate a roadmap document (tasks/v0.7-m5-a-state-separation-roadmap.md) that explicitly answers the M5 directives on state separation target, intermediate states, backward compatibility, and rollback paths.",
+  "out_of_scope": "Strictly NO physical migration of .agent-state/. NO modifications to existing MCP server or bootstrap scripts. NO workflow state semantics modifications.",
+  "allowed_files": [
+    "tasks/v0.7-m5-a-state-separation-roadmap.md"
+  ],
+  "allowed_artifacts": [
+    "tasks/v0.7-m5-a-execution-result.json",
+    "tasks/v0.7-m5-a-result-review-packet.json"
+  ],
+  "required_outputs": [
+    "tasks/v0.7-m5-a-state-separation-roadmap.md",
+    "tasks/v0.7-m5-a-execution-result.json",
+    "tasks/v0.7-m5-a-result-review-packet.json"
+  ],
+  "stop_conditions": [
+    "Attempting to perform actual .agent-state/ physical migrations.",
+    "Attempting to modify any file outside allowed_files.",
+    "Executing without an approved M5-A contract."
+  ]
+}
