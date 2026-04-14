@@ -1,12 +1,9 @@
 {
   "active_iteration": "V0.5",
-  "current_gate": "m3_result_review_pending",
+  "current_gate": "m3_completed",
   "executor": "Hermes",
-  "reviewer_required": true,
-  "active_task": "v0.5-m3-reviewer-context-api",
-  "stop_conditions": [
-    "Closing M3 phase without obtaining an Approved result review decision",
-    "Self-approving the result review"
-  ],
-  "next_expected_artifact": "tasks/v0.5-m3-result-review-decision.json"
+  "reviewer_required": false,
+  "active_task": null,
+  "stop_conditions": [],
+  "next_expected_artifact": "tasks/v0.5-m4-kickoff-packet.md"
 }

@@ -1,7 +1,7 @@
 {
   "current_iteration": "V0.5",
-  "phase": "M2",
-  "status": "Exception-Cleared Completed",
+  "phase": "M3",
+  "status": "Completed",
   "previous_iteration": "V0.4",
   "key_artifacts": [
     "tasks/v0.5-kickoff-planning-packet.md",
@@ -10,7 +10,15 @@
     "tasks/v0.5-retrospective-note.md",
     "tasks/v0.5-m2-execution-contract.json",
     "tasks/v0.5-m2-execution-result.json",
-    "tasks/v0.5-m2-result-review-decision.json"
+    "tasks/v0.5-m2-result-review-decision.json",
+    "tasks/v0.5-m2-retrospective-note.md",
+    "tasks/v0.5-m3-reconnaissance-note.md",
+    "tasks/v0.5-m3-planning-input.json",
+    "tasks/v0.5-m3-planning-approval.md",
+    "tasks/v0.5-m3-execution-contract.json",
+    "tasks/v0.5-m3-contract-review-decision.json",
+    "tasks/v0.5-m3-execution-result.json",
+    "tasks/v0.5-m3-result-review-decision.json"
   ],
   "carry_overs": []
 }
