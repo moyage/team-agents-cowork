@@ -1,13 +1,14 @@
 {
   "active_iteration": "V0.7",
-  "current_gate": "v0.7_m3_a_execution_ready",
+  "current_gate": "v0.7_m3_a_result_review_pending",
   "executor": "Hermes",
-  "reviewer_required": false,
+  "reviewer_required": true,
   "active_task": "v0.7-m3-a-feedback-taxonomy",
   "stop_conditions": [
-    "Executing implementation without respecting allowed_files boundaries"
+    "Closing M3-A phase without obtaining an Approved result review decision",
+    "Self-approving the result review"
   ],
-  "next_expected_artifact": "tasks/v0.7-m3-a-execution-result.json",
+  "next_expected_artifact": "tasks/v0.7-m3-a-result-review-decision.json",
   "governance_notes": [
     "Iteration V0.7 formally kicked off. V0.6 carry-overs explicitly imported."
   ]
