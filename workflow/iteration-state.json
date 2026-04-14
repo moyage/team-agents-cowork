@@ -1,7 +1,7 @@
 {
   "current_iteration": "V0.7",
   "phase": "M3-A",
-  "status": "Recon Completed",
+  "status": "Completed",
   "previous_iteration": "V0.6",
   "key_artifacts": [
     "tasks/v0.7-kickoff-packet.md",
@@ -24,7 +24,12 @@
     "tasks/v0.7-m2-unified-model.md",
     "tasks/v0.7-m2-execution-result.json",
     "tasks/v0.7-m2-result-review-decision.json",
-    "tasks/v0.7-m3-a-recon-packet.md"
+    "tasks/v0.7-m3-a-recon-packet.md",
+    "tasks/v0.7-m3-a-execution-contract.json",
+    "tasks/v0.7-m3-a-contract-review-decision.json",
+    "tasks/v0.7-m3-a-feedback-taxonomy.md",
+    "tasks/v0.7-m3-a-execution-result.json",
+    "tasks/v0.7-m3-a-result-review-decision.json"
   ],
   "carry_overs": [
     "State & Framework Physical Separation",
