@@ -1,0 +1,13 @@
+{
+  "task_id": "v0.7-m2-unified-model",
+  "status": "completed",
+  "summary": "Generated tasks/v0.7-m2-unified-model.md. Defined the artifact taxonomy, task lifecycle, role boundaries (Reviewer vs. Gatekeeper, Acceptance vs. Evaluation), and the minimal common core for Personal and Team Modes.",
+  "implementation_changes": [
+    "tasks/v0.7-m2-unified-model.md"
+  ],
+  "artifact_changes": [
+    "tasks/v0.7-m2-execution-result.json",
+    "tasks/v0.7-m2-result-review-packet.json"
+  ],
+  "closure_state_changes": []
+}
