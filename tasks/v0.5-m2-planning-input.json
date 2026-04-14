@@ -1,0 +1,26 @@
+{
+  "target_iteration": "V0.5",
+  "target_milestone": "M2",
+  "phase": "Planning Reconnaissance",
+  "recommended_focus": "Protocol Validation & Compliance API",
+  "rationale": "Prioritize physical compliance checking tools to prevent Agentic Sycophancy before introducing write/mutation capabilities. Directly addresses M1 architecture drift incident.",
+  "candidate_tools": [
+    {
+      "name": "validate_artifact_schema",
+      "description": "Validates a given JSON artifact against its core schema definition."
+    },
+    {
+      "name": "verify_execution_compliance",
+      "description": "Compares physical git diff against the allowed_files declared in an execution contract to detect uncontracted modifications."
+    }
+  ],
+  "execution_constraints": [
+    "Strictly bounded to src/mcp-server/ directory.",
+    "Do not remove or alter existing legacy Python scripts in this phase.",
+    "No workflow state mutation tools (write operations) are permitted in M2 to maintain security.",
+    "Must implement child_process strictly for git diff and fs/promises for schema reading."
+  ],
+  "prerequisites_for_drafting_contract": [
+    "Reviewer approval of this reconnaissance direction."
+  ]
+}
