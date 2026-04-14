@@ -1,7 +1,7 @@
 {
   "current_iteration": "V0.6",
-  "phase": "M3",
-  "status": "Completed",
+  "phase": "M4",
+  "status": "Recon Completed",
   "previous_iteration": "V0.5",
   "key_artifacts": [
     "tasks/v0.6-kickoff-packet.md",
@@ -29,7 +29,8 @@
     "tasks/v0.6-m3-result-review-decision.json",
     "tasks/v0.6-sequence-normalization-amendment.md",
     "tasks/v0.6-sequence-normalization-review-packet.json",
-    "tasks/v0.6-sequence-normalization-review-decision.json"
+    "tasks/v0.6-sequence-normalization-review-decision.json",
+    "tasks/v0.6-m4-recon-packet.md"
   ],
   "carry_overs": []
 }
