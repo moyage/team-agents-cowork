@@ -1,0 +1,31 @@
+{
+  "task_id": "v0.6-m3-documentation-center",
+  "description": "Establish a unified Documentation Center ('documentation/') with dual-track paths (Human/AI) and refactor README.md into a minimalist entry point.",
+  "scope": "Create 'documentation/HUMAN_GUIDES/', 'documentation/AI_GUIDES/', and 'documentation/SAMPLES/' directories. Generate new markdown files (QUICKSTART, ARCHITECTURE, GOVERNANCE, SYSTEM_PROMPT, MCP_API_REFERENCE, SCHEMA_REFERENCE) by extracting and restructuring existing content. Update README.md to act strictly as a navigator. Create 'documentation/SAMPLES/INDEX.md' to catalog existing V0.5 execution artifacts as examples. Include explicit deprecation/migration mappings in the new docs referencing the old 'docs/' and 'protocol/' files.",
+  "out_of_scope": "Strictly NO deletion or relocation of existing 'docs/' or 'protocol/' files (deferred to M6). NO modification of MCP server logic, workflow state files, or execution artifacts. NO implementation of bootstrap scripts.",
+  "allowed_files": [
+    "README.md",
+    "documentation/**"
+  ],
+  "allowed_artifacts": [
+    "tasks/v0.6-m3-execution-result.json",
+    "tasks/v0.6-m3-result-review-packet.json"
+  ],
+  "required_outputs": [
+    "documentation/HUMAN_GUIDES/QUICKSTART.md",
+    "documentation/HUMAN_GUIDES/ARCHITECTURE.md",
+    "documentation/HUMAN_GUIDES/GOVERNANCE.md",
+    "documentation/HUMAN_GUIDES/FAQ_TROUBLESHOOTING.md",
+    "documentation/AI_GUIDES/SYSTEM_PROMPT.md",
+    "documentation/AI_GUIDES/MCP_API_REFERENCE.md",
+    "documentation/AI_GUIDES/SCHEMA_REFERENCE.md",
+    "documentation/SAMPLES/INDEX.md",
+    "tasks/v0.6-m3-execution-result.json",
+    "tasks/v0.6-m3-result-review-packet.json"
+  ],
+  "stop_conditions": [
+    "Attempting to delete or move existing files in 'docs/' or 'protocol/'.",
+    "Attempting to modify any file outside allowed_files.",
+    "Executing without an approved M3 execution contract."
+  ]
+}
