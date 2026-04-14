@@ -1,0 +1,14 @@
+{
+  "task_id": "v0.7-m1-protocol-reframing",
+  "review_type": "post-execution-result-review",
+  "contract_path": "tasks/v0.7-m1-execution-contract.json",
+  "result_path": "tasks/v0.7-m1-execution-result.json",
+  "review_criteria": [
+    "Verify git show strictly matches the execution result artifact.",
+    "Verify the implementation changes are limited to creating tasks/v0.7-m1-protocol-reframing.md and tasks/v0.7-m1-scenario-modeling.md.",
+    "Verify the content of the two markdown files adequately defines the core protocol, roles (Executor, Reviewer, Gatekeeper, Coordinator), and Personal/Team Mode scenarios.",
+    "Verify NO implementation code in src/, NO workflow state mutations, and NO modifications to existing docs or protocol files occurred.",
+    "Verify artifact changes are strictly limited to allowed_artifacts."
+  ],
+  "expected_decision_output": "tasks/v0.7-m1-result-review-decision.json"
+}
