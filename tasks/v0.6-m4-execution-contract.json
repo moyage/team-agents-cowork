@@ -1,7 +1,7 @@
 {
   "task_id": "v0.6-m4-bootstrap-enablement",
   "description": "Design 1-click installation and configuration scripts (`agent-protocol-init`) for individual and team modes, updating adapter templates to point to the new Docs Center paths.",
-  "scope": "Create/modify shell scripts (install.sh, setup.sh, bin/agent-protocol-init) to validate Node.js, initialize the MCP server (npm ci & build), inject adapter templates (.cursorrules, etc.), and generate a clean workflow/dispatch.json for new 'Local Dev' environments. Update adapters/*.tpl to point to 'documentation/AI_GUIDES/SYSTEM_PROMPT.md'.",
+  "scope": "Create/modify shell scripts (install.sh, setup.sh, bin/agent-protocol-init) to validate Node.js, initialize the MCP server (npm ci & build), and inject adapter templates (.cursorrules, etc.). Update adapters/*.tpl to point to 'documentation/AI_GUIDES/SYSTEM_PROMPT.md'. (Note: Generation of workflow/dispatch.json state is deferred or handled dynamically by the scripts at runtime, not as a static implementation artifact here).",
   "out_of_scope": "Strictly NO modifications to MCP Server logic (src/mcp-server/src/index.ts). NO removal of legacy Python scripts. NO refactoring of Markdown content outside of adapter templates. NO state/framework structural separation (M6).",
   "allowed_files": [
     "install.sh",
