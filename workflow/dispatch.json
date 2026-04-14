@@ -1,12 +1,12 @@
 {
   "active_iteration": "V0.5",
-  "current_gate": "v0.6_m6_b_completed",
+  "current_gate": "v0.6_iteration_completed",
   "executor": "Hermes",
   "reviewer_required": false,
   "active_task": null,
   "stop_conditions": [],
-  "next_expected_artifact": "tasks/v0.6-retrospective-note.md",
+  "next_expected_artifact": "tasks/v0.7-kickoff-packet.md",
   "governance_notes": [
-    "V0.6 formally kicked off. V0.5 carry-overs and repository normalization goals imported."
+    "Iteration V0.6 formally closed. M1-M6 milestones validated. Retrospective note published."
   ]
 }
