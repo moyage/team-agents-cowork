@@ -1,0 +1,14 @@
+{
+  "task_id": "v0.6-m2-historical-archive",
+  "review_type": "post-execution-result-review",
+  "contract_path": "tasks/v0.6-m2-execution-contract.json",
+  "result_path": "tasks/v0.6-m2-execution-result.json",
+  "review_criteria": [
+    "Verify that 'audit/', 'qa/', 'release/', and 'retros/' were moved to '.archive/'.",
+    "Verify that '.archive/README.md' exists.",
+    "Verify that NO historical markdown files inside these directories were modified in their content.",
+    "Verify that implementation changes are STRICTLY limited to renaming directories into '.archive/'.",
+    "Verify that artifact changes are strictly limited to allowed_artifacts."
+  ],
+  "expected_decision_output": "tasks/v0.6-m2-result-review-decision.json"
+}

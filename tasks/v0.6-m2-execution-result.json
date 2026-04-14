@@ -1,0 +1,21 @@
+{
+  "task_id": "v0.6-m2-historical-archive",
+  "status": "completed",
+  "summary": "Moved 'audit/', 'qa/', 'release/', and 'retros/' to '.archive/'. Created '.archive/README.md' manifest to maintain auditability without modifying historical markdown files.",
+  "implementation_changes": [
+    ".archive/README.md",
+    "audit/**",
+    "qa/**",
+    "release/**",
+    "retros/**",
+    ".archive/audit/**",
+    ".archive/qa/**",
+    ".archive/release/**",
+    ".archive/retros/**"
+  ],
+  "artifact_changes": [
+    "tasks/v0.6-m2-execution-result.json",
+    "tasks/v0.6-m2-result-review-packet.json"
+  ],
+  "closure_state_changes": []
+}
