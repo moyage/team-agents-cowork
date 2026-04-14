@@ -1,14 +1,13 @@
 {
   "active_iteration": "V0.5",
-  "current_gate": "v0.6_m6_a_contract_review_pending",
+  "current_gate": "v0.6_m6_a_execution_ready",
   "executor": "Hermes",
-  "reviewer_required": true,
+  "reviewer_required": false,
   "active_task": "v0.6-m6-a-state-separation-design",
   "stop_conditions": [
-    "Proceeding to execution without an approved M6-A execution contract",
-    "Self-approving the M6-A contract"
+    "Executing implementation without respecting allowed_files boundaries"
   ],
-  "next_expected_artifact": "tasks/v0.6-m6-a-contract-review-decision.json",
+  "next_expected_artifact": "tasks/v0.6-m6-a-execution-result.json",
   "governance_notes": [
     "V0.6 formally kicked off. V0.5 carry-overs and repository normalization goals imported."
   ]
