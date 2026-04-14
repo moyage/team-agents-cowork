@@ -1,6 +1,6 @@
 {
   "current_iteration": "V0.5",
-  "phase": "M5",
+  "phase": "Closure",
   "status": "Completed",
   "previous_iteration": "V0.4",
   "key_artifacts": [
@@ -33,5 +33,9 @@
     "tasks/v0.5-m5-execution-result.json",
     "tasks/v0.5-m5-result-review-decision.json"
   ],
-  "carry_overs": []
+  "carry_overs": [
+    "Path Resolution Fragility: get_iteration_state and get_execution_diff still rely on potentially unsafe relative paths.",
+    "Reviewer Output Delivery: Automate the bridge connecting Sub-Agent context directly to M3 MCP endpoints.",
+    "Approval Gating Automation: Generalize a protocol hook to automatically dispatch SubAgent-GPT-5.4 on `_review_pending` state transitions."
+  ]
 }

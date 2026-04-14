@@ -1,12 +1,12 @@
 {
   "active_iteration": "V0.5",
-  "current_gate": "m5_completed",
+  "current_gate": "v0.5_iteration_completed",
   "executor": "Hermes",
   "reviewer_required": false,
   "active_task": null,
   "stop_conditions": [],
-  "next_expected_artifact": "tasks/v0.5-m6-kickoff-packet.md",
+  "next_expected_artifact": "tasks/v0.6-kickoff-packet.md",
   "governance_notes": [
-    "M4 closed. M5 opened to fix M3 path resolution technical debt."
+    "Iteration V0.5 formally closed. M1-M5 milestones validated. Retrospective note published."
   ]
 }
