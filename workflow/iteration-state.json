@@ -1,7 +1,7 @@
 {
   "current_iteration": "V0.6",
   "phase": "M5",
-  "status": "Recon Completed",
+  "status": "Completed",
   "previous_iteration": "V0.5",
   "key_artifacts": [
     "tasks/v0.6-kickoff-packet.md",
@@ -35,7 +35,11 @@
     "tasks/v0.6-m4-contract-review-decision.json",
     "tasks/v0.6-m4-execution-result.json",
     "tasks/v0.6-m4-result-review-decision.json",
-    "tasks/v0.6-m5-a-recon-packet.md"
+    "tasks/v0.6-m5-a-recon-packet.md",
+    "tasks/v0.6-m5-b-execution-contract.json",
+    "tasks/v0.6-m5-b-contract-review-decision.json",
+    "tasks/v0.6-m5-b-execution-result.json",
+    "tasks/v0.6-m5-b-result-review-decision.json"
   ],
   "carry_overs": []
 }
