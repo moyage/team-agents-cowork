@@ -1,0 +1,41 @@
+{
+  "task_id": "v0.4-baseline-restoration",
+  "executor": "Hermes",
+  "status": "Completed",
+  "files_created": [
+    "schemas/execution-contract.schema.json",
+    "schemas/execution-result.schema.json",
+    "schemas/review-decision.schema.json",
+    "schemas/iteration-state.schema.json",
+    "scripts/validate_workflow_state.py",
+    "tasks/v0.4-baseline-restoration-execution-contract.json",
+    "tasks/v0.4-baseline-restoration-execution-result.json"
+  ],
+  "files_modified": [],
+  "files_not_restored": [],
+  "commands_run": [
+    "git ls-tree -r bf08c3e | grep -E 'schemas/|scripts/validate_workflow_state.py'",
+    "git checkout bf08c3e -- schemas/execution-contract.schema.json schemas/execution-result.schema.json schemas/review-decision.schema.json schemas/iteration-state.schema.json scripts/validate_workflow_state.py",
+    "jq empty schemas/*.schema.json",
+    "python3 scripts/validate_workflow_state.py --help"
+  ],
+  "claims": [
+    "Successfully extracted schemas and validation script from commit bf08c3e.",
+    "Restored files exactly match their historical verified baseline from V0.4.",
+    "JSON validation passed for all schemas.",
+    "Validation script is executable and prints the correct help menu.",
+    "No V0.5 related tasks, architecture, or documents were initiated or modified."
+  ],
+  "evidence_files": [
+    "schemas/execution-contract.schema.json",
+    "schemas/execution-result.schema.json",
+    "schemas/review-decision.schema.json",
+    "schemas/iteration-state.schema.json",
+    "scripts/validate_workflow_state.py"
+  ],
+  "unresolved_gaps": "None",
+  "risks": [
+    "The restoration depends directly on the historical integrity of commit bf08c3e; assumed correct as it belongs to the previous completed phase."
+  ],
+  "needs_review": true
+}

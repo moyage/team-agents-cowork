@@ -1,0 +1,45 @@
+{
+  "task_id": "v0.4-baseline-restoration",
+  "role": "Agent-Executor",
+  "owner": "Hermes",
+  "status": "pending",
+  "goal": "恢复 V0.4 baseline",
+  "evidence_basis": [
+    "Commit bf08c3e contains the schemas and validate_workflow_state.py that were lost during the reset to 52e5a17",
+    "Current workflow/iteration-state.json exists and does not need to be restored from past unless corrupted"
+  ],
+  "allowed_files": [
+    "schemas/execution-contract.schema.json",
+    "schemas/execution-result.schema.json",
+    "schemas/review-decision.schema.json",
+    "schemas/iteration-state.schema.json",
+    "scripts/validate_workflow_state.py",
+    "tasks/v0.4-baseline-restoration-execution-contract.json",
+    "tasks/v0.4-baseline-restoration-execution-result.json"
+  ],
+  "required_outputs": [
+    "schemas/execution-contract.schema.json",
+    "schemas/execution-result.schema.json",
+    "schemas/review-decision.schema.json",
+    "schemas/iteration-state.schema.json",
+    "scripts/validate_workflow_state.py"
+  ],
+  "must_run_commands": [
+    "git checkout bf08c3e -- schemas/execution-contract.schema.json schemas/execution-result.schema.json schemas/review-decision.schema.json schemas/iteration-state.schema.json scripts/validate_workflow_state.py",
+    "jq empty schemas/*.schema.json",
+    "python3 scripts/validate_workflow_state.py --help"
+  ],
+  "forbidden_actions": [
+    "进入任何 V0.5 实施",
+    "新增 src/mcp-server/",
+    "新增或修改 MCP tools / runtime / server",
+    "创建 tasks/v0.5-* 执行文件",
+    "修改协议语义以适配未来架构",
+    "顺手做文档重写",
+    "顺手做目录重构",
+    "自行补写 schema 内容而无证据依据",
+    "自行签发 review decision",
+    "修改 restoration 范围外文件"
+  ],
+  "acceptance_gate": "所有 required_outputs 存在且 JSON 格式有效，校验器脚本存在且可运行"
+}

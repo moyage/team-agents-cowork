@@ -1,0 +1,27 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Iteration State Schema",
+  "type": "object",
+  "properties": {
+    "current_iteration": { "type": "string" },
+    "current_phase": { 
+      "type": "string", 
+      "enum": ["Planning", "Spec", "Build", "Verify", "Audit", "Released"] 
+    },
+    "status": { 
+      "type": "string", 
+      "enum": ["Kickoff", "In Progress", "Blocked", "In Review", "Accepted"] 
+    },
+    "active_track": { "type": "string" },
+    "owner": { "type": "string" },
+    "assignee": { "type": "string" },
+    "reviewer": { "type": "string" },
+    "approver": { "type": "string" },
+    "last_updated": { "type": "string", "format": "date-time" },
+    "upstream_revision_ref": { "type": "string" },
+    "key_artifacts": { "type": "array", "items": { "type": "string" } },
+    "carry_overs": { "type": "array", "items": { "type": "string" } },
+    "next_expected_action": { "type": "string" }
+  },
+  "required": ["current_iteration", "current_phase", "status", "owner"]
+}

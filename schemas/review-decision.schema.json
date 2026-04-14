@@ -1,0 +1,30 @@
+{
+  "type": "object",
+  "required": [
+    "task_id",
+    "reviewer",
+    "decision",
+    "summary",
+    "checked_files",
+    "rejected_claims",
+    "accepted_claims",
+    "follow_up"
+  ],
+  "properties": {
+    "task_id": { "type": "string" },
+    "reviewer": { "type": "string" },
+    "decision": {
+      "type": "string",
+      "enum": [
+        "Approved",
+        "Rejected",
+        "NeedsMoreEvidence"
+      ]
+    },
+    "summary": { "type": "string" },
+    "checked_files": { "type": "array" },
+    "rejected_claims": { "type": "array" },
+    "accepted_claims": { "type": "array" },
+    "follow_up": { "type": "array" }
+  }
+}
