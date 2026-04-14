@@ -1,0 +1,13 @@
+{
+  "task_id": "v0.6-m1-repository-hygiene",
+  "review_type": "post-execution-result-review",
+  "contract_path": "tasks/v0.6-m1-execution-contract.json",
+  "result_path": "tasks/v0.6-m1-execution-result.json",
+  "review_criteria": [
+    "Verify that .DS_Store files have been untracked from Git.",
+    "Verify that .gitignore properly includes .DS_Store.",
+    "Verify that implementation changes are STRICTLY limited to .DS_Store removals and .gitignore edits.",
+    "Verify that artifact changes are strictly limited to allowed_artifacts."
+  ],
+  "expected_decision_output": "tasks/v0.6-m1-result-review-decision.json"
+}
