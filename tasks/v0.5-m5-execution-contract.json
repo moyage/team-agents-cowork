@@ -1,0 +1,25 @@
+{
+  "task_id": "v0.5-m5-dispatch-path-fix",
+  "description": "Execute a bounded restoration bugfix to correct the relative path resolution error (ENOENT) in the get_dispatch_state MCP tool.",
+  "scope": "Modify the 'dispatchPath' variable within the 'get_dispatch_state' handler in src/mcp-server/src/index.ts to correctly traverse three directory levels up instead of two. Execute the existing src/mcp-server/src/test-client.ts to collect verification evidence.",
+  "out_of_scope": "Strictly NO incidental fixes to 'get_iteration_state' or 'get_execution_diff' paths. NO modifications to 'src/mcp-server/src/test-client.ts'. NO new tool capabilities or state mutators. NO approval automation, reviewer identity redesign, or workflow schema changes.",
+  "allowed_files": [
+    "src/mcp-server/src/index.ts"
+  ],
+  "allowed_artifacts": [
+    "tasks/v0.5-m5-execution-result.json",
+    "tasks/v0.5-m5-result-review-packet.json",
+    "tasks/v0.5-m5-result-review-decision.json"
+  ],
+  "required_outputs": [
+    "tasks/v0.5-m5-execution-result.json",
+    "tasks/v0.5-m5-result-review-packet.json"
+  ],
+  "stop_conditions": [
+    "Attempting to modify any file outside allowed_files (e.g. test-client.ts).",
+    "Attempting to fix paths in get_iteration_state or get_execution_diff.",
+    "Attempting to write to any artifact outside allowed_artifacts.",
+    "Attempting to implement state mutators or auto-approval logic.",
+    "Executing implementation before an explicit, independent contract review decision is provided."
+  ]
+}
