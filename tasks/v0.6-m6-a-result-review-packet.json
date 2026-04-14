@@ -5,7 +5,8 @@
   "result_path": "tasks/v0.6-m6-a-execution-result.json",
   "review_criteria": [
     "Verify git show matches the execution result artifact.",
-    "Verify the implementation changes are strictly limited to the three requested markdown files in tasks/.",
+    "Verify the implementation changes are limited to the three requested markdown files in tasks/.",
+    "Verify artifact changes are limited to allowed_artifacts.",
     "Verify the content of the three markdown files adequately addresses the state/framework separation design, comparative synthesis, and cleanup manifest requirements.",
     "Verify NO files were deleted, moved, or stubbed (those actions belong in M6-B)."
   ],
