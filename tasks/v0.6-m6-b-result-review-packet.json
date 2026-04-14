@@ -1,0 +1,14 @@
+{
+  "task_id": "v0.6-m6-b-bounded-cleanup",
+  "review_type": "post-execution-result-review",
+  "contract_path": "tasks/v0.6-m6-b-execution-contract.json",
+  "result_path": "tasks/v0.6-m6-b-execution-result.json",
+  "review_criteria": [
+    "Verify git show strictly matches the execution result artifact.",
+    "Verify tasks/v0.4-* and tasks/v0.5-* were moved to .archive/tasks/v0.5-archive/ (Rename).",
+    "Verify docs/*.md and protocol/*.md were modified (content overwritten), but NOT deleted.",
+    "Verify NO modifications to tasks/v0.6-* artifacts.",
+    "Verify NO deletions of directories."
+  ],
+  "expected_decision_output": "tasks/v0.6-m6-b-result-review-decision.json"
+}

@@ -1,10 +1,3 @@
-# 02 - 标准工作流 (Workflow)
-
-## 复杂项目的实体工件驱动链路
-1. **Clarify (澄清)**：在未获得明确目标前，禁止 Agent 猜测意图生成代码。
-2. **Spec (定案)**：生成并确认标准 `SPEC.md`。
-3. **Plan (拆解)**：输出带依赖关系的 `TASK_BREAKDOWN.md`，并明确每步的验证探针。
-4. **Build (实施)**：本地 Agent / 人类工程师执行具体代码开发。
-5. **Verify (验证)**：硬核验证阶段，获取探针的 Exit Code 0 原始结果。
-6. **Audit & Merge (审计与合并)**：Reviewer 依据验证凭证放行合并。
-7. **Retro (复盘)**：通过复盘沉淀知识并反哺系统配置。
+# DEPRECATED
+This document has been superseded and relocated to the unified `documentation/` center. 
+Please refer to `documentation/HUMAN_GUIDES/` or `documentation/AI_GUIDES/` for current information.
