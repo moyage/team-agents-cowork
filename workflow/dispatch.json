@@ -1,13 +1,14 @@
 {
   "active_iteration": "V0.5",
-  "current_gate": "m4_execution_ready",
+  "current_gate": "m4_result_review_pending",
   "executor": "Hermes",
-  "reviewer_required": false,
+  "reviewer_required": true,
   "active_task": "v0.5-m4-integration-client",
   "stop_conditions": [
-    "Executing implementation without respecting allowed_files boundaries"
+    "Closing M4 phase without obtaining an Approved result review decision",
+    "Self-approving the result review"
   ],
-  "next_expected_artifact": "tasks/v0.5-m4-execution-result.json",
+  "next_expected_artifact": "tasks/v0.5-m4-result-review-decision.json",
   "governance_notes": [
     "M3 execution result artifact amended post-closure (commit 51c4841) to add 'closure_state_changes' field. Validated as a safe exception-cleared amendment."
   ]
