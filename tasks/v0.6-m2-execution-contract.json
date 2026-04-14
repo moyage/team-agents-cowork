@@ -1,0 +1,27 @@
+{
+  "task_id": "v0.6-m2-historical-archive",
+  "description": "Execute historical archive consolidation by moving 'audit/', 'qa/', 'release/', and 'retros/' into '.archive/' and generating a manifest mapping.",
+  "scope": "Use 'git mv' to relocate the four historical directories to '.archive/'. Create '.archive/README.md' to document the mapping of historical paths to their new locations, preserving auditability and readability for reviewers and orchestrators.",
+  "out_of_scope": "Strictly NO deletion of evidence. NO rewriting of historical markdown content to 'fix' paths. NO relocation of 'tasks/', 'workflow/', or 'src/'. NO expansion to docs center restructuring or state/framework separation.",
+  "allowed_files": [
+    "audit/**",
+    "qa/**",
+    "release/**",
+    "retros/**",
+    ".archive/**"
+  ],
+  "allowed_artifacts": [
+    "tasks/v0.6-m2-execution-result.json",
+    "tasks/v0.6-m2-result-review-packet.json"
+  ],
+  "required_outputs": [
+    ".archive/README.md",
+    "tasks/v0.6-m2-execution-result.json",
+    "tasks/v0.6-m2-result-review-packet.json"
+  ],
+  "stop_conditions": [
+    "Attempting to modify or delete historical markdown content.",
+    "Attempting to move 'tasks/', 'workflow/', or 'src/'.",
+    "Executing without an approved M2 contract."
+  ]
+}
