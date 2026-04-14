@@ -44,7 +44,10 @@
     "tasks/v0.7-m4-environment-adaptation.md",
     "tasks/v0.7-m4-execution-result.json",
     "tasks/v0.7-m4-result-review-packet.json",
-    "tasks/v0.7-m4-result-review-decision.json"
+    "tasks/v0.7-m4-result-review-decision.json",
+    "tasks/v0.7-m3-m4-reconciliation-note.md",
+    "tasks/v0.7-m3-m4-reconciliation-review-packet.json",
+    "tasks/v0.7-m3-m4-reconciliation-decision.json"
   ],
   "carry_overs": [
     "State & Framework Physical Separation",

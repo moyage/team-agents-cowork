@@ -1,0 +1,12 @@
+{
+  "task_id": "v0.7-m3-m4-reconciliation",
+  "review_type": "post-execution-result-review",
+  "contract_path": "tasks/v0.7-m3-m4-reconciliation-note.md",
+  "result_path": "workflow/dispatch.json",
+  "review_criteria": [
+    "Verify the reconciliation note explicitly records the execution history of M3 (A & B) and M4.",
+    "Verify the note clarifies that M3 was executed prior to M4, and no physical bypass of the L2/L3 phase gates occurred.",
+    "Verify NO implementation files or directories are modified by this document."
+  ],
+  "expected_decision_output": "tasks/v0.7-m3-m4-reconciliation-decision.json"
+}
