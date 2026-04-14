@@ -1,11 +1,14 @@
 {
   "active_iteration": "V0.5",
-  "current_gate": "v0.6_iteration_completed",
+  "current_gate": "v0.7_kickoff_review_pending",
   "executor": "Hermes",
-  "reviewer_required": false,
-  "active_task": null,
-  "stop_conditions": [],
-  "next_expected_artifact": "tasks/v0.7-kickoff-packet.md",
+  "reviewer_required": true,
+  "active_task": "v0.7-kickoff-planning",
+  "stop_conditions": [
+    "Proceeding to V0.7-M1 execution without an approved kickoff review decision",
+    "Self-approving the kickoff review"
+  ],
+  "next_expected_artifact": "tasks/v0.7-kickoff-review-decision.json",
   "governance_notes": [
     "Iteration V0.6 formally closed. M1-M6 milestones validated. Retrospective note published."
   ]

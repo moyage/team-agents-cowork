@@ -1,8 +1,8 @@
 {
-  "current_iteration": "V0.6",
-  "phase": "Closure",
-  "status": "Completed",
-  "previous_iteration": "V0.5",
+  "current_iteration": "V0.7",
+  "phase": "Kickoff",
+  "status": "In-Progress",
+  "previous_iteration": "V0.6",
   "key_artifacts": [
     "tasks/v0.6-kickoff-packet.md",
     "tasks/v0.6-scope-and-milestone-map.md",
@@ -56,8 +56,8 @@
     "tasks/v0.6-retrospective-note.md"
   ],
   "carry_overs": [
-    "State & Framework Physical Separation: Actual migration and rewiring of the MCP Server to rely fully on an external `.agent-state/` structure is deferred to V0.7.",
-    "Legacy Tooling Cleanup: Python scripts (`doctor.py`, `verify_protocol.py`) evaluated in M5-A remain intact but deprecated. Fully migrate or delete these in V0.7.",
-    "Automated Reviewer Output Delivery: The conceptual bridge connecting an orchestrator agent's `_review_pending` state transition directly to an automated SubAgent Gatekeeper payload (without manual script invocation)."
+    "State & Framework Physical Separation",
+    "Legacy Tooling Deprecation",
+    "Automated Reviewer Output Delivery"
   ]
 }
