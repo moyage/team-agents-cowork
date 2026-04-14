@@ -1,0 +1,17 @@
+{
+  "task_id": "v0.7-m4-environment-adaptation",
+  "review_type": "post-execution-result-review",
+  "contract_path": "tasks/v0.7-m4-execution-contract.json",
+  "result_path": "tasks/v0.7-m4-execution-result.json",
+  "review_criteria": [
+    "Verify git show strictly matches the execution result artifact.",
+    "Verify the implementation changes are limited to creating 'tasks/v0.7-m4-environment-adaptation.md'.",
+    "Verify the markdown file explicitly defines environment discovery (fingerprinting), capability modeling, compatibility/drift analysis methods, and adapter abstraction rules for multi-AI Coding environments.",
+    "Verify NO implementation of the actual discovery code occurred in the MCP Server or CLI tools.",
+    "Verify NO rewriting of existing adapter templates occurred.",
+    "Verify NO locking the protocol to a single toolchain occurred.",
+    "Verify NO workflow state semantics modifications occurred.",
+    "Verify artifact changes are strictly limited to allowed_artifacts."
+  ],
+  "expected_decision_output": "tasks/v0.7-m4-result-review-decision.json"
+}
