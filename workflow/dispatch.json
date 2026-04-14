@@ -1,13 +1,14 @@
 {
   "active_iteration": "V0.7",
-  "current_gate": "v0.7_m2_execution_ready",
+  "current_gate": "v0.7_m2_result_review_pending",
   "executor": "Hermes",
-  "reviewer_required": false,
+  "reviewer_required": true,
   "active_task": "v0.7-m2-unified-model",
   "stop_conditions": [
-    "Executing implementation without respecting allowed_files boundaries"
+    "Closing M2 phase without obtaining an Approved result review decision",
+    "Self-approving the result review"
   ],
-  "next_expected_artifact": "tasks/v0.7-m2-execution-result.json",
+  "next_expected_artifact": "tasks/v0.7-m2-result-review-decision.json",
   "governance_notes": [
     "Iteration V0.7 formally kicked off. V0.6 carry-overs explicitly imported."
   ]
