@@ -1,0 +1,23 @@
+{
+  "task_id": "v0.7-m3-b-self-repair-model",
+  "description": "Execute V0.7-M3-B by designing the improvement proposal pipeline, the governed self-repair model, review gating/escalation rules, and defining auditability requirements. Must answer the 6 explicit questions from the M3 directive.",
+  "scope": "Generate a comprehensive design document (tasks/v0.7-m3-b-self-repair-model.md). The document MUST explicitly answer what can happen automatically vs. what requires independent approval, how to prevent silent self-modification, how to ensure auditability, how to prevent rubber-stamp review, and how to distinguish a retry from an escalated problem pattern.",
+  "out_of_scope": "Strictly NO implementation of unapproved self-modification logic. NO rewriting of the governance, review, or gatekeeper mechanisms themselves. NO execution of .agent-state/ migrations or environment adaptations. NO modifying workflow/dispatch.json or iteration-state.json state models.",
+  "allowed_files": [
+    "tasks/v0.7-m3-b-self-repair-model.md"
+  ],
+  "allowed_artifacts": [
+    "tasks/v0.7-m3-b-execution-result.json",
+    "tasks/v0.7-m3-b-result-review-packet.json"
+  ],
+  "required_outputs": [
+    "tasks/v0.7-m3-b-self-repair-model.md",
+    "tasks/v0.7-m3-b-execution-result.json",
+    "tasks/v0.7-m3-b-result-review-packet.json"
+  ],
+  "stop_conditions": [
+    "Attempting to modify any file outside allowed_files.",
+    "Attempting to implement actual automated self-repair scripts.",
+    "Executing without an approved M3-B contract."
+  ]
+}
