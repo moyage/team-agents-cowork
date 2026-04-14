@@ -1,13 +1,12 @@
 {
   "active_iteration": "V0.5",
-  "current_gate": "m2_planning_recon_completed",
+  "current_gate": "m2_contract_review_pending",
   "executor": "Hermes",
   "reviewer_required": true,
-  "active_task": "v0.5-m2-planning",
+  "active_task": "v0.5-m2-compliance-api",
   "stop_conditions": [
-    "Drafting execution contracts beyond M2 scope.",
-    "Attempting code execution or file modification outside the tasks/ directory before contract approval.",
-    "Modifying legacy python scripts in workflow/ or scripts/."
+    "Executing implementation before contract is approved",
+    "Self-approving the M2 contract"
   ],
-  "next_expected_artifact": "tasks/v0.5-m2-execution-contract.json"
+  "next_expected_artifact": "tasks/v0.5-m2-contract-review-decision.json"
 }

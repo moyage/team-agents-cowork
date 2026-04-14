@@ -1,0 +1,10 @@
+{
+  "task_id": "v0.5-m2-planning",
+  "decision": "Approved",
+  "summary": "M2 Planning Reconnaissance aligns with current strategic necessity. Authorizing the drafting of the M2 Execution Contract focused strictly on the read-only Protocol Validation & Compliance API.",
+  "approved_focus": "verify_execution_compliance tool via native MCP",
+  "constraints": [
+    "Must enforce strict read-only boundary.",
+    "Must exclude workflow mutations, auto-approval, and reviewer identity evolution."
+  ]
+}

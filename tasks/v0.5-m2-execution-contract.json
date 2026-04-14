@@ -1,0 +1,21 @@
+{
+  "task_id": "v0.5-m2-compliance-api",
+  "description": "Implement read-only Protocol Validation & Compliance API natively in the MCP server, specifically focusing on the verify_execution_compliance tool to physically enforce JSON contracts via Git diffs.",
+  "scope": "Add a new MCP tool to src/mcp-server/src/index.ts. The tool will accept a task baseline commit and a contract path, run 'git diff --name-only <baseline>', read the contract's 'allowed_files', and return an evaluation of any architecture drift/uncontracted file touches.",
+  "out_of_scope": "Strictly NO workflow mutation (write APIs). NO auto-approval logic. NO redesign of the reviewer identity. NO protocol evolution topics.",
+  "allowed_files": [
+    "src/mcp-server/src/index.ts",
+    "src/mcp-server/package.json",
+    "src/mcp-server/package-lock.json",
+    "tasks/v0.5-m2-execution-result.json"
+  ],
+  "required_outputs": [
+    "src/mcp-server/src/index.ts",
+    "tasks/v0.5-m2-execution-result.json"
+  ],
+  "stop_conditions": [
+    "Attempting to modify any file outside allowed_files.",
+    "Attempting to implement state mutators or workflow progression APIs.",
+    "Attempting to execute implementation before an explicit, independent contract review decision is provided."
+  ]
+}
