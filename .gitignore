@@ -3,3 +3,5 @@
 .idea/
 __pycache__/
 *.pyc
+src/mcp-server/node_modules/
+src/mcp-server/build/
