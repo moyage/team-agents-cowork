@@ -1,6 +1,6 @@
 {
   "active_iteration": "V0.5",
-  "current_gate": "m2_completed",
+  "current_gate": "m2_exception_cleared_completed",
   "executor": "Hermes",
   "reviewer_required": false,
   "active_task": null,

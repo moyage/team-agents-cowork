@@ -1,7 +1,7 @@
 {
   "current_iteration": "V0.5",
   "phase": "M2",
-  "status": "Completed",
+  "status": "Exception-Cleared Completed",
   "previous_iteration": "V0.4",
   "key_artifacts": [
     "tasks/v0.5-kickoff-planning-packet.md",
