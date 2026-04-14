@@ -1,0 +1,23 @@
+{
+  "task_id": "v0.7-m2-unified-model",
+  "description": "Execute V0.7-M2 by drafting the unified model of artifacts, task lifecycles, and semantic bounds for the collaboration protocol.",
+  "scope": "Generate a comprehensive design document (tasks/v0.7-m2-unified-model.md). The document MUST explicitly answer the 6 defining questions from the M2 directive (Artifact taxonomy, Task lifecycle, Reviewer vs. Gatekeeper, Acceptance vs. Evaluation, Personal vs. Team mode core, and Low cognitive load principles). Provide a clear, executable lifecycle rather than an abstract glossary.",
+  "out_of_scope": "Strictly NO implementation of .agent-state/ physical migrations. NO modifications to src/ or MCP server capabilities. NO automated execution scripts or review automation scripts. NO modification of the active workflow/dispatch.json or iteration-state.json state models. NO environmental adapter builds.",
+  "allowed_files": [
+    "tasks/v0.7-m2-unified-model.md"
+  ],
+  "allowed_artifacts": [
+    "tasks/v0.7-m2-execution-result.json",
+    "tasks/v0.7-m2-result-review-packet.json"
+  ],
+  "required_outputs": [
+    "tasks/v0.7-m2-unified-model.md",
+    "tasks/v0.7-m2-execution-result.json",
+    "tasks/v0.7-m2-result-review-packet.json"
+  ],
+  "stop_conditions": [
+    "Attempting to modify the MCP server logic.",
+    "Attempting to alter current dispatch.json semantics.",
+    "Executing without an approved M2 contract."
+  ]
+}
