@@ -1,7 +1,7 @@
 {
   "current_iteration": "V0.7",
   "phase": "M5-A",
-  "status": "Recon Completed",
+  "status": "Completed",
   "previous_iteration": "V0.6",
   "key_artifacts": [
     "tasks/v0.7-kickoff-packet.md",
@@ -48,7 +48,13 @@
     "tasks/v0.7-m3-m4-reconciliation-note.md",
     "tasks/v0.7-m3-m4-reconciliation-review-packet.json",
     "tasks/v0.7-m3-m4-reconciliation-decision.json",
-    "tasks/v0.7-m5-a-recon-packet.md"
+    "tasks/v0.7-m5-a-recon-packet.md",
+    "tasks/v0.7-m5-a-execution-contract.json",
+    "tasks/v0.7-m5-a-contract-review-decision.json",
+    "tasks/v0.7-m5-a-state-separation-roadmap.md",
+    "tasks/v0.7-m5-a-execution-result.json",
+    "tasks/v0.7-m5-a-result-review-packet.json",
+    "tasks/v0.7-m5-a-result-review-decision.json"
   ],
   "carry_overs": [
     "State & Framework Physical Separation",
