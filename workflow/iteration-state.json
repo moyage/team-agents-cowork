@@ -1,7 +1,7 @@
 {
   "current_iteration": "V0.5",
   "phase": "M5",
-  "status": "Reconnaissance Completed",
+  "status": "Completed",
   "previous_iteration": "V0.4",
   "key_artifacts": [
     "tasks/v0.5-kickoff-planning-packet.md",
@@ -25,7 +25,13 @@
     "tasks/v0.5-m4-execution-contract.json",
     "tasks/v0.5-m4-contract-review-decision.json",
     "tasks/v0.5-m4-execution-result.json",
-    "tasks/v0.5-m4-result-review-decision.json"
+    "tasks/v0.5-m4-result-review-decision.json",
+    "tasks/v0.5-m5-kickoff-packet.md",
+    "tasks/v0.5-m5-planning-approval.md",
+    "tasks/v0.5-m5-execution-contract.json",
+    "tasks/v0.5-m5-contract-review-decision.json",
+    "tasks/v0.5-m5-execution-result.json",
+    "tasks/v0.5-m5-result-review-decision.json"
   ],
   "carry_overs": []
 }

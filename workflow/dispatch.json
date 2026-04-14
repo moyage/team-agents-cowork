@@ -1,14 +1,11 @@
 {
   "active_iteration": "V0.5",
-  "current_gate": "m5_result_review_pending",
+  "current_gate": "m5_completed",
   "executor": "Hermes",
-  "reviewer_required": true,
-  "active_task": "v0.5-m5-dispatch-path-fix",
-  "stop_conditions": [
-    "Closing M5 phase without obtaining an Approved result review decision",
-    "Self-approving the result review"
-  ],
-  "next_expected_artifact": "tasks/v0.5-m5-result-review-decision.json",
+  "reviewer_required": false,
+  "active_task": null,
+  "stop_conditions": [],
+  "next_expected_artifact": "tasks/v0.5-m6-kickoff-packet.md",
   "governance_notes": [
     "M4 closed. M5 opened to fix M3 path resolution technical debt."
   ]
