@@ -1,0 +1,23 @@
+{
+  "task_id": "v0.7-m4-environment-adaptation",
+  "description": "Execute V0.7-M4 by defining the environment discovery, capability modeling, and drift analysis methods for multi-AI Coding environments.",
+  "scope": "Generate a comprehensive design document (tasks/v0.7-m4-environment-adaptation.md) that defines how the system uses environment fingerprints (e.g. process.env.OPENCODE_SESSION) to identify tools, maps their capabilities (e.g., native MCP support), tracks adapter drift, and proposes non-intrusive adapter updates.",
+  "out_of_scope": "Strictly NO implementation of the actual discovery code in the MCP Server or CLI tools. NO rewriting of existing adapter templates. NO locking the protocol to a single toolchain. NO workflow state semantics modifications.",
+  "allowed_files": [
+    "tasks/v0.7-m4-environment-adaptation.md"
+  ],
+  "allowed_artifacts": [
+    "tasks/v0.7-m4-execution-result.json",
+    "tasks/v0.7-m4-result-review-packet.json"
+  ],
+  "required_outputs": [
+    "tasks/v0.7-m4-environment-adaptation.md",
+    "tasks/v0.7-m4-execution-result.json",
+    "tasks/v0.7-m4-result-review-packet.json"
+  ],
+  "stop_conditions": [
+    "Attempting to modify any file outside allowed_files.",
+    "Attempting to implement actual adapter detection scripts.",
+    "Executing without an approved M4 contract."
+  ]
+}
