@@ -1,0 +1,23 @@
+{
+  "task_id": "v0.7-m6-c-comparative-synthesis",
+  "description": "Execute V0.7-M6-C by generating a comparative synthesis of the protocol and extracting V0.8 carry-over candidates.",
+  "scope": "Generate a final synthesis document (tasks/v0.7-m6-c-comparative-synthesis.md) summarizing the evidence-based assessments from M6-A and M6-B, comparing the V0.7 Unified Model with alternative non-intrusive schema injections, and formalizing the V0.8 implementation epics (state migration, legacy tooling removal, and review automation).",
+  "out_of_scope": "Strictly NO implementation of the V0.8 candidates. NO active .agent-state/ physical migrations. NO codebase modification in src/. NO changing workflow/dispatch.json or iteration-state.json state models.",
+  "allowed_files": [
+    "tasks/v0.7-m6-c-comparative-synthesis.md"
+  ],
+  "allowed_artifacts": [
+    "tasks/v0.7-m6-c-execution-result.json",
+    "tasks/v0.7-m6-c-result-review-packet.json"
+  ],
+  "required_outputs": [
+    "tasks/v0.7-m6-c-comparative-synthesis.md",
+    "tasks/v0.7-m6-c-execution-result.json",
+    "tasks/v0.7-m6-c-result-review-packet.json"
+  ],
+  "stop_conditions": [
+    "Attempting to modify any file outside allowed_files.",
+    "Attempting to implement any V0.8 roadmap targets.",
+    "Executing without an approved M6-C contract."
+  ]
+}
