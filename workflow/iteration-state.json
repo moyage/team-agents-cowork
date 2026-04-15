@@ -1,7 +1,7 @@
 {
   "current_iteration": "V0.8",
-  "phase": "Docs-Refactor-Phase2",
-  "status": "Completed",
+  "phase": "Docs-Refactor-Phase3",
+  "status": "In-Progress",
   "previous_iteration": "V0.7",
   "key_artifacts": [
     "tasks/v0.8-planning-q-and-a.md",
@@ -68,7 +68,9 @@
     "tasks/v0.8-docs-refactor-phase2-contract-review-decision.json",
     "tasks/v0.8-docs-refactor-phase2-execution-result.json",
     "tasks/v0.8-docs-refactor-phase2-result-review-packet.json",
-    "tasks/v0.8-docs-refactor-phase2-result-review-decision.json"
+    "tasks/v0.8-docs-refactor-phase2-result-review-decision.json",
+    "tasks/v0.8-docs-refactor-phase3-execution-contract.json",
+    "tasks/v0.8-docs-refactor-phase3-contract-review-decision.json"
   ],
   "carry_overs": [
     "State & Framework Physical Separation",

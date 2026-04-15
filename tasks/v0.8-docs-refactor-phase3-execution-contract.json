@@ -1,0 +1,26 @@
+{
+  "task_id": "v0.8-docs-refactor-phase3-content-generation",
+  "description": "Execute Phase 3 of the V0.8 Docs Refactoring: Generate the actual high-quality, Archon-standard documentation content (GitBook structure, Markdown, Mermaid diagrams) across the EN/ZH directories and root README.md, based on the blueprints from Phase 1 and 2.",
+  "scope": "1. Create the GitBook directory structure (getting-started, core-concepts, guides, reference) in documentation/EN/ and ZH/. 2. Write SUMMARY.md for navigation. 3. Write rich markdown content focusing on the 'Contract / Workflow / Governance' triumvirate, the 17 built-in workflows, and L2/L3 dual-track gating. 4. Use concrete JSON/YAML examples and Mermaid diagrams. 5. Remove legacy flat markdown files in the documentation roots.",
+  "out_of_scope": "Strictly NO modifications to src/mcp-server/, bin/, or active workflow/dispatch.json state semantics outside of this patch progression. NO implementation of runtime execution code.",
+  "allowed_files": [
+    "documentation/EN/**",
+    "documentation/ZH/**",
+    "README.md"
+  ],
+  "allowed_artifacts": [
+    "tasks/v0.8-docs-refactor-phase3-execution-result.json",
+    "tasks/v0.8-docs-refactor-phase3-result-review-packet.json"
+  ],
+  "required_outputs": [
+    "documentation/EN/SUMMARY.md",
+    "documentation/ZH/SUMMARY.md",
+    "README.md",
+    "tasks/v0.8-docs-refactor-phase3-execution-result.json",
+    "tasks/v0.8-docs-refactor-phase3-result-review-packet.json"
+  ],
+  "stop_conditions": [
+    "Attempting to modify source code in src/ or bin/.",
+    "Executing without an approved Phase 3 contract."
+  ]
+}
