@@ -1,7 +1,7 @@
 {
   "current_iteration": "V0.7",
-  "phase": "Closure",
-  "status": "Completed",
+  "phase": "Docs-Patch",
+  "status": "In-Progress",
   "previous_iteration": "V0.6",
   "key_artifacts": [
     "tasks/v0.7-kickoff-packet.md",
@@ -99,7 +99,9 @@
     "tasks/v0.7-ratification-final-review-packet.md",
     "tasks/v0.7-ratification-final-review-packet.json",
     "tasks/v0.7-ratification-final-decision.json",
-    "tasks/v0.7-governance-breach-ratification-decision.json"
+    "tasks/v0.7-governance-breach-ratification-decision.json",
+    "tasks/v0.7-docs-patch-execution-contract.json",
+    "tasks/v0.7-docs-patch-contract-review-decision.json"
   ],
   "carry_overs": [
     "State & Framework Physical Separation",

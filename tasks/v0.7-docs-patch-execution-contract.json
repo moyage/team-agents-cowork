@@ -1,0 +1,29 @@
+{
+  "task_id": "v0.7-documentation-patch-tech-writer",
+  "description": "Execute V0.7 Documentation Patch: Re-architect and rewrite the bilingual documentation portal using a dedicated SubAgent-TechWriter. The documentation must accurately reflect the project's true positioning as a multi-Agent/multi-AI Coding collaboration framework for Personal/Team domains, featuring low cognitive load and low invasiveness.",
+  "scope": "1. Replace the L2/L3 'Git diff' interceptor narrative with the true 'Harness/Workflow/Orchestration/Execution/Evaluation/Acceptance' 6-stage collaboration model. 2. Create Mermaid architecture and sequence diagrams. 3. Structure the docs to an open-source standard (e.g., Deer-flow). 4. Use delegate_task to spawn a dedicated Tech Writer agent for the actual content generation.",
+  "out_of_scope": "Strictly NO implementation of .agent-state/ physical migrations. NO modifications to the MCP server. NO modifications to active workflow/dispatch.json or iteration-state.json state models. NO new product features.",
+  "allowed_files": [
+    "documentation/EN/**",
+    "documentation/ZH/**",
+    "README.md"
+  ],
+  "allowed_artifacts": [
+    "tasks/v0.7-docs-patch-execution-result.json",
+    "tasks/v0.7-docs-patch-result-review-packet.json"
+  ],
+  "required_outputs": [
+    "documentation/EN/ARCHITECTURE.md",
+    "documentation/ZH/ARCHITECTURE.md",
+    "documentation/EN/CORE_CONCEPTS.md",
+    "documentation/ZH/CORE_CONCEPTS.md",
+    "README.md",
+    "tasks/v0.7-docs-patch-execution-result.json",
+    "tasks/v0.7-docs-patch-result-review-packet.json"
+  ],
+  "stop_conditions": [
+    "Attempting to modify any file outside allowed_files.",
+    "Attempting to write implementation code in src/.",
+    "Executing without an approved docs-patch contract."
+  ]
+}
