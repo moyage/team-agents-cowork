@@ -1,0 +1,40 @@
+{
+  "task_id": "v0.8-m3-built-in-workflow-porting",
+  "description": "Execute V0.8-M3: Port the 'Archon 17' high-frequency development workflows into the team-agents-cowork YAML DAG format.",
+  "scope": "1. Create templates/workflows/ directory. 2. Write 17 YAML files mapping to the Archon default scenarios (e.g., assist, fix-github-issue, idea-to-pr, plan-to-pr). 3. Ensure the YAML nodes are structured to emit execution-contract intents for the L2/L3 dual-track gating system (as opposed to direct LLM API calls).",
+  "out_of_scope": "Strictly NO implementation of the Node.js/TypeScript DAG execution runner that processes these YAMLs at runtime. NO SubAgent review automation daemon logic (M4). NO removal of legacy tooling. NO modifications to active workflow/dispatch.json state semantics outside of standard M3 progression.",
+  "allowed_files": [
+    "templates/workflows/**",
+    "bin/agent-protocol-init"
+  ],
+  "allowed_artifacts": [
+    "tasks/v0.8-m3-execution-result.json",
+    "tasks/v0.8-m3-result-review-packet.json"
+  ],
+  "required_outputs": [
+    "templates/workflows/assist.yaml",
+    "templates/workflows/fix-github-issue.yaml",
+    "templates/workflows/idea-to-pr.yaml",
+    "templates/workflows/plan-to-pr.yaml",
+    "templates/workflows/issue-review-full.yaml",
+    "templates/workflows/smart-pr-review.yaml",
+    "templates/workflows/comprehensive-pr-review.yaml",
+    "templates/workflows/create-issue.yaml",
+    "templates/workflows/validate-pr.yaml",
+    "templates/workflows/resolve-conflicts.yaml",
+    "templates/workflows/feature-development.yaml",
+    "templates/workflows/architect.yaml",
+    "templates/workflows/refactor-safely.yaml",
+    "templates/workflows/ralph-dag.yaml",
+    "templates/workflows/remotion-generate.yaml",
+    "templates/workflows/test-loop-dag.yaml",
+    "templates/workflows/piv-loop.yaml",
+    "tasks/v0.8-m3-execution-result.json",
+    "tasks/v0.8-m3-result-review-packet.json"
+  ],
+  "stop_conditions": [
+    "Attempting to modify any file outside allowed_files.",
+    "Attempting to write the actual DAG execution engine runtime.",
+    "Executing without an approved M3 contract."
+  ]
+}
