@@ -1,7 +1,7 @@
 {
   "current_iteration": "V0.7",
   "phase": "M5-C",
-  "status": "Recon Completed",
+  "status": "Completed",
   "previous_iteration": "V0.6",
   "key_artifacts": [
     "tasks/v0.7-kickoff-packet.md",
@@ -62,7 +62,13 @@
     "tasks/v0.7-m5-b-execution-result.json",
     "tasks/v0.7-m5-b-result-review-packet.json",
     "tasks/v0.7-m5-b-result-review-decision.json",
-    "tasks/v0.7-m5-c-recon-packet.md"
+    "tasks/v0.7-m5-c-recon-packet.md",
+    "tasks/v0.7-m5-c-execution-contract.json",
+    "tasks/v0.7-m5-c-contract-review-decision.json",
+    "tasks/v0.7-m5-c-review-automation-roadmap.md",
+    "tasks/v0.7-m5-c-execution-result.json",
+    "tasks/v0.7-m5-c-result-review-packet.json",
+    "tasks/v0.7-m5-c-result-review-decision.json"
   ],
   "carry_overs": [
     "State & Framework Physical Separation",
