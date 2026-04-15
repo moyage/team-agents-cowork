@@ -1,0 +1,17 @@
+{
+  "task_id": "v0.8-m5-custom-workflows-and-sync",
+  "review_type": "post-execution-result-review",
+  "contract_path": "tasks/v0.8-m5-execution-contract.json",
+  "result_path": "tasks/v0.8-m5-execution-result.json",
+  "review_criteria": [
+    "Verify git show strictly matches the execution result artifact.",
+    "Verify the implementation changes are limited to creating 'templates/workflows/custom-deploy-pipeline.yaml' and updating the TEAM_COLLABORATION documentation.",
+    "Verify the custom workflow demonstrates a mix of ai_execution and bash nodes.",
+    "Verify the Team Mode Git Dual-Tiered Synchronization protocol is formalized in the documentation, explaining the pull-model claiming mechanism.",
+    "Verify NO implementation of realtime WebSocket/Database sync engines occurred.",
+    "Verify NO execution of legacy Python tooling deprecation warnings occurred.",
+    "Verify NO modifications to active workflow/dispatch.json or iteration-state.json state semantics occurred in the commit.",
+    "Verify artifact changes are strictly limited to allowed_artifacts."
+  ],
+  "expected_decision_output": "tasks/v0.8-m5-result-review-decision.json"
+}
