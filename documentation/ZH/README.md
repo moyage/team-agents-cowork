@@ -53,6 +53,7 @@ sequenceDiagram
 - [架构说明](./ARCHITECTURE.md)
 - [团队协作说明](./TEAM_COLLABORATION.md)
 - [AI集成实施指南](./AI_INTEGRATION_GUIDE.md)
+- [扩展开发指南 (自定义适配器)](./EXTENSION_GUIDE.md)
 - [治理与工作流说明](./GOVERNANCE.md)
 - [原生能力评估](./NATIVE_CAPABILITIES_ASSESSMENT.md)
 - [常见问题](./FAQ_TROUBLESHOOTING.md)

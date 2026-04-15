@@ -1,0 +1,18 @@
+{
+  "task_id": "v0.7-documentation-enrichment-tech-writer",
+  "review_type": "post-execution-result-review",
+  "contract_path": "tasks/v0.7-docs-enrichment-execution-contract.json",
+  "result_path": "tasks/v0.7-docs-enrichment-execution-result.json",
+  "review_criteria": [
+    "Verify git show strictly matches the execution result artifact.",
+    "Verify the implementation changes are limited to modifying files in 'documentation/EN/', 'documentation/ZH/', and 'README.md'.",
+    "Verify the documentation has been deeply enriched with concrete examples, JSON payloads, and CLI commands.",
+    "Verify the creation of EXTENSION_GUIDE.md detailing custom adapter development.",
+    "Verify the presence of comprehensive Mermaid diagrams mapping the state machine and dual-track gating.",
+    "Verify NO implementation of .agent-state/ physical migrations occurred.",
+    "Verify NO modifications to src/ or MCP server logic occurred.",
+    "Verify NO modifications to active workflow/dispatch.json or iteration-state.json state semantics occurred.",
+    "Verify artifact changes are strictly limited to allowed_artifacts."
+  ],
+  "expected_decision_output": "tasks/v0.7-docs-enrichment-result-review-decision.json"
+}

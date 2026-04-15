@@ -53,6 +53,7 @@ sequenceDiagram
 - [Architecture Details](./ARCHITECTURE.md)
 - [Team Collaboration](./TEAM_COLLABORATION.md)
 - [AI Integration Guide](./AI_INTEGRATION_GUIDE.md)
+- [Extension Guide (Custom Adapters)](./EXTENSION_GUIDE.md)
 - [Governance & Workflow](./GOVERNANCE.md)
 - [Native Capabilities Assessment](./NATIVE_CAPABILITIES_ASSESSMENT.md)
 - [MCP API Reference](./MCP_API_REFERENCE.md)
