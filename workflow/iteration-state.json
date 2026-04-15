@@ -1,7 +1,7 @@
 {
   "current_iteration": "V0.7",
-  "phase": "Docs-Enrichment",
-  "status": "In-Progress",
+  "phase": "Closure",
+  "status": "Completed",
   "previous_iteration": "V0.6",
   "key_artifacts": [
     "tasks/v0.7-kickoff-packet.md",
@@ -106,7 +106,10 @@
     "tasks/v0.7-docs-patch-result-review-packet.json",
     "tasks/v0.7-docs-patch-result-review-decision.json",
     "tasks/v0.7-docs-enrichment-execution-contract.json",
-    "tasks/v0.7-docs-enrichment-contract-review-decision.json"
+    "tasks/v0.7-docs-enrichment-contract-review-decision.json",
+    "tasks/v0.7-docs-enrichment-execution-result.json",
+    "tasks/v0.7-docs-enrichment-result-review-packet.json",
+    "tasks/v0.7-docs-enrichment-result-review-decision.json"
   ],
   "carry_overs": [
     "State & Framework Physical Separation",

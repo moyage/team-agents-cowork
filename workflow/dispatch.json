@@ -1,14 +1,11 @@
 {
   "active_iteration": "V0.7",
-  "current_gate": "v0.7_docs_enrichment_result_review_pending",
+  "current_gate": "v0.7_iteration_completed",
   "executor": "Hermes",
-  "reviewer_required": true,
-  "active_task": "v0.7-documentation-enrichment-tech-writer",
-  "stop_conditions": [
-    "Closing Docs-Enrichment phase without obtaining an Approved result review decision",
-    "Self-approving the result review"
-  ],
-  "next_expected_artifact": "tasks/v0.7-docs-enrichment-result-review-decision.json",
+  "reviewer_required": false,
+  "active_task": null,
+  "stop_conditions": [],
+  "next_expected_artifact": "tasks/v0.8-kickoff-packet.md",
   "governance_notes": [
     "Iteration V0.7 formally closed. M1-M6 milestones validated. Retrospective note published."
   ]
