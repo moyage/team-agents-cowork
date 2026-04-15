@@ -1,0 +1,15 @@
+{
+  "task_id": "v0.7-governance-breach-and-ratification",
+  "review_type": "post-execution-result-review",
+  "contract_path": "tasks/v0.7-governance-breach-and-ratification-packet.md",
+  "result_path": "tasks/v0.7-ratification-final-review-packet.md",
+  "review_criteria": [
+    "Verify the final review packet includes the V0.7 Governance Breach and Ratification Packet reference.",
+    "Verify the packet includes the proposed ratification decision text.",
+    "Verify the packet includes the exact proposed diff for documentation/AI_GUIDES/SYSTEM_PROMPT.md.",
+    "Verify the packet includes the proposed before/after states for workflow/dispatch.json and workflow/iteration-state.json.",
+    "Verify the packet provides a written rationale explaining why the proposed changes should be ratified instead of rolled back.",
+    "Verify that NO active implementation files, workflow states, or governance rules were modified; the packet serves strictly as a draft proposal."
+  ],
+  "expected_decision_output": "tasks/v0.7-ratification-final-decision.json"
+}
