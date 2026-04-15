@@ -70,7 +70,7 @@ async function init() {
   }
 
   console.log("\n✅ Initialization complete!");
-  console.log("👉 Please review the System Prompt at: documentation/AI_GUIDES/SYSTEM_PROMPT.md");
+  console.log("👉 Please review the System Prompt at: documentation/EN/SYSTEM_PROMPT.md");
 }
 
 init().catch(console.error);

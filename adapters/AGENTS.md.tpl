@@ -8,4 +8,4 @@ You MUST NOT rely solely on chat history.
 2. **Prove your work**: Do not claim success without physical proof. Provide execution logs of verification scripts (Exit Code 0).
 3. **Approval Required**: Do not modify high-risk files (e.g., CI, root config, database schema) without explicit human confirmation.
 
-> For complete system rules and workflow instructions, read: `documentation/AI_GUIDES/SYSTEM_PROMPT.md`
+> For complete system rules and workflow instructions, read: `documentation/EN/SYSTEM_PROMPT.md`
