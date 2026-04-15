@@ -1,0 +1,15 @@
+{
+  "task_id": "v0.8-kickoff-review",
+  "review_type": "pre-iteration-kickoff-review",
+  "contract_path": "tasks/v0.8-kickoff-packet.md",
+  "result_path": "tasks/v0.8-milestone-map.md",
+  "review_criteria": [
+    "Verify that V0.8 explicitly imports the V0.7 carry-overs (.agent-state/ physical migration, legacy tooling deprecation warnings, SubAgent review automation daemon) into its implementation scope.",
+    "Verify that V0.8 explicitly includes the new core requirements (Dynamic Participant Registry, Capability-Based Routing via a Dual-Tiered Sync Topology).",
+    "Verify that the kickoff materials (v0.8-planning-q-and-a.md, v0.8-scope-definition.md, v0.8-risk-register.md, v0.8-requirements-analysis.md, v0.8-milestone-map.md) explicitly answer the orchestration, registry, and workspace topology questions.",
+    "Verify that the kickoff materials do NOT permit the Executor (e.g., Hermes) to bypass the independent Gatekeeper SubAgent (e.g., opencode run).",
+    "Verify that the kickoff materials explicitly mandate a local .agent-state/ workspace for personal domain execution, falling back to a dedicated cloud sync branch (e.g., agent-sync) for remote team members.",
+    "Verify that NO physical implementation code (e.g., modifying src/mcp-server/src/index.ts) or active state model semantic changes (modifying workflow/dispatch.json) occurred during this kickoff planning phase."
+  ],
+  "expected_decision_output": "tasks/v0.8-kickoff-review-decision.json"
+}

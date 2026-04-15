@@ -1,7 +1,7 @@
 {
   "current_iteration": "V0.8",
   "phase": "Kickoff",
-  "status": "In-Progress",
+  "status": "Completed",
   "previous_iteration": "V0.7",
   "key_artifacts": [
     "tasks/v0.8-planning-q-and-a.md",
@@ -10,7 +10,9 @@
     "tasks/v0.8-risk-register.md",
     "tasks/v0.8-requirements-analysis.md",
     "tasks/v0.8-milestone-map.md",
-    "tasks/v0.8-kickoff-review-packet.json"
+    "tasks/v0.8-kickoff-review-packet.json",
+    "tasks/v0.8-kickoff-review-decision.json",
+    "tasks/v0.8-m1-recon-packet.md"
   ],
   "carry_overs": [
     "State & Framework Physical Separation",
