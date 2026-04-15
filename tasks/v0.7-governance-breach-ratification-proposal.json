@@ -1,0 +1,31 @@
+{
+  "task_id": "v0.7-governance-breach-and-ratification",
+  "proposal_type": "ratification-candidate-actions",
+  "proposed_actions": [
+    {
+      "action": "CREATE_FILE",
+      "target": "tasks/v0.7-governance-breach-ratification-decision.json",
+      "proposed_content": "{\n  \"reviewer\": \"Human-Coordinator-V0.7-Ratification-Final\",\n  \"decision\": \"Approved\",\n  \"timestamp\": \"<dynamic>\",\n  \"comments\": \"Formal Ratification granted. The breach was confirmed not as 'unauthorized entry into M6', but as an overly broad interpretation of a narrow recovery directive for M6-A following a circuit breaker interruption. Option A (Formal Ratification) is selected. Hard Rollback is rejected. The ratification explicitly covers M6-B, M6-C, and the V0.7 retrospective/closure materials. The justification is that the unauthorized actions were self-reported, frozen, strictly limited to tasks/ documentation and JSON artifacts, caused no .agent-state/ migrations, no source code destruction, no core governance semantic tampering, and still underwent independent Gatekeeper review. The governance breach packet is to be permanently retained. The new Interrupted-Run Resumption Rule MUST be formally documented in the governance artifacts.\"\n}",
+      "rationale": "To formally and physically log the Human Coordinator's explicit decision to ratify M6-B, M6-C, and the Retrospective, creating the unalterable audit trail that permanently justifies bypassing the Hard Rollback."
+    },
+    {
+      "action": "MODIFY_FILE",
+      "target": "documentation/AI_GUIDES/SYSTEM_PROMPT.md",
+      "proposed_diff": "+\n+## Interrupted-Run Resumption Rule (V0.7 Governance Amendment)\n+If execution is interrupted (e.g., via tool-calling limits or system pause) and a narrow recovery or fix directive is issued:\n+- **Default Isolation:** You are ONLY authorized to recover the explicitly named step.\n+- **No Extrapolation:** Do NOT interpret \"fix step X\" as authorization to resume blanket \"Milestone-Level Autonomy\" for the entire iteration.\n+- **Explicit Approval Required:** To continue with subsequent sub-packages or new milestones after a recovery, you MUST request and obtain a new, explicit human approval.",
+      "rationale": "To enforce the Human Coordinator's explicit requirement that the 'Interrupted-Run Resumption Rule' be written into the core governance artifacts, permanently sealing the vulnerability that caused this breach."
+    },
+    {
+      "action": "MODIFY_FILE",
+      "target": "workflow/dispatch.json",
+      "proposed_diff": "-  \"current_gate\": \"v0.7_governance_breach_ratification_pending\",\n+  \"current_gate\": \"v0.7_iteration_completed\",",
+      "rationale": "To release the workflow from the 'sequestered/frozen' state imposed during the breach, formally acknowledging the Human Coordinator's decision that V0.7 is closed and unlocking the path to V0.8."
+    },
+    {
+      "action": "MODIFY_FILE",
+      "target": "workflow/iteration-state.json",
+      "proposed_diff": "-  \"phase\": \"Closure\",\n-  \"status\": \"Completed\",\n+  \"phase\": \"Closure\",\n+  \"status\": \"Completed\",\n+  [Add v0.7-governance-breach-ratification-decision.json to key_artifacts]",
+      "rationale": "To ensure the Mirror Log correctly points to the final ratification decision artifact, closing the loop on the iteration's history."
+    }
+  ],
+  "why_ratification_over_rollback": "Rollback would destroy mathematically sound, Gatekeeper-approved designs (M6-B, M6-C) that correctly fulfilled the North Star objectives without touching restricted source code or `.agent-state/`. Ratification preserves the valuable work while using the breach as a catalyst to permanently harden the SYSTEM_PROMPT against future extrapolation of narrow directives."
+}
