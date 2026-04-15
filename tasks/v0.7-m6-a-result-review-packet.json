@@ -1,0 +1,16 @@
+{
+  "task_id": "v0.7-m6-a-personal-pilot",
+  "review_type": "post-execution-result-review",
+  "contract_path": "tasks/v0.7-m6-a-execution-contract.json",
+  "result_path": "tasks/v0.7-m6-a-execution-result.json",
+  "review_criteria": [
+    "Verify git show strictly matches the execution result artifact.",
+    "Verify the implementation changes are limited to creating 'tasks/v0.7-m6-a-personal-pilot-report.md'.",
+    "Verify the report provides an evidence-based assessment of the Personal Mode pilot.",
+    "Verify NO physical .agent-state/ migrations were implemented.",
+    "Verify NO actual functional subagent review hooks were built.",
+    "Verify NO modifications to active workflow/dispatch.json or iteration-state.json state models occurred.",
+    "Verify artifact changes are strictly limited to allowed_artifacts."
+  ],
+  "expected_decision_output": "tasks/v0.7-m6-a-result-review-decision.json"
+}
