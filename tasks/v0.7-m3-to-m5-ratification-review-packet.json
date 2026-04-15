@@ -1,0 +1,15 @@
+{
+  "task_id": "v0.7-m3-to-m5-ratification",
+  "review_type": "post-execution-result-review",
+  "contract_path": "tasks/v0.7-m3-to-m5-ratification-packet.md",
+  "result_path": "workflow/dispatch.json",
+  "review_criteria": [
+    "Verify the ratification packet includes M3 closure evidence (summary, artifact list, review decisions, and a scope boundary note).",
+    "Verify the packet includes M4 closure evidence (summary, artifact list, review decisions, and explicitly explains why it was entered when ratification was pending).",
+    "Verify the packet includes an M5 deviation note clarifying who approved entering M5, why continuing was compliant, and whether a reviewer checked the deviation.",
+    "Verify the packet includes a state continuity table mapping dispatch.json to iteration-state.json and their corresponding decision artifacts.",
+    "Verify the packet includes a ratification recommendation explicitly stating what to ratify and whether any state rollbacks are recommended.",
+    "Verify NO implementation files, workflow semantics, or directories are modified by this document."
+  ],
+  "expected_decision_output": "tasks/v0.7-m3-to-m5-ratification-decision.json"
+}
