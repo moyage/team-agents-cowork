@@ -1,0 +1,15 @@
+{
+  "task_id": "v0.8-docs-refactor-phase1-analysis-and-cleanup",
+  "review_type": "post-execution-result-review",
+  "contract_path": "tasks/v0.8-docs-refactor-phase1-execution-contract.json",
+  "result_path": "tasks/v0.8-docs-refactor-phase1-execution-result.json",
+  "review_criteria": [
+    "Verify git show strictly matches the execution result artifact.",
+    "Verify that tasks/v0.8-archon-docs-analysis.md contains the detailed analysis of Archon's documentation structure.",
+    "Verify NO rewriting of the actual team-agents-cowork documentation files (documentation/EN or ZH) occurred in this phase.",
+    "Verify NO modifications to src/mcp-server/ logic occurred.",
+    "Verify NO modifications to active workflow/dispatch.json or iteration-state.json state semantics occurred in the commit.",
+    "Verify artifact changes are strictly limited to allowed_artifacts."
+  ],
+  "expected_decision_output": "tasks/v0.8-docs-refactor-phase1-result-review-decision.json"
+}
