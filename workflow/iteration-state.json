@@ -1,7 +1,7 @@
 {
   "current_iteration": "V0.8",
   "phase": "M1",
-  "status": "Recon Completed",
+  "status": "Completed",
   "previous_iteration": "V0.7",
   "key_artifacts": [
     "tasks/v0.8-planning-q-and-a.md",
@@ -23,7 +23,10 @@
     "tasks/v0.8-kickoff-amendment-decision.json",
     "tasks/v0.8-m1-recon-packet.md",
     "tasks/v0.8-m1-execution-contract.json",
-    "tasks/v0.8-m1-contract-review-decision.json"
+    "tasks/v0.8-m1-contract-review-decision.json",
+    "tasks/v0.8-m1-execution-result.json",
+    "tasks/v0.8-m1-result-review-packet.json",
+    "tasks/v0.8-m1-result-review-decision.json"
   ],
   "carry_overs": [
     "State & Framework Physical Separation",
