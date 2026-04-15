@@ -1,0 +1,23 @@
+{
+  "task_id": "v0.7-m5-c-review-automation",
+  "description": "Execute V0.7-M5-C by defining the SubAgent review automation governance roadmap, specifically bounding how _review_pending states can trigger external review processes without violating the Gatekeeper paradigm.",
+  "scope": "Generate a roadmap document (tasks/v0.7-m5-c-review-automation-roadmap.md) explicitly answering the boundaries, gating conditions, and verification methods for automated reviews. Must explicitly establish how to prevent 'rubber-stamp' automated scripts from bypassing isolated SubAgent invocation.",
+  "out_of_scope": "Strictly NO implementation of the actual CI/CD or local automation scripts. NO modification to existing MCP tools. NO modifications to active workflow/dispatch.json or iteration-state.json state models.",
+  "allowed_files": [
+    "tasks/v0.7-m5-c-review-automation-roadmap.md"
+  ],
+  "allowed_artifacts": [
+    "tasks/v0.7-m5-c-execution-result.json",
+    "tasks/v0.7-m5-c-result-review-packet.json"
+  ],
+  "required_outputs": [
+    "tasks/v0.7-m5-c-review-automation-roadmap.md",
+    "tasks/v0.7-m5-c-execution-result.json",
+    "tasks/v0.7-m5-c-result-review-packet.json"
+  ],
+  "stop_conditions": [
+    "Attempting to write runnable automation scripts.",
+    "Attempting to modify any file outside allowed_files.",
+    "Executing without an approved M5-C contract."
+  ]
+}
