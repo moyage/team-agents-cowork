@@ -1,0 +1,22 @@
+{
+  "task_id": "v0.8-docs-refactor-phase2-live-analysis",
+  "description": "Execute Phase 2 of the V0.8 Docs Refactoring: Supplement the Archon documentation blueprint by analyzing the live content of https://archon.diy/book/what-is-archon/ (extracted via browser tool), focusing on their conceptual narrative and how we translate it to our framework's documentation.",
+  "scope": "1. Append a new section to tasks/v0.8-archon-docs-analysis.md detailing the findings from the live Archon documentation (narrative flow, the 'Command/Workflow/Isolation' triumvirate). 2. Map their concepts to our 'Contract/Workflow/L2-L3 Gating' triumvirate to finalize the content strategy for the upcoming rewrite.",
+  "out_of_scope": "Strictly NO rewriting of the actual team-agents-cowork documentation files (documentation/EN or ZH) in this phase. NO modifications to src/mcp-server/ logic. NO modifications to active workflow/dispatch.json or iteration-state.json state semantics outside of this patch progression.",
+  "allowed_files": [
+    "tasks/v0.8-archon-docs-analysis.md"
+  ],
+  "allowed_artifacts": [
+    "tasks/v0.8-docs-refactor-phase2-execution-result.json",
+    "tasks/v0.8-docs-refactor-phase2-result-review-packet.json"
+  ],
+  "required_outputs": [
+    "tasks/v0.8-archon-docs-analysis.md",
+    "tasks/v0.8-docs-refactor-phase2-execution-result.json",
+    "tasks/v0.8-docs-refactor-phase2-result-review-packet.json"
+  ],
+  "stop_conditions": [
+    "Attempting to modify actual documentation files in documentation/EN or ZH.",
+    "Executing without an approved contract."
+  ]
+}

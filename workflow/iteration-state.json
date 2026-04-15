@@ -63,7 +63,9 @@
     "tasks/v0.8-archon-docs-analysis.md",
     "tasks/v0.8-docs-refactor-phase1-execution-result.json",
     "tasks/v0.8-docs-refactor-phase1-result-review-packet.json",
-    "tasks/v0.8-docs-refactor-phase1-result-review-decision.json"
+    "tasks/v0.8-docs-refactor-phase1-result-review-decision.json",
+    "tasks/v0.8-docs-refactor-phase2-execution-contract.json",
+    "tasks/v0.8-docs-refactor-phase2-contract-review-decision.json"
   ],
   "carry_overs": [
     "State & Framework Physical Separation",
