@@ -1,0 +1,12 @@
+{
+  "task_id": "v0.8-archon-deep-dive",
+  "description": "Spawn a SubAgent to perform a deep-dive analysis of the Archon open-source repository (https://github.com/coleam00/Archon) and its documentation (https://archon.diy/book/). Answer the 4 specific questions raised by the user regarding Archon's workflow routing, authoring, and its potential as the ideal baseline for the team-agents-cowork framework.",
+  "scope": "Analyze Archon's source code and documentation. Focus on its workflow engine (YAML-based DAGs), its 17 default workflows, its workflow router, and its custom authoring capabilities. Evaluate the hypothesis that augmenting Archon with multi-domain/heterogeneous AI support represents the ideal end-state for our framework. Produce a detailed analysis report.",
+  "out_of_scope": "No modifications to our local codebase. No actual installation or integration of Archon yet.",
+  "allowed_files": [
+    "tasks/v0.8-archon-deep-dive-analysis.md"
+  ],
+  "allowed_artifacts": [
+    "tasks/v0.8-archon-deep-dive-execution-result.json"
+  ]
+}
