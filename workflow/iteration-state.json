@@ -12,7 +12,10 @@
     "tasks/v0.8-milestone-map.md",
     "tasks/v0.8-kickoff-review-packet.json",
     "tasks/v0.8-kickoff-review-decision.json",
-    "tasks/v0.8-m1-recon-packet.md"
+    "tasks/v0.8-m1-recon-packet.md",
+    "tasks/v0.8-archon-deep-dive-directive.json",
+    "tasks/v0.8-archon-deep-dive-analysis.md",
+    "tasks/v0.8-archon-deep-dive-execution-result.json"
   ],
   "carry_overs": [
     "State & Framework Physical Separation",
