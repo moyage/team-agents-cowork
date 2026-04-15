@@ -1,0 +1,23 @@
+{
+  "task_id": "v0.7-m6-a-personal-pilot",
+  "description": "Execute V0.7-M6-A by generating an evidence-based assessment report of the Personal Mode pilot.",
+  "scope": "Generate a pilot report document (tasks/v0.7-m6-a-personal-pilot-report.md) demonstrating how the artifact taxonomy and lifecycle operate seamlessly under a single-developer AI Coding environment (e.g., Cursor) without unmanageable friction.",
+  "out_of_scope": "Strictly NO .agent-state/ physical migrations. NO modifications to the MCP server. NO new review automation code. NO expansion to formal rollouts. NO modifications to active workflow/dispatch.json or iteration-state.json state models.",
+  "allowed_files": [
+    "tasks/v0.7-m6-a-personal-pilot-report.md"
+  ],
+  "allowed_artifacts": [
+    "tasks/v0.7-m6-a-execution-result.json",
+    "tasks/v0.7-m6-a-result-review-packet.json"
+  ],
+  "required_outputs": [
+    "tasks/v0.7-m6-a-personal-pilot-report.md",
+    "tasks/v0.7-m6-a-execution-result.json",
+    "tasks/v0.7-m6-a-result-review-packet.json"
+  ],
+  "stop_conditions": [
+    "Attempting to modify any file outside allowed_files.",
+    "Attempting to build functional subagent review hooks.",
+    "Executing without an approved M6-A contract."
+  ]
+}
