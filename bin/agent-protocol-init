@@ -47,9 +47,13 @@ async function init() {
   // 3. Initialize State (Only if not running inside the framework's own repo to avoid polluting history)
   if (!(await isTeamAgentsRepo())) {
     console.log("\n📝 Initializing clean workflow state...");
-    const workflowDir = path.join(TARGET_DIR, 'workflow');
-    const tasksDir = path.join(TARGET_DIR, 'tasks');
+    const agentStateDir = path.join(TARGET_DIR, '.agent-state');
+    const workflowsDir = path.join(agentStateDir, 'workflows');
+    const tasksDir = path.join(agentStateDir, 'tasks');
+    const workflowDir = path.join(agentStateDir, 'workflow');
     
+    await fs.mkdir(agentStateDir, { recursive: true });
+    await fs.mkdir(workflowsDir, { recursive: true });
     await fs.mkdir(workflowDir, { recursive: true });
     await fs.mkdir(tasksDir, { recursive: true });
     
@@ -64,7 +68,7 @@ async function init() {
     };
     
     await fs.writeFile(path.join(workflowDir, 'dispatch.json'), JSON.stringify(initialDispatch, null, 2));
-    console.log("[+] Created workflow/dispatch.json");
+    console.log("[+] Created .agent-state/workflow/dispatch.json");
   } else {
     console.log("\n⚠️ Running inside framework repository. Skipping state generation to preserve meta-workflow.");
   }

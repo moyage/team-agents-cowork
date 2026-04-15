@@ -1,0 +1,18 @@
+{
+  "task_id": "v0.8-m1-agent-workspace-dag-parser",
+  "review_type": "post-execution-result-review",
+  "contract_path": "tasks/v0.8-m1-execution-contract.json",
+  "result_path": "tasks/v0.8-m1-execution-result.json",
+  "review_criteria": [
+    "Verify git show strictly matches the execution result artifact.",
+    "Verify that src/mcp-server/src/index.ts path resolution logic checks process.env.PROJECT_ROOT/.agent-state/workflow/dispatch.json and iteration-state.json and falls back to workflow/.",
+    "Verify that src/mcp-server/src/dag-parser.ts is created and exports parseWorkflow.",
+    "Verify that bin/agent-protocol-init scaffolds .agent-state/workflows, .agent-state/tasks, and .agent-state/workflow.",
+    "Verify NO implementation of the dynamic LLM router occurred.",
+    "Verify NO review automation daemons were implemented.",
+    "Verify NO removal of legacy tooling occurred.",
+    "Verify NO modifications to active workflow/dispatch.json or iteration-state.json state semantics occurred in the commit.",
+    "Verify artifact changes are strictly limited to allowed_artifacts."
+  ],
+  "expected_decision_output": "tasks/v0.8-m1-result-review-decision.json"
+}

@@ -14,6 +14,22 @@ const execAsync = promisify(exec);
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
+async function resolveWorkflowStatePath(projectRoot: string, fileName: string) {
+  const agentStatePath = path.resolve(
+    projectRoot,
+    ".agent-state",
+    "workflow",
+    fileName
+  );
+
+  try {
+    await fs.access(agentStatePath);
+    return agentStatePath;
+  } catch {
+    return path.resolve(projectRoot, "workflow", fileName);
+  }
+}
+
 const server = new Server(
   {
     name: "team-agents-cowork-mcp",
@@ -171,7 +187,10 @@ const changedFiles = stdout.split('\n').map(f => f.trim()).filter(f => f.length 
   if (request.params.name === "get_dispatch_state") {
     try {
       const projectRoot = process.env.PROJECT_ROOT || process.cwd();
-      const dispatchPath = path.resolve(projectRoot, "workflow/dispatch.json");
+      const dispatchPath = await resolveWorkflowStatePath(
+        projectRoot,
+        "dispatch.json"
+      );
       const data = await fs.readFile(dispatchPath, "utf-8");
       return {
         content: [
@@ -197,7 +216,10 @@ const changedFiles = stdout.split('\n').map(f => f.trim()).filter(f => f.length 
   if (request.params.name === "get_iteration_state") {
     try {
       const projectRoot = process.env.PROJECT_ROOT || process.cwd();
-      const iterationPath = path.resolve(projectRoot, "workflow/iteration-state.json");
+      const iterationPath = await resolveWorkflowStatePath(
+        projectRoot,
+        "iteration-state.json"
+      );
       const data = await fs.readFile(iterationPath, "utf-8");
       return {
         content: [
