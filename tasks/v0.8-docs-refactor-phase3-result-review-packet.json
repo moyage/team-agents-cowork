@@ -1,0 +1,14 @@
+{
+  "task_id": "v0.8-docs-refactor-phase3-content-generation",
+  "review_type": "post-execution-result-review",
+  "contract_path": "tasks/v0.8-docs-refactor-phase3-execution-contract.json",
+  "result_path": "tasks/v0.8-docs-refactor-phase3-execution-result.json",
+  "review_criteria": [
+    "Verify git show strictly matches the execution result artifact.",
+    "Verify that the new GitBook directory structure (getting-started, core-concepts, guides, reference) was successfully created inside documentation/EN/ and ZH/.",
+    "Verify that SUMMARY.md and the root README.md were generated, featuring the 'Triumvirate' concepts and Mermaid diagrams.",
+    "Verify that old unstructured markdown files in the documentation root were successfully removed.",
+    "Verify NO implementation code (e.g., modifying src/ or bin/) or active state model semantic changes (modifying workflow/dispatch.json) occurred outside of Phase 3 progression."
+  ],
+  "expected_decision_output": "tasks/v0.8-docs-refactor-phase3-result-review-decision.json"
+}
