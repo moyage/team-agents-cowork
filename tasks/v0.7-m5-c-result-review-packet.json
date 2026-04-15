@@ -1,0 +1,16 @@
+{
+  "task_id": "v0.7-m5-c-review-automation",
+  "review_type": "post-execution-result-review",
+  "contract_path": "tasks/v0.7-m5-c-execution-contract.json",
+  "result_path": "tasks/v0.7-m5-c-execution-result.json",
+  "review_criteria": [
+    "Verify git show strictly matches the execution result artifact.",
+    "Verify the implementation changes are limited to creating 'tasks/v0.7-m5-c-review-automation-roadmap.md'.",
+    "Verify the markdown file explicitly defines the boundaries, gating conditions, and verification methods for automated reviews, and establishes how to prevent 'rubber-stamp' scripts.",
+    "Verify NO actual CI/CD or local automation scripts were implemented.",
+    "Verify NO modifications to existing MCP tools occurred.",
+    "Verify NO modifications to active workflow/dispatch.json or iteration-state.json state models occurred.",
+    "Verify artifact changes are strictly limited to allowed_artifacts."
+  ],
+  "expected_decision_output": "tasks/v0.7-m5-c-result-review-decision.json"
+}
