@@ -1,0 +1,25 @@
+{
+  "task_id": "v0.8-m5-custom-workflows-and-sync",
+  "description": "Execute V0.8-M5: Validate custom YAML workflow authoring capabilities and formalize the Team Mode Git Dual-Tiered Synchronization protocol in the documentation.",
+  "scope": "1. Create an example custom workflow at templates/workflows/custom-deploy-pipeline.yaml containing mixed deterministic (bash) and execution (ai_execution) nodes. 2. Update documentation/EN/TEAM_COLLABORATION.md and documentation/ZH/TEAM_COLLABORATION.md (or create a dedicated CUSTOM_WORKFLOWS.md/SYNC_PROTOCOL.md) detailing the exact Git branch strategy (agent-sync vs main) and the pull-model claiming mechanism for remote teams.",
+  "out_of_scope": "Strictly NO implementation of realtime WebSocket/Database sync engines (we rely on Git). NO execution of the legacy Python tooling deprecation warnings (M6). NO modifications to active workflow/dispatch.json or iteration-state.json state semantics outside of standard M5 progression.",
+  "allowed_files": [
+    "templates/workflows/custom-deploy-pipeline.yaml",
+    "documentation/EN/**",
+    "documentation/ZH/**"
+  ],
+  "allowed_artifacts": [
+    "tasks/v0.8-m5-execution-result.json",
+    "tasks/v0.8-m5-result-review-packet.json"
+  ],
+  "required_outputs": [
+    "templates/workflows/custom-deploy-pipeline.yaml",
+    "tasks/v0.8-m5-execution-result.json",
+    "tasks/v0.8-m5-result-review-packet.json"
+  ],
+  "stop_conditions": [
+    "Attempting to modify any file outside allowed_files.",
+    "Attempting to build non-Git synchronization backends.",
+    "Executing without an approved M5 contract."
+  ]
+}

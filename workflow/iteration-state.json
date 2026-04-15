@@ -45,7 +45,9 @@
     "tasks/v0.8-m4-execution-result.json",
     "tasks/v0.8-m4-result-review-packet.json",
     "tasks/v0.8-m4-result-review-decision.json",
-    "tasks/v0.8-m5-recon-packet.md"
+    "tasks/v0.8-m5-recon-packet.md",
+    "tasks/v0.8-m5-execution-contract.json",
+    "tasks/v0.8-m5-contract-review-decision.json"
   ],
   "carry_overs": [
     "State & Framework Physical Separation",

@@ -1,13 +1,14 @@
 {
   "active_iteration": "V0.8",
-  "current_gate": "v0.8_m5_recon_completed",
+  "current_gate": "v0.8_m5_contract_review_pending",
   "executor": "Hermes",
-  "reviewer_required": false,
-  "active_task": null,
+  "reviewer_required": true,
+  "active_task": "v0.8-m5-custom-workflows-and-sync",
   "stop_conditions": [
-    "Proceeding to execution without planning the respective milestone"
+    "Proceeding to execution without an approved M5 execution contract",
+    "Self-approving the M5 contract"
   ],
-  "next_expected_artifact": "tasks/v0.8-m5-execution-contract.json",
+  "next_expected_artifact": "tasks/v0.8-m5-contract-review-decision.json",
   "governance_notes": [
     "Iteration V0.7 formally closed. M1-M6 milestones validated. Retrospective note published."
   ]
