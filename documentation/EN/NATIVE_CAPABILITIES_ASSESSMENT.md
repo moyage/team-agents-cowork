@@ -7,7 +7,7 @@ This report critically examines the claims regarding the framework's "Native Cap
 ### Self-Repair & Bounded Autonomy
 - **Evidence:** During V0.7-M1, M2, M6-A, and the Governance Breach incidents, the Executor AI repeatedly encountered rejections from the independent Gatekeeper (GPT-5.4).
 - **Mechanism:** The system demonstrated the ability to read the rejection payload (`result-review-decision.json`), understand the boundary violation, execute a `git reset HEAD~1` to revert the illicit state mutation, and resubmit a compliant payload.
-- **Conclusion (Verified):** The framework possesses a robust, mechanically enforced self-correction loop. However, this is driven by deterministic L2/L3 phase gating and rigid mathematical Git diffs, not an emergent "cognitive" awareness.
+- **Conclusion (Verified):** The framework possesses a robust, mechanically enforced self-correction loop. However, this is driven by deterministic Evaluation gating and Acceptance criteria validation, not an emergent "cognitive" awareness.
 
 ## 3. Indirectly Demonstrated Capabilities
 ### Continuous Learning & Recursive Evolution
@@ -24,5 +24,5 @@ This report critically examines the claims regarding the framework's "Native Cap
 ## 5. Conservative Phrasing & Avoidance of Bias
 To avoid "Agentic Sycophancy" and over-promising:
 - The framework does **not** possess AGI or spontaneous self-awareness.
-- The "Self-Repair" is a deterministic response to a mathematical rejection (Git diff boundary failure).
+- The "Self-Repair" is a deterministic response to a validation rejection (Acceptance criteria failure).
 - The "Evolution" is the result of a highly constrained, human-approved or Gatekeeper-approved contract pipeline, ensuring the system cannot silently alter its own governance rules.
