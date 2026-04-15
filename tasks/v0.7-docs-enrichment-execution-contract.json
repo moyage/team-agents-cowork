@@ -1,0 +1,24 @@
+{
+  "task_id": "v0.7-documentation-enrichment-tech-writer",
+  "description": "Execute V0.7 Documentation Enrichment: Deepen and expand the bilingual documentation portal to match the comprehensive content level of Deer-Flow.",
+  "scope": "1. Expand CORE_CONCEPTS.md and ARCHITECTURE.md with deep-dive technical explanations of the state machine, artifact lifecycle, and dual-track gating. 2. Expand USAGE.md and TEAM_COLLABORATION.md with concrete, step-by-step examples (e.g., actual JSON payload examples, CLI commands). 3. Create a dedicated EXTENSION.md or advanced usage guide explaining how to build custom adapters. 4. Ensure all documents have professional, multi-level headers, warning callouts, and comprehensive Mermaid diagrams. Use SubAgent-TechWriter via delegate_task.",
+  "out_of_scope": "Strictly NO implementation of .agent-state/ physical migrations. NO modifications to the MCP server logic or source code. NO modifications to active workflow/dispatch.json or iteration-state.json state models. NO new product features.",
+  "allowed_files": [
+    "documentation/EN/**",
+    "documentation/ZH/**",
+    "README.md"
+  ],
+  "allowed_artifacts": [
+    "tasks/v0.7-docs-enrichment-execution-result.json",
+    "tasks/v0.7-docs-enrichment-result-review-packet.json"
+  ],
+  "required_outputs": [
+    "tasks/v0.7-docs-enrichment-execution-result.json",
+    "tasks/v0.7-docs-enrichment-result-review-packet.json"
+  ],
+  "stop_conditions": [
+    "Attempting to modify any file outside allowed_files.",
+    "Attempting to write implementation code in src/.",
+    "Executing without an approved docs-enrichment contract."
+  ]
+}

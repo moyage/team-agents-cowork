@@ -1,11 +1,13 @@
 {
   "active_iteration": "V0.7",
-  "current_gate": "v0.7_iteration_completed",
+  "current_gate": "v0.7_docs_enrichment_execution_ready",
   "executor": "Hermes",
   "reviewer_required": false,
-  "active_task": null,
-  "stop_conditions": [],
-  "next_expected_artifact": "tasks/v0.8-kickoff-packet.md",
+  "active_task": "v0.7-documentation-enrichment-tech-writer",
+  "stop_conditions": [
+    "Executing implementation without respecting allowed_files boundaries"
+  ],
+  "next_expected_artifact": "tasks/v0.7-docs-enrichment-execution-result.json",
   "governance_notes": [
     "Iteration V0.7 formally closed. M1-M6 milestones validated. Retrospective note published."
   ]
