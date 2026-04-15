@@ -1,0 +1,26 @@
+{
+  "task_id": "v0.8-m2-router-and-registry",
+  "description": "Execute V0.8-M2: Implement the dynamic capability registry schema and construct the foundational LLM Router in the MCP Server that parses YAML workflows and matches them to user intent.",
+  "scope": "1. Modify bin/agent-protocol-init to generate the default .agent-state/registry.json scaffolding. 2. Create src/mcp-server/src/router.ts to define the LLM prompt template that evaluates an input string against available workflows in .agent-state/workflows/*.yaml. 3. Update documentation to reflect the dynamic registry process.",
+  "out_of_scope": "Strictly NO porting of the 17 workflows (M3). NO SubAgent review automation daemon logic (M4). NO removal of legacy tooling. NO modifications to active workflow/dispatch.json state semantics outside of standard M2 progression.",
+  "allowed_files": [
+    "src/mcp-server/src/router.ts",
+    "bin/agent-protocol-init",
+    "documentation/EN/**",
+    "documentation/ZH/**"
+  ],
+  "allowed_artifacts": [
+    "tasks/v0.8-m2-execution-result.json",
+    "tasks/v0.8-m2-result-review-packet.json"
+  ],
+  "required_outputs": [
+    "src/mcp-server/src/router.ts",
+    "tasks/v0.8-m2-execution-result.json",
+    "tasks/v0.8-m2-result-review-packet.json"
+  ],
+  "stop_conditions": [
+    "Attempting to modify any file outside allowed_files.",
+    "Attempting to write actual workflow porting logic.",
+    "Executing without an approved M2 contract."
+  ]
+}
