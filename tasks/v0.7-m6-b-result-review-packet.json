@@ -1,0 +1,16 @@
+{
+  "task_id": "v0.7-m6-b-team-environment-pilot",
+  "review_type": "post-execution-result-review",
+  "contract_path": "tasks/v0.7-m6-b-execution-contract.json",
+  "result_path": "tasks/v0.7-m6-b-execution-result.json",
+  "review_criteria": [
+    "Verify git show strictly matches the execution result artifact.",
+    "Verify the implementation changes are limited to creating 'tasks/v0.7-m6-b-team-environment-pilot-report.md'.",
+    "Verify the report provides an evidence-based assessment of the Team Mode and Selected Environment pilot.",
+    "Verify NO physical .agent-state/ migrations were implemented.",
+    "Verify NO functional multi-agent background orchestration code or CI hooks were built.",
+    "Verify NO modifications to active workflow/dispatch.json or iteration-state.json state models occurred.",
+    "Verify artifact changes are strictly limited to allowed_artifacts."
+  ],
+  "expected_decision_output": "tasks/v0.7-m6-b-result-review-decision.json"
+}
