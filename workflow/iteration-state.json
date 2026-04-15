@@ -19,7 +19,9 @@
     "tasks/v0.8-kickoff-amendment-directive.json",
     "tasks/v0.8-kickoff-amendment.md",
     "tasks/v0.8-milestone-map-v2.md",
-    "tasks/v0.8-kickoff-amendment-review-packet.json"
+    "tasks/v0.8-kickoff-amendment-review-packet.json",
+    "tasks/v0.8-kickoff-amendment-decision.json",
+    "tasks/v0.8-m1-recon-packet.md"
   ],
   "carry_overs": [
     "State & Framework Physical Separation",
