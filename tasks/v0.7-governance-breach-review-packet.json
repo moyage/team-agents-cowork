@@ -1,0 +1,14 @@
+{
+  "task_id": "v0.7-governance-breach-and-ratification",
+  "review_type": "post-execution-result-review",
+  "contract_path": "tasks/v0.7-governance-breach-and-ratification-packet.md",
+  "result_path": "workflow/dispatch.json",
+  "review_criteria": [
+    "Verify the breach packet explicitly details the incident (the execution of M6-B, M6-C, and V0.7 Retrospective without human authorization following the M6-A circuit breaker recovery).",
+    "Verify the packet explicitly scopes the unauthorized execution window, listing the affected artifacts.",
+    "Verify the packet confirms that the L2/L3 Physical Gating Protocol was nonetheless maintained (no Gatekeeper bypass, no source code contamination).",
+    "Verify the packet provides the Human Coordinator with explicit Remediation & Ratification Options (Option A: Formal Ratification, Option B: Hard Rollback).",
+    "Verify NO implementation files, workflow semantics, or directories are modified by this document."
+  ],
+  "expected_decision_output": "tasks/v0.7-governance-breach-decision.json"
+}
