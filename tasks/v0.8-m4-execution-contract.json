@@ -1,0 +1,24 @@
+{
+  "task_id": "v0.8-m4-review-automation-daemon",
+  "description": "Execute V0.8-M4: Implement the bin/agent-protocol-review daemon that detects _review_pending states, reads the registry capabilities, orchestrates an isolated SubAgent (e.g. opencode run), and advances the state machine based on the returned decision.json.",
+  "scope": "1. Create bin/agent-protocol-review to read .agent-state/workflow/dispatch.json and iteration-state.json. 2. Implement logic that checks if current_gate is *_review_pending. 3. Create a detached child_process wrapper to execute the review (mocked LLM call via terminal, representing opencode run if the registry specifies it). 4. If the decision is Approved, advance current_gate to *_execution_ready or *_completed.",
+  "out_of_scope": "Strictly NO implementation of the Team Mode Cloud Sync logic (M5). NO removal of legacy Python tooling (M6). NO modifications to active workflow/dispatch.json state semantics outside of standard M4 progression.",
+  "allowed_files": [
+    "bin/agent-protocol-review",
+    "package.json"
+  ],
+  "allowed_artifacts": [
+    "tasks/v0.8-m4-execution-result.json",
+    "tasks/v0.8-m4-result-review-packet.json"
+  ],
+  "required_outputs": [
+    "bin/agent-protocol-review",
+    "tasks/v0.8-m4-execution-result.json",
+    "tasks/v0.8-m4-result-review-packet.json"
+  ],
+  "stop_conditions": [
+    "Attempting to modify any file outside allowed_files.",
+    "Attempting to write logic that bypasses the independent SubAgent process.",
+    "Executing without an approved M4 contract."
+  ]
+}

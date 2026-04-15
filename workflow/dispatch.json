@@ -1,13 +1,14 @@
 {
   "active_iteration": "V0.8",
-  "current_gate": "v0.8_m4_recon_completed",
+  "current_gate": "v0.8_m4_contract_review_pending",
   "executor": "Hermes",
-  "reviewer_required": false,
-  "active_task": null,
+  "reviewer_required": true,
+  "active_task": "v0.8-m4-review-automation-daemon",
   "stop_conditions": [
-    "Proceeding to execution without planning the respective milestone"
+    "Proceeding to execution without an approved M4 execution contract",
+    "Self-approving the M4 contract"
   ],
-  "next_expected_artifact": "tasks/v0.8-m4-execution-contract.json",
+  "next_expected_artifact": "tasks/v0.8-m4-contract-review-decision.json",
   "governance_notes": [
     "Iteration V0.7 formally closed. M1-M6 milestones validated. Retrospective note published."
   ]
