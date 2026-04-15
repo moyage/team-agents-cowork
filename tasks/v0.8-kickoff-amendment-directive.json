@@ -1,0 +1,20 @@
+{
+  "task_id": "v0.8-kickoff-amendment",
+  "description": "Amend the V0.8 Kickoff to incorporate the findings from the Archon Deep-Dive. Re-architect V0.8 around a YAML-based DAG workflow engine, an LLM router, and the porting of Archon's 17 default workflows.",
+  "scope": "1. Replace the hardcoded 6-stage lifecycle logic with a customizable YAML DAG parsing engine (still enforcing the L2/L3 Gatekeeper json contract output). 2. Add the LLM router to dynamically select workflows. 3. Add the requirement to port and support built-in high-frequency workflows (similar to Archon's 17 default workflows). 4. Add support for custom workflow authoring.",
+  "out_of_scope": "No actual coding or implementation of the router/engine yet. This is an amendment to the V0.8 Planning documents.",
+  "allowed_files": [
+    "tasks/v0.8-kickoff-amendment.md",
+    "tasks/v0.8-milestone-map-v2.md"
+  ],
+  "allowed_artifacts": [
+    "tasks/v0.8-kickoff-amendment-execution-result.json",
+    "tasks/v0.8-kickoff-amendment-review-packet.json"
+  ],
+  "required_outputs": [
+    "tasks/v0.8-kickoff-amendment.md",
+    "tasks/v0.8-milestone-map-v2.md",
+    "tasks/v0.8-kickoff-amendment-execution-result.json",
+    "tasks/v0.8-kickoff-amendment-review-packet.json"
+  ]
+}

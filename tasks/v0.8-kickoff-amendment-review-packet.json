@@ -1,0 +1,15 @@
+{
+  "task_id": "v0.8-kickoff-amendment",
+  "review_type": "pre-iteration-kickoff-review",
+  "contract_path": "tasks/v0.8-kickoff-amendment-directive.json",
+  "result_path": "tasks/v0.8-milestone-map-v2.md",
+  "review_criteria": [
+    "Verify the amendment explicitly introduces a YAML-based DAG workflow parsing engine, replacing the hardcoded 6-stage lifecycle.",
+    "Verify the amendment explicitly adds the LLM Router to dynamically select workflows.",
+    "Verify the amendment requires porting Archon's 17 default workflows and adapting them to our heterogeneous JSON Contract (L2/L3) federation model.",
+    "Verify the amendment adds support for custom YAML workflow authoring.",
+    "Verify the revised milestone map (tasks/v0.8-milestone-map-v2.md) reflects the integration of the YAML engine, LLM Router, and the 17 built-in workflows into the M1-M6 sequence.",
+    "Verify NO implementation code (e.g., modifying src/mcp-server/src/index.ts) or active state model semantic changes (modifying workflow/dispatch.json) occurred during this kickoff amendment phase."
+  ],
+  "expected_decision_output": "tasks/v0.8-kickoff-amendment-decision.json"
+}
