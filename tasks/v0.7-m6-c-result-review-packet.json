@@ -1,0 +1,17 @@
+{
+  "task_id": "v0.7-m6-c-comparative-synthesis",
+  "review_type": "post-execution-result-review",
+  "contract_path": "tasks/v0.7-m6-c-execution-contract.json",
+  "result_path": "tasks/v0.7-m6-c-execution-result.json",
+  "review_criteria": [
+    "Verify git show strictly matches the execution result artifact.",
+    "Verify the implementation changes are limited to creating 'tasks/v0.7-m6-c-comparative-synthesis.md'.",
+    "Verify the final synthesis document summarizes evidence-based assessments from M6-A and M6-B, compares the V0.7 Unified Model with alternative non-intrusive schema injections, and formalizes V0.8 implementation epics.",
+    "Verify NO actual implementation of the V0.8 candidates occurred.",
+    "Verify NO active .agent-state/ physical migrations occurred.",
+    "Verify NO codebase modification in src/ occurred.",
+    "Verify NO changes to workflow/dispatch.json or iteration-state.json state models occurred in the implementation commit.",
+    "Verify artifact changes are strictly limited to allowed_artifacts."
+  ],
+  "expected_decision_output": "tasks/v0.7-m6-c-result-review-decision.json"
+}
