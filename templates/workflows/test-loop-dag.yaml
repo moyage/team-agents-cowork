@@ -1,0 +1,12 @@
+id: test-loop-dag
+description: "Loop node test workflow - iterative counter until completion."
+use_when: "The user wants to fix a failing test suite iteratively."
+nodes:
+  - id: analyze_failures
+    type: ai_execution
+    description: "Analyze the current test failures."
+    depends_on: []
+  - id: apply_test_fixes
+    type: ai_execution
+    description: "Apply fixes to resolve the test failures."
+    depends_on: ["analyze_failures"]

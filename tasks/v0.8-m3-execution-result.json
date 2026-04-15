@@ -1,0 +1,29 @@
+{
+  "task_id": "v0.8-m3-built-in-workflow-porting",
+  "status": "completed",
+  "summary": "Ported 17 default workflows from Archon into the templates/workflows/ directory using the new YAML DAG schema. The nodes are structured as Intent Generators (ai_execution) or deterministic checks (bash), integrating with the L2/L3 dual-track gating system.",
+  "implementation_changes": [
+    "templates/workflows/assist.yaml",
+    "templates/workflows/fix-github-issue.yaml",
+    "templates/workflows/idea-to-pr.yaml",
+    "templates/workflows/plan-to-pr.yaml",
+    "templates/workflows/issue-review-full.yaml",
+    "templates/workflows/smart-pr-review.yaml",
+    "templates/workflows/comprehensive-pr-review.yaml",
+    "templates/workflows/create-issue.yaml",
+    "templates/workflows/validate-pr.yaml",
+    "templates/workflows/resolve-conflicts.yaml",
+    "templates/workflows/feature-development.yaml",
+    "templates/workflows/architect.yaml",
+    "templates/workflows/refactor-safely.yaml",
+    "templates/workflows/ralph-dag.yaml",
+    "templates/workflows/remotion-generate.yaml",
+    "templates/workflows/test-loop-dag.yaml",
+    "templates/workflows/piv-loop.yaml"
+  ],
+  "artifact_changes": [
+    "tasks/v0.8-m3-execution-result.json",
+    "tasks/v0.8-m3-result-review-packet.json"
+  ],
+  "closure_state_changes": []
+}

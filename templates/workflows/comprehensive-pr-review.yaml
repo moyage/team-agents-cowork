@@ -1,0 +1,18 @@
+id: comprehensive-pr-review
+description: "Multi-agent PR review (5 parallel reviewers) with automatic fixes."
+use_when: "The user wants a deep, exhaustive review of a PR across multiple dimensions."
+nodes:
+  - id: syntax_review
+    type: ai_execution
+    description: "Review PR for syntax and style guidelines."
+    is_isolated_reviewer: true
+    depends_on: []
+  - id: logic_review
+    type: ai_execution
+    description: "Review PR for logical correctness and edge cases."
+    is_isolated_reviewer: true
+    depends_on: []
+  - id: synthesize_reviews
+    type: ai_execution
+    description: "Synthesize all review findings and propose automated fixes if necessary."
+    depends_on: ["syntax_review", "logic_review"]

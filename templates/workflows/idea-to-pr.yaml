@@ -1,0 +1,21 @@
+id: idea-to-pr
+description: "Feature idea -> plan -> implement -> validate -> PR -> 5 parallel reviews -> self-fix."
+use_when: "The user wants to implement a new feature from scratch based on a general idea."
+nodes:
+  - id: draft_plan
+    type: ai_execution
+    description: "Draft a comprehensive implementation plan for the new feature."
+    depends_on: []
+  - id: implement_feature
+    type: ai_execution
+    description: "Implement the feature based on the approved plan."
+    depends_on: ["draft_plan"]
+  - id: validate_feature
+    type: bash
+    command: "npm test"
+    depends_on: ["implement_feature"]
+  - id: multi_agent_review
+    type: ai_execution
+    description: "Perform a comprehensive review of the new feature."
+    is_isolated_reviewer: true
+    depends_on: ["validate_feature"]

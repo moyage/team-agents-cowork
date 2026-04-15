@@ -1,0 +1,12 @@
+id: feature-development
+description: "Implement feature from plan -> validate -> create PR."
+use_when: "The user wants to implement a specific, well-defined feature."
+nodes:
+  - id: build_feature
+    type: ai_execution
+    description: "Build the feature according to the specifications."
+    depends_on: []
+  - id: validate_feature
+    type: bash
+    command: "npm test"
+    depends_on: ["build_feature"]

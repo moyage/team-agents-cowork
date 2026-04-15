@@ -1,0 +1,13 @@
+id: smart-pr-review
+description: "Classify PR complexity -> run targeted review agents -> synthesize findings."
+use_when: "The user wants to review an existing Pull Request intelligently based on its complexity."
+nodes:
+  - id: classify_pr
+    type: ai_execution
+    description: "Analyze the PR diff and classify its complexity and risk level."
+    depends_on: []
+  - id: targeted_review
+    type: ai_execution
+    description: "Perform a review targeted at the identified risk areas."
+    is_isolated_reviewer: true
+    depends_on: ["classify_pr"]

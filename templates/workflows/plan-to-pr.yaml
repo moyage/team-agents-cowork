@@ -1,0 +1,17 @@
+id: plan-to-pr
+description: "Execute existing plan -> implement -> validate -> PR -> review -> self-fix."
+use_when: "The user has already provided a detailed plan or SPEC_TEMPLATE.md and wants to implement it."
+nodes:
+  - id: implement_plan
+    type: ai_execution
+    description: "Read the provided plan and implement the requested changes."
+    depends_on: []
+  - id: validate_implementation
+    type: bash
+    command: "npm test"
+    depends_on: ["implement_plan"]
+  - id: review_implementation
+    type: ai_execution
+    description: "Review the code against the provided plan to ensure all requirements are met."
+    is_isolated_reviewer: true
+    depends_on: ["validate_implementation"]

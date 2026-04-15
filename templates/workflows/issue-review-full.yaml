@@ -1,0 +1,22 @@
+id: issue-review-full
+description: "Comprehensive fix + full multi-agent review pipeline for GitHub issues."
+use_when: "The user wants an extremely thorough, multi-agent reviewed fix for a critical GitHub issue."
+nodes:
+  - id: investigate_issue
+    type: ai_execution
+    description: "Investigate the issue and propose a fix."
+    depends_on: []
+  - id: implement_issue_fix
+    type: ai_execution
+    description: "Implement the proposed fix."
+    depends_on: ["investigate_issue"]
+  - id: security_review
+    type: ai_execution
+    description: "Review the fix for security vulnerabilities."
+    is_isolated_reviewer: true
+    depends_on: ["implement_issue_fix"]
+  - id: performance_review
+    type: ai_execution
+    description: "Review the fix for performance regressions."
+    is_isolated_reviewer: true
+    depends_on: ["implement_issue_fix"]

@@ -1,0 +1,12 @@
+id: create-issue
+description: "Classify problem -> gather context -> investigate -> create GitHub issue."
+use_when: "The user describes a bug or feature and wants to formalize it into a comprehensive GitHub issue."
+nodes:
+  - id: gather_context
+    type: ai_execution
+    description: "Investigate the codebase related to the user's description to gather context."
+    depends_on: []
+  - id: draft_issue
+    type: ai_execution
+    description: "Draft a detailed GitHub issue based on the gathered context."
+    depends_on: ["gather_context"]

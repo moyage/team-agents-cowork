@@ -1,0 +1,16 @@
+id: piv-loop
+description: "Guided Plan-Implement-Validate loop with human review between iterations."
+use_when: "The user wants a highly controlled, iterative development process with manual checkpoints."
+nodes:
+  - id: plan_phase
+    type: ai_execution
+    description: "Create a plan for the next iteration."
+    depends_on: []
+  - id: implement_phase
+    type: ai_execution
+    description: "Implement the approved plan."
+    depends_on: ["plan_phase"]
+  - id: validate_phase
+    type: bash
+    command: "npm test"
+    depends_on: ["implement_phase"]

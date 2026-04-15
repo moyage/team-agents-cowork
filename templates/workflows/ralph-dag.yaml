@@ -1,0 +1,12 @@
+id: ralph-dag
+description: "PRD implementation loop - iterate through stories until done."
+use_when: "The user wants to implement an entire Product Requirements Document (PRD) story by story."
+nodes:
+  - id: parse_prd
+    type: ai_execution
+    description: "Parse the PRD and extract individual stories/tasks."
+    depends_on: []
+  - id: implement_stories
+    type: ai_execution
+    description: "Iteratively implement the extracted stories."
+    depends_on: ["parse_prd"]

@@ -1,0 +1,8 @@
+id: assist
+description: "General Q&A, debugging, and exploration."
+use_when: "The user is asking a general question, debugging an issue without a specific plan, or exploring the codebase."
+nodes:
+  - id: analyze_request
+    type: ai_execution
+    description: "Analyze the user's request and provide a comprehensive answer or debugging strategy."
+    depends_on: []

@@ -1,0 +1,8 @@
+id: remotion-generate
+description: "Generate or modify Remotion video compositions with AI."
+use_when: "The user is working with the Remotion video framework and needs to generate compositions."
+nodes:
+  - id: generate_composition
+    type: ai_execution
+    description: "Generate the React code for the requested Remotion video composition."
+    depends_on: []

@@ -1,0 +1,16 @@
+id: refactor-safely
+description: "Safe refactoring with type-check hooks and behavior verification."
+use_when: "The user needs to refactor existing code without changing its external behavior."
+nodes:
+  - id: apply_refactor
+    type: ai_execution
+    description: "Apply the requested refactoring to the code."
+    depends_on: []
+  - id: verify_types
+    type: bash
+    command: "npm run typecheck"
+    depends_on: ["apply_refactor"]
+  - id: verify_tests
+    type: bash
+    command: "npm test"
+    depends_on: ["verify_types"]

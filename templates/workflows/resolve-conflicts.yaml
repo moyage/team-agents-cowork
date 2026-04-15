@@ -1,0 +1,12 @@
+id: resolve-conflicts
+description: "Detect merge conflicts -> analyze both sides -> resolve -> validate -> commit."
+use_when: "The repository is in a conflicted state during a merge or rebase."
+nodes:
+  - id: analyze_conflicts
+    type: ai_execution
+    description: "Analyze the current Git merge conflicts."
+    depends_on: []
+  - id: resolve_conflicts
+    type: ai_execution
+    description: "Resolve the conflicts intelligently."
+    depends_on: ["analyze_conflicts"]

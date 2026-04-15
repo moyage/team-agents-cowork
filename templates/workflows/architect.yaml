@@ -1,0 +1,12 @@
+id: architect
+description: "Architectural sweep, complexity reduction, codebase health improvement."
+use_when: "The user wants to perform a high-level architectural review or reduce technical debt."
+nodes:
+  - id: sweep_architecture
+    type: ai_execution
+    description: "Analyze the codebase architecture and identify areas for complexity reduction."
+    depends_on: []
+  - id: propose_refactors
+    type: ai_execution
+    description: "Propose specific refactoring plans to improve codebase health."
+    depends_on: ["sweep_architecture"]

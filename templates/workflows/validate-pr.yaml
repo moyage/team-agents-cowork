@@ -1,0 +1,12 @@
+id: validate-pr
+description: "Thorough PR validation testing both main and feature branches."
+use_when: "The user wants to run extensive tests on a PR before merging."
+nodes:
+  - id: run_feature_tests
+    type: bash
+    command: "npm test"
+    depends_on: []
+  - id: analyze_test_results
+    type: ai_execution
+    description: "Analyze the test results and summarize the validation status."
+    depends_on: ["run_feature_tests"]

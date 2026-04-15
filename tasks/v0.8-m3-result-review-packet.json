@@ -1,0 +1,16 @@
+{
+  "task_id": "v0.8-m3-built-in-workflow-porting",
+  "review_type": "post-execution-result-review",
+  "contract_path": "tasks/v0.8-m3-execution-contract.json",
+  "result_path": "tasks/v0.8-m3-execution-result.json",
+  "review_criteria": [
+    "Verify git show strictly matches the execution result artifact.",
+    "Verify that the 17 YAML workflows were generated in templates/workflows/.",
+    "Verify NO implementation of the Node.js/TypeScript DAG execution runner occurred in this commit.",
+    "Verify NO review automation daemons were implemented.",
+    "Verify NO removal of legacy tooling occurred.",
+    "Verify NO modifications to active workflow/dispatch.json or iteration-state.json state semantics occurred in the commit.",
+    "Verify artifact changes are strictly limited to allowed_artifacts."
+  ],
+  "expected_decision_output": "tasks/v0.8-m3-result-review-decision.json"
+}

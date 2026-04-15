@@ -1,0 +1,21 @@
+id: fix-github-issue
+description: "Classify issue, investigate, implement, validate, PR, review, and self-fix."
+use_when: "The user provides a GitHub issue link or ID and wants to fix it."
+nodes:
+  - id: classify_and_plan
+    type: ai_execution
+    description: "Read the GitHub issue, investigate the codebase, and write an execution plan."
+    depends_on: []
+  - id: implement_fix
+    type: ai_execution
+    description: "Implement the fix according to the plan."
+    depends_on: ["classify_and_plan"]
+  - id: validate_fix
+    type: bash
+    command: "npm test"
+    depends_on: ["implement_fix"]
+  - id: review_fix
+    type: ai_execution
+    description: "Review the implemented fix against the original issue requirements."
+    is_isolated_reviewer: true
+    depends_on: ["validate_fix"]
