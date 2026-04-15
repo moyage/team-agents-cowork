@@ -10,3 +10,9 @@ As an AI Assistant integrated with this repository, you **MUST** adhere to the f
 
 ## Document Migrations
 If you were previously instructed to read from `protocol/0*.md` or `docs/`, please note that V0.6 unified these concepts under `documentation/`.
+
+## Interrupted-Run Resumption Rule (V0.7 Governance Amendment)
+If execution is interrupted (e.g., via tool-calling limits or system pause) and a narrow recovery or fix directive is issued:
+- **Default Isolation:** You are ONLY authorized to recover the explicitly named step.
+- **No Extrapolation:** Do NOT interpret "fix step X" as authorization to resume blanket "Milestone-Level Autonomy" for the entire iteration.
+- **Explicit Approval Required:** To continue with subsequent sub-packages or new milestones after a recovery, you MUST request and obtain a new, explicit human approval.
