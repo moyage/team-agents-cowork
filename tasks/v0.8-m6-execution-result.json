@@ -1,0 +1,15 @@
+{
+  "task_id": "v0.8-m6-legacy-tooling-deprecation",
+  "status": "completed",
+  "summary": "Implemented V0.8-M6 by preserving the legacy Python scripts while adding explicit stderr deprecation warnings at process start to direct users toward the Node.js MCP server migration path.",
+  "implementation_changes": [
+    "scripts/doctor.py",
+    "scripts/verify_protocol.py",
+    "scripts/validate_workflow_state.py"
+  ],
+  "artifact_changes": [
+    "tasks/v0.8-m6-execution-result.json",
+    "tasks/v0.8-m6-result-review-packet.json"
+  ],
+  "closure_state_changes": []
+}

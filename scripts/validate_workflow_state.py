@@ -8,6 +8,8 @@ import os
 import sys
 import argparse
 
+DEPRECATION_WARNING = "WARNING: This script is deprecated in V0.8 and will be permanently removed in V0.9. Its functionality has migrated to the Node.js MCP server (src/mcp-server/).\n"
+
 def validate_schema(data_path, schema_path):
     if not os.path.exists(data_path):
         return False, [f"Data file {data_path} not found."]
@@ -70,4 +72,5 @@ def main():
         sys.exit(0)
 
 if __name__ == "__main__":
+    sys.stderr.write(DEPRECATION_WARNING)
     main()
