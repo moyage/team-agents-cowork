@@ -1,0 +1,23 @@
+{
+  "task_id": "v0.7-m6-b-team-environment-pilot",
+  "description": "Execute V0.7-M6-B by generating an evidence-based assessment report of the Team Mode and Selected Environment pilot.",
+  "scope": "Generate a pilot report document (tasks/v0.7-m6-b-team-environment-pilot-report.md) demonstrating how the artifact taxonomy and protocol accommodate a multi-developer, multi-agent workflow operating in heterogeneous environments (e.g., Cursor, Trae, OpenCode) with capability modeling, preventing state conflicts.",
+  "out_of_scope": "Strictly NO physical .agent-state/ migrations. NO implementation of functional multi-agent background orchestration code or CI hooks. NO expansion to formal rollouts. NO modifications to active workflow/dispatch.json or iteration-state.json state models.",
+  "allowed_files": [
+    "tasks/v0.7-m6-b-team-environment-pilot-report.md"
+  ],
+  "allowed_artifacts": [
+    "tasks/v0.7-m6-b-execution-result.json",
+    "tasks/v0.7-m6-b-result-review-packet.json"
+  ],
+  "required_outputs": [
+    "tasks/v0.7-m6-b-team-environment-pilot-report.md",
+    "tasks/v0.7-m6-b-execution-result.json",
+    "tasks/v0.7-m6-b-result-review-packet.json"
+  ],
+  "stop_conditions": [
+    "Attempting to modify any file outside allowed_files.",
+    "Attempting to build functional CI or orchestration daemon scripts.",
+    "Executing without an approved M6-B contract."
+  ]
+}
