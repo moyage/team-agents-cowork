@@ -1,0 +1,28 @@
+{
+  "task_id": "v0.8-m1-agent-workspace-dag-parser",
+  "description": "Execute V0.8-M1: Implement the .agent-state/ path resolution logic in the MCP Server and scaffold the initial YAML DAG parser capable of reading the new Archon-lite schema.",
+  "scope": "1. Modify src/mcp-server/src/index.ts to dynamically resolve paths using process.env.PROJECT_ROOT/.agent-state/workflow/dispatch.json, falling back to workflow/dispatch.json. 2. Implement src/mcp-server/src/dag-parser.ts (or similar) to parse a YAML workflow file and translate its nodes into execution-contract.json outputs. 3. Update documentation and bin/agent-protocol-init to scaffold .agent-state/workflows/.",
+  "out_of_scope": "Strictly NO implementation of the dynamic LLM router (M2). NO SubAgent review automation daemon logic (M4). NO removal of legacy tooling. NO modifications to active workflow/dispatch.json state semantics outside of standard M1 progression.",
+  "allowed_files": [
+    "src/mcp-server/src/index.ts",
+    "src/mcp-server/src/dag-parser.ts",
+    "bin/agent-protocol-init",
+    "documentation/EN/**",
+    "documentation/ZH/**"
+  ],
+  "allowed_artifacts": [
+    "tasks/v0.8-m1-execution-result.json",
+    "tasks/v0.8-m1-result-review-packet.json"
+  ],
+  "required_outputs": [
+    "src/mcp-server/src/index.ts",
+    "src/mcp-server/src/dag-parser.ts",
+    "tasks/v0.8-m1-execution-result.json",
+    "tasks/v0.8-m1-result-review-packet.json"
+  ],
+  "stop_conditions": [
+    "Attempting to modify any file outside allowed_files.",
+    "Attempting to delete workflow/ history.",
+    "Executing without an approved M1 contract."
+  ]
+}
