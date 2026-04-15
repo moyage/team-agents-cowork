@@ -1,0 +1,27 @@
+{
+  "task_id": "v0.8-m6-legacy-tooling-deprecation",
+  "description": "Execute V0.8-M6: Inject formal deprecation warnings into the legacy Python scripts mapped for eventual removal.",
+  "scope": "1. Modify scripts/doctor.py, scripts/verify_protocol.py, and scripts/validate_workflow_state.py. 2. Add an explicit stderr print block at the start of execution warning the user of impending V0.9 deletion. 3. Allow scripts to continue normally to prevent breaking existing pipelines.",
+  "out_of_scope": "Strictly NO physical deletion of the Python files in this iteration. NO modifications to the MCP server. NO modifications to active workflow/dispatch.json or iteration-state.json state semantics outside of standard M6 progression.",
+  "allowed_files": [
+    "scripts/doctor.py",
+    "scripts/verify_protocol.py",
+    "scripts/validate_workflow_state.py"
+  ],
+  "allowed_artifacts": [
+    "tasks/v0.8-m6-execution-result.json",
+    "tasks/v0.8-m6-result-review-packet.json"
+  ],
+  "required_outputs": [
+    "scripts/doctor.py",
+    "scripts/verify_protocol.py",
+    "scripts/validate_workflow_state.py",
+    "tasks/v0.8-m6-execution-result.json",
+    "tasks/v0.8-m6-result-review-packet.json"
+  ],
+  "stop_conditions": [
+    "Attempting to modify any file outside allowed_files.",
+    "Attempting to delete the scripts.",
+    "Executing without an approved M6 contract."
+  ]
+}
