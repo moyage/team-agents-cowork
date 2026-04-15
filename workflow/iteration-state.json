@@ -95,7 +95,10 @@
     "tasks/v0.7-m6-c-result-review-decision.json",
     "tasks/v0.7-retrospective-note.md",
     "tasks/v0.7-governance-breach-and-ratification-packet.md",
-    "tasks/v0.7-governance-breach-review-packet.json"
+    "tasks/v0.7-governance-breach-decision.json",
+    "tasks/v0.7-ratification-final-review-packet.md",
+    "tasks/v0.7-ratification-final-review-packet.json",
+    "tasks/v0.7-ratification-final-decision.json"
   ],
   "carry_overs": [
     "State & Framework Physical Separation",
