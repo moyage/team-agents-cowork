@@ -1,7 +1,7 @@
 {
   "current_iteration": "V0.7",
-  "phase": "M5-C",
-  "status": "Completed",
+  "phase": "M6-A",
+  "status": "Recon Completed",
   "previous_iteration": "V0.6",
   "key_artifacts": [
     "tasks/v0.7-kickoff-packet.md",
@@ -68,7 +68,11 @@
     "tasks/v0.7-m5-c-review-automation-roadmap.md",
     "tasks/v0.7-m5-c-execution-result.json",
     "tasks/v0.7-m5-c-result-review-packet.json",
-    "tasks/v0.7-m5-c-result-review-decision.json"
+    "tasks/v0.7-m5-c-result-review-decision.json",
+    "tasks/v0.7-m3-to-m5-ratification-packet.md",
+    "tasks/v0.7-m3-to-m5-ratification-review-packet.json",
+    "tasks/v0.7-m3-to-m5-ratification-decision.json",
+    "tasks/v0.7-m6-a-recon-packet.md"
   ],
   "carry_overs": [
     "State & Framework Physical Separation",
