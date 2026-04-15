@@ -1,0 +1,23 @@
+{
+  "task_id": "v0.8-docs-refactor-phase1-analysis-and-cleanup",
+  "description": "Execute Phase 1 of the V0.8 Docs Refactoring: Clean up repository temporary files, formally upgrade the TechWriter SubAgent's capabilities via a new Hermes skill, and perform a deep-dive analysis of Archon's documentation structure (using the cloned repo and archon.diy) to define the target standard for team-agents-cowork.",
+  "scope": "1. Remove non-project temporary files (e.g., .DS_Store). 2. Create a new Hermes skill for the SubAgent-TechWriter (e.g., ~/.hermes/skills/technical-writer/SKILL.md) specialized in GitBook structure, Mermaid diagrams, and open-source project standards. 3. Spawn a SubAgent to deeply analyze the /Users/mlabs/Programs/Archon_Reference/docs structure and the content at https://archon.diy/book/what-is-archon/. 4. Output the analysis to tasks/v0.8-archon-docs-analysis.md. This phase STOPS at analysis to enforce progressive review.",
+  "out_of_scope": "Strictly NO rewriting of the actual team-agents-cowork documentation files in this phase. NO modifications to src/mcp-server/ logic. NO modifications to active workflow/dispatch.json or iteration-state.json state semantics outside of this patch progression.",
+  "allowed_files": [
+    "tasks/v0.8-archon-docs-analysis.md"
+  ],
+  "allowed_artifacts": [
+    "tasks/v0.8-docs-refactor-phase1-execution-result.json",
+    "tasks/v0.8-docs-refactor-phase1-result-review-packet.json"
+  ],
+  "required_outputs": [
+    "tasks/v0.8-archon-docs-analysis.md",
+    "tasks/v0.8-docs-refactor-phase1-execution-result.json",
+    "tasks/v0.8-docs-refactor-phase1-result-review-packet.json"
+  ],
+  "stop_conditions": [
+    "Attempting to modify actual documentation files in documentation/EN or ZH.",
+    "Attempting to build runtime execution code.",
+    "Executing without an approved contract."
+  ]
+}
