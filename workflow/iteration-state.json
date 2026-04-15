@@ -1,7 +1,7 @@
 {
   "current_iteration": "V0.8",
-  "phase": "M2",
-  "status": "Completed",
+  "phase": "M3",
+  "status": "Recon Completed",
   "previous_iteration": "V0.7",
   "key_artifacts": [
     "tasks/v0.8-planning-q-and-a.md",
@@ -32,7 +32,8 @@
     "tasks/v0.8-m2-contract-review-decision.json",
     "tasks/v0.8-m2-execution-result.json",
     "tasks/v0.8-m2-result-review-packet.json",
-    "tasks/v0.8-m2-result-review-decision.json"
+    "tasks/v0.8-m2-result-review-decision.json",
+    "tasks/v0.8-m3-recon-packet.md"
   ],
   "carry_overs": [
     "State & Framework Physical Separation",
