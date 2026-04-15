@@ -5,3 +5,7 @@ __pycache__/
 *.pyc
 src/mcp-server/node_modules/
 src/mcp-server/build/
+.agent-state/
+.cursorrules
+CLAUDE.md
+AGENTS.md
