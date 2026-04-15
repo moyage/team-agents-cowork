@@ -1,0 +1,15 @@
+{
+  "name": "team-agents-cowork",
+  "version": "0.8.0",
+  "description": "Protocol-First Collaboration System",
+  "main": "src/mcp-server/src/index.js",
+  "bin": {
+    "agent-protocol-init": "bin/agent-protocol-init",
+    "agent-protocol-review": "bin/agent-protocol-review"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Macvie",
+  "license": "MIT"
+}

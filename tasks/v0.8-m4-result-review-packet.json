@@ -1,0 +1,16 @@
+{
+  "task_id": "v0.8-m4-review-automation-daemon",
+  "review_type": "post-execution-result-review",
+  "contract_path": "tasks/v0.8-m4-execution-contract.json",
+  "result_path": "tasks/v0.8-m4-execution-result.json",
+  "review_criteria": [
+    "Verify git show strictly matches the execution result artifact.",
+    "Verify that bin/agent-protocol-review is created and contains the logic to parse .agent-state/workflow/dispatch.json, fallback to legacy, and conditionally execute an isolated mock SubAgent if a review gate is pending.",
+    "Verify that package.json was modified/created to expose the bin/agent-protocol-review script.",
+    "Verify NO implementation of Team Mode Cloud Sync logic (M5) occurred.",
+    "Verify NO removal of legacy Python tooling (M6) occurred.",
+    "Verify NO modifications to active workflow/dispatch.json or iteration-state.json state semantics occurred in the commit.",
+    "Verify artifact changes are strictly limited to allowed_artifacts."
+  ],
+  "expected_decision_output": "tasks/v0.8-m4-result-review-decision.json"
+}

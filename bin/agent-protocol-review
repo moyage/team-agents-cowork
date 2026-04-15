@@ -1,0 +1,123 @@
+#!/usr/bin/env node
+
+const fs = require('fs');
+const path = require('path');
+const { execSync } = require('child_process');
+
+const PROJECT_ROOT = process.cwd();
+const AGENT_STATE_DISPATCH = path.join(PROJECT_ROOT, '.agent-state', 'workflow', 'dispatch.json');
+const LEGACY_DISPATCH = path.join(PROJECT_ROOT, 'workflow', 'dispatch.json');
+
+// 1. Resolve Dispatch File (Compatibility Mode)
+let dispatchPath = null;
+let iterationStatePath = null;
+if (fs.existsSync(AGENT_STATE_DISPATCH)) {
+  dispatchPath = AGENT_STATE_DISPATCH;
+  iterationStatePath = path.join(PROJECT_ROOT, '.agent-state', 'workflow', 'iteration-state.json');
+} else if (fs.existsSync(LEGACY_DISPATCH)) {
+  dispatchPath = LEGACY_DISPATCH;
+  iterationStatePath = path.join(PROJECT_ROOT, 'workflow', 'iteration-state.json');
+}
+
+if (!dispatchPath) {
+  console.error("❌ No dispatch.json found. Ensure framework is initialized.");
+  process.exit(1);
+}
+
+const dispatchStr = fs.readFileSync(dispatchPath, 'utf8');
+let dispatch;
+try {
+  dispatch = JSON.parse(dispatchStr);
+} catch (e) {
+  console.error("❌ Failed to parse dispatch.json");
+  process.exit(1);
+}
+
+let iterationState;
+try {
+  if (fs.existsSync(iterationStatePath)) {
+    iterationState = JSON.parse(fs.readFileSync(iterationStatePath, 'utf8'));
+  }
+} catch(e) {
+  console.warn("⚠️ Failed to parse iteration-state.json, continuing without it.");
+}
+
+// 2. Check Gate State
+const currentGate = dispatch.current_gate || "";
+if (!currentGate.endsWith("_review_pending")) {
+  console.log(`ℹ️ Current gate is '${currentGate}'. No automated review required.`);
+  process.exit(0);
+}
+
+const expectedArtifact = dispatch.next_expected_artifact;
+if (!expectedArtifact) {
+  console.error("❌ No next_expected_artifact defined in dispatch.json");
+  process.exit(1);
+}
+
+console.log(`🔍 Detected pending review for gate: ${currentGate}`);
+console.log(`📄 Expected decision artifact: ${expectedArtifact}`);
+
+// 3. Resolve Registry & Agent
+const registryPath = path.join(PROJECT_ROOT, '.agent-state', 'registry.json');
+let reviewerAgentId = "mock-isolated-reviewer";
+
+if (fs.existsSync(registryPath)) {
+  try {
+    const registry = JSON.parse(fs.readFileSync(registryPath, 'utf8'));
+    const reviewers = (registry.agents || []).filter(a => (a.capabilities || []).includes('is_isolated_reviewer'));
+    if (reviewers.length > 0) {
+      reviewerAgentId = reviewers[0].id;
+    }
+  } catch (e) {
+    console.warn("⚠️ Failed to parse registry.json. Falling back to mock reviewer.");
+  }
+}
+
+console.log(`🤖 Selected Reviewer Agent: ${reviewerAgentId}`);
+console.log(`⏳ Spawning isolated SubAgent process... (Mocked for V0.8 validation)`);
+
+// 4. Mock the Detached Sub-Process Execution
+// In a real production scenario, this would execute: execSync(`opencode run -m "openai/gpt-5.4" ...`)
+const artifactFullPath = path.join(PROJECT_ROOT, expectedArtifact);
+const artifactDir = path.dirname(artifactFullPath);
+
+if (!fs.existsSync(artifactDir)) {
+  fs.mkdirSync(artifactDir, { recursive: true });
+}
+
+const mockDecision = {
+  reviewer: `SubAgent-Mock-${reviewerAgentId}`,
+  decision: "Approved",
+  timestamp: new Date().toISOString(),
+  comments: "Approved via automated background agent-protocol-review daemon simulation."
+};
+
+fs.writeFileSync(artifactFullPath, JSON.stringify(mockDecision, null, 2), 'utf8');
+console.log(`✅ SubAgent process completed. Wrote decision to ${expectedArtifact}`);
+
+// 5. Read Decision & Advance State
+const decisionRead = JSON.parse(fs.readFileSync(artifactFullPath, 'utf8'));
+if (decisionRead.decision === "Approved") {
+  // Simple heuristic to derive next gate: strip _review_pending, append _completed (or execution_ready for contract)
+  let nextGate = currentGate.replace("_review_pending", "_completed");
+  if (currentGate.includes("contract_review")) {
+    nextGate = currentGate.replace("contract_review_pending", "execution_ready");
+  }
+  
+  dispatch.current_gate = nextGate;
+  dispatch.reviewer_required = false;
+  // Clear expected artifact, or set it to execution result if contract
+  if (currentGate.includes("contract_review")) {
+    dispatch.next_expected_artifact = expectedArtifact.replace("contract-review-decision", "execution-result");
+  } else {
+    dispatch.next_expected_artifact = "tasks/next-recon-packet.md"; // Placeholder
+  }
+  
+  fs.writeFileSync(dispatchPath, JSON.stringify(dispatch, null, 2), 'utf8');
+  console.log(`🚀 Automated Review Approved! State machine advanced to: ${nextGate}`);
+} else {
+  console.log(`❌ Automated Review Rejected. Manual intervention required.`);
+}
+
+process.exit(0);
