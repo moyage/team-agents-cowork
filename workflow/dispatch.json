@@ -1,14 +1,11 @@
 {
   "active_iteration": "V0.8.5",
-  "current_gate": "v0.8.5_final_qa_and_docs_result_review_pending",
+  "current_gate": "v0.8.5_iteration_completed",
   "executor": "Hermes",
-  "reviewer_required": true,
-  "active_task": "v0.8.5-final-qa-and-docs",
-  "stop_conditions": [
-    "Closing Phase without obtaining an Approved result review decision",
-    "Self-approving the result review"
-  ],
-  "next_expected_artifact": "tasks/v0.8.5-final-qa-and-docs/result-review-decision.json"
+  "reviewer_required": false,
+  "active_task": null,
+  "stop_conditions": [],
+  "next_expected_artifact": "tasks/v0.8.5-retrospective-note.md"
   "governance_notes": [
     "Iteration V0.8 formally completed. DAG Workflow engine and router implemented."
   ]
