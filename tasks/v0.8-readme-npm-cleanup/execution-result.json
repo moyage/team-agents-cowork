@@ -1,0 +1,16 @@
+{
+  "task_id": "v0.8-readme-npm-cleanup",
+  "status": "completed",
+  "summary": "Executed V0.8 NPM Cleanup. Successfully reverted the temporary Git-clone local installation workarounds and maintainer notes from README.md, README_zh-CN.md, documentation/EN/getting-started/installation.md, and documentation/ZH/getting-started/installation.md, restoring the clean 1-click 'npm install -g team-agents-cowork' instruction.",
+  "implementation_changes": [
+    "README.md",
+    "README_zh-CN.md",
+    "documentation/EN/getting-started/installation.md",
+    "documentation/ZH/getting-started/installation.md"
+  ],
+  "artifact_changes": [
+    "tasks/v0.8-readme-npm-cleanup/execution-result.json",
+    "tasks/v0.8-readme-npm-cleanup/result-review-packet.json"
+  ],
+  "closure_state_changes": []
+}

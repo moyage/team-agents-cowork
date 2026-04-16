@@ -3,13 +3,8 @@
 To establish `team-agents-cowork` inside your repository and set up the L2/L3 boundaries:
 
 ### 1. Global Installation (Optional)
-The package is currently preparing for public NPM registry release.
-
-If the public NPM package throws a 404 error during installation, clone the repository manually and install it globally using your local path:
-
 ```bash
-git clone https://github.com/moyage/team-agents-cowork.git
-npm install -g ./team-agents-cowork
+npm install -g team-agents-cowork
 ```
 
 ## 2. Project Initialization

@@ -1,0 +1,13 @@
+{
+  "task_id": "v0.8-readme-npm-cleanup",
+  "review_type": "post-execution-result-review",
+  "contract_path": "tasks/v0.8-readme-npm-cleanup/execution-contract.json",
+  "result_path": "tasks/v0.8-readme-npm-cleanup/execution-result.json",
+  "review_criteria": [
+    "Verify git show strictly matches the execution result artifact.",
+    "Verify the temporary manual Git-clone workaround and maintainer notes were completely removed from README.md, README_zh-CN.md, and documentation/EN|ZH/getting-started/installation.md.",
+    "Verify the documentation instructions are restored cleanly to 'npm install -g team-agents-cowork'.",
+    "Verify NO implementation code (e.g., modifying src/ or bin/ or package.json) or active state model semantic changes (modifying workflow/dispatch.json) occurred outside of this documentation cleanup patch progression."
+  ],
+  "expected_decision_output": "tasks/v0.8-readme-npm-cleanup/result-review-decision.json"
+}

@@ -98,16 +98,9 @@ When this pipeline runs, your local Cursor might claim and execute the `build` a
 ## 🚀 Quickstart
 
 ### 1. Global Installation
-The package is currently preparing for public NPM registry release.
-
-If the public NPM package throws a 404 error during installation, clone the repository manually and install it globally using your local path:
-
 ```bash
-git clone https://github.com/moyage/team-agents-cowork.git
-npm install -g ./team-agents-cowork
+npm install -g team-agents-cowork
 ```
-
-*(Maintainer Note: To publish this package to NPM, authenticate via `npm login`, ensure TypeScript is compiled by executing the `prepublishOnly` script implicitly, and run `npm publish --access public`.)*
 
 ### 2. Project Initialization
 Inside your target project repository, run:
