@@ -1,0 +1,12 @@
+{
+  "task_id": "v0.8.5-kickoff-review",
+  "review_type": "pre-iteration-kickoff-review",
+  "contract_path": "tasks/v0.8.5-kickoff-packet/kickoff.md",
+  "result_path": "tasks/v0.8.5-kickoff-packet/milestone-map.md",
+  "review_criteria": [
+    "Verify that V0.8.5 explicitly focuses on implementing the Serverless, Git-Driven Headless Worktree and Clean Uninstall features (Context Spoofing).",
+    "Verify that the milestone map is correctly structured into 4 logical phases (Uninstall, Manager, Proxy, Docs) to ensure a safe, incremental implementation of the Node.js MCP core.",
+    "Verify NO implementation code (e.g., modifying src/ or bin/) or active state model semantic changes (modifying workflow/dispatch.json) occurred during this kickoff planning phase."
+  ],
+  "expected_decision_output": "tasks/v0.8.5-kickoff-packet/kickoff-review-decision.json"
+}

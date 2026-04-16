@@ -1,9 +1,17 @@
 {
-  "current_iteration": "V0.8",
-  "phase": "Closure",
-  "status": "Completed",
-  "previous_iteration": "V0.7",
+  "current_iteration": "V0.8.5",
+  "phase": "Kickoff",
+  "status": "In-Progress",
+  "previous_iteration": "V0.8",
   "key_artifacts": [
+    "tasks/v0.8.5-kickoff-packet/kickoff.md",
+    "tasks/v0.8.5-kickoff-packet/milestone-map.md",
+    "tasks/v0.8.5-kickoff-packet/kickoff-review.json"
+  ],
+  "carry_overs": [
+    "State & Framework Physical Separation",
+    "Legacy Tooling Deprecation",
+    "Automated Reviewer Output Delivery",
     "tasks/v0.8-planning-q-and-a.md",
     "tasks/v0.8-kickoff-packet.md",
     "tasks/v0.8-scope-definition.md",
@@ -108,10 +116,5 @@
     "tasks/v0.8-cli-architecture-refactor-review.json",
     "tasks/v0.8-cli-architecture-refactor-result.json",
     "tasks/v0.8-cli-architecture-refactor-decision.json"
-  ],
-  "carry_overs": [
-    "State & Framework Physical Separation",
-    "Legacy Tooling Deprecation",
-    "Automated Reviewer Output Delivery"
   ]
 }
