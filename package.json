@@ -5,7 +5,8 @@
   "main": "src/mcp-server/src/index.js",
   "bin": {
     "agent-protocol-init": "bin/agent-protocol-init",
-    "agent-protocol-review": "bin/agent-protocol-review"
+    "agent-protocol-review": "bin/agent-protocol-review",
+    "agent-protocol-mcp": "src/mcp-server/build/index.js"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",

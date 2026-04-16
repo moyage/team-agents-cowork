@@ -105,14 +105,14 @@ npm install -g team-agents-cowork
 ### 2. Project Initialization
 Inside your target project repository, run:
 ```bash
-npx team-agents-cowork-init
+agent-protocol-init
 ```
 *(This scaffolds the `.agent-state/` sandboxed local bus and generates your `registry.json` capabilities).*
 
 ### 3. Connect Your AI
 Start the MCP Server to allow your local AI to read the active workflow state:
 ```bash
-npm run mcp
+agent-protocol-mcp
 ```
 
 ### 4. Execute a Workflow

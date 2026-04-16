@@ -1,6 +1,15 @@
 {
-  "reviewer": "SubAgent-GPT-5.4-V0.8-Hotfix-Docs-Bin-Contract",
-  "decision": "Approved",
-  "timestamp": "2026-04-16T12:00:00Z",
-  "comments": "Approved. The contract successfully bounds the fix to updating documentation ('npx team-agents-cowork-init' -> 'agent-protocol-init') and exposing the 'agent-protocol-mcp' bin command via hashbang and package.json modifications. The out_of_scope block correctly forbids DAG runtime implementation and any active workflow/dispatch.json state semantic modifications outside of this patch progression."
+  "task_id": "v0.8-hotfix-docs-bin-commands",
+  "review_type": "post-execution-result-review",
+  "contract_path": "tasks/v0.8-hotfix-docs-bin-commands-contract.json",
+  "result_path": "tasks/v0.8-hotfix-docs-bin-commands-result.json",
+  "review_criteria": [
+    "Verify git show strictly matches the execution result artifact.",
+    "Verify that README.md, README_zh-CN.md, and documentation/EN|ZH/getting-started/installation.md were updated to replace 'npx team-agents-cowork-init' and 'npm run mcp' with 'agent-protocol-init' and 'agent-protocol-mcp'.",
+    "Verify that src/mcp-server/src/index.ts has the #!/usr/bin/env node hashbang at the top.",
+    "Verify that package.json has 'agent-protocol-mcp' exposed in the bin section mapping to 'src/mcp-server/build/index.js'.",
+    "Verify NO implementation of the Node.js DAG execution runner occurred.",
+    "Verify NO modifications to active workflow/dispatch.json or iteration-state.json state semantics occurred outside of this documentation patch progression."
+  ],
+  "expected_decision_output": "tasks/v0.8-hotfix-docs-bin-commands-decision.json"
 }

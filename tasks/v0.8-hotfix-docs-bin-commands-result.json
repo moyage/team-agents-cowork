@@ -1,0 +1,18 @@
+{
+  "task_id": "v0.8-hotfix-docs-bin-commands",
+  "status": "completed",
+  "summary": "Executed V0.8 Hotfix for Docs Bin Commands. Replaced the faulty 'npx team-agents-cowork-init' and 'npm run mcp' commands across README.md, README_zh-CN.md, and documentation/EN|ZH/getting-started/installation.md with their correct globally accessible bin commands: 'agent-protocol-init' and 'agent-protocol-mcp'. Added #!/usr/bin/env node hashbang to src/mcp-server/src/index.ts and exposed it as 'agent-protocol-mcp' in package.json's bin configuration.",
+  "implementation_changes": [
+    "README.md",
+    "README_zh-CN.md",
+    "documentation/EN/getting-started/installation.md",
+    "documentation/ZH/getting-started/installation.md",
+    "package.json",
+    "src/mcp-server/src/index.ts"
+  ],
+  "artifact_changes": [
+    "tasks/v0.8-hotfix-docs-bin-commands-result.json",
+    "tasks/v0.8-hotfix-docs-bin-commands-review.json"
+  ],
+  "closure_state_changes": []
+}
