@@ -1,0 +1,25 @@
+{
+  "task_id": "v0.8-readme-overhaul",
+  "description": "Execute V0.8 Root README Overhaul: Completely rewrite the root README.md and add a README_zh-CN.md to serve as the ultimate open-source landing page. It must clearly explain the background, theory, paradigms, features, and provide a 1-click Quickstart/Installation guide for both personal and team collaboration scenarios.",
+  "scope": "1. Rewrite README.md (English) with deep background (Why this exists), the 'Conceptual Triumvirate' theory, core features, and concrete quickstart CLI commands. 2. Create README_zh-CN.md (Chinese translation of the root landing page). 3. Update documentation center links to point to these top-level readmes.",
+  "out_of_scope": "Strictly NO modifications to src/ or bin/ logic. NO modifications to active workflow/dispatch.json or iteration-state.json state semantics outside of this patch progression. NO implementation of runtime execution code. This is a documentation/presentation enhancement only.",
+  "allowed_files": [
+    "README.md",
+    "README_zh-CN.md",
+    "tasks/v0.8-readme-overhaul/**"
+  ],
+  "allowed_artifacts": [
+    "tasks/v0.8-readme-overhaul/execution-result.json",
+    "tasks/v0.8-readme-overhaul/result-review-packet.json"
+  ],
+  "required_outputs": [
+    "README.md",
+    "README_zh-CN.md",
+    "tasks/v0.8-readme-overhaul/execution-result.json",
+    "tasks/v0.8-readme-overhaul/result-review-packet.json"
+  ],
+  "stop_conditions": [
+    "Attempting to modify source code in src/ or bin/.",
+    "Executing without an approved contract."
+  ]
+}
