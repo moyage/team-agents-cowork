@@ -1,0 +1,31 @@
+{
+  "task_id": "v0.8-docs-archon-upgrade",
+  "description": "Execute V0.8 Docs Archon Upgrade: Replace all placeholder documentation with comprehensive, Archon-standard content in English and Chinese. Inject actual JSON schemas from the schemas/ directory, provide at least 3 concrete YAML workflow examples, and detail precise CLI/Git team collaboration instructions.",
+  "scope": "1. Scan documentation/EN and documentation/ZH for files containing placeholder text (e.g., *(Content in progress...)*). 2. Rewrite these files with deep technical and operational content. 3. Include schemas/execution-contract.schema.json, review-decision.schema.json, etc., into the Reference section. 4. Detail 'assist.yaml', 'feature-development.yaml', and a custom workflow. 5. Explicitly document the Dual-Tiered Sync Git commands (e.g., git checkout agent-sync).",
+  "out_of_scope": "Strictly NO modifications to src/ or bin/ logic. NO modifications to active workflow/dispatch.json state semantics outside of this patch progression. NO implementation of runtime execution code. This is an amendment to V0.8 documentation only.",
+  "allowed_files": [
+    "documentation/EN/**",
+    "documentation/ZH/**",
+    "tasks/v0.8-docs-archon-upgrade/**"
+  ],
+  "allowed_artifacts": [
+    "tasks/v0.8-docs-archon-upgrade/execution-result.json",
+    "tasks/v0.8-docs-archon-upgrade/result-review-packet.json"
+  ],
+  "required_outputs": [
+    "documentation/EN/getting-started/installation.md",
+    "documentation/EN/core-concepts/yaml-dag-engine.md",
+    "documentation/EN/guides/team-collaboration.md",
+    "documentation/EN/reference/schema-reference.md",
+    "documentation/ZH/getting-started/installation.md",
+    "documentation/ZH/core-concepts/yaml-dag-engine.md",
+    "documentation/ZH/guides/team-collaboration.md",
+    "documentation/ZH/reference/schema-reference.md",
+    "tasks/v0.8-docs-archon-upgrade/execution-result.json",
+    "tasks/v0.8-docs-archon-upgrade/result-review-packet.json"
+  ],
+  "stop_conditions": [
+    "Attempting to modify source code in src/ or bin/.",
+    "Executing without an approved contract."
+  ]
+}
