@@ -1,7 +1,7 @@
 {
   "current_iteration": "V0.8.5",
   "phase": "M3-Filesystem-Proxy",
-  "status": "In-Progress",
+  "status": "Completed",
   "previous_iteration": "V0.8",
   "key_artifacts": [
     "tasks/v0.8.5-kickoff-packet/kickoff.md",
@@ -19,7 +19,10 @@
     "tasks/v0.8.5-m2-worktree-manager/result-review-packet.json",
     "tasks/v0.8.5-m2-worktree-manager/result-review-decision.json",
     "tasks/v0.8.5-m3-filesystem-proxy/execution-contract.json",
-    "tasks/v0.8.5-m3-filesystem-proxy/contract-review-decision.json"
+    "tasks/v0.8.5-m3-filesystem-proxy/contract-review-decision.json",
+    "tasks/v0.8.5-m3-filesystem-proxy/execution-result.json",
+    "tasks/v0.8.5-m3-filesystem-proxy/result-review-packet.json",
+    "tasks/v0.8.5-m3-filesystem-proxy/result-review-decision.json"
   ],
   "carry_overs": [
     "State & Framework Physical Separation",
