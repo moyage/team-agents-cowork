@@ -1,0 +1,25 @@
+{
+  "task_id": "v0.8.5-system-governance-upgrade",
+  "description": "Execute V0.8.5 System Governance Upgrade: Formalize the 'Pre-Flight Plan' and 'Token/Context Explosion Prevention' mechanisms. This is a framework-level meta-upgrade to ensure the Orchestrator (Hermes) adheres to strict Separation of Duties (SoD) and smart delegation strategies across all future complex tasks.",
+  "scope": "1. Define and document the 'Pre-Execution Intent Declaration' protocol in the framework's GOVERNANCE.md (or similar core concept file). 2. Establish the 'Smart Delegation Strategy' mapping task complexity to the appropriate execution environment (Native, Opencode, or isolated SubAgents via delegate_task). 3. Document the 'Context Pinning' and 'Anti-Token-Explosion' rules for long-running workflows.",
+  "out_of_scope": "Strictly NO implementation of the Node.js DAG execution runner or any codebase refactoring of src/ or bin/ in this phase. This phase is exclusively for codifying the orchestration and cognitive governance protocols.",
+  "allowed_files": [
+    "documentation/EN/core-concepts/governance-protocols.md",
+    "documentation/ZH/core-concepts/governance-protocols.md",
+    "tasks/v0.8.5-system-governance-upgrade/**"
+  ],
+  "allowed_artifacts": [
+    "tasks/v0.8.5-system-governance-upgrade/execution-result.json",
+    "tasks/v0.8.5-system-governance-upgrade/result-review-packet.json"
+  ],
+  "required_outputs": [
+    "documentation/EN/core-concepts/governance-protocols.md",
+    "documentation/ZH/core-concepts/governance-protocols.md",
+    "tasks/v0.8.5-system-governance-upgrade/execution-result.json",
+    "tasks/v0.8.5-system-governance-upgrade/result-review-packet.json"
+  ],
+  "stop_conditions": [
+    "Attempting to modify any source code (src/, bin/, etc.).",
+    "Executing without an approved contract."
+  ]
+}

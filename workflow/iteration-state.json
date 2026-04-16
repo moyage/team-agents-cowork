@@ -1,7 +1,7 @@
 {
   "current_iteration": "V0.8.5",
-  "phase": "M3-Filesystem-Proxy",
-  "status": "Completed",
+  "phase": "System-Governance-Upgrade",
+  "status": "In-Progress",
   "previous_iteration": "V0.8",
   "key_artifacts": [
     "tasks/v0.8.5-kickoff-packet/kickoff.md",
@@ -22,7 +22,9 @@
     "tasks/v0.8.5-m3-filesystem-proxy/contract-review-decision.json",
     "tasks/v0.8.5-m3-filesystem-proxy/execution-result.json",
     "tasks/v0.8.5-m3-filesystem-proxy/result-review-packet.json",
-    "tasks/v0.8.5-m3-filesystem-proxy/result-review-decision.json"
+    "tasks/v0.8.5-m3-filesystem-proxy/result-review-decision.json",
+    "tasks/v0.8.5-system-governance-upgrade/execution-contract.json",
+    "tasks/v0.8.5-system-governance-upgrade/contract-review-decision.json"
   ],
   "carry_overs": [
     "State & Framework Physical Separation",
