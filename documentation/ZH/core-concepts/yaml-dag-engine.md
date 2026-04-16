@@ -32,3 +32,24 @@ nodes:
     description: "分析请求并提供调试策略。"
     depends_on: []
 ```
+
+## 自定义编写范例：`custom-deploy-pipeline.yaml`
+```yaml
+id: custom-deploy-pipeline
+description: "部署到 Staging 并请求 QA 验证。"
+use_when: "当用户希望将当前分支部署到 Staging 时使用。"
+nodes:
+  - id: build_project
+    type: bash
+    command: "npm run build"
+    depends_on: []
+  - id: deploy_to_staging
+    type: bash
+    command: "aws s3 sync ./dist s3://staging-bucket --delete"
+    depends_on: ["build_project"]
+  - id: qa_sign_off
+    type: ai_execution
+    description: "在部署后的网址上执行 QA 测试。"
+    is_isolated_reviewer: true
+    depends_on: ["deploy_to_staging"]
+```

@@ -32,3 +32,24 @@ nodes:
     description: "Analyze the request and provide a debugging strategy."
     depends_on: []
 ```
+
+## Custom Authoring Example: `custom-deploy-pipeline.yaml`
+```yaml
+id: custom-deploy-pipeline
+description: "Deploy to staging with QA sign-off."
+use_when: "The user wants to deploy the feature branch to staging."
+nodes:
+  - id: build_project
+    type: bash
+    command: "npm run build"
+    depends_on: []
+  - id: deploy_to_staging
+    type: bash
+    command: "aws s3 sync ./dist s3://staging-bucket --delete"
+    depends_on: ["build_project"]
+  - id: qa_sign_off
+    type: ai_execution
+    description: "Perform QA on the staging URL."
+    is_isolated_reviewer: true
+    depends_on: ["deploy_to_staging"]
+```
