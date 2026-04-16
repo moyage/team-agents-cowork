@@ -1,0 +1,6 @@
+{
+  "reviewer": "SubAgent-GPT-5.4-V0.8-Readme-Workflow-Contract",
+  "decision": "Approved",
+  "timestamp": "2026-04-16T01:36:05Z",
+  "comments": "Approved. The contract scope is explicitly bounded to documentation-only work on README.md and README_zh-CN.md, including injecting a full inventory of the 17 built-in workflows with their triggers/scenarios and adding a deep-dive section on Custom Workflow Authoring for collaborative scenarios, with bilingual parity required. The out_of_scope clause correctly forbids changes to src/mcp-server/, bin/, and active workflow/dispatch.json state semantics, and also blocks runtime execution code changes. allowed_files and stop_conditions are aligned with those boundaries, so the contract is sufficiently constrained for a README-only workflow-enrichment patch."
+}
