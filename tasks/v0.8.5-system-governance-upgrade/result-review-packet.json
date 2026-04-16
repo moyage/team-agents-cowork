@@ -1,0 +1,12 @@
+{
+  "task_id": "v0.8.5-system-governance-upgrade",
+  "review_type": "post-execution-result-review",
+  "contract_path": "tasks/v0.8.5-system-governance-upgrade/execution-contract.json",
+  "result_path": "tasks/v0.8.5-system-governance-upgrade/execution-result.json",
+  "review_criteria": [
+    "Verify git show strictly matches the execution result artifact.",
+    "Verify that the 'Pre-Execution Intent Declaration', 'Strict Separation of Duties', and 'Anti-Token-Explosion' protocols were documented in documentation/EN/core-concepts/governance-protocols.md and documentation/ZH/core-concepts/governance-protocols.md.",
+    "Verify NO implementation code (e.g., modifying src/ or bin/) or active state model semantic changes (modifying workflow/dispatch.json) occurred outside of this governance upgrade patch progression."
+  ],
+  "expected_decision_output": "tasks/v0.8.5-system-governance-upgrade/result-review-decision.json"
+}
