@@ -1,0 +1,30 @@
+{
+  "task_id": "v0.8-hotfix-npm-publish",
+  "description": "Execute V0.8 Hotfix: Resolve the '404 Not Found' error on npmjs.org by preparing the packages (root framework and mcp-server) for npm publication.",
+  "scope": "1. Update root package.json to include mcp-server scripts (npm run mcp). 2. Add a 'prepublishOnly' build script to compile TypeScript. 3. Document the manual npm publish instructions in the README so the human maintainer can execute the final 'npm publish'.",
+  "out_of_scope": "Strictly NO implementation of the Node.js DAG execution runner (V0.9). NO modifications to active workflow/dispatch.json state semantics outside of this patch progression. Cannot perform the actual interactive 'npm publish' or interactive 'npm login'.",
+  "allowed_files": [
+    "package.json",
+    "src/mcp-server/package.json",
+    "documentation/EN/getting-started/installation.md",
+    "documentation/ZH/getting-started/installation.md",
+    "README.md",
+    "README_zh-CN.md",
+    "tasks/v0.8-hotfix-npm-publish-contract.json",
+    "tasks/v0.8-hotfix-npm-publish-result.json",
+    "tasks/v0.8-hotfix-npm-publish-review.json"
+  ],
+  "allowed_artifacts": [
+    "tasks/v0.8-hotfix-npm-publish-result.json",
+    "tasks/v0.8-hotfix-npm-publish-review.json"
+  ],
+  "required_outputs": [
+    "package.json",
+    "tasks/v0.8-hotfix-npm-publish-result.json",
+    "tasks/v0.8-hotfix-npm-publish-review.json"
+  ],
+  "stop_conditions": [
+    "Attempting to run an interactive npm login.",
+    "Attempting to modify source code in src/ or bin/ beyond dependency management."
+  ]
+}

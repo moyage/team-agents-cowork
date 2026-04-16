@@ -1,7 +1,7 @@
 {
   "current_iteration": "V0.8",
-  "phase": "Closure",
-  "status": "Completed",
+  "phase": "Hotfix-NPM",
+  "status": "In-Progress",
   "previous_iteration": "V0.7",
   "key_artifacts": [
     "tasks/v0.8-planning-q-and-a.md",
@@ -88,7 +88,8 @@
     "tasks/v0.8-readme-workflow-enrichment/contract-review-decision.json",
     "tasks/v0.8-readme-workflow-enrichment/execution-result.json",
     "tasks/v0.8-readme-workflow-enrichment/result-review-packet.json",
-    "tasks/v0.8-readme-workflow-enrichment/result-review-decision.json"
+    "tasks/v0.8-readme-workflow-enrichment/result-review-decision.json",
+    "tasks/v0.8-hotfix-npm-publish-contract.json"
   ],
   "carry_overs": [
     "State & Framework Physical Separation",
