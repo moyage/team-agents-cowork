@@ -1,0 +1,29 @@
+{
+  "task_id": "v0.8-readme-npm-cleanup",
+  "description": "Execute V0.8 NPM Cleanup: The human maintainer has successfully published the package to the public NPM registry. Remove the temporary Git-clone local installation workarounds and maintainer notes from the documentation, restoring the clean 1-click 'npm install -g team-agents-cowork' instructions.",
+  "scope": "1. Revert the 'Global Installation' section in README.md and README_zh-CN.md to the standard 'npm install -g team-agents-cowork' command. 2. Apply the exact same cleanup to documentation/EN/getting-started/installation.md and documentation/ZH/getting-started/installation.md. 3. Ensure no placeholder text or workaround notes remain.",
+  "out_of_scope": "Strictly NO modifications to src/, bin/, package.json, or active workflow/dispatch.json state semantics outside of this patch progression. NO implementation of runtime execution code. This is a documentation cleanup only.",
+  "allowed_files": [
+    "README.md",
+    "README_zh-CN.md",
+    "documentation/EN/getting-started/installation.md",
+    "documentation/ZH/getting-started/installation.md",
+    "tasks/v0.8-readme-npm-cleanup/**"
+  ],
+  "allowed_artifacts": [
+    "tasks/v0.8-readme-npm-cleanup/execution-result.json",
+    "tasks/v0.8-readme-npm-cleanup/result-review-packet.json"
+  ],
+  "required_outputs": [
+    "README.md",
+    "README_zh-CN.md",
+    "documentation/EN/getting-started/installation.md",
+    "documentation/ZH/getting-started/installation.md",
+    "tasks/v0.8-readme-npm-cleanup/execution-result.json",
+    "tasks/v0.8-readme-npm-cleanup/result-review-packet.json"
+  ],
+  "stop_conditions": [
+    "Attempting to modify source code in src/ or bin/.",
+    "Executing without an approved contract."
+  ]
+}
