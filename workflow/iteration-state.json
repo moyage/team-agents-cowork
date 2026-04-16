@@ -1,7 +1,7 @@
 {
   "current_iteration": "V0.8",
-  "phase": "Docs-Readme-Overhaul",
-  "status": "In-Progress",
+  "phase": "Closure",
+  "status": "Completed",
   "previous_iteration": "V0.7",
   "key_artifacts": [
     "tasks/v0.8-planning-q-and-a.md",
@@ -80,7 +80,10 @@
     "tasks/v0.8-docs-archon-upgrade/result-review-packet.json",
     "tasks/v0.8-docs-archon-upgrade/result-review-decision.json",
     "tasks/v0.8-readme-overhaul/execution-contract.json",
-    "tasks/v0.8-readme-overhaul/contract-review-decision.json"
+    "tasks/v0.8-readme-overhaul/contract-review-decision.json",
+    "tasks/v0.8-readme-overhaul/execution-result.json",
+    "tasks/v0.8-readme-overhaul/result-review-packet.json",
+    "tasks/v0.8-readme-overhaul/result-review-decision.json"
   ],
   "carry_overs": [
     "State & Framework Physical Separation",
