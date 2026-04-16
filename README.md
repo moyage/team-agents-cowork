@@ -24,7 +24,7 @@ Please select your preferred language to enter our GitBook-style Documentation P
 
 ## The 17 Built-in Workflows (Powered by LLM Router)
 
-Our engine ships with 17 built-in, Archon-grade workflows. Simply describe your intent, and the LLM Router dynamically executes the perfect pipeline:
+Our engine ships with 17 built-in workflows. Simply describe your intent, and the LLM Router dynamically executes the perfect pipeline:
 
 | Workflow | Description |
 |---|---|

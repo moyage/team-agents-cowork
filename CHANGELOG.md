@@ -6,7 +6,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [0.8.0] - $(date +%Y-%m-%d)
 ### Added
-- **Archon-Grade Workflows**: Incorporated 17 built-in YAML DAG workflows (`idea-to-pr`, `assist`, `fix-github-issue`, etc.) natively into the engine.
+- **Built-in Workflows**: Incorporated 17 built-in YAML DAG workflows (`idea-to-pr`, `assist`, `fix-github-issue`, etc.) natively into the engine.
 - **Dual-Tiered Sync Topology**: Formalized remote team collaboration via `.agent-state` isolation and `agent-sync` branch pulling.
 - **Documentation Portal**: Deployed GitBook-style bilingual (EN/ZH) documentation center in `documentation/`.
 - **Dynamic Extensibility**: Added support for users to define and hot-load custom workflow overrides in `.agent-state/workflows/*.yaml`.
@@ -32,7 +32,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **L2/L3 Isolation Mechanics**: Built the physical separation layer preventing Executor self-approval.
 ## [0.8.0] - $(date +%Y-%m-%d)
 ### Added
-- **Archon-Grade Workflows**: Incorporated 17 built-in YAML DAG workflows (`idea-to-pr`, `assist`, `fix-github-issue`, etc.) natively into the engine.
+- **Built-in Workflows**: Incorporated 17 built-in YAML DAG workflows (`idea-to-pr`, `assist`, `fix-github-issue`, etc.) natively into the engine.
 - **Dual-Tiered Sync Topology**: Formalized remote team collaboration via `.agent-state` isolation and `agent-sync` branch pulling.
 - **Documentation Portal**: Deployed GitBook-style bilingual (EN/ZH) documentation center in `documentation/`.
 - **Dynamic Extensibility**: Added support for users to define and hot-load custom workflow overrides in `.agent-state/workflows/*.yaml`.
