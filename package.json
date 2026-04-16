@@ -8,7 +8,9 @@
     "agent-protocol-review": "bin/agent-protocol-review"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "mcp": "node src/mcp-server/build/index.js",
+    "prepublishOnly": "cd src/mcp-server && npm install && npm run build"
   },
   "author": "Macvie",
   "license": "MIT"

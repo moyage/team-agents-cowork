@@ -1,6 +1,14 @@
 {
-  "reviewer": "SubAgent-GPT-5.4-V0.8-Hotfix-NPM-Contract",
-  "decision": "Approved",
-  "timestamp": "2026-04-16T02:14:25Z",
-  "comments": "The drafted contract correctly bounds the V0.8 hotfix to npm publication preparation: package.json definition updates, TypeScript compilation through prepublishOnly, and human-facing publication instructions to resolve npm E404 errors for team-agents-cowork. The allowed files are limited to package metadata, documentation, and task artifacts. The out_of_scope section explicitly forbids implementing the Node.js DAG execution runner, modifying active workflow/dispatch.json state semantics outside the patch progression, and performing interactive npm publish or npm login. Stop conditions reinforce the prohibition on interactive npm login and source/bin code modifications beyond dependency management. Contract approved."
+  "task_id": "v0.8-hotfix-npm-publish",
+  "review_type": "post-execution-result-review",
+  "contract_path": "tasks/v0.8-hotfix-npm-publish-contract.json",
+  "result_path": "tasks/v0.8-hotfix-npm-publish-result.json",
+  "review_criteria": [
+    "Verify git show strictly matches the execution result artifact.",
+    "Verify root package.json includes 'prepublishOnly' and 'mcp' scripts.",
+    "Verify that the README.md, README_zh-CN.md, and EN/ZH installation.md files document the Git clone workaround for NPM 404 installation errors.",
+    "Verify NO runtime DAG execution engine implementation occurred.",
+    "Verify NO modifications to active workflow/dispatch.json or iteration-state.json state semantics occurred outside of this patch progression."
+  ],
+  "expected_decision_output": "tasks/v0.8-hotfix-npm-publish-decision.json"
 }

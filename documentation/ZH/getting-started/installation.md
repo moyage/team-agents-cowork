@@ -2,10 +2,14 @@
 
 要在您的代码库中建立 `team-agents-cowork` 并设置 L2/L3 边界：
 
-## 1. 全局安装 (可选)
-全局安装 CLI 工具以便使用 `cowork` 相关命令。
+### 1. 全局安装 (可选)
+本安装包目前正在准备发布至公共 NPM 注册表。
+
+如果通过公共 NPM 包安装时提示 404 错误，请手动克隆该仓库并进行本地全局安装：
+
 ```bash
-npm install -g team-agents-cowork
+git clone https://github.com/moyage/team-agents-cowork.git
+npm install -g ./team-agents-cowork
 ```
 
 ## 2. 项目初始化
