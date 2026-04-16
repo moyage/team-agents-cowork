@@ -1,0 +1,6 @@
+{
+  "reviewer": "SubAgent-GPT-5.4-V0.8-Hotfix-Docs-Bin-Final",
+  "decision": "Approved",
+  "timestamp": "2026-04-16T11:20:19.371298+08:00",
+  "comments": "Approved. Verified with git show --stat/--name-status and file diffs for commit e34b4a8. README.md, README_zh-CN.md, documentation/EN/getting-started/installation.md, and documentation/ZH/getting-started/installation.md replace 'npx team-agents-cowork-init' with 'agent-protocol-init' and 'npm run mcp' with 'agent-protocol-mcp'. src/mcp-server/src/index.ts includes '#!/usr/bin/env node' at line 1. package.json bin exposes 'agent-protocol-mcp' -> 'src/mcp-server/build/index.js'. The commit only touches README/install docs, package.json, src/mcp-server/src/index.ts, and task artifacts; it does not modify active workflow/dispatch.json or iteration-state.json semantics, and no Node.js DAG execution runner implementation is introduced beyond the pre-existing MCP server capabilities."
+}
