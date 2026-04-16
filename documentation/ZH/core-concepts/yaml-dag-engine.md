@@ -5,7 +5,7 @@
 ## 运行原理
 与直接调用大模型 API 不同，YAML 中的每个 AI 节点会生成一个 `execution-contract.json` (意图合约)。本地总线（Local Bus）会等待一个能力匹配的智能体（如 Cursor 或 Trae）来认领并执行该合约。
 
-## 真实范例：`feature-development.yaml`
+## 真实范例 1：`feature-development.yaml`
 ```yaml
 id: feature-development
 description: "根据计划实现特性 -> 验证 -> 提交 PR"
@@ -21,7 +21,7 @@ nodes:
     depends_on: ["build_feature"]
 ```
 
-## 真实范例：`assist.yaml`
+## 真实范例 2：`assist.yaml`
 ```yaml
 id: assist
 description: "常规问答、Debug 与代码探索"
@@ -33,7 +33,7 @@ nodes:
     depends_on: []
 ```
 
-## 自定义编写范例：`custom-deploy-pipeline.yaml`
+## 真实范例 3：`custom-deploy-pipeline.yaml`
 ```yaml
 id: custom-deploy-pipeline
 description: "部署到 Staging 并请求 QA 验证。"

@@ -1,8 +1,8 @@
 {
   "task_id": "v0.8-docs-archon-upgrade",
-  "status": "completed",
-  "summary": "Executed V0.8 Docs Archon Upgrade. Successfully used a robust Python generator script to rewrite the placeholder markdown stubs across the documentation/EN/ and documentation/ZH/ directories. Injected actual execution-contract.schema.json contents to demonstrate strict Schema bounds. Detailed concrete YAML DAG examples (e.g., feature-development, assist) and provided explicit Git/CLI command examples for Dual-Tiered Sync Team Collaboration, elevating the documentation to Archon-grade standards.",
-  "implementation_changes": [
+  "executor": "Hermes-Main-Brain",
+  "status": "Completed",
+  "files_modified": [
     "documentation/EN/getting-started/installation.md",
     "documentation/EN/core-concepts/yaml-dag-engine.md",
     "documentation/EN/guides/team-collaboration.md",
@@ -10,11 +10,37 @@
     "documentation/ZH/getting-started/installation.md",
     "documentation/ZH/core-concepts/yaml-dag-engine.md",
     "documentation/ZH/guides/team-collaboration.md",
-    "documentation/ZH/reference/schema-reference.md"
+    "documentation/ZH/reference/schema-reference.md",
+    "documentation/EN/getting-started/README.md",
+    "documentation/EN/guides/README.md",
+    "documentation/EN/core-concepts/README.md",
+    "documentation/EN/reference/README.md",
+    "documentation/ZH/getting-started/README.md",
+    "documentation/ZH/guides/README.md",
+    "documentation/ZH/core-concepts/README.md",
+    "documentation/ZH/reference/README.md"
   ],
-  "artifact_changes": [
-    "tasks/v0.8-docs-archon-upgrade/execution-result.json",
-    "tasks/v0.8-docs-archon-upgrade/result-review-packet.json"
+  "files_created": [
+    "generate_archon_standard_docs.py",
+    "fix_stubs.py"
   ],
-  "closure_state_changes": []
+  "commands_run": [
+    "python3 generate_archon_standard_docs.py",
+    "python3 fix_stubs.py",
+    "grep -rn 'Content in progress' documentation/",
+    "grep -rn '内容完善中' documentation/"
+  ],
+  "claims": [
+    "Replaced all empty markdown stubs with complete, structured explanations matching the Archon documentation paradigm.",
+    "Embedded exact JSON Schemas (Contract, Result, Decision) directly from the schemas/ directory into reference/schema-reference.md.",
+    "Provided 3 explicit YAML DAG examples (feature-development, assist, custom-deploy-pipeline) in the YAML DAG documentation.",
+    "Detailed exact CLI and Git commands (npm run mcp, git fetch origin agent-sync, agent-protocol-review) in Team Collaboration and Installation guides."
+  ],
+  "evidence_files": [
+    "documentation/EN/reference/schema-reference.md",
+    "documentation/ZH/core-concepts/yaml-dag-engine.md",
+    "documentation/ZH/guides/team-collaboration.md"
+  ],
+  "risks": [],
+  "needs_review": true
 }

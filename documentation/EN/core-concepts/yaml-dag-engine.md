@@ -5,7 +5,7 @@ At the heart of the framework is the **YAML Directed Acyclic Graph (DAG) Engine*
 ## How It Works
 Instead of directly executing prompts, each AI node in the YAML generates an `execution-contract.json`. The Local Bus waits for an Agent (matching the required capabilities) to claim and execute the contract.
 
-## Concrete Example: `feature-development.yaml`
+## Concrete Example 1: `feature-development.yaml`
 ```yaml
 id: feature-development
 description: "Implement feature from plan -> validate -> create PR."
@@ -21,7 +21,7 @@ nodes:
     depends_on: ["build_feature"]
 ```
 
-## Concrete Example: `assist.yaml`
+## Concrete Example 2: `assist.yaml`
 ```yaml
 id: assist
 description: "General Q&A, debugging, and exploration."
@@ -33,7 +33,7 @@ nodes:
     depends_on: []
 ```
 
-## Custom Authoring Example: `custom-deploy-pipeline.yaml`
+## Concrete Example 3: `custom-deploy-pipeline.yaml`
 ```yaml
 id: custom-deploy-pipeline
 description: "Deploy to staging with QA sign-off."
