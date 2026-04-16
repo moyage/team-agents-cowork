@@ -1,7 +1,7 @@
 {
   "current_iteration": "V0.8",
-  "phase": "Docs-Archon-Upgrade",
-  "status": "In-Progress",
+  "phase": "Closure",
+  "status": "Completed",
   "previous_iteration": "V0.7",
   "key_artifacts": [
     "tasks/v0.8-planning-q-and-a.md",
@@ -75,7 +75,10 @@
     "tasks/v0.8-docs-refactor-phase3-result-review-packet.json",
     "tasks/v0.8-retrospective-note.md",
     "tasks/v0.8-docs-archon-upgrade/execution-contract.json",
-    "tasks/v0.8-docs-archon-upgrade/contract-review-decision.json"
+    "tasks/v0.8-docs-archon-upgrade/contract-review-decision.json",
+    "tasks/v0.8-docs-archon-upgrade/execution-result.json",
+    "tasks/v0.8-docs-archon-upgrade/result-review-packet.json",
+    "tasks/v0.8-docs-archon-upgrade/result-review-decision.json"
   ],
   "carry_overs": [
     "State & Framework Physical Separation",
