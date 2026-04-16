@@ -1,0 +1,6 @@
+{
+  "reviewer": "SubAgent-GPT-5.4-V0.8-NPM-Cleanup-Contract",
+  "decision": "Approved",
+  "timestamp": "2026-04-16T10:44:55.387881+08:00",
+  "comments": "Approved. The contract scope is correctly bounded to documentation cleanup that restores the clean 1-click `npm install -g team-agents-cowork` installation instructions in README.md, README_zh-CN.md, documentation/EN/getting-started/installation.md, and documentation/ZH/getting-started/installation.md, while explicitly requiring removal of placeholder/workaround text. The out_of_scope clause correctly forbids changes to src/, bin/, package.json, runtime execution logic, and workflow state semantics outside this patch progression. Allowed files are limited to the four documentation targets plus task-local artifacts, which is consistent with the requested cleanup-only implementation boundary."
+}
