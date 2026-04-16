@@ -1,0 +1,27 @@
+{
+  "task_id": "v0.8.5-m4-architecture-refactor-omoc",
+  "description": "Execute V0.8.5 M4 System-Level Architecture Refactor (OMOC Synergy): Correctly dispatch the 'headless worktree' and 'MCP context spoofing' implementation refactoring to the OpenCode Synergy Environment (OMOC). Rely on OMOC's internal model routing (category: deep) and self-healing verification to produce industrial-grade TypeScript code.",
+  "scope": "1. Dispatch the task using 'opencode-bridge run' or 'omoc run' to analyze src/mcp-server/src/index.ts, worktree-manager.ts, and bin/agent-protocol-uninstall.js. 2. Instruct OMOC to refactor the code (extract path boundaries, robust types, eliminate spaghetti code). 3. Keep business logic and MCP input schemas 100% identical. 4. Use '--verify=\"cd src/mcp-server && npx tsc\"' so the sub-agent environment auto-fixes its own compilation errors before returning control to Hermes. Note: The tasks/ directory is strictly for execution result artifacts and must not contain implementation code.",
+  "out_of_scope": "Strictly NO changes to business logic or state machine behavior. NO modifications to workflow/dispatch.json or iteration-state.json state semantics outside of this patch. Hermes (L2 Orchestrator) is strictly forbidden from manually injecting OpenAI API keys, hand-writing source code, or bypassing the OMOC Synergy environment. OMOC must be used.",
+  "allowed_files": [
+    "src/mcp-server/src/index.ts",
+    "src/mcp-server/src/worktree-manager.ts",
+    "bin/agent-protocol-uninstall.js",
+    "tasks/v0.8.5-m4-architecture-refactor-omoc/**"
+  ],
+  "allowed_artifacts": [
+    "tasks/v0.8.5-m4-architecture-refactor-omoc/execution-result.json",
+    "tasks/v0.8.5-m4-architecture-refactor-omoc/result-review-packet.json",
+    "tasks/v0.8.5-m4-architecture-refactor-omoc/contract-review-decision.json"
+  ],
+  "required_outputs": [
+    "src/mcp-server/src/index.ts",
+    "src/mcp-server/src/worktree-manager.ts",
+    "tasks/v0.8.5-m4-architecture-refactor-omoc/execution-result.json",
+    "tasks/v0.8.5-m4-architecture-refactor-omoc/result-review-packet.json"
+  ],
+  "stop_conditions": [
+    "Hermes attempting to bypass OMOC or hand-write code.",
+    "Modifying business logic semantics."
+  ]
+}
