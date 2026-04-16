@@ -1,0 +1,14 @@
+{
+  "task_id": "v0.8-readme-workflow-enrichment",
+  "review_type": "post-execution-result-review",
+  "contract_path": "tasks/v0.8-readme-workflow-enrichment/execution-contract.json",
+  "result_path": "tasks/v0.8-readme-workflow-enrichment/execution-result.json",
+  "review_criteria": [
+    "Verify git show strictly matches the execution result artifact.",
+    "Verify the new README.md and README_zh-CN.md explicitly list and explain the 17 built-in workflows.",
+    "Verify the new README.md and README_zh-CN.md explicitly explain 'Custom Authoring' (or '定制化工作流与团队协同') with a concrete YAML example.",
+    "Verify complete bilingual parity between the two README files for these workflow additions.",
+    "Verify NO implementation code (e.g., modifying src/ or bin/) or active state model semantic changes (modifying workflow/dispatch.json) occurred outside of this README patch progression."
+  ],
+  "expected_decision_output": "tasks/v0.8-readme-workflow-enrichment/result-review-decision.json"
+}
