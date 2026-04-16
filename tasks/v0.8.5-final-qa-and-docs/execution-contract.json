@@ -1,0 +1,35 @@
+{
+  "task_id": "v0.8.5-final-qa-and-docs",
+  "description": "Execute V0.8.5 Final QA, Documentation Update, and Version Bump: Ensure the framework is fully ready for npm publish. This includes correcting the npm package version to 0.8.5, performing acceptance testing of the uninstall command via bash script, and updating the open-source documentation to reflect the new headless worktree capabilities via an AI coding agent.",
+  "scope": "1. Update package.json version to 0.8.5. 2. Write a bash test script (test_uninstall.sh) to verify 'team-agents-cowork uninstall' works end-to-end. 3. Dispatch an AI Coding Agent (Opencode CLI or SubAgent) to update README.md, README_zh-CN.md, documentation/EN/core-concepts/dual-track-gating.md, and documentation/ZH/core-concepts/dual-track-gating.md. The documentation must explain the new 'Context Spoofing' and 'Headless Worktree' physical isolation mechanisms.",
+  "out_of_scope": "Strictly NO changes to src/mcp-server/ business logic or state machine behavior. NO modifications to workflow/dispatch.json or iteration-state.json state semantics outside of this patch. Hermes (L2 Orchestrator) is strictly forbidden from hand-writing the documentation patches natively.",
+  "allowed_files": [
+    "package.json",
+    "README.md",
+    "README_zh-CN.md",
+    "test_uninstall.sh",
+    "documentation/EN/core-concepts/dual-track-gating.md",
+    "documentation/ZH/core-concepts/dual-track-gating.md",
+    "tasks/v0.8.5-final-qa-and-docs/**"
+  ],
+  "allowed_artifacts": [
+    "test_uninstall.sh",
+    "tasks/v0.8.5-final-qa-and-docs/execution-result.json",
+    "tasks/v0.8.5-final-qa-and-docs/result-review-packet.json",
+    "tasks/v0.8.5-final-qa-and-docs/contract-review-decision.json"
+  ],
+  "required_outputs": [
+    "package.json",
+    "test_uninstall.sh",
+    "README.md",
+    "README_zh-CN.md",
+    "documentation/EN/core-concepts/dual-track-gating.md",
+    "documentation/ZH/core-concepts/dual-track-gating.md",
+    "tasks/v0.8.5-final-qa-and-docs/execution-result.json",
+    "tasks/v0.8.5-final-qa-and-docs/result-review-packet.json"
+  ],
+  "stop_conditions": [
+    "Hermes attempting to hand-write documentation code patches via native tools.",
+    "Modifying src/mcp-server/ business logic."
+  ]
+}
