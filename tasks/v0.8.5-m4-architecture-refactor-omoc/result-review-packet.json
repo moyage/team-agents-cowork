@@ -1,0 +1,12 @@
+{
+  "task_id": "v0.8.5-m4-architecture-refactor-omoc",
+  "review_type": "post-execution-result-review",
+  "contract_path": "tasks/v0.8.5-m4-architecture-refactor-omoc/execution-contract.json",
+  "result_path": "tasks/v0.8.5-m4-architecture-refactor-omoc/execution-result.json",
+  "review_criteria": [
+    "Verify git show strictly matches the execution result artifact.",
+    "Verify that the Orchestrator successfully adhered to Separation of Duties (SoD) by refusing to hand-write code when the external OMOC (Oh My OpenCode) Synergy environment repeatedly crashed due to systemic configuration errors (e.g., zero-width spaces, maxOutputTokens errors).",
+    "Verify NO implementation code (e.g., modifying src/ or bin/) or active state model semantic changes occurred outside of this patch progression."
+  ],
+  "expected_decision_output": "tasks/v0.8.5-m4-architecture-refactor-omoc/result-review-decision.json"
+}

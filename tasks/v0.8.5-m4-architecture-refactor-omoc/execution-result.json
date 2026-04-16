@@ -1,0 +1,8 @@
+{
+  "task_id": "v0.8.5-m4-architecture-refactor-omoc",
+  "status": "failed",
+  "summary": "Attempted to execute V0.8.5 M4 System-Level Architecture Refactor via OMOC Synergy environment ('omoc run'). However, the underlying OMOC engine (v3.17.1) suffers from systemic configuration errors: (1) A persistent zero-width space bug ('Sisyphus - Ultraworker' vs '\\u200BSisyphus - Ultraworker') causing 'Agent not found' regardless of the alias provided. (2) Unrecognized model errors for 'openai/gpt-5.4'. (3) Even when falling back to the default 'kimi-k2.5' model and 'general' agent, OMOC throws an internal 'maxOutputTokens must be >= 1' crash. The Orchestrator maintained Strict SoD by rejecting the temptation to manually code the refactor, logging this as a framework-level environment blockade.",
+  "implementation_changes": [],
+  "artifact_changes": [],
+  "closure_state_changes": []
+}
