@@ -1,0 +1,6 @@
+{
+  "reviewer": "SubAgent-GPT-5.4-V0.8-Docs-NPM-Cleanup-Final",
+  "decision": "Approved",
+  "timestamp": "2026-04-16T02:52:12Z",
+  "comments": "Approved after reviewing the contract, review packet, execution result, and `git show --stat --name-status bae2bb9` plus the full commit diff. Commit bae2bb9 changes only README.md, README_zh-CN.md, documentation/EN/getting-started/installation.md, documentation/ZH/getting-started/installation.md, and task artifacts under tasks/v0.8-readme-npm-cleanup/. The manual Git-clone workaround and maintainer note text were removed from the documentation files, and each installation command was restored cleanly to `npm install -g team-agents-cowork`. No changes were made to src/, bin/, package.json, workflow/dispatch.json, iteration-state.json, or any runtime execution code/state semantics. The documented implementation matches the execution-result artifact."
+}
