@@ -1,0 +1,23 @@
+{
+  "task_id": "v0.8.5-m2-worktree-manager",
+  "description": "Execute V0.8.5 M2: Implement the Worktree Manager module within the MCP server. This module provides the foundational Git Worktree operations (create, commit, push, remove) required for headless sandbox isolation of tasks, without yet intercepting or modifying the active MCP tool endpoints.",
+  "scope": "1. Create src/mcp-server/src/worktree-manager.ts. 2. Implement async functions wrapping 'git worktree add' (to a hidden directory like .cowork-sandboxes/<task_id>), 'git commit', 'git push', and 'git worktree remove'. 3. Export these functions for future use by the MCP Filesystem Proxy (M3).",
+  "out_of_scope": "Strictly NO implementation of the MCP Filesystem Proxy (M3) logic in this phase. Do not modify src/mcp-server/src/index.ts to intercept file paths yet. NO modifications to active workflow/dispatch.json state semantics outside of this M2 progression.",
+  "allowed_files": [
+    "src/mcp-server/src/worktree-manager.ts",
+    "tasks/v0.8.5-m2-worktree-manager/**"
+  ],
+  "allowed_artifacts": [
+    "tasks/v0.8.5-m2-worktree-manager/execution-result.json",
+    "tasks/v0.8.5-m2-worktree-manager/result-review-packet.json"
+  ],
+  "required_outputs": [
+    "src/mcp-server/src/worktree-manager.ts",
+    "tasks/v0.8.5-m2-worktree-manager/execution-result.json",
+    "tasks/v0.8.5-m2-worktree-manager/result-review-packet.json"
+  ],
+  "stop_conditions": [
+    "Attempting to modify src/mcp-server/src/index.ts.",
+    "Executing without an approved contract."
+  ]
+}
