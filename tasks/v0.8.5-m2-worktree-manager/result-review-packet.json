@@ -1,0 +1,14 @@
+{
+  "task_id": "v0.8.5-m2-worktree-manager",
+  "review_type": "post-execution-result-review",
+  "contract_path": "tasks/v0.8.5-m2-worktree-manager/execution-contract.json",
+  "result_path": "tasks/v0.8.5-m2-worktree-manager/execution-result.json",
+  "review_criteria": [
+    "Verify git show strictly matches the execution result artifact.",
+    "Verify that src/mcp-server/src/worktree-manager.ts was created and contains functions wrapping 'git worktree add', 'commit', 'push', and 'git worktree remove'.",
+    "Verify that NO modification occurred in src/mcp-server/src/index.ts.",
+    "Verify NO implementation of the MCP Filesystem Proxy (M3) occurred in this commit.",
+    "Verify NO modifications to active workflow/dispatch.json or iteration-state.json state semantics occurred outside of this M2 patch progression."
+  ],
+  "expected_decision_output": "tasks/v0.8.5-m2-worktree-manager/result-review-decision.json"
+}
