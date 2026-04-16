@@ -1,0 +1,6 @@
+{
+  "reviewer": "SubAgent-GPT-5.4-V0.8-Hotfix-NPX-Contract",
+  "decision": "Approved",
+  "timestamp": "2026-04-16T03:47:45Z",
+  "comments": "Approved. The contract description and scope are narrowly targeted to the NPX/bin hotfix: package.json must add the 'team-agents-cowork-init' alias pointing to 'bin/agent-protocol-init', and documentation may be updated only as needed to align command usage. The out_of_scope clause explicitly forbids implementing the Node.js DAG execution runner and forbids active workflow/dispatch.json state semantic changes outside this patch. The allowed_files list is consistent with this boundary, limiting edits to package metadata, README/install docs, and task artifacts. Repository command references currently show direct 'agent-protocol-init' usage in README.md, README_zh-CN.md, and installation docs, so doc changes may or may not be necessary, which matches the contract's conditional wording."
+}
