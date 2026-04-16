@@ -1,0 +1,15 @@
+{
+  "task_id": "v0.8-docs-archon-upgrade",
+  "review_type": "post-execution-result-review",
+  "contract_path": "tasks/v0.8-docs-archon-upgrade/execution-contract.json",
+  "result_path": "tasks/v0.8-docs-archon-upgrade/execution-result.json",
+  "review_criteria": [
+    "Verify git show strictly matches the execution result artifact.",
+    "Verify that the placeholder text in the specified markdown files (getting-started/installation.md, core-concepts/yaml-dag-engine.md, guides/team-collaboration.md, reference/schema-reference.md) has been replaced with comprehensive technical content.",
+    "Verify that the execution-contract.schema.json content is accurately embedded in the schema-reference.md files.",
+    "Verify that at least 3 concrete YAML examples (e.g. assist, feature-development, custom-deploy) exist across the documentation.",
+    "Verify that explicit Git/CLI commands for Team Collaboration (e.g. git fetch origin agent-sync, npx team-agents-cowork-init) are documented.",
+    "Verify NO implementation code (e.g., modifying src/ or bin/) or active state model semantic changes (modifying workflow/dispatch.json) occurred outside of this docs upgrade patch progression."
+  ],
+  "expected_decision_output": "tasks/v0.8-docs-archon-upgrade/result-review-decision.json"
+}

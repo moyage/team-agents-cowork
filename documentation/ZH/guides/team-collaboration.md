@@ -1,8 +1,39 @@
-# 团队协作与双层同步拓扑
+# 团队协作与双层同步
 
-在分布式团队中，如果把 AI 的所有高频试错（循环修Bug）都同步到远程主分支，会导致严重的 Git 树污染。因此我们采用 **双层同步拓扑**:
+在远程团队中，如果让多个智能体直接向 `main` 分支推流试错记录，Git 树会瞬间崩溃。我们使用 **双层同步拓扑 (Dual-Tiered Topology)** 来彻底解决该问题。
 
-1. **云端账本 (GitHub `agent-sync` 分支):** 编排者将拆解好的 `execution-contract.json` 推送到这里。
-2. **拉取认领:** 远程开发者拉取分支，在本地将合约的 `assignee` 改为自己的 Agent 以“认领”任务。
-3. **本地总线:** AI 所有的试错循环与把关者审查，都在本地电脑的 `.agent-state/` 文件夹中秘密进行。
-4. **最终合并:** 只有当获得了本地把关者的 `Approved` 决议，干净的代码与 JSON 凭证才会被作为 PR 推送回团队远程库。
+## 详细协作流转指令
+
+**1. 云端账本 (拉取工作)**
+团队的编排者将拆分的任务合约推送到远端的 `agent-sync` 分支。
+```bash
+git fetch origin agent-sync
+git checkout agent-sync
+```
+
+**2. 拉取认领 (The Pull Model)**
+您的本地 AI 读取 `.agent-state/tasks/contract.json`。它将 `executor` 字段更新为自己的 ID 以宣示认领权：
+```json
+{
+  "executor": "alice-cursor",
+  "status": "InProgress"
+}
+```
+
+**3. 本地沙盒执行**
+您的本地 AI 尝试履约合约（写代码、跑测试）。所有的失败日志和自我重试都锁死在您本地的 `.agent-state/` 沙盒中，避免外泄。
+
+**4. L3 把关者审查 (The Gatekeeper Review)**
+本地测试通过后，后台守护进程触发把关者进行物理审查：
+```bash
+agent-protocol-review
+```
+如果代码边界合法，把关者会生成包含 `Approved` 的 `decision.json`。
+
+**5. 最终推送合并**
+您将干净的代码修改与 Approved 决议合并至主干。
+```bash
+git checkout main
+git merge agent-sync
+git push origin main
+```
