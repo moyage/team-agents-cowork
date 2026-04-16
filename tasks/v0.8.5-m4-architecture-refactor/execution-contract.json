@@ -1,0 +1,28 @@
+{
+  "task_id": "v0.8.5-m4-architecture-refactor",
+  "description": "Execute V0.8.5 M4 System-Level Architecture Refactor: Engage an external L3 AI Coding Environment (e.g., Opencode/Claude Code or a highly specialized SubAgent) to perform a comprehensive Code Review and Engineering Refactor of the 'headless worktree' and 'MCP context spoofing' implementation generated during V0.8 M4 to V0.8.5 M3. The Orchestrator (Hermes) is strictly forbidden from writing code for this phase.",
+  "scope": "1. Dispatch a SubAgent or Opencode CLI agent to analyze src/mcp-server/src/index.ts, worktree-manager.ts, and bin/agent-protocol-uninstall.js. 2. Refactor the code to industrial standards (e.g., robust TypeScript types, DRY principles, isolated boundary-check functions, elimination of monolithic spaghetti code in index.ts). 3. Keep business logic and MCP input schemas 100% functionally identical. 4. Output the refactoring results to be audited by the L3 Gatekeeper.",
+  "out_of_scope": "Strictly NO changes to business logic or state machine behavior. NO modifications to workflow/dispatch.json or iteration-state.json state semantics. Hermes (L2 Orchestrator) is strictly forbidden from using shell redirects, patch, or python to alter the source code directly.",
+  "allowed_files": [
+    "src/mcp-server/src/index.ts",
+    "src/mcp-server/src/worktree-manager.ts",
+    "bin/agent-protocol-uninstall.js",
+    "bin/team-agents-cowork.js",
+    "package.json",
+    "tasks/v0.8.5-m4-architecture-refactor/**"
+  ],
+  "allowed_artifacts": [
+    "tasks/v0.8.5-m4-architecture-refactor/execution-result.json",
+    "tasks/v0.8.5-m4-architecture-refactor/result-review-packet.json"
+  ],
+  "required_outputs": [
+    "src/mcp-server/src/index.ts",
+    "src/mcp-server/src/worktree-manager.ts",
+    "tasks/v0.8.5-m4-architecture-refactor/execution-result.json",
+    "tasks/v0.8.5-m4-architecture-refactor/result-review-packet.json"
+  ],
+  "stop_conditions": [
+    "Hermes attempting to hand-write code patches via native tools.",
+    "Modifying business logic semantics."
+  ]
+}
