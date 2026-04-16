@@ -10,7 +10,7 @@ npm install -g team-agents-cowork
 ## 2. Project Initialization
 Inside your target project repository, run the initialization command:
 ```bash
-npx team-agents-cowork-init
+npx team-agents-cowork init
 ```
 
 **What this does:**
@@ -22,6 +22,6 @@ npx team-agents-cowork-init
 ## 3. Verify the Installation
 Start the MCP Server to allow your local AI (e.g. Cursor) to read the active state:
 ```bash
-agent-protocol-mcp
+team-agents-cowork mcp
 ```
 Your repository is now a compliant Multi-Agent workspace!

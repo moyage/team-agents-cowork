@@ -26,7 +26,7 @@ Your local AI attempts to fulfill the contract. It writes code and runs tests. A
 **4. The L3 Gatekeeper Review**
 Once the code passes local checks, the Gatekeeper runs:
 ```bash
-agent-protocol-review
+team-agents-cowork review
 ```
 If the output is `Approved`, the Gatekeeper generates a `decision.json`.
 

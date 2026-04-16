@@ -4,10 +4,9 @@
   "description": "Protocol-First Collaboration System",
   "main": "src/mcp-server/src/index.js",
   "bin": {
+    "team-agents-cowork": "bin/team-agents-cowork.js",
     "agent-protocol-init": "bin/agent-protocol-init",
-    "team-agents-cowork-init": "bin/agent-protocol-init",
-    "agent-protocol-review": "bin/agent-protocol-review",
-    "agent-protocol-mcp": "src/mcp-server/build/index.js"
+    "agent-protocol-review": "bin/agent-protocol-review"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",

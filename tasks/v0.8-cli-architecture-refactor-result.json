@@ -1,0 +1,20 @@
+{
+  "task_id": "v0.8-cli-architecture-refactor",
+  "status": "completed",
+  "summary": "Executed V0.8 CLI Architecture Refactor. Addressed the fundamental CLI design flaw that caused NPM resolution confusion. Created bin/team-agents-cowork.js as a single unified CLI router exposing subcommands (init, review, mcp). Updated package.json to primarily expose 'team-agents-cowork', deprecating the fragmented tool-specific alias binaries. Thoroughly rewrote all installation, quickstart, and collaboration guides across READMEs and the documentation portal to reflect standard open-source CLI conventions (e.g., 'npx team-agents-cowork init', 'team-agents-cowork mcp').",
+  "implementation_changes": [
+    "bin/team-agents-cowork.js",
+    "package.json",
+    "README.md",
+    "README_zh-CN.md",
+    "documentation/EN/getting-started/installation.md",
+    "documentation/ZH/getting-started/installation.md",
+    "documentation/EN/guides/team-collaboration.md",
+    "documentation/ZH/guides/team-collaboration.md"
+  ],
+  "artifact_changes": [
+    "tasks/v0.8-cli-architecture-refactor-result.json",
+    "tasks/v0.8-cli-architecture-refactor-review.json"
+  ],
+  "closure_state_changes": []
+}

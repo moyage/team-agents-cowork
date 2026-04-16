@@ -105,20 +105,20 @@ npm install -g team-agents-cowork
 ### 2. 项目初始化
 在您的目标项目根目录下运行：
 ```bash
-npx team-agents-cowork-init
+npx team-agents-cowork init
 ```
 *(这会构建 `.agent-state/` 隔离总线，并生成包含您环境能力的 `registry.json`)*。
 
 ### 3. 连接您的 AI
 启动 MCP Server，允许您的本地 AI 读取实时工作流状态：
 ```bash
-agent-protocol-mcp
+team-agents-cowork mcp
 ```
 
 ### 4. 执行工作流
 让您的 AI 认领合约，或自动触发后台双轨审查：
 ```bash
-agent-protocol-review
+team-agents-cowork review
 ```
 
 ---

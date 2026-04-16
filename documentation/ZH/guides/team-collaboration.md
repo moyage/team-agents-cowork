@@ -26,7 +26,7 @@ git checkout agent-sync
 **4. L3 把关者审查 (The Gatekeeper Review)**
 本地测试通过后，后台守护进程触发把关者进行物理审查：
 ```bash
-agent-protocol-review
+team-agents-cowork review
 ```
 如果代码边界合法，把关者会生成包含 `Approved` 的 `decision.json`。
 
