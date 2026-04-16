@@ -7,7 +7,8 @@
     "src/mcp-server/src/index.ts",
     "src/mcp-server/src/worktree-manager.ts",
     "bin/agent-protocol-uninstall.js",
-    "tasks/v0.8.5-m4-architecture-refactor-retry/**"
+    "tasks/v0.8.5-m4-architecture-refactor-retry/**",
+    "workflow/dispatch.json"
   ],
   "allowed_artifacts": [
     "tasks/v0.8.5-m4-architecture-refactor-retry/execution-result.json",
