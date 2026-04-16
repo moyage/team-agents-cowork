@@ -10,7 +10,7 @@ npm install -g team-agents-cowork
 ## 2. Project Initialization
 Inside your target project repository, run the initialization command:
 ```bash
-agent-protocol-init
+npx team-agents-cowork-init
 ```
 
 **What this does:**

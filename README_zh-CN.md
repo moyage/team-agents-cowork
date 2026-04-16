@@ -105,7 +105,7 @@ npm install -g team-agents-cowork
 ### 2. 项目初始化
 在您的目标项目根目录下运行：
 ```bash
-agent-protocol-init
+npx team-agents-cowork-init
 ```
 *(这会构建 `.agent-state/` 隔离总线，并生成包含您环境能力的 `registry.json`)*。
 

@@ -105,7 +105,7 @@ npm install -g team-agents-cowork
 ### 2. Project Initialization
 Inside your target project repository, run:
 ```bash
-agent-protocol-init
+npx team-agents-cowork-init
 ```
 *(This scaffolds the `.agent-state/` sandboxed local bus and generates your `registry.json` capabilities).*
 

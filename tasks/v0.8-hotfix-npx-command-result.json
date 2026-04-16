@@ -1,0 +1,17 @@
+{
+  "task_id": "v0.8-hotfix-npx-command",
+  "status": "completed",
+  "summary": "Executed V0.8 Hotfix for NPX command 404 issue. Modified package.json to include a new bin alias 'team-agents-cowork-init' pointing to the actual 'bin/agent-protocol-init' script. Reverted documentation across README.md, README_zh-CN.md, and EN/ZH installation guides to reinstate the standard 'npx team-agents-cowork-init' instruction. This allows users to rely on their muscle-memory without encountering 404 errors, as NPM will now correctly resolve the command locally from the installed package.",
+  "implementation_changes": [
+    "package.json",
+    "README.md",
+    "README_zh-CN.md",
+    "documentation/EN/getting-started/installation.md",
+    "documentation/ZH/getting-started/installation.md"
+  ],
+  "artifact_changes": [
+    "tasks/v0.8-hotfix-npx-command-result.json",
+    "tasks/v0.8-hotfix-npx-command-review.json"
+  ],
+  "closure_state_changes": []
+}
