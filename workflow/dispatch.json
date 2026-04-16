@@ -1,14 +1,13 @@
 {
   "active_iteration": "V0.8.5",
-  "current_gate": "v0.8.5_kickoff_review_pending",
+  "current_gate": "v0.8.5_kickoff_completed",
   "executor": "Hermes",
-  "reviewer_required": true,
-  "active_task": "v0.8.5-kickoff-planning",
+  "reviewer_required": false,
+  "active_task": null,
   "stop_conditions": [
-    "Proceeding to V0.8.5 execution without an approved kickoff review decision",
-    "Self-approving the kickoff review"
+    "Proceeding to execution without planning the respective milestone"
   ],
-  "next_expected_artifact": "tasks/v0.8.5-kickoff-packet/kickoff-review-decision.json",
+  "next_expected_artifact": "tasks/v0.8.5-m1-execution-contract.json",
   "governance_notes": [
     "Iteration V0.8 formally completed. DAG Workflow engine and router implemented."
   ]
