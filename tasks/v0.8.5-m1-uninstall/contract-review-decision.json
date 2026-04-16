@@ -1,0 +1,5 @@
+{
+  "reviewer": "SubAgent-GPT-5.4-V0.8.5-M1-Contract",
+  "decision": "Approved",
+  "timestamp": "2026-04-16T14:43:13+08:00",
+  "comments": "Approved. The contract scope is correctly bounded to M1 uninstall work: it explicitly requires creating bin/agent-protocol-uninstall.js, routing the uninstall subcommand through bin/team-agents-cowork.js, deleting the .agent-state/ directory, removing the .agent-state/ entry from the local .gitignore, and running git worktree prune for safe cleanup. The out_of_scope clause correctly forbids implementing the Worktree Manager (M2) and MCP Filesystem Proxy (M3), preserving incremental delivery boundaries. allowed_files is also consistent with the intended implementation surface. Minor note: allowed_artifacts and required_outputs include tasks/v0.8-m1-uninstall-review-packet.json rather than a v0.8.5-prefixed path, but this does not broaden implementation scope and does not conflict with the required M1 uninstall contract bounds."}

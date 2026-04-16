@@ -6,6 +6,7 @@
   "allowed_files": [
     "bin/team-agents-cowork.js",
     "bin/agent-protocol-uninstall.js",
+    "package.json",
     "tasks/v0.8.5-m1-uninstall/**"
   ],
   "allowed_artifacts": [
