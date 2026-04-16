@@ -1,13 +1,15 @@
 {
   "current_iteration": "V0.8.5",
-  "phase": "Kickoff",
-  "status": "Completed",
+  "phase": "M1-Uninstall",
+  "status": "In-Progress",
   "previous_iteration": "V0.8",
   "key_artifacts": [
     "tasks/v0.8.5-kickoff-packet/kickoff.md",
     "tasks/v0.8.5-kickoff-packet/milestone-map.md",
     "tasks/v0.8.5-kickoff-packet/kickoff-review.json",
-    "tasks/v0.8.5-kickoff-packet/kickoff-review-decision.json"
+    "tasks/v0.8.5-kickoff-packet/kickoff-review-decision.json",
+    "tasks/v0.8.5-m1-uninstall/execution-contract.json",
+    "tasks/v0.8.5-m1-uninstall/contract-review-decision.json"
   ],
   "carry_overs": [
     "State & Framework Physical Separation",

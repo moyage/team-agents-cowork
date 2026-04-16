@@ -1,13 +1,14 @@
 {
   "active_iteration": "V0.8.5",
-  "current_gate": "v0.8.5_kickoff_completed",
+  "current_gate": "v0.8.5_m1_contract_review_pending",
   "executor": "Hermes",
-  "reviewer_required": false,
-  "active_task": null,
+  "reviewer_required": true,
+  "active_task": "v0.8.5-m1-uninstall",
   "stop_conditions": [
-    "Proceeding to execution without planning the respective milestone"
+    "Proceeding to execution without an approved M1 Phase contract",
+    "Self-approving the M1 Phase contract"
   ],
-  "next_expected_artifact": "tasks/v0.8.5-m1-execution-contract.json",
+  "next_expected_artifact": "tasks/v0.8.5-m1-uninstall/contract-review-decision.json",
   "governance_notes": [
     "Iteration V0.8 formally completed. DAG Workflow engine and router implemented."
   ]

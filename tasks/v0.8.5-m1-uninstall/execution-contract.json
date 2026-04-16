@@ -1,0 +1,25 @@
+{
+  "task_id": "v0.8.5-m1-uninstall",
+  "description": "Execute V0.8.5 M1: Implement the 'team-agents-cowork uninstall' command. This command must safely and cleanly remove the framework from a repository to support iterative internal testing and clean rollbacks.",
+  "scope": "1. Create bin/agent-protocol-uninstall.js. 2. Implement logic to remove the .agent-state/ directory completely. 3. Update the local .gitignore to remove the .agent-state/ entry. 4. Execute 'git worktree prune' to clean up any orphaned headless worktrees. 5. Register the 'uninstall' subcommand in the unified router bin/team-agents-cowork.js.",
+  "out_of_scope": "Strictly NO implementation of the Worktree Manager (M2) or MCP Filesystem Proxy (M3) logic in this phase. NO modifications to active workflow/dispatch.json state semantics outside of this M1 progression.",
+  "allowed_files": [
+    "bin/team-agents-cowork.js",
+    "bin/agent-protocol-uninstall.js",
+    "tasks/v0.8.5-m1-uninstall/**"
+  ],
+  "allowed_artifacts": [
+    "tasks/v0.8.5-m1-uninstall/execution-result.json",
+    "tasks/v0.8-m1-uninstall-review-packet.json"
+  ],
+  "required_outputs": [
+    "bin/team-agents-cowork.js",
+    "bin/agent-protocol-uninstall.js",
+    "tasks/v0.8.5-m1-uninstall/execution-result.json",
+    "tasks/v0.8-m1-uninstall-review-packet.json"
+  ],
+  "stop_conditions": [
+    "Attempting to modify src/mcp-server/.",
+    "Executing without an approved contract."
+  ]
+}
