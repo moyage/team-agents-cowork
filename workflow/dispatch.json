@@ -1,13 +1,14 @@
 {
   "active_iteration": "V0.8",
-  "current_gate": "v0.8_readme_overhaul_execution_ready",
+  "current_gate": "v0.8_readme_overhaul_result_review_pending",
   "executor": "Hermes",
-  "reviewer_required": false,
+  "reviewer_required": true,
   "active_task": "v0.8-readme-overhaul",
   "stop_conditions": [
-    "Executing implementation without respecting allowed_files boundaries"
+    "Closing Phase without obtaining an Approved result review decision",
+    "Self-approving the result review"
   ],
-  "next_expected_artifact": "tasks/v0.8-readme-overhaul/execution-result.json",
+  "next_expected_artifact": "tasks/v0.8-readme-overhaul/result-review-decision.json",
   "governance_notes": [
     "Iteration V0.8 formally completed. DAG Workflow engine and router implemented."
   ]
