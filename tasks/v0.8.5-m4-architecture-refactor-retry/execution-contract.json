@@ -1,0 +1,28 @@
+{
+  "task_id": "v0.8.5-m4-architecture-refactor-retry",
+  "description": "Execute V0.8.5 M4 System-Level Architecture Refactor (Retry): Re-engage an external L3 AI Coding Environment (Opencode) to perform a comprehensive Code Review and Engineering Refactor of the 'headless worktree' and 'MCP context spoofing' implementation generated during V0.8 M4 to V0.8.5 M3, following the API quota replenishment.",
+  "scope": "1. Dispatch an Opencode CLI agent to analyze src/mcp-server/src/index.ts, worktree-manager.ts, and bin/agent-protocol-uninstall.js. 2. Instruct Opencode to refactor the code to industrial standards (robust TypeScript types, DRY principles, isolated boundary-check functions, elimination of monolithic spaghetti code in index.ts). 3. Hermes' ONLY role is to monitor Opencode's execution and output. 4. Ensure the build script (npx tsc) passes.",
+  "out_of_scope": "Strictly NO changes to business logic or state machine behavior. NO modifications to workflow/dispatch.json or iteration-state.json state semantics outside of this patch. Hermes (L2 Orchestrator) is strictly forbidden from using shell redirects, patch, or python to alter the source code directly.",
+  "allowed_files": [
+    "src/mcp-server/src/index.ts",
+    "src/mcp-server/src/worktree-manager.ts",
+    "bin/agent-protocol-uninstall.js",
+    "tasks/v0.8.5-m4-architecture-refactor-retry/**"
+  ],
+  "allowed_artifacts": [
+    "tasks/v0.8.5-m4-architecture-refactor-retry/execution-result.json",
+    "tasks/v0.8.5-m4-architecture-refactor-retry/result-review-packet.json",
+    "tasks/v0.8.5-m4-architecture-refactor-retry/contract-review-decision.json"
+  ],
+  "required_outputs": [
+    "src/mcp-server/src/index.ts",
+    "src/mcp-server/src/worktree-manager.ts",
+    "bin/agent-protocol-uninstall.js",
+    "tasks/v0.8.5-m4-architecture-refactor-retry/execution-result.json",
+    "tasks/v0.8.5-m4-architecture-refactor-retry/result-review-packet.json"
+  ],
+  "stop_conditions": [
+    "Hermes attempting to hand-write code patches via native tools.",
+    "Modifying business logic semantics."
+  ]
+}
