@@ -1,0 +1,25 @@
+{
+  "task_id": "v0.8.5-m3-filesystem-proxy",
+  "description": "Execute V0.8.5 M3: The MCP Filesystem Proxy (Context Spoofing). Expose new MCP tools (cowork_read_file, cowork_write_file) that actively redirect file operations to the isolated headless Git Worktree created in M2, enabling zero-collision team concurrency.",
+  "scope": "1. Modify src/mcp-server/src/index.ts. 2. Import the worktree-manager functions. 3. Add 'cowork_start_task', 'cowork_read_file', 'cowork_write_file', 'cowork_list_directory', and 'cowork_finish_task' tools. 4. Implement logic: When a task is started, create a worktree. Read/write/list operations should redirect to this worktree if a task is active. When finished, commit, push, and remove the worktree.",
+  "out_of_scope": "Strictly NO documentation updates (M4) in this phase. NO modifications to active workflow/dispatch.json state semantics outside of this M3 progression.",
+  "allowed_files": [
+    "src/mcp-server/src/index.ts",
+    "src/mcp-server/src/worktree-manager.ts",
+    "tasks/v0.8.5-m3-filesystem-proxy/**"
+  ],
+  "allowed_artifacts": [
+    "tasks/v0.8.5-m3-filesystem-proxy/execution-result.json",
+    "tasks/v0.8.5-m3-filesystem-proxy/result-review-packet.json",
+    "tasks/v0.8.5-m3-filesystem-proxy/contract-review-decision.json"
+  ],
+  "required_outputs": [
+    "src/mcp-server/src/index.ts",
+    "tasks/v0.8.5-m3-filesystem-proxy/execution-result.json",
+    "tasks/v0.8.5-m3-filesystem-proxy/result-review-packet.json"
+  ],
+  "stop_conditions": [
+    "Attempting to modify documentation files.",
+    "Executing without an approved contract."
+  ]
+}
