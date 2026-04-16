@@ -1,7 +1,7 @@
 {
   "current_iteration": "V0.8",
-  "phase": "Closure",
-  "status": "Completed",
+  "phase": "Hotfix-Docs-Bin-Commands",
+  "status": "In-Progress",
   "previous_iteration": "V0.7",
   "key_artifacts": [
     "tasks/v0.8-planning-q-and-a.md",
@@ -97,7 +97,8 @@
     "tasks/v0.8-readme-npm-cleanup/contract-review-decision.json",
     "tasks/v0.8-readme-npm-cleanup/execution-result.json",
     "tasks/v0.8-readme-npm-cleanup/result-review-packet.json",
-    "tasks/v0.8-readme-npm-cleanup/result-review-decision.json"
+    "tasks/v0.8-readme-npm-cleanup/result-review-decision.json",
+    "tasks/v0.8-hotfix-docs-bin-commands-contract.json"
   ],
   "carry_overs": [
     "State & Framework Physical Separation",

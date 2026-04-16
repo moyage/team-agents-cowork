@@ -1,0 +1,33 @@
+{
+  "task_id": "v0.8-hotfix-docs-bin-commands",
+  "description": "Execute V0.8 Hotfix: Fix the 404 Not Found error caused by the incorrect 'npx team-agents-cowork-init' command in the documentation, and correctly expose the MCP server as a global bin command ('agent-protocol-mcp') to replace the broken 'npm run mcp' instruction.",
+  "scope": "1. Replace 'npx team-agents-cowork-init' with 'agent-protocol-init' across READMEs and installation docs. 2. Add #!/usr/bin/env node to src/mcp-server/src/index.ts and expose it as 'agent-protocol-mcp' in package.json. 3. Update the 'npm run mcp' documentation instructions to instruct users to configure 'agent-protocol-mcp' in their MCP client (e.g. Cursor).",
+  "out_of_scope": "Strictly NO implementation of the Node.js DAG execution runner (V0.9). NO modifications to active workflow/dispatch.json state semantics outside of this patch progression.",
+  "allowed_files": [
+    "package.json",
+    "src/mcp-server/src/index.ts",
+    "README.md",
+    "README_zh-CN.md",
+    "documentation/EN/getting-started/installation.md",
+    "documentation/ZH/getting-started/installation.md",
+    "tasks/v0.8-hotfix-docs-bin-commands-contract.json",
+    "tasks/v0.8-hotfix-docs-bin-commands-result.json",
+    "tasks/v0.8-hotfix-docs-bin-commands-review.json"
+  ],
+  "allowed_artifacts": [
+    "tasks/v0.8-hotfix-docs-bin-commands-result.json",
+    "tasks/v0.8-hotfix-docs-bin-commands-review.json"
+  ],
+  "required_outputs": [
+    "package.json",
+    "README.md",
+    "README_zh-CN.md",
+    "documentation/EN/getting-started/installation.md",
+    "documentation/ZH/getting-started/installation.md",
+    "tasks/v0.8-hotfix-docs-bin-commands-result.json",
+    "tasks/v0.8-hotfix-docs-bin-commands-review.json"
+  ],
+  "stop_conditions": [
+    "Attempting to modify source code in src/ or bin/ beyond dependency and hashbang management."
+  ]
+}
