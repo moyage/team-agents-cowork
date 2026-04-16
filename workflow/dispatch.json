@@ -1,11 +1,14 @@
 {
   "active_iteration": "V0.8",
-  "current_gate": "v0.8_iteration_completed",
+  "current_gate": "v0.8_cli_architecture_contract_review_pending",
   "executor": "Hermes",
-  "reviewer_required": false,
-  "active_task": null,
-  "stop_conditions": [],
-  "next_expected_artifact": "tasks/v0.8-retrospective-note.md",
+  "reviewer_required": true,
+  "active_task": "v0.8-cli-architecture-refactor",
+  "stop_conditions": [
+    "Proceeding to execution without an approved Phase contract",
+    "Self-approving the Phase contract"
+  ],
+  "next_expected_artifact": "tasks/v0.8-cli-architecture-refactor-review.json",
   "governance_notes": [
     "Iteration V0.8 formally completed. DAG Workflow engine and router implemented."
   ]

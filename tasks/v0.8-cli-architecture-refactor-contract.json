@@ -1,0 +1,33 @@
+{
+  "task_id": "v0.8-cli-architecture-refactor",
+  "description": "Execute V0.8 CLI Architecture Refactor: Fix the fundamental design flaw in the CLI entry points. Instead of exposing multiple disconnected binaries (and creating duck-tape aliases that break NPX), expose a single unified binary named 'team-agents-cowork' that accepts subcommands ('init', 'mcp', 'review'). Update package.json and all documentation to reflect standard open-source CLI conventions (e.g., 'npx team-agents-cowork init').",
+  "scope": "1. Create bin/team-agents-cowork.js as a command router. 2. Update package.json to ONLY expose 'team-agents-cowork' in the bin object. 3. Rewrite all installation docs and READMEs to use 'npx team-agents-cowork init', 'team-agents-cowork mcp', and 'team-agents-cowork review'. 4. Remove the broken 'team-agents-cowork-init' and other disjointed bin aliases.",
+  "out_of_scope": "Strictly NO implementation of the Node.js DAG execution runner (V0.9). NO modifications to active workflow/dispatch.json state semantics outside of this patch progression.",
+  "allowed_files": [
+    "package.json",
+    "bin/team-agents-cowork.js",
+    "README.md",
+    "README_zh-CN.md",
+    "documentation/EN/getting-started/installation.md",
+    "documentation/ZH/getting-started/installation.md",
+    "documentation/EN/guides/team-collaboration.md",
+    "documentation/ZH/guides/team-collaboration.md",
+    "tasks/v0.8-cli-architecture-refactor-contract.json",
+    "tasks/v0.8-cli-architecture-refactor-result.json",
+    "tasks/v0.8-cli-architecture-refactor-review.json"
+  ],
+  "allowed_artifacts": [
+    "tasks/v0.8-cli-architecture-refactor-result.json",
+    "tasks/v0.8-cli-architecture-refactor-review.json"
+  ],
+  "required_outputs": [
+    "package.json",
+    "bin/team-agents-cowork.js",
+    "tasks/v0.8-cli-architecture-refactor-result.json",
+    "tasks/v0.8-cli-architecture-refactor-review.json"
+  ],
+  "stop_conditions": [
+    "Attempting to modify source code in src/ beyond the bin definitions.",
+    "Executing without an approved contract."
+  ]
+}
