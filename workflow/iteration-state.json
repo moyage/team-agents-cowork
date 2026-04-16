@@ -1,7 +1,7 @@
 {
   "current_iteration": "V0.8",
-  "phase": "Closure",
-  "status": "Completed",
+  "phase": "Hotfix-NPX-Command",
+  "status": "In-Progress",
   "previous_iteration": "V0.7",
   "key_artifacts": [
     "tasks/v0.8-planning-q-and-a.md",
@@ -100,7 +100,8 @@
     "tasks/v0.8-hotfix-docs-bin-commands-contract.json",
     "tasks/v0.8-hotfix-docs-bin-commands-review.json",
     "tasks/v0.8-hotfix-docs-bin-commands-result.json",
-    "tasks/v0.8-hotfix-docs-bin-commands-decision.json"
+    "tasks/v0.8-hotfix-docs-bin-commands-decision.json",
+    "tasks/v0.8-hotfix-npx-command-contract.json"
   ],
   "carry_overs": [
     "State & Framework Physical Separation",

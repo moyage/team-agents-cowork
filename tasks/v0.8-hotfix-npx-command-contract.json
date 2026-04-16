@@ -1,0 +1,28 @@
+{
+  "task_id": "v0.8-hotfix-npx-command",
+  "description": "Execute V0.8 Hotfix: Resolve the persistent 'npx team-agents-cowork-init' 404 error that team members are experiencing. Since the framework exposes the binary as 'agent-protocol-init' in package.json, invoking 'npx team-agents-cowork-init' causes NPM to search for a non-existent package. The fix is to add 'team-agents-cowork-init' as a bin alias mapping to 'bin/agent-protocol-init' in package.json, preventing users from needing to change their muscle-memory or copy-pasted commands.",
+  "scope": "1. Modify package.json to include 'team-agents-cowork-init' in the 'bin' object, mapping to the existing 'bin/agent-protocol-init' script. 2. Ensure documentation commands align with this alias if necessary. 3. Output updated package.json.",
+  "out_of_scope": "Strictly NO implementation of the Node.js DAG execution runner (V0.9). NO modifications to active workflow/dispatch.json state semantics outside of this patch progression.",
+  "allowed_files": [
+    "package.json",
+    "README.md",
+    "README_zh-CN.md",
+    "documentation/EN/getting-started/installation.md",
+    "documentation/ZH/getting-started/installation.md",
+    "tasks/v0.8-hotfix-npx-command-contract.json",
+    "tasks/v0.8-hotfix-npx-command-result.json",
+    "tasks/v0.8-hotfix-npx-command-review.json"
+  ],
+  "allowed_artifacts": [
+    "tasks/v0.8-hotfix-npx-command-result.json",
+    "tasks/v0.8-hotfix-npx-command-review.json"
+  ],
+  "required_outputs": [
+    "package.json",
+    "tasks/v0.8-hotfix-npx-command-result.json",
+    "tasks/v0.8-hotfix-npx-command-review.json"
+  ],
+  "stop_conditions": [
+    "Attempting to modify source code in src/ beyond the bin definitions."
+  ]
+}
