@@ -10,6 +10,12 @@ import * as path from "path";
 import { fileURLToPath } from "url";
 import { exec } from "child_process";
 import { promisify } from "util";
+import { createWorktree, commitAndPushWorktree, removeWorktree } from "./worktree-manager.js";
+
+// Global state to track if the connected Agent is currently scoped to a task worktree
+let activeTaskWorktreePath: string | null = null;
+let activeTaskId: string | null = null;
+
 
 const execAsync = promisify(exec);
 
@@ -46,6 +52,65 @@ const server = new Server(
 server.setRequestHandler(ListToolsRequestSchema, async () => {
   return {
     tools: [
+      {
+        {
+        name: "cowork_start_task",
+        description: "Claims a task and creates an isolated Git Worktree sandbox for it. All subsequent file operations will be transparently redirected to this sandbox.",
+        inputSchema: {
+          type: "object",
+          properties: {
+            task_id: { type: "string" },
+            base_branch: { type: "string", description: "Default is 'agent-sync'" }
+          },
+          required: ["task_id"]
+        }
+      },
+      {
+        name: "cowork_read_file",
+        description: "Read a file from the repository. If a task is active, it reads from the isolated worktree sandbox.",
+        inputSchema: {
+          type: "object",
+          properties: {
+            file_path: { type: "string", description: "Relative path to the file (e.g. src/app.js)" }
+          },
+          required: ["file_path"]
+        }
+      },
+      {
+        name: "cowork_write_file",
+        description: "Write content to a file. If a task is active, it writes to the isolated worktree sandbox.",
+        inputSchema: {
+          type: "object",
+          properties: {
+            file_path: { type: "string" },
+            content: { type: "string" }
+          },
+          required: ["file_path", "content"]
+        }
+      },
+      {
+        name: "cowork_list_directory",
+        description: "List directory contents. If a task is active, lists the isolated sandbox.",
+        inputSchema: {
+          type: "object",
+          properties: {
+            dir_path: { type: "string" }
+          },
+          required: ["dir_path"]
+        }
+      },
+      {
+        name: "cowork_finish_task",
+        description: "Commits the worktree sandbox, pushes to the remote branch, and optionally destroys the sandbox.",
+        inputSchema: {
+          type: "object",
+          properties: {
+            commit_message: { type: "string" },
+            destroy_worktree: { type: "boolean", description: "Whether to destroy the sandbox after pushing" }
+          },
+          required: ["commit_message"]
+        }
+      },
       {
         name: "get_iteration_state",
         description: "Read the current iteration state of the team-agents-cowork repository.",
@@ -101,6 +166,118 @@ server.setRequestHandler(ListToolsRequestSchema, async () => {
 });
 
 server.setRequestHandler(CallToolRequestSchema, async (request) => {
+  if (request.params.name === "cowork_start_task") {
+    try {
+      const args = request.params.arguments as any;
+      const projectRoot = process.env.PROJECT_ROOT || process.cwd();
+      
+      activeTaskWorktreePath = await createWorktree(projectRoot, args.task_id, args.base_branch);
+      activeTaskId = args.task_id;
+      
+      return {
+        content: [{ type: "text", text: `Task ${args.task_id} claimed. Worktree Sandbox created at ${activeTaskWorktreePath}. All cowork_* file tools are now physically redirected to this sandbox.` }]
+      };
+    } catch (error: any) {
+      return { content: [{ type: "text", text: `Error starting task sandbox: ${error.message}` }], isError: true };
+    }
+  }
+
+  if (request.params.name === "cowork_read_file") {
+    try {
+      const args = request.params.arguments as any;
+      const projectRoot = process.env.PROJECT_ROOT || process.cwd();
+      const targetBase = activeTaskWorktreePath ? activeTaskWorktreePath : projectRoot;
+      const targetPath = path.resolve(targetBase, args.file_path);
+      
+      // Robust Security boundary check ensuring path segment containment
+      const resolvedBase = path.resolve(targetBase);
+      if (!targetPath.startsWith(resolvedBase + path.sep) && targetPath !== resolvedBase) {
+        throw new Error("Path traversal blocked");
+      }
+      
+      const content = await fs.readFile(targetPath, "utf-8");
+      return {
+        content: [{ type: "text", text: content }]
+      };
+    } catch (error: any) {
+      return { content: [{ type: "text", text: `Error reading file: ${error.message}` }], isError: true };
+    }
+  }
+
+  if (request.params.name === "cowork_write_file") {
+    try {
+      const args = request.params.arguments as any;
+      const projectRoot = process.env.PROJECT_ROOT || process.cwd();
+      
+      if (!activeTaskWorktreePath) {
+        throw new Error("cowork_write_file requires an active task sandbox. Please call cowork_start_task first to prevent polluting the main repository.");
+      }
+      
+      const targetPath = path.resolve(activeTaskWorktreePath, args.file_path);
+      const resolvedBase = path.resolve(activeTaskWorktreePath);
+      if (!targetPath.startsWith(resolvedBase + path.sep) && targetPath !== resolvedBase) {
+        throw new Error("Path traversal blocked");
+      }
+      
+      await fs.mkdir(path.dirname(targetPath), { recursive: true });
+      await fs.writeFile(targetPath, args.content, "utf-8");
+      
+      return {
+        content: [{ type: "text", text: `Successfully wrote ${args.file_path} to isolated sandbox for task ${activeTaskId}.` }]
+      };
+    } catch (error: any) {
+      return { content: [{ type: "text", text: `Error writing file: ${error.message}` }], isError: true };
+    }
+  }
+
+  if (request.params.name === "cowork_list_directory") {
+    try {
+      const args = request.params.arguments as any;
+      const projectRoot = process.env.PROJECT_ROOT || process.cwd();
+      const targetBase = activeTaskWorktreePath ? activeTaskWorktreePath : projectRoot;
+      const targetPath = path.resolve(targetBase, args.dir_path);
+      
+      const resolvedBase = path.resolve(targetBase);
+      if (!targetPath.startsWith(resolvedBase + path.sep) && targetPath !== resolvedBase) {
+        throw new Error("Path traversal blocked");
+      }
+      
+      const items = await fs.readdir(targetPath);
+      return {
+        content: [{ type: "text", text: items.join('\n') }]
+      };
+    } catch (error: any) {
+      return { content: [{ type: "text", text: `Error listing directory: ${error.message}` }], isError: true };
+    }
+  }
+
+  if (request.params.name === "cowork_finish_task") {
+    try {
+      const args = request.params.arguments as any;
+      const projectRoot = process.env.PROJECT_ROOT || process.cwd();
+      
+      if (!activeTaskWorktreePath || !activeTaskId) {
+        throw new Error("No active task sandbox to finish.");
+      }
+      
+      await commitAndPushWorktree(activeTaskWorktreePath, args.commit_message);
+      
+      if (args.destroy_worktree !== false) {
+        await removeWorktree(projectRoot, activeTaskId);
+      }
+      
+      const finishedId = activeTaskId;
+      activeTaskWorktreePath = null;
+      activeTaskId = null;
+      
+      return {
+        content: [{ type: "text", text: `Task ${finishedId} finished. Changes committed and pushed to agent-sync. Sandbox context cleared.` }]
+      };
+    } catch (error: any) {
+      return { content: [{ type: "text", text: `Error finishing task sandbox: ${error.message}` }], isError: true };
+    }
+  }
+
   if (request.params.name === "verify_execution_compliance") {
     try {
       const args = request.params.arguments as any;
