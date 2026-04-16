@@ -1,0 +1,6 @@
+{
+  "target": "package.json, test_uninstall.sh, README.md, README_zh-CN.md, documentation/EN/core-concepts/dual-track-gating.md, documentation/ZH/core-concepts/dual-track-gating.md",
+  "complexity": "Medium (Documentation Overhaul and Test Scripting)",
+  "strategy": "Dispatch to Opencode CLI agent via 'opencode run' to ensure the documentation patches are robustly written and the test script correctly validates the 'uninstall' capability without violating SoD constraints.",
+  "reasoning": "While updating package.json is trivial, writing complex markdown documentation (including Mermaid diagrams for Headless Worktrees) and bash scripts natively via 'cat' violates the Strict Separation of Duties (SoD) protocol. Delegating to Opencode ensures high-quality open-source standard output while keeping the Orchestrator's context focused purely on governance and verification."
+}

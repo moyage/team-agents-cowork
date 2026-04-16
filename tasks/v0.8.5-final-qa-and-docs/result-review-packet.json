@@ -1,0 +1,12 @@
+{
+  "task_id": "v0.8.5-final-qa-and-docs",
+  "review_type": "post-execution-result-review",
+  "contract_path": "tasks/v0.8.5-final-qa-and-docs/execution-contract.json",
+  "result_path": "tasks/v0.8.5-final-qa-and-docs/execution-result.json",
+  "review_criteria": [
+    "Verify git show strictly matches the execution result artifact.",
+    "Verify that the Orchestrator successfully adhered to Separation of Duties (SoD) by refusing to hand-write code or documentation when the external Opencode AI environment timed out.",
+    "Verify NO implementation code (e.g., modifying src/ or package.json) or active state model semantic changes occurred outside of this patch progression."
+  ],
+  "expected_decision_output": "tasks/v0.8.5-final-qa-and-docs/result-review-decision.json"
+}
