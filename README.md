@@ -1,47 +1,74 @@
 # Team Agents Cowork
 
-![Version](https://img.shields.io/badge/version-v0.8--DocsPatch-blue.svg)
+![Version](https://img.shields.io/badge/version-v0.8-blue.svg)
 ![Status](https://img.shields.io/badge/status-active-success.svg)
 
-**Team Agents Cowork** is a mature, open-source standard: **A Multi-Agent / Multi-AI Coding Collaboration Framework for Personal and Team Domains**. 
+[**中文文档 (Chinese)**](./README_zh-CN.md) | [**English Documentation Portal**](./documentation/EN/README.md)
 
-Unlike rigid interceptors or heavy IDE-bound plugins, this framework prioritizes **Low Cognitive Load** and **Low Invasiveness**. It relies on a powerful **YAML DAG Engine** and pluggable adapters, never forcing IDE or Agent unification.
+**Team Agents Cowork** is an open-source, Protocol-First Multi-Agent Collaboration Framework for AI Coding. It elevates your repository into a zero-trust workspace by orchestrating heterogeneous AI coding tools (Cursor, Trae, Copilot) through a mathematical, file-based state machine.
 
-## The Conceptual Triumvirate
+---
 
-To achieve this, the framework is built upon three foundational pillars:
-1. **The Intent (Contract):** An `execution-contract.json` that defines mathematical boundaries.
-2. **The Flow (YAML DAG):** Custom `.yaml` files orchestrating dependencies and routing.
-3. **The Governance (Isolation):** Strict physical isolation of Executors (L2) and Gatekeepers (L3).
+## 🛑 The Problem: Why Traditional AI Agents Fail in Teams
 
-## 📖 Documentation Center / 文档中心
+Modern development relies heavily on AI coding environments. However, when scaled from a single developer to a team, critical failures emerge:
 
-Please select your preferred language to enter our GitBook-style Documentation Portal:
-请选择您的语言进入文档中心：
+1. **Agentic Sycophancy:** AI tools blindly agree with themselves and hallucinate success.
+2. **State Collision:** Multiple AI agents operating simultaneously overwrite each other's work.
+3. **Cognitive Load:** Reviewing endless, unstructured chat histories across different tools is unsustainable for human developers.
 
-- 🇬🇧 **[English Documentation Portal](documentation/EN/README.md)**
-- 🇨🇳 **[中文文档中心](documentation/ZH/README.md)**
+## 💡 The Solution: The Conceptual Triumvirate
 
-## The 17 Built-in Workflows (Powered by LLM Router)
+We do not force your team to unify under a single IDE or Agent. Instead, we enforce a framework built on three pillars:
 
-Our engine ships with 17 built-in workflows. Simply describe your intent, and the LLM Router dynamically executes the perfect pipeline:
+1. **The Intent (Contract):** An `execution-contract.json` that mathematically bounds what an AI is allowed to modify (e.g., `allowed_files`).
+2. **The Flow (YAML DAG Engine):** Custom `.yaml` workflows that orchestrate dependencies between AI tasks and deterministic Bash scripts.
+3. **The Governance (Isolation):** A strict L2/L3 Dual-Track Gating system. The AI writing the code (Executor) is physically barred from approving its own work. A separate Gatekeeper process audits the Git Diff against the Contract.
 
-| Workflow | Description |
-|---|---|
-| `assist` | General Q&A, debugging, exploration |
-| `fix-github-issue` | Classify issue → plan → implement → validate → PR → smart review |
-| `idea-to-pr` | Feature idea → plan → implement → validate → PR → 5 parallel reviews |
-| `plan-to-pr` | Execute existing plan → implement → validate → PR → review |
-| `architect` | Architectural sweep, complexity reduction, codebase health |
-| *(and 12 more...)* | See the Documentation Portal for the full catalog |
+---
 
-## Architecture: L2/L3 Dual-Track Gating
+## ⚡ Core Features
 
-We enforce strict governance. AI Executors (L2) are mathematically barred from approving their own work. All intents and implementations must pass through isolated Gatekeepers (L3).
+- **Low Cognitive Load:** The built-in LLM Router dynamically parses your natural language intent and triggers the correct YAML pipeline.
+- **Low Invasiveness:** Pluggable adapters. Keep using Cursor, Trae, or CLI agents.
+- **Dual-Tiered Team Sync:** Let your AI fail 50 times in your local `.agent-state/` sandbox. Only push the clean, Gatekeeper-approved code to the remote `agent-sync` branch.
+- **17 Built-in Workflows:** Ships with enterprise-grade DAGs out of the box (e.g., `idea-to-pr`, `smart-pr-review`, `test-loop-dag`).
+
+---
+
+## 🚀 Quickstart
+
+### 1. Global Installation
+```bash
+npm install -g team-agents-cowork
+```
+
+### 2. Project Initialization
+Inside your target project repository, run:
+```bash
+npx team-agents-cowork-init
+```
+*(This scaffolds the `.agent-state/` sandboxed local bus and generates your `registry.json` capabilities).*
+
+### 3. Connect Your AI
+Start the MCP Server to allow your local AI to read the active workflow state:
+```bash
+npm run mcp
+```
+
+### 4. Execute a Workflow
+Have your AI claim a contract, or trigger a background review automatically:
+```bash
+agent-protocol-review
+```
+
+---
+
+## 🏗️ Architecture Overview
 
 ```mermaid
 graph LR
-    A[Harness] --> B[YAML DAG Workflow]
+    A[Harness Adapter] --> B[YAML DAG Workflow]
     B --> C[LLM Router & Orchestrator]
     C --> D[L2 Execution Sandbox]
     D --> E[L3 Gatekeeper Evaluation]
@@ -50,3 +77,12 @@ graph LR
     classDef stage fill:#2D3748,stroke:#4A5568,stroke-width:2px,color:#fff;
     class A,B,C,D,E,F stage;
 ```
+
+---
+
+## 📚 Deep Dive Documentation
+
+For complete schemas, custom workflow authoring guides, and team setup instructions, visit the Documentation Center:
+
+- **[English Documentation Portal](./documentation/EN/README.md)**
+- **[中文文档中心 (Chinese Portal)](./documentation/ZH/README.md)**

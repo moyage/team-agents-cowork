@@ -1,0 +1,14 @@
+{
+  "task_id": "v0.8-readme-overhaul",
+  "review_type": "post-execution-result-review",
+  "contract_path": "tasks/v0.8-readme-overhaul/execution-contract.json",
+  "result_path": "tasks/v0.8-readme-overhaul/execution-result.json",
+  "review_criteria": [
+    "Verify git show strictly matches the execution result artifact.",
+    "Verify the new README.md (English) and README_zh-CN.md (Chinese) files were generated.",
+    "Verify the landing page effectively explains the background problem (Why AI Agents fail in teams), the Conceptual Triumvirate theory, core features, and provides concrete Quickstart CLI commands (npm install, cowork init, run mcp).",
+    "Verify Mermaid diagrams are present to illustrate the L2/L3 architecture.",
+    "Verify NO implementation code (e.g., modifying src/ or bin/) or active state model semantic changes (modifying workflow/dispatch.json) occurred outside of this README patch progression."
+  ],
+  "expected_decision_output": "tasks/v0.8-readme-overhaul/result-review-decision.json"
+}
