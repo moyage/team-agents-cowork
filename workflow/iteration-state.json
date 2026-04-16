@@ -1,7 +1,7 @@
 {
   "current_iteration": "V0.8",
-  "phase": "Hotfix-CLI-Architecture",
-  "status": "In-Progress",
+  "phase": "Closure",
+  "status": "Completed",
   "previous_iteration": "V0.7",
   "key_artifacts": [
     "tasks/v0.8-planning-q-and-a.md",
@@ -104,8 +104,10 @@
     "tasks/v0.8-hotfix-npx-command-contract.json",
     "tasks/v0.8-hotfix-npx-command-review.json",
     "tasks/v0.8-hotfix-npx-command-result.json",
-    "tasks/v0.8-hotfix-npx-command-decision.json",
-    "tasks/v0.8-cli-architecture-refactor-contract.json"
+    "tasks/v0.8-cli-architecture-refactor-contract.json",
+    "tasks/v0.8-cli-architecture-refactor-review.json",
+    "tasks/v0.8-cli-architecture-refactor-result.json",
+    "tasks/v0.8-cli-architecture-refactor-decision.json"
   ],
   "carry_overs": [
     "State & Framework Physical Separation",
