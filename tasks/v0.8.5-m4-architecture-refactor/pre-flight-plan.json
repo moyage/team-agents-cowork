@@ -1,0 +1,6 @@
+{
+  "target": "src/mcp-server/src/index.ts, src/mcp-server/src/worktree-manager.ts, bin/agent-protocol-uninstall.js",
+  "complexity": "High (Architectural Code Refactoring)",
+  "strategy": "Dispatch to Opencode CLI agent via 'opencode run' with strict refactoring guidelines.",
+  "reasoning": "The current codebase for the MCP Filesystem Proxy and Headless Worktree Manager was generated via rudimentary shell scripts (cat/echo). It contains monolithic functions, repeated string concatenations, and lacks rigorous TypeScript type safety and error-handling abstractions. Attempting to hand-patch this complex logic is a direct violation of the Separation of Duties (SoD) protocol and carries high command-injection and logic-drift risks. Delegating to a specialized Opencode agent ensures an industrial-grade, DRY, and type-safe refactoring while keeping the Orchestrator's context clean."
+}
