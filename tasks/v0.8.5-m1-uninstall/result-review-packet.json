@@ -1,0 +1,14 @@
+{
+  "task_id": "v0.8.5-m1-uninstall",
+  "review_type": "post-execution-result-review",
+  "contract_path": "tasks/v0.8.5-m1-uninstall/execution-contract.json",
+  "result_path": "tasks/v0.8.5-m1-uninstall/execution-result.json",
+  "review_criteria": [
+    "Verify git show strictly matches the execution result artifact.",
+    "Verify that bin/agent-protocol-uninstall.js was created and correctly removes .agent-state/, updates .gitignore, and prunes git worktrees.",
+    "Verify that bin/team-agents-cowork.js includes the 'uninstall' subcommand routing to the new script.",
+    "Verify NO implementation of the Worktree Manager (M2) or MCP Filesystem Proxy (M3) occurred in this commit.",
+    "Verify NO modifications to active workflow/dispatch.json or iteration-state.json state semantics occurred outside of this M1 patch progression."
+  ],
+  "expected_decision_output": "tasks/v0.8.5-m1-uninstall/result-review-decision.json"
+}

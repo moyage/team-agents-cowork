@@ -1,0 +1,15 @@
+{
+  "task_id": "v0.8.5-m1-uninstall",
+  "status": "completed",
+  "summary": "Executed V0.8.5 M1 Clean Uninstall capability. Created bin/agent-protocol-uninstall.js to recursively delete the .agent-state directory, remove it from .gitignore, and run git worktree prune for orphaned sandboxes. Integrated the command into the main CLI router (bin/team-agents-cowork.js) and exposed it via package.json. Verified execution logic meets requirements without straying into MCP runtime.",
+  "implementation_changes": [
+    "bin/agent-protocol-uninstall.js",
+    "bin/team-agents-cowork.js",
+    "package.json"
+  ],
+  "artifact_changes": [
+    "tasks/v0.8.5-m1-uninstall/execution-result.json",
+    "tasks/v0.8.5-m1-uninstall/result-review-packet.json"
+  ],
+  "closure_state_changes": []
+}

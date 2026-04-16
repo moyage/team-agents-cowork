@@ -8,6 +8,7 @@ const command = args[0];
 
 const commands = {
   'init': path.join(__dirname, 'agent-protocol-init'),
+  'uninstall': path.join(__dirname, 'agent-protocol-uninstall.js'),
   'review': path.join(__dirname, 'agent-protocol-review'),
   'mcp': path.join(__dirname, '../src/mcp-server/build/index.js')
 };
@@ -16,9 +17,10 @@ if (!command || !commands[command]) {
   console.error(`Usage: team-agents-cowork <command>
 
 Commands:
-  init    - Initialize the multi-agent workspace (.agent-state)
-  review  - Run the L3 Gatekeeper review daemon
-  mcp     - Start the MCP server
+  init       - Initialize the multi-agent workspace (.agent-state)
+  uninstall  - Cleanly remove framework files and prune orphaned worktrees
+  review     - Run the L3 Gatekeeper review daemon
+  mcp        - Start the MCP server
 
 Examples:
   npx team-agents-cowork init
