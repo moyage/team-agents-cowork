@@ -1,0 +1,6 @@
+{
+  "reviewer": "SubAgent-GPT-5.4-V0.8-Readme-Workflow-Enrichment-Final",
+  "decision": "Approved",
+  "timestamp": "2026-04-16T09:42:49+08:00",
+  "comments": "Approved based on direct evidence. git show --stat --name-status 4d136f8 matches the execution artifact exactly: README.md, README_zh-CN.md, tasks/v0.8-readme-workflow-enrichment/execution-result.json, and tasks/v0.8-readme-workflow-enrichment/result-review-packet.json only. README.md and README_zh-CN.md each explicitly list and explain all 17 built-in workflows in dedicated tables, and each includes a Custom Authoring section with a concrete YAML example (custom-deploy-pipeline) using bash nodes and is_isolated_reviewer. The workflow additions are bilingual peers with matching structure and coverage. No src/ or bin/ files were modified, no runtime execution implementation was added, and no active workflow/dispatch.json or iteration-state.json state semantics were changed in the reviewed commit." 
+}
