@@ -1,0 +1,25 @@
+{
+  "task_id": "v0.8-readme-workflow-enrichment",
+  "description": "Execute V0.8 Readme Workflow Enrichment: Fully detail all 17 built-in workflows (with their triggers/scenarios) and provide a comprehensive guide on custom workflow authoring for team collaboration. Ensure parity across both English and Chinese versions.",
+  "scope": "1. Update README.md and README_zh-CN.md. 2. Inject a full table/list of the 17 built-in workflows and their exact triggers. 3. Add a deep-dive section on Custom Workflow Authoring for collaborative scenarios. 4. Ensure complete bilingual parity.",
+  "out_of_scope": "Strictly NO modifications to src/mcp-server/, bin/, or active workflow/dispatch.json state semantics outside of this patch progression. NO implementation of runtime execution code. This is a documentation/presentation enhancement only.",
+  "allowed_files": [
+    "README.md",
+    "README_zh-CN.md",
+    "tasks/v0.8-readme-workflow-enrichment/**"
+  ],
+  "allowed_artifacts": [
+    "tasks/v0.8-readme-workflow-enrichment/execution-result.json",
+    "tasks/v0.8-readme-workflow-enrichment/result-review-packet.json"
+  ],
+  "required_outputs": [
+    "README.md",
+    "README_zh-CN.md",
+    "tasks/v0.8-readme-workflow-enrichment/execution-result.json",
+    "tasks/v0.8-readme-workflow-enrichment/result-review-packet.json"
+  ],
+  "stop_conditions": [
+    "Attempting to modify source code in src/ or bin/.",
+    "Executing without an approved contract."
+  ]
+}
