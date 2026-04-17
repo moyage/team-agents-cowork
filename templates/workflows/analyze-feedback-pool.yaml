@@ -1,0 +1,40 @@
+id: analyze-feedback-pool
+description: "Automated aggregation, deduplication, and severity grading of raw user feedback into actionable backlogs."
+use_when: "Team members have dropped raw, unstructured feedback files (chats, logs, complaints) into the `feedback_inbox/` directory."
+nodes:
+  - id: ingest_and_structure_feedback
+    type: ai_execution
+    description: "Read all raw files in feedback_inbox/, extract the core issues, ignore emotional venting, and structure them."
+    delegation_mode: blackbox
+    depends_on: []
+    task_spec:
+      task_id: "task_ingest_feedback"
+      role: "feedback-analyst"
+      owner: "l2-orchestrator"
+      status: "Assigned"
+      goal: "Parse all unstructured files in feedback_inbox/, extract bugs, friction points, and feature requests. Output to .agent-state/tasks/structured-feedback.json."
+      delegation_mode: "blackbox"
+      allowed_files: ["feedback_inbox/**", ".agent-state/tasks/structured-feedback.json"]
+      required_outputs: [".agent-state/tasks/structured-feedback.json"]
+      must_run_commands: []
+      forbidden_actions: ["modifying_core_code", "deleting_raw_feedback"]
+      acceptance_gate: "JSON file contains an array of structured feedback items with fields: raw_source, type, description, environment_hints."
+
+  - id: cross_reference_and_grade
+    type: ai_execution
+    description: "Compare structured feedback against CHANGELOG.md and README.md. Identify duplicates, known limitations, and assign severity (P0-P3)."
+    delegation_mode: orchestrated
+    capability_requirements: ["kimi-code-official"]
+    depends_on: ["ingest_and_structure_feedback"]
+    task_spec:
+      task_id: "task_grade_feedback"
+      role: "feedback-analyst"
+      owner: "l2-orchestrator"
+      status: "Assigned"
+      goal: "Analyze structured-feedback.json against framework docs. Grade severity (P0=Framework crash/isolation failure, P1=Workflow stuck, P2=UX/Docs, P3=Feature Request). Output markdown report."
+      delegation_mode: "orchestrated"
+      allowed_files: [".agent-state/tasks/structured-feedback.json", "CHANGELOG.md", "README.md", "documentation/**", "tasks/FEEDBACK_ANALYSIS_REPORT.md"]
+      required_outputs: ["tasks/FEEDBACK_ANALYSIS_REPORT.md"]
+      must_run_commands: []
+      forbidden_actions: ["modifying_core_code"]
+      acceptance_gate: "Markdown report generated with deduplicated items, severity ratings, and root cause hypotheses."
