@@ -1,6 +1,6 @@
 {
   "name": "team-agents-cowork-mcp",
-  "version": "0.8.8-patch-1",
+  "version": "0.8.9",
   "type": "module",
   "scripts": {
     "build": "tsc",
