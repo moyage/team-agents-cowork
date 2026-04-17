@@ -64,15 +64,14 @@ Dive deep into our comprehensive, Archon-level documentation to master the frame
 Ensure you have Node.js and npm installed.
 
 ```bash
-# Clone the repository
-git clone https://github.com/your-org/team-agents-cowork.git
-cd team-agents-cowork
+# Install globally
+npm install -g team-agents-cowork
 
-# Install dependencies
-npm install
+# Initialize workspace
+team-agents-cowork init
 
-# Run a sample Team Mode workflow
-npm run start:team --workflow=examples/basic-dag.yaml
+# Run a workflow
+team-agents-cowork run examples/basic-dag.yaml
 ```
 
 ## 🤝 Contributing

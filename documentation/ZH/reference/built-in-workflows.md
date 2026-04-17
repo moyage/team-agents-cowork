@@ -33,7 +33,7 @@
     validate_feature --> multi_agent_review
   ```
 - **使用范例 (Execution Example)**: 
-  `team-agents run idea-to-pr --prompt "实现一个支持 OAuth2 的用户登录模块"`
+  `team-agents-cowork run idea-to-pr --prompt "实现一个支持 OAuth2 的用户登录模块"`
 
 ### 1.2 `plan-to-pr`
 - **适用场景 (Use Cases)**: 根据已有的详细开发计划或 `SPEC_TEMPLATE.md` 执行代码实现并生成 PR。
@@ -50,7 +50,7 @@
     validate_implementation --> review_implementation
   ```
 - **使用范例 (Execution Example)**: 
-  `team-agents run plan-to-pr --prompt "根据 docs/api-spec.md 实现用户管理接口"`
+  `team-agents-cowork run plan-to-pr --prompt "根据 docs/api-spec.md 实现用户管理接口"`
 
 ### 1.3 `feature-development`
 - **适用场景 (Use Cases)**: 实现特定的、定义明确的功能，然后验证其正确性。
@@ -65,7 +65,7 @@
     build_feature --> validate_feature
   ```
 - **使用范例 (Execution Example)**: 
-  `team-agents run feature-development --prompt "为数据表格组件添加分页控制功能"`
+  `team-agents-cowork run feature-development --prompt "为数据表格组件添加分页控制功能"`
 
 ### 1.4 `ralph-dag`
 - **适用场景 (Use Cases)**: 围绕产品需求文档（PRD）进行批处理开发，逐个解析并实现所有用户故事（User Stories）。
@@ -80,7 +80,7 @@
     parse_prd --> implement_stories
   ```
 - **使用范例 (Execution Example)**: 
-  `team-agents run ralph-dag --prompt "解析并实现 docs/v2-prd.md 中的所有故事"`
+  `team-agents-cowork run ralph-dag --prompt "解析并实现 docs/v2-prd.md 中的所有故事"`
 
 ### 1.5 `architect`
 - **适用场景 (Use Cases)**: 对代码库进行高层级的架构审查，降低复杂度，提升整体代码健康度。
@@ -95,7 +95,7 @@
     sweep_architecture --> propose_refactors
   ```
 - **使用范例 (Execution Example)**: 
-  `team-agents run architect --prompt "检查并优化 src/services 目录的依赖注入架构"`
+  `team-agents-cowork run architect --prompt "检查并优化 src/services 目录的依赖注入架构"`
 
 ### 1.6 `piv-loop`
 - **适用场景 (Use Cases)**: 执行引导式的“计划-实现-验证”迭代循环，允许人工在迭代之间进行审查。
@@ -112,7 +112,7 @@
     implement_phase --> validate_phase
   ```
 - **使用范例 (Execution Example)**: 
-  `team-agents run piv-loop --prompt "逐步重构旧版订单处理系统的核心状态机"`
+  `team-agents-cowork run piv-loop --prompt "逐步重构旧版订单处理系统的核心状态机"`
 
 ---
 
@@ -133,7 +133,7 @@
     verify_types --> verify_tests
   ```
 - **使用范例 (Execution Example)**: 
-  `team-agents run refactor-safely --prompt "将 src/components 下的类组件重构为函数式组件"`
+  `team-agents-cowork run refactor-safely --prompt "将 src/components 下的类组件重构为函数式组件"`
 
 ### 2.2 `resolve-conflicts`
 - **适用场景 (Use Cases)**: 在 Git 合并或变基（Rebase）期间检测并解决代码冲突。
@@ -148,7 +148,7 @@
     analyze_conflicts --> resolve_conflicts
   ```
 - **使用范例 (Execution Example)**: 
-  `team-agents run resolve-conflicts --prompt "解决当前分支与 main 分支合并产生的冲突"`
+  `team-agents-cowork run resolve-conflicts --prompt "解决当前分支与 main 分支合并产生的冲突"`
 
 ### 2.3 `test-loop-dag`
 - **适用场景 (Use Cases)**: 通过迭代式循环不断修复测试套件中的错误，直到所有测试通过。
@@ -163,7 +163,7 @@
     analyze_failures --> apply_test_fixes
   ```
 - **使用范例 (Execution Example)**: 
-  `team-agents run test-loop-dag --prompt "修复认证模块的所有失败测试用例"`
+  `team-agents-cowork run test-loop-dag --prompt "修复认证模块的所有失败测试用例"`
 
 ---
 
@@ -182,7 +182,7 @@
     classify_pr --> targeted_review
   ```
 - **使用范例 (Execution Example)**: 
-  `team-agents run smart-pr-review --prompt "审查最近提交的支付网关更新 PR"`
+  `team-agents-cowork run smart-pr-review --prompt "审查最近提交的支付网关更新 PR"`
 
 ### 3.2 `comprehensive-pr-review`
 - **适用场景 (Use Cases)**: 进行极其深度的多维度 PR 审查（并行 5 个审稿人机制），并提出自动化修复建议。
@@ -199,7 +199,7 @@
     logic_review --> synthesize_reviews
   ```
 - **使用范例 (Execution Example)**: 
-  `team-agents run comprehensive-pr-review --prompt "全面审查重构系统底层缓存机制的 PR"`
+  `team-agents-cowork run comprehensive-pr-review --prompt "全面审查重构系统底层缓存机制的 PR"`
 
 ### 3.3 `validate-pr`
 - **适用场景 (Use Cases)**: 在合并 PR 前执行深入的测试流程，对比主分支与功能分支的状态。
@@ -214,7 +214,7 @@
     run_feature_tests --> analyze_test_results
   ```
 - **使用范例 (Execution Example)**: 
-  `team-agents run validate-pr --prompt "运行所有集成测试验证 #204 号 PR"`
+  `team-agents-cowork run validate-pr --prompt "运行所有集成测试验证 #204 号 PR"`
 
 ---
 
@@ -233,7 +233,7 @@
     gather_context --> draft_issue
   ```
 - **使用范例 (Execution Example)**: 
-  `team-agents run create-issue --prompt "用户报告在移动端结账页面出现偶尔的白屏问题"`
+  `team-agents-cowork run create-issue --prompt "用户报告在移动端结账页面出现偶尔的白屏问题"`
 
 ### 4.2 `fix-github-issue`
 - **适用场景 (Use Cases)**: 针对给定的 GitHub Issue 提供一条龙服务：分类、调查、实现、验证、代码审查及自我修复。
@@ -252,7 +252,7 @@
     validate_fix --> review_fix
   ```
 - **使用范例 (Execution Example)**: 
-  `team-agents run fix-github-issue --prompt "修复 #142 号 Issue 中的内存泄漏问题"`
+  `team-agents-cowork run fix-github-issue --prompt "修复 #142 号 Issue 中的内存泄漏问题"`
 
 ### 4.3 `issue-review-full`
 - **适用场景 (Use Cases)**: 针对极其关键的 GitHub Issue 提供彻底的修复，并额外附加安全性、性能等多维度的专门审查。
@@ -271,7 +271,7 @@
     implement_issue_fix --> performance_review
   ```
 - **使用范例 (Execution Example)**: 
-  `team-agents run issue-review-full --prompt "紧急调查并修复导致高并发时数据库死锁的 #89 工单"`
+  `team-agents-cowork run issue-review-full --prompt "紧急调查并修复导致高并发时数据库死锁的 #89 工单"`
 
 ---
 
@@ -287,7 +287,7 @@
     analyze_request["analyze_request (ai_execution)"]
   ```
 - **使用范例 (Execution Example)**: 
-  `team-agents run assist --prompt "请解释一下 src/utils/auth.js 中的 JWT 鉴权逻辑"`
+  `team-agents-cowork run assist --prompt "请解释一下 src/utils/auth.js 中的 JWT 鉴权逻辑"`
 
 ### 5.2 `custom-deploy-pipeline`
 - **适用场景 (Use Cases)**: 自定义的部署管线，用于将特定功能分支部署至 Staging（预发）环境并触发 QA 验证。
@@ -306,7 +306,7 @@
     deploy_to_staging --> qa_sign_off
   ```
 - **使用范例 (Execution Example)**: 
-  `team-agents run custom-deploy-pipeline --prompt "将当前分支构建并部署到 staging 环境"`
+  `team-agents-cowork run custom-deploy-pipeline --prompt "将当前分支构建并部署到 staging 环境"`
 
 ### 5.3 `remotion-generate`
 - **适用场景 (Use Cases)**: 结合 AI 能力生成或修改基于 Remotion 框架的视频合成代码（React 视频渲染）。
@@ -318,4 +318,4 @@
     generate_composition["generate_composition (ai_execution)"]
   ```
 - **使用范例 (Execution Example)**: 
-  `team-agents run remotion-generate --prompt "生成一个 15 秒长的产品特性介绍视频的 Remotion 组件"`
+  `team-agents-cowork run remotion-generate --prompt "生成一个 15 秒长的产品特性介绍视频的 Remotion 组件"`

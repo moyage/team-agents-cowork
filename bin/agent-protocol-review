@@ -134,8 +134,14 @@ try {
     const command = `${orchestratedAgent} run --task="${taskName}"`;
     execSync(command, { stdio: 'inherit' });
   } else {
-    console.log(`⏳ Spawning Blackbox validation via opencode-bridge...`);
-    const command = `opencode-bridge run ${taskName} --verify="${verifyCommand}"`;
+    const bridgeCmd = process.env.TEAM_AGENTS_BRIDGE_CMD || dispatch.bridge_command;
+    if (!bridgeCmd) {
+      console.error("❌ No TEAM_AGENTS_BRIDGE_CMD or dispatch.bridge_command defined. Cannot execute solo validation.");
+      console.error("Please configure a bridge command for your specific AI agent tool (e.g., Cursor, Claude Code) to handle reviews.");
+      process.exit(1);
+    }
+    console.log(`⏳ Spawning Blackbox validation via configured bridge: ${bridgeCmd}...`);
+    const command = `${bridgeCmd} run "${taskName}" --verify="${verifyCommand}"`;
     execSync(command, { stdio: 'inherit' });
   }
   console.log(`✅ SubAgent process completed. Decision artifact expected at ${expectedArtifact}`);

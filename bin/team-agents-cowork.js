@@ -10,6 +10,8 @@ const commands = {
   'init': path.join(__dirname, 'agent-protocol-init'),
   'uninstall': path.join(__dirname, 'agent-protocol-uninstall.js'),
   'review': path.join(__dirname, 'agent-protocol-review'),
+  'run': path.join(__dirname, 'agent-protocol-run.js'),
+  'doctor': path.join(__dirname, 'agent-protocol-doctor.js'),
   'mcp': path.join(__dirname, '../src/mcp-server/build/index.js')
 };
 
@@ -33,6 +35,8 @@ Commands:
   init       - Initialize the multi-agent workspace (.agent-state)
   uninstall  - Cleanly remove framework files and prune orphaned worktrees
   review     - Run the L3 Gatekeeper review daemon
+  run        - Execute a workflow from a YAML file
+  doctor     - Diagnose Node env, .agent-state, and MCP build status
   mcp        - Start the MCP server
 
 Options:
@@ -40,6 +44,8 @@ Options:
 
 Examples:
   npx team-agents-cowork init
+  team-agents-cowork run workflow.yaml
+  team-agents-cowork doctor
   team-agents-cowork mcp
   team-agents-cowork review --mode=solo`);
   process.exit(1);

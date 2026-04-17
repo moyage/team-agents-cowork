@@ -3,11 +3,18 @@
   "version": "0.8.9",
   "description": "Protocol-First Collaboration System",
   "main": "src/mcp-server/src/index.js",
+  "files": [
+    "bin",
+    "src",
+    "templates",
+    "adapters",
+    "schemas",
+    "profiles",
+    "documentation",
+    "examples"
+  ],
   "bin": {
-    "team-agents-cowork": "bin/team-agents-cowork.js",
-    "agent-protocol-init": "bin/agent-protocol-init",
-    "agent-protocol-uninstall": "bin/agent-protocol-uninstall.js",
-    "agent-protocol-review": "bin/agent-protocol-review"
+    "team-agents-cowork": "bin/team-agents-cowork.js"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",

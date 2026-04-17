@@ -61,10 +61,10 @@ workspace:
 
 ```bash
 # 场景 1: 我只打算在本地快速跑一个修 Typo 的流程，不需要拉无头沙箱
-team-agents run fix-typo.yaml --mode=solo
+team-agents-cowork run fix-typo.yaml --mode=solo
 
 # 场景 2: 团队扔给我一个史诗级重构任务（几百个文件的迁移），我必须开启沙箱防冲撞
-team-agents run epic-refactor.yaml --mode=team
+team-agents-cowork run epic-refactor.yaml --mode=team
 ```
 
 ### 运行时感知 (MCP API)

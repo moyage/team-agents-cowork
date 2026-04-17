@@ -63,6 +63,9 @@ const defaultRegistry = {
 };
 writeFileIfNotExists(path.join(agentStateDir, 'registry.json'), JSON.stringify(defaultRegistry, null, 2));
 
-// 4. Instruct user to update .gitignore
-console.log(`\x1b[33mRemember to add .agent-state/ to your .gitignore if you do not want state persisted to remote origin.\x1b[0m`);
-console.log(`\x1b[32mProtocol initialization complete. Environment registry scaffolded.\x1b[0m`);
+// 4. Instruct user to update .gitignore and next steps
+console.log(`\n\x1b[35m=== Next Steps ===\x1b[0m`);
+console.log(`\x1b[33m1. Ignore State:\x1b[0m Add '.agent-state/' to your .gitignore if you don't want task states tracked in Git.`);
+console.log(`\x1b[33m2. Start MCP:\x1b[0m Run 'team-agents-cowork mcp' to expose the context server to your IDE (Cursor, Claude Code, etc.).`);
+console.log(`\x1b[33m3. Run Workflow:\x1b[0m Start an orchestration pipeline using 'team-agents-cowork run <workflow>.yaml'.`);
+console.log(`\x1b[32mProtocol initialization complete. Workspace is ready.\x1b[0m\n`);

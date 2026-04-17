@@ -2,7 +2,7 @@
 
 ## 📌 项目定位 (Project Positioning)
 **Team Agents Cowork** 是一个**生产级、低侵入、协议优先**的多智能体 (Multi-Agent) 协同编程框架。
-它专为**个人开发者 (Solo)** 和**分布式团队 (Team)** 设计，旨在解决大语言模型 (LLM) 在面对复杂软件工程时产生的“幻觉”、“代码冲撞”和“上下文爆炸”等致命问题。本框架不强迫你更换你喜欢的 IDE (Cursor/Trae) 或底层 AI Coding 工具 (OpenCode/Kimi Code)，而是通过一套标准化的文件协议和物理沙箱，将它们无缝串联成流水线。
+它专为**个人开发者 (Solo)** 和**分布式团队 (Team)** 设计，旨在解决大语言模型 (LLM) 在面对复杂软件工程时产生的“幻觉”、“代码冲撞”和“上下文爆炸”等致命问题。本框架不强迫你更换你喜欢的 IDE 或底层 AI Coding 工具，而是通过一套标准化的文件协议和物理沙箱，将它们无缝串联成流水线（如 Cursor, Claude Code, Cline 等）。
 
 ## 💡 背景 (Background)
 随着 AI 编码助手的普及，我们遇到了新的瓶颈：
@@ -18,7 +18,7 @@
 - **L0 (基础设施)**: 底层大模型、物理机与原生 Git。
 - **L1 (基础协议)**: `.agent-state/` 目录下的 JSON/YAML 文件总线（摒弃繁重的数据库与常驻服务器）。
 - **L2 (执行编排 - Hermes)**: 主脑 Orchestrator。只负责制定计划、编写测试探针和分发任务，**绝对禁止**主脑自己手写业务代码。
-- **L3 (专业黑盒执行 - OpenCode/Kimi)**: 具体的 Coding 引擎。接收 L2 下发的 `TaskSpec`，在一个完全隔离的沙箱中疯狂输出。
+- **L3 (专业黑盒执行 - 任意 AI Agent)**: 具体的 Coding 引擎。接收 L2 下发的 `TaskSpec`，在一个完全隔离的沙箱中疯狂输出。
 - **L4 (验证与准入)**: 单点物理防幻觉探针（CLI 必须 `exit 0` 才算通过）。
 - **L5 (评估审查)**: 交叉视角的隔离审查网关。
 - **L6 (战略进化)**: Backlog 沉淀与动态协议演进。
@@ -39,8 +39,8 @@ graph TD
     L2 -->|2. 挂载物理探针| TaskSpec
     
     subgraph L3 执行引擎池 [L3 Executors]
-        OC[OpenCode 组合环境]
-        KC[Kimi Code 极速引擎]
+        OC[任意黑盒组合环境]
+        KC[任意极速 Coding 引擎]
         SA[SubAgent 隔离子体]
     end
     
@@ -66,17 +66,17 @@ graph TD
 - **使用范例**: 
   ```bash
   # 一个人周末在家爆肝开发
-  team-agents run feature.yaml --mode=solo
+  team-agents-cowork run feature.yaml --mode=solo
   
   # 接管远程团队分配的史诗级重构
-  team-agents run epic-refactor.yaml --mode=team
+  team-agents-cowork run epic-refactor.yaml --mode=team
   ```
 
 ### 2. 双态编排模式 (Dual-Mode Orchestration)
 - **背景与场景**: 有些任务（如写个单测）扔给自带环境的 AI 工具就能搞定；有些任务（如全库语法升级）需要绕过中间件，直接用纯粹的大模型算力硬砸。
 - **功能定义**: 在 DAG 节点中定义的执行力度控制。
 - **特性**:
-  - **黑盒模式 (Blackbox)**: 默认模式。L2 只提供验收标准，将控制权完全移交给像 OpenCode 这样的 L3 组合环境。成本低，省心。
+  - **黑盒模式 (Blackbox)**: 默认模式。L2 只提供验收标准，将控制权完全移交给像 Claude Code / Cursor 等 L3 组合环境。成本低，省心。
   - **自由编排 (Orchestrated)**: 夺回控制权模式。直接调度裸机算力（如 `kimi-code-official` 100 Tokens/s），或指定具有 `human-in-loop` 能力的界面端代理介入。
 - **使用范例 (YAML)**:
   ```yaml
@@ -95,7 +95,7 @@ graph TD
 - **使用范例**:
   ```bash
   # 触发内置的需求开发流水线
-  team-agents run idea-to-pr.yaml --mode=solo
+  team-agents-cowork run idea-to-pr.yaml --mode=solo
   ```
 - **工作流图解参考**: 请务必参阅 👉 **[18 个内置工作流白皮书 (含全流程 Mermaid 图解)](./documentation/ZH/reference/built-in-workflows.md)**。
 
@@ -118,7 +118,7 @@ graph TD
       capability_requirements: ["kimi-code-official"]
       depends_on: ["custom_build"]
   ```
-  运行它：`team-agents run my-custom-deploy.yaml`
+  运行它：`team-agents-cowork run my-custom-deploy.yaml`
 - **进阶指南**: 更多关于黑盒模式切换、节点参数和架构案例，请查阅 👉 **[自定义工作流实战指南](./documentation/ZH/guides/authoring-workflows.md)**。
 
 
@@ -131,7 +131,7 @@ graph TD
 | `schemas/` | L2 与 L3 通信的核心数据结构 (JSON Schema)，包括任务契约 `execution-contract.schema.json`。 |
 | `src/mcp-server/` | **物理隔离核心引擎**。它是一个 MCP (Model Context Protocol) 服务端，负责提供 `cowork_start_task` 工具，能在 Team 模式下动态为 Agent 生成无头沙箱 (Headless Worktrees) 并拦截读写。 |
 | `templates/workflows/` | 18 个开箱即用的 YAML DAG 内置工作流模板。 |
-| `examples/minimal-integration/` | 最小集成演示库。这是一个供新手测试 `team-agents init` 和观察 `.agent-state` 生成效果的空净沙箱。 |
+| `examples/minimal-integration/` | 最小集成演示库。这是一个供新手测试 `team-agents-cowork init` 和观察 `.agent-state` 生成效果的空净沙箱。 |
 
 ## 🏁 快速开始 (Quick Start)
 
@@ -144,16 +144,16 @@ npm install -g team-agents-cowork
 cd /my-app
 
 # 3. 初始化协议沙箱 (安全，不污染源码)
-team-agents init
+team-agents-cowork init
 ```
 
 ### 2. 常用命令
 | 命令 | 适用场景 | 执行动作 |
 |------|----------|----------|
-| `team-agents init` | 首次接入框架 | 生成 `.agent-state/`、`registry.json` 与 `dispatch.json`。 |
-| `team-agents run <yaml>` | 开启一段开发流 | 解析指定的 DAG 文件，拆分任务并路由给底层的 L3 引擎。 |
-| `team-agents review` | 触发卡点审查 | 当流水线处于 `review_pending` 状态时，唤醒独立审计 Agent（或人工）执行隔离判决。 |
-| `team-agents mcp` | 启动数据总线 | 暴露本机的 `team-agents-cowork-mcp` 服务，供外部 IDE (如 Cursor) 挂载读取当前任务态。 |
+| `team-agents-cowork init` | 首次接入框架 | 生成 `.agent-state/`、`registry.json` 与 `dispatch.json`。 |
+| `team-agents-cowork run <yaml>` | 开启一段开发流 | 解析指定的 DAG 文件，拆分任务并路由给底层的 L3 引擎。 |
+| `team-agents-cowork review` | 触发卡点审查 | 当流水线处于 `review_pending` 状态时，唤醒独立审计 Agent（或人工）执行隔离判决。 |
+| `team-agents-cowork mcp` | 启动数据总线 | 暴露本机的 `team-agents-cowork-mcp` 服务，供外部 IDE (如 Cursor) 挂载读取当前任务态。 |
 
 ## 📚 核心知识库 (Documentation Center)
 > 我们全面采用 **Chinese-First (中文优先)** 策略，大幅降低团队认知负荷。
