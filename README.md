@@ -1,130 +1,125 @@
 # Team Agents Cowork
 
-## 项目定位 (Project Positioning)
-**Team Agents Cowork** 是一个生产级的多智能体编排框架，专为可扩展、复杂的任务执行而设计。本项目立足于企业级应用场景，致力于通过高度自治的独立智能体 (Solo) 以及精心编排的团队集群 (Team)，实现高复杂任务的自动化分解与确定性执行。
+## 📌 项目定位 (Project Positioning)
+**Team Agents Cowork** 是一个**生产级、低侵入、协议优先**的多智能体 (Multi-Agent) 协同编程框架。
+它专为**个人开发者 (Solo)** 和**分布式团队 (Team)** 设计，旨在解决大语言模型 (LLM) 在面对复杂软件工程时产生的“幻觉”、“代码冲撞”和“上下文爆炸”等致命问题。本框架不强迫你更换你喜欢的 IDE (Cursor/Trae) 或底层 AI Coding 工具 (OpenCode/Kimi Code)，而是通过一套标准化的文件协议和物理沙箱，将它们无缝串联成流水线。
 
-## 背景 (Background)
-随着大模型能力的跃升，传统的单一智能体已无法满足长链路、高复杂度与高确定性要求的业务场景。由于缺乏规范的隔离机制和编排能力，多智能体系统容易陷入混乱、上下文丢失及状态不可控的问题。基于此背景，Team Agents Cowork 引入了严格的模块化设计和抽象层机制，以工程化的方式驯服并发挥大模型的集群潜力。
+## 💡 背景 (Background)
+随着 AI 编码助手的普及，我们遇到了新的瓶颈：
+- **幻觉与盲目自信**：AI 经常宣称“任务已完成”，但实际上代码连编译都过不了（Agentic Sycophancy）。
+- **并发灾难**：让多个 AI 在同一个本地目录同时写代码，会导致 Git 锁死和 IDE 索引崩溃（Fake Concurrency）。
+- **职责混淆**：既写代码又当裁判的 AI，永远测不出自己的漏洞。
 
-## 理论范式 (Theoretical Paradigm - Harness Engineering L0-L6)
-为了管理多智能体系统的复杂性，框架引入了严谨的 **L0-L6 驾驭工程 (Harness Engineering)** 分层架构。这确保了从底层模型调用到高层战略评估的清晰职责分离：
+为此，我们开发了 Team Agents Cowork。它引入了物理级的沙箱隔离、双态的调度引擎和极其严苛的审计网关。
 
-- **L0 基础设施**: 计算资源、基础大语言模型 (LLMs) 和运行环境。
-- **L1 基础**: 状态管理、通信协议和跨节点记忆层。
-- **L2 节点智能体**: 原子级的工作者，即能够独立运行、能力聚焦的高级子智能体 (Solo)。
-- **L3 团队编排**: 框架的核心大脑。控制路由分发、任务 DAG 分解和智能体间的协作。
-- **L4 驾驭工程**: 智能体的标准化接入控制。包含工具注册表、上下文边界与动态提示词注入矩阵。
-- **L5 评估**: 内置指标监控、全链路追踪和自动化的质量保证 (QA)。
-- **L6 战略**: 元学习、全局目标对齐与系统自进化。
+## 🏛️ 理论范式 (Theoretical Paradigm)
+本框架严格遵循 [Curvature Labs] 的 **Harness Engineering (驾驭工程) L0-L6 架构**：
 
-## 架构 (Architecture)
-通过严格的 L0-L6 分层机制确保职责分离和系统高可靠性：
+- **L0 (基础设施)**: 底层大模型、物理机与原生 Git。
+- **L1 (基础协议)**: `.agent-state/` 目录下的 JSON/YAML 文件总线（摒弃繁重的数据库与常驻服务器）。
+- **L2 (执行编排 - Hermes)**: 主脑 Orchestrator。只负责制定计划、编写测试探针和分发任务，**绝对禁止**主脑自己手写业务代码。
+- **L3 (专业黑盒执行 - OpenCode/Kimi)**: 具体的 Coding 引擎。接收 L2 下发的 `TaskSpec`，在一个完全隔离的沙箱中疯狂输出。
+- **L4 (验证与准入)**: 单点物理防幻觉探针（CLI 必须 `exit 0` 才算通过）。
+- **L5 (评估审查)**: 交叉视角的隔离审查网关。
+- **L6 (战略进化)**: Backlog 沉淀与动态协议演进。
+
+## ⚙️ 系统架构 (Architecture)
+L2 主脑与 L3 执行层通过物理工作区进行完全隔离与协作。
 
 ```mermaid
 graph TD
-    L6[L6: 战略与元优化] --> L5
-    L5[L5: 评估与指标] --> L4
-    L4[L4: 驾驭工程 - 工具、上下文、提示词] --> L3
-    L3[L3: 团队编排 - 双模式、DAG 流程] --> L2
-    L2[L2: 节点智能体 - Solo/子智能体] --> L1
-    L1[L1: 基础 - 记忆、协议] --> L0
-    L0[L0: 基础设施 - LLMs、环境]
+    User([人类开发者]) -->|发起任务| L2(L2 Orchestrator - Hermes主脑)
+    
+    subgraph 物理隔离协议总线 [物理层: .agent-state/]
+        DAG[YAML DAG 任务契约]
+        TaskSpec[标准 TaskSpec (需求+测试探针)]
+    end
+    
+    L2 -->|1. 拆解生成| DAG
+    L2 -->|2. 挂载物理探针| TaskSpec
+    
+    subgraph L3 执行引擎池 [L3 Executors]
+        OC[OpenCode 组合环境]
+        KC[Kimi Code 极速引擎]
+        SA[SubAgent 隔离子体]
+    end
+    
+    TaskSpec -->|3. 路由分发| L3
+    
+    subgraph 沙箱层 (Sandboxes)
+        Main[主工作区 (Solo 并发态)]
+        WT[Headless Worktree (Team 隔离态)]
+    end
+    
+    L3 -->|4. 物理读写| 沙箱层
+    沙箱层 -->|5. 探针验证返回| L2
 ```
 
-## 主要功能 (Main Features)
+## 🚀 主要功能深度剖析 (Core Features)
 
-### 1. 双模式编排 (Dual-Mode Orchestration)
-**背景**: 不同的任务在探索性和确定性之间有不同的权衡要求。
-**场景**: 简单的开放式问答、代码探索等适合黑盒独立执行；而复杂的软件研发流程、审核流水线则需要严格的图结构流程。
-**定义**: 系统原生支持并可动态路由的两种任务编排模式：独立黑盒模式 (`blackbox`) 与编排团队模式 (`orchestrated`)。
-**特性**:
-- **独立模式 (Solo/Blackbox)**: 针对低结构化开销任务，将目标委托给高能力的单一智能体闭环执行。具有高探索性和低配置开销的优点。
-- **团队模式 (Team/Orchestrated)**: 针对高确定性多步操作，将任务分解为有向无环图 (DAG)，每个节点由专业化智能体处理。支持并行执行、故障隔离和确定性校验。
-**使用范例**:
-- 独立模式：分析日志文件并找出错误根本原因。
-- 团队模式：从需求分析 -> 架构设计 -> 代码开发 -> 测试审核的全链路开发流水线。
+### 1. 个人域/团队域 工作区模式切换 (Solo / Team Workspace Mode)
+- **背景与场景**: 一个人在本地开发时，希望最快的反馈循环，不希望代码被推来推去；但团队远程协作时，必须防止张三的 Agent 和李四的 Agent 修改同一个文件引发冲突。
+- **功能定义**: 框架级别的运行时形态切换。
+- **特性**:
+  - **个人域 (Solo)**: 资源共享。所有并发 Agent 在同一本地根目录下作业，依靠文件锁防冲撞。速度极快。
+  - **团队域 (Team)**: 零信任隔离。利用 `MCP Headless Worktrees` 技术，为每一个远端分配的任务动态克隆隐藏的 Git 工作树，互不干扰，完成审查后再合入主线。
+- **使用范例**: 
+  ```bash
+  # 一个人周末在家爆肝开发
+  team-agents run feature.yaml --mode=solo
+  
+  # 接管远程团队分配的史诗级重构
+  team-agents run epic-refactor.yaml --mode=team
+  ```
 
-```mermaid
-flowchart LR
-    Task[输入任务] --> Router{L3 路由器}
-    Router -- 低复杂度/开放性 --> Solo[独立模式: 黑盒 L2 智能体]
-    Router -- 高复杂度/确定性 --> Team[团队模式: 编排 DAG 引擎]
-    Solo --> Output[结果]
-    Team --> NodeA[L2 需求专家]
-    Team --> NodeB[L2 编码专家]
-    NodeA --> NodeC[L2 审核员]
-    NodeB --> NodeC
-    NodeC --> Output
-```
+### 2. 双态编排模式 (Dual-Mode Orchestration)
+- **背景与场景**: 有些任务（如写个单测）扔给自带环境的 AI 工具就能搞定；有些任务（如全库语法升级）需要绕过中间件，直接用纯粹的大模型算力硬砸。
+- **功能定义**: 在 DAG 节点中定义的执行力度控制。
+- **特性**:
+  - **黑盒模式 (Blackbox)**: 默认模式。L2 只提供验收标准，将控制权完全移交给像 OpenCode 这样的 L3 组合环境。成本低，省心。
+  - **自由编排 (Orchestrated)**: 夺回控制权模式。直接调度裸机算力（如 `kimi-code-official` 100 Tokens/s），或指定具有 `human-in-loop` 能力的界面端代理介入。
+- **使用范例 (YAML)**:
+  ```yaml
+  delegation_mode: orchestrated
+  capability_requirements: ["kimi-code-official"]
+  ```
 
-### 2. Solo/Team 工作区切换 (Solo/Team Workspace Switch)
-**背景**: 开发者在本地环境调试和在集群环境执行时面临不同的状态管理需求。
-**场景**: 本地调试时需要多并发共享上下文，而团队远程部署时需要绝对的任务隔离。
-**定义**: 灵活的并发与状态隔离机制，支持在本地并发 (Local Concurrent) 与远程隔离 (Remote Isolated) 之间无缝切换。
-**特性**:
-- 一键切换 CLI 参数覆盖配置。
-- 动态上下文隔离机制，防止状态污染。
-**使用范例**:
+### 3. 内置工作流 vs 自定义工作流
+- **背景与场景**: 80% 的日常开发（如需求到PR、修Bug、写测试）是标准化的；但 20% 的硬核场景（如企业特定的灰度发布验证）是独一无二的。
+- **特性**:
+  - **18个内置流**: 开箱即用。详见 [内置工作流全景图](./documentation/ZH/reference/built-in-workflows.md)。
+  - **自定义流**: 支持在 `.agent-state/workflows/` 下自由拼装 Bash 脚本、黑盒 Agent 与人机交互节点。详见 [自定义工作流设计指南](./documentation/ZH/guides/authoring-workflows.md)。
+
+## 🏁 快速开始 (Quick Start)
+
+### 1. 安装与初始化
 ```bash
-# 团队远程隔离模式执行
-npm run execute -- --workspace-mode=remote-isolated
+# 1. 全局安装 CLI
+npm install -g team-agents-cowork
+
+# 2. 进入你的业务项目根目录
+cd /my-app
+
+# 3. 初始化协议沙箱 (安全，不污染源码)
+team-agents init
 ```
 
-### 3. 内置与自定义工作流 (Built-in/Custom Workflows)
-**背景**: 快速上手与高度定制化的双重需求。
-**场景**: 新用户开箱即用，高级用户深度定制。
-**定义**: 提供 18 种生产级内置业务工作流模板，同时支持用户基于 YAML 语法编写并注入自定义的 DAG 工作流。
-**特性**:
-- 声明式的 YAML 语法描述 DAG。
-- 热重载的自定义工作流注入矩阵。
-**使用范例**:
-调用内置的 API 开发工作流，或通过指定 `custom-workflow.yaml` 加载特有流水线。
+### 2. 常用命令
+| 命令 | 适用场景 | 执行动作 |
+|------|----------|----------|
+| `team-agents init` | 首次接入框架 | 生成 `.agent-state/`、`registry.json` 与 `dispatch.json`。 |
+| `team-agents run <yaml>` | 开启一段开发流 | 解析指定的 DAG 文件，拆分任务并路由给底层的 L3 引擎。 |
+| `team-agents review` | 触发卡点审查 | 当流水线处于 `review_pending` 状态时，唤醒独立审计 Agent（或人工）执行隔离判决。 |
+| `team-agents mcp` | 启动数据总线 | 暴露本机的 `team-agents-cowork-mcp` 服务，供外部 IDE (如 Cursor) 挂载读取当前任务态。 |
 
-## 快速开始 (Quick Start)
+## 📚 核心知识库 (Documentation Center)
+> 我们全面采用 **Chinese-First (中文优先)** 策略，大幅降低团队认知负荷。
 
-### 安装步骤
-请确保您已安装 Node.js (v18+) 和 npm。
-
-```bash
-# 1. 克隆仓库
-git clone https://github.com/your-org/team-agents-cowork.git
-cd team-agents-cowork
-
-# 2. 安装依赖
-npm install
-
-# 3. 初始化配置
-npm run setup
-```
-
-### 可用命令与执行场景
-```bash
-# 执行独立模式探针测试
-npm run start:solo -- --task="分析 data/logs.txt 发现异常"
-
-# 运行团队编排工作流
-npm run start:team -- --workflow=examples/basic-dag.yaml
-
-# 启动并切换至远程隔离工作区模式
-npm run start:team -- --workspace-mode=remote-isolated
-```
-
-## 场景 (Scenarios)
-- **自动化软件工程**: 需求拆解、代码生成、自动化单元测试与代码审查。
-- **深度数据分析**: 从数据抓取、清洗、特征提取到最终报告生成的全自动化流水线。
-- **智能化运维 (AIOps)**: 日志异常检测、根因分析以及故障自动修复提案生成。
-- **研究与知识图谱构建**: 海量文献检索、信息抽取、知识关联建立和观点总结。
-
-## 使用范例 (Usage Examples)
-**范例 1：使用自定义团队工作流构建微服务**
-1. 编写 `microservice-dag.yaml`，定义架构师、后端开发和测试智能体的依赖关系。
-2. 运行 `npm run start:team -- --workflow=microservice-dag.yaml`。
-3. 系统自动分配任务，架构师完成接口设计后，并行触发后端开发，最后汇总至测试智能体验收。
-
-**范例 2：利用 Solo 模式进行本地代码重构**
-1. 切换至 `local-concurrent` 工作区模式。
-2. 运行 `npm run start:solo -- --task="将 src/utils 下的模块重构为 TypeScript"`。
-3. 智能体将在本地工作区直接进行代码读取、修改和类型检查，快速返回结果。
+- 📖 **[18 个内置工作流白皮书 (Built-in Workflows)](./documentation/ZH/reference/built-in-workflows.md)**: 所有模板的适用场景、Mermaid 图解与触发条件。
+- 🛠️ **[自定义工作流实战指南 (Authoring Workflows)](./documentation/ZH/guides/authoring-workflows.md)**: 手把手教你编写复杂的混合协同 DAG。
+- 🧠 **[双态编排核心概念 (Dual-Mode Orchestration)](./documentation/ZH/core-concepts/dual-mode-orchestration.md)**: 彻底搞懂 Blackbox 与 Orchestrated 的权衡。
+- 🏢 **[工作区模式核心概念 (Workspace Modes)](./documentation/ZH/core-concepts/workspace-modes.md)**: 详解 Solo 与 Team 模式下的物理隔离沙箱原理。
+- ⚖️ **[系统治理与职责分离 (Governance & SoD)](./documentation/ZH/core-concepts/governance-protocols.md)**: 防幻觉与 L2/L3 黑盒切割法则。
 
 ---
-> 欲了解更深度的 Archon 级别机制说明，请查阅 `documentation/ZH/` 目录下的相关白皮书和核心概念。
+*English users: Please refer to [README_EN.md](./README_EN.md) and the `documentation/EN/` directory for translated specifications.*

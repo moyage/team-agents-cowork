@@ -1,30 +1,20 @@
-# 核心概念 (Core Concepts)
+# 核心概念与理论架构 (Core Concepts)
 
-欢迎阅读 Team Agents Cowork 核心概念白皮书库。本章节是理解整个框架 L0-L6 驾驭工程范式与底层机制的理论基石，提供 Archon 级别的深度剖析。
+要真正发挥多智能体框架的威力，理解其背后的运转哲学至关重要。本目录收录了构成 Team Agents Cowork 基石的五大白皮书。
 
-我们摒弃了黑盒式的堆叠设计，通过严谨的架构工程和理论推演，打造出具有确定性、可解释和高扩展性的多智能体协同系统。
+## 目录索引
 
-## 目录与导读
+### 1. [双态编排模式 (Dual-Mode Orchestration)](./dual-mode-orchestration.md)
+**必读！** 解释了 L2 调度层如何根据任务复杂度，在“黑盒自治 (Blackbox - 把控制权交给像 OpenCode 这样的集成环境)”与“自由编排 (Orchestrated - 绕过集成环境，直接调度原生算力如 Kimi Code)”之间进行切换的艺术。
 
-本章节涵盖以下深度主题白皮书：
+### 2. [工作区物理模式 (Workspace Modes - Solo vs Team)](./workspace-modes.md)
+**必读！** 剖析了个人独立开发 (Solo) 与远程团队协作 (Team) 时的物理差异。详细图解了 Team 模式下独创的 `MCP Headless Worktree` (无头 Git 沙箱) 是如何解决多个 Agent 在同一个代码库里并发写入导致的灾难性锁死问题的。
 
-- **[双轨网关机制 (dual-track-gating.md)](./dual-track-gating.md)**
-  解析系统如何根据输入复杂度动态在不同的路由轨道上进行智能分发。
+### 3. [系统治理与防幻觉协议 (Governance Protocols)](./governance-protocols.md)
+阐述了“智能体谄媚 (Agentic Sycophancy)”的危害，以及我们是如何通过强制物理探针验证（必须 Exit 0）和严格的 L2/L3 职责分离来构建不可穿透的审查网关的。
 
-- **[双模式编排 (dual-mode-orchestration.md)](./dual-mode-orchestration.md)**
-  深度剖析系统的双重编排模式：Solo (黑盒独立执行) 与 Team (L3 DAG编排执行)。讲解其背景、定义、特性差异及应用场景。
+### 4. [双轨审查制 (Dual-Track Gating)](./dual-track-gating.md)
+说明了在 DAG 流水线中，代码生成与代码审计是如何在数学和物理层面上被强行切分给不同权限的智能体的。
 
-- **[工作区模式切换 (workspace-modes.md)](./workspace-modes.md)**
-  探讨单人并发 (Local Concurrent) 与团队远程隔离 (Remote Isolated) 的状态管理机制，解析底层配置覆盖与文件系统级别的状态隔离防护。
-
-- **[YAML DAG 引擎 (yaml-dag-engine.md)](./yaml-dag-engine.md)**
-  详细介绍确定性任务编排的核心——YAML DAG（有向无环图）引擎。解析拓扑排序、依赖解析及并行执行机制。
-
-- **[系统治理协议 (governance-protocols.md)](./governance-protocols.md)**
-  探讨 L2 节点与 L3 编排器之间的物理防线与边界隔离原则，以及如何通过治理协议防止多智能体系统失控。
-
-- **[概念三位一体 (the-triumvirate.md)](./the-triumvirate.md)**
-  宏观阐述“合约 (Contracts)、工作流 (Workflows)、治理 (Governance)”三大支柱如何支撑起高可用的智能体生态系统。
-
-## 建议阅读路径
-建议先阅读**双模式编排**与**YAML DAG 引擎**以建立对系统运行机制的直观理解，随后可深入研读**治理协议**与**工作区模式切换**，掌握企业级应用所需的安全、隔离与状态控制知识。
+### 5. [YAML DAG 引擎 (YAML DAG Engine)](./yaml-dag-engine.md)
+解析了我们为何放弃复杂的代码态控制流，转而使用声明式、人类可读的 YAML 有向无环图来定义整个项目的生命周期。

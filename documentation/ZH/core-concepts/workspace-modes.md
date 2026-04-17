@@ -1,42 +1,81 @@
-# Solo/Team 工作区模式切换 (Solo/Team Workspace Mode Switch)
+# 个人域/团队域 (Solo/Team) 工作区切换白皮书
 
-## 1. 背景
-随着智能体应用场景的扩展，多智能体协同运行的物理环境管理成为了一个重要挑战。
-在单机本地开发时，开发者希望快速拉起智能体并直接与自己的开发环境并发交互，以观察结果并进行干预；但在云端部署或者集群化执行时，绝对的文件隔离、环境变量隔离与状态隔离则成了系统的安全红线。
-如果混用这两种环境，极易导致状态污染、资源竞争乃至严重的越权访问漏洞。
+## 背景与场景 (Background)
+如果你是一位经验丰富的开发者，你或许曾体会过这样的崩溃：
+> “我的 Agent 正在分析项目结构，试图改写几百个 TypeScript 文件的导出路径。同时，我正在 Cursor 里看另一个模块的定义。突然，底层的 Agent 直接把文件覆盖了，不仅让我的 IDE 报错死锁，还在后台触发了构建脚本的一堆警告。更可怕的是，这还没完，另一个后台 Agent 突然冒出来尝试执行 `git checkout`……”
 
-## 2. 模式定义与差异
-Team Agents Cowork 在底层抽象了 Workspace Manager（工作区管理器），提供无缝的模式切换：
+这就是所谓的 **“并发灾难 (Fake Concurrency)”**。多智能体协作框架如果不引入极严苛的物理隔离，就只能让 AI 排排坐单线程作业。
 
-### 2.1 本地并发模式 (Local Concurrent)
-- **机制**: 多个智能体共享同一个基准运行目录，直接在物理宿主机的目录空间进行读写。
-- **特性**: 上下文实时共享，极高的读写效率。适合单人开发者 (Solo) 进行辅助编程或探索。
-- **风险**: 由于缺乏严格的写隔离，并发操作可能引发竞态条件（如两个智能体同时修改同一个文件）。
+但另一方面，如果我们只是周末自己在家里做个全栈项目，任何任务都在云端拉一个新容器，再拉分支推代码，就会变成 **“过度工程 (Over-engineering)”**。
 
-### 2.2 团队远程隔离模式 (Remote Isolated)
-- **机制**: 在执行任务前，为每个编排任务或者工作流节点动态克隆/挂载独立的沙箱化工作区。
-- **特性**: 状态绝对隔离 (State Isolation)。A 智能体的操作不会污染 B 智能体的工作区，直到任务在 L3 层经过显式的状态合并 (State Sync)。
-- **应用**: L3 团队模式的标准云端运行配置。确保持续集成 (CI) 等自动化流程的高度一致性与安全性。
+因此，**“工作区模式切换 (Workspace Modes)”** 旨在让你本地的开发效率（个人域）与大规模协作时的零容忍隔离（团队域）之间达成完美的动态平衡。
 
-## 3. CLI 配置与覆盖 (Overrides)
-框架允许通过统一的 CLI 参数机制对默认的工作区模式进行热切换，满足不同阶段的调试需求。
+## 功能定义 (Definition)
+工作区模式是 `team-agents-cowork` 在运行时级别定义的一种沙箱形态开关：
+- **`--mode=solo` (个人域)**
+- **`--mode=team` (团队域)**
 
-**切换到本地并发模式 (默认适用 Solo):**
-```bash
-npm run execute -- --workspace-mode=local-concurrent
+通过修改全局配置文件（或 CLI 传参），主脑 L2 会自动判断在遇到复杂的 `orchestrated` 并发任务时，应该采用怎样的物理路径欺骗与同步策略。
+
+## 深度剖析与特性 (Features)
+
+### A. 【个人域】 (`--mode=solo`)
+- **定位**: “同态共生”模式。所有 Agent 都在当前的实际物理路径中写代码。
+- **适用场景**:
+  - 本机单人极速迭代。
+  - 需要在 Cursor 等 IDE 侧一边看 Agent 写，一边自己补充。
+  - 使用了自带并发控制或文件锁的黑盒组合工具（如 OpenCode）。
+- **工作机制**:
+  - L2 调度层接收到任务契约时，直接将当前的 `projectRoot` 作为活动工作区传给所有 L3 执行引擎。
+  - 依赖本地操作系统的文件读写锁与 Git 的原生 `index.lock` 来阻止小概率的冲撞。
+- **优势**: 零启动耗时，所见即所得。所有的改动立刻反映在你当前的编辑器中。
+
+### B. 【团队域】 (`--mode=team`)
+- **定位**: “零信任隔离”模式。
+- **适用场景**:
+  - 处理远程团队分配的 `dispatch.json` 流水线任务。
+  - 具有安全审计、代码评审、极易引发冲突的底层重构（如改写 Webpack/Vite 配置）。
+  - 需要派发多个专职的子智能体在同一个仓库里同时执行互斥的操作（例如一个改前端组件，一个改后端 Schema）。
+- **工作机制 (MCP Headless Worktree)**:
+  - L2 在遇到属于 `orchestrated` 的并发节点时，会拦截原本直接指向 `projectRoot` 的系统调用。
+  - 主脑会为这个特定任务动态触发 `git worktree add`，在代码库外面（如 `../.cowork-sandboxes/<task-id>`）**凭空克隆出一个完全隐藏的无头沙箱分支**。
+  - 所有的 L3 引擎（无论是 `kimi-code` 还是 `subagent`）通过 MCP Context API 被骗入这个无头沙箱中执行文件读写、跑测试脚本甚至 Commit。
+  - 当沙箱内的所有测试探针变绿后，L2 才会将该沙箱的 diff 以标准 PR/Merge 形式收拢回主线。
+- **优势**: 绝对防冲突。哪怕 10 个 Agent 同时在底层发狂写代码，你当前的 Cursor 窗口也岁月静好，因为物理上它们根本不在操作你的当前目录。
+
+## ⚙️ 使用范例 (Usage Example)
+
+### 全局配置 (manifest.yaml)
+你可以在团队的根配置中强制定义一个项目的基准安全红线：
+
+```yaml
+# manifest.yaml
+version: 0.8.9
+workspace:
+  mode: "team"
+  isolation_provider: "git-worktree" # 使用 MCP Headless Worktrees
 ```
 
-**强制覆盖为远程隔离模式 (适用 CI/CD 或沙箱执行):**
+### CLI 动态覆写
+开发者在本地可以随时利用命令行覆盖全局约束：
+
 ```bash
-npm run execute -- --workspace-mode=remote-isolated
+# 场景 1: 我只打算在本地快速跑一个修 Typo 的流程，不需要拉无头沙箱
+team-agents run fix-typo.yaml --mode=solo
+
+# 场景 2: 团队扔给我一个史诗级重构任务（几百个文件的迁移），我必须开启沙箱防冲撞
+team-agents run epic-refactor.yaml --mode=team
 ```
 
-## 4. 底层隔离实现范式
-在 `remote-isolated` 模式下，工作区管理器会执行以下生命周期：
-1. **沙箱初始化 (Sandbox Provisioning)**: 基于目标分支或任务快照，在临时目录 (如 `/tmp/tac-workspace-[uuid]`) 生成隔离副本。
-2. **凭据注入 (Credential Injection)**: 仅向沙箱注入当前节点所需的最少权限密钥，实现权限最小化。
-3. **执行与锁定**: 在该沙箱内执行的所有终端和文件工具操作被严格 chroot 或路径约束锁定。
-4. **状态提取与销毁**: L3 引擎提取产物文件后，自动销毁隔离沙箱。
-
-## 5. 总结
-工作区模式切换功能为开发者提供了一条从**本地实验**平滑过渡到**云端生产**的路径。无论是个人开发者的灵活探察，还是企业集群的严密执行，框架都能自适应提供最佳的物理隔离防线。
+### 运行时感知 (MCP API)
+执行引擎在底层调用的所有 `cowork_write_file` 动作，已经自动在内部封装了这套隔离逻辑：
+```typescript
+// 内部引擎机制伪代码
+if (delegationMode === "orchestrated" && workspaceMode === "team") {
+  // L3 以为自己在项目根目录，其实已经被重定向到无头沙箱
+  activeTaskWorktreePath = await createWorktree(projectRoot, args.task_id);
+} else {
+  // Solo 模式下裸并发，使用当前真实根目录
+  activeTaskWorktreePath = projectRoot;
+}
+```
