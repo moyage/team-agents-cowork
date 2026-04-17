@@ -84,11 +84,54 @@ graph TD
   capability_requirements: ["kimi-code-official"]
   ```
 
-### 3. 内置工作流 vs 自定义工作流
-- **背景与场景**: 80% 的日常开发（如需求到PR、修Bug、写测试）是标准化的；但 20% 的硬核场景（如企业特定的灰度发布验证）是独一无二的。
-- **特性**:
-  - **18个内置流**: 开箱即用。详见 [内置工作流全景图](./documentation/ZH/reference/built-in-workflows.md)。
-  - **自定义流**: 支持在 `.agent-state/workflows/` 下自由拼装 Bash 脚本、黑盒 Agent 与人机交互节点。详见 [自定义工作流设计指南](./documentation/ZH/guides/authoring-workflows.md)。
+### 3. 18 个内置工作流 (Built-in Workflows) 的触发与选择
+- **背景与场景**: 为降低新人的认知成本，框架内置了 18 套经过千锤百炼的 YAML 流程模板，覆盖了软件开发的全部生命周期。
+- **选择策略**:
+  - **如果要修Bug**: 选择 `fix-github-issue.yaml` (如果关联了远端 Issue) 或 `test-loop-dag.yaml` (如果只是本地单测不过)。
+  - **如果要写新需求**: 选择 `idea-to-pr.yaml` (包含架构设计前置节点) 或 `feature-development.yaml` (只进行纯代码实现)。
+  - **如果需要代码审查**: 选择 `smart-pr-review.yaml` (只看 Diff，便宜迅速) 或 `comprehensive-pr-review.yaml` (深度多智能体交叉评审，适合发版前)。
+  - **如果要重构**: 选择 `refactor-safely.yaml` (带自动回滚的类型安全重构)。
+- **触发条件**: 所有的内置工作流都存放在 `templates/workflows/` 下。无需拷贝，直接通过 CLI 名字触发。
+- **使用范例**:
+  ```bash
+  # 触发内置的需求开发流水线
+  team-agents run idea-to-pr.yaml --mode=solo
+  ```
+- **工作流图解参考**: 请务必参阅 👉 **[18 个内置工作流白皮书 (含全流程 Mermaid 图解)](./documentation/ZH/reference/built-in-workflows.md)**。
+
+### 4. 自定义工作流 (Custom Workflow Authoring)
+- **边界判定 (何时该自定义)**: 当内置的 18 个工作流无法覆盖你们团队特殊的 CI/CD 流程、需要引入特定的人工审批节点 (Human-in-the-loop)、或需要调用特定的外部内部 API 系统时。如果你仅仅是想改个代码，**不要**自定义，请直接用内置流。
+- **设计与落库方法**: 
+  - 自定义流本质上是一个基于 DAG (有向无环图) 的 YAML 文件。你需要定义 `nodes` (节点) 和 `depends_on` (依赖关系)。
+  - 核心突破：你可以针对不同的节点指定 `delegation_mode: blackbox` (交给黑盒) 或 `orchestrated` (裸调底层算力如 `kimi-code`)。
+  - 落库：将写好的 YAML 存放到项目根目录的 `.agent-state/workflows/` 下即可。
+- **使用范例**:
+  ```yaml
+  # .agent-state/workflows/my-custom-deploy.yaml
+  nodes:
+    - id: custom_build
+      type: bash
+      command: "npm run build"
+    - id: security_scan
+      type: ai_execution
+      delegation_mode: orchestrated
+      capability_requirements: ["kimi-code-official"]
+      depends_on: ["custom_build"]
+  ```
+  运行它：`team-agents run my-custom-deploy.yaml`
+- **进阶指南**: 更多关于黑盒模式切换、节点参数和架构案例，请查阅 👉 **[自定义工作流实战指南](./documentation/ZH/guides/authoring-workflows.md)**。
+
+
+## 📂 核心文件目录结构 (Directory Structure)
+
+| 目录 | 作用说明 |
+|------|----------|
+| `documentation/` | **核心文档中心**。所有 L0-L6 架构、白皮书、快速开始和指南均在此维护。 |
+| `bin/` | 框架 CLI 的二进制入口 (包括 `team-agents-cowork`, `agent-protocol-init` 和核心的 `agent-protocol-review` 网关审查进程)。 |
+| `schemas/` | L2 与 L3 通信的核心数据结构 (JSON Schema)，包括任务契约 `execution-contract.schema.json`。 |
+| `src/mcp-server/` | **物理隔离核心引擎**。它是一个 MCP (Model Context Protocol) 服务端，负责提供 `cowork_start_task` 工具，能在 Team 模式下动态为 Agent 生成无头沙箱 (Headless Worktrees) 并拦截读写。 |
+| `templates/workflows/` | 18 个开箱即用的 YAML DAG 内置工作流模板。 |
+| `examples/minimal-integration/` | 最小集成演示库。这是一个供新手测试 `team-agents init` 和观察 `.agent-state` 生成效果的空净沙箱。 |
 
 ## 🏁 快速开始 (Quick Start)
 
