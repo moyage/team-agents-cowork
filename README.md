@@ -78,3 +78,14 @@ npm run start:team --workflow=examples/basic-dag.yaml
 ## 🤝 Contributing
 
 We welcome contributions to all layers of the L0-L6 architecture. Please review our `CONTRIBUTING.md` for PR guidelines, testing requirements, and code standards.
+
+## 📘 Documentation Center (Archon-Level)
+
+We have completely overhauled our documentation to be **Chinese-first** to accelerate team onboarding.
+Please refer to the following definitive guides:
+
+- **[内置工作流全景图 (18 Built-in Workflows)](./documentation/ZH/reference/built-in-workflows.md)**: Deep dive into all 18 templates, their Mermaid flowcharts, and trigger conditions.
+- **[自定义工作流实战 (Authoring Custom Workflows)](./documentation/ZH/guides/authoring-workflows.md)**: Master the Dual-Mode Orchestration (`blackbox` vs `orchestrated`) and learn when/how to inject custom DAGs.
+- **[系统治理协议 (Governance Protocols)](./documentation/ZH/core-concepts/governance-protocols.md)**: Understand L2/L3 separation and L0-L6 Harness Engineering.
+
+> *Note: For English documentation, please refer to the `documentation/EN/` directory, though the `ZH` directory serves as the most comprehensive starting point for internal teams.*
