@@ -30,29 +30,29 @@ L2 主脑与 L3 执行层通过物理工作区进行完全隔离与协作。
 graph TD
     User([人类开发者]) -->|发起任务| L2(L2 Orchestrator - Hermes主脑)
     
-    subgraph 物理隔离协议总线 [物理层: .agent-state/]
-        DAG[YAML DAG 任务契约]
-        TaskSpec[标准 TaskSpec (需求+测试探针)]
+    subgraph Bus ["物理层: .agent-state/"]
+        DAG["YAML DAG 任务契约"]
+        TaskSpec["标准 TaskSpec (需求+测试探针)"]
     end
     
     L2 -->|1. 拆解生成| DAG
     L2 -->|2. 挂载物理探针| TaskSpec
     
-    subgraph L3 执行引擎池 [L3 Executors]
-        OC[任意黑盒组合环境]
-        KC[任意极速 Coding 引擎]
-        SA[SubAgent 隔离子体]
+    subgraph L3 ["L3 Executors (执行引擎池)"]
+        OC["任意黑盒组合环境"]
+        KC["任意极速 Coding 引擎"]
+        SA["SubAgent 隔离子体"]
     end
     
     TaskSpec -->|3. 路由分发| L3
     
-    subgraph 沙箱层 (Sandboxes)
-        Main[主工作区 (Solo 并发态)]
-        WT[Headless Worktree (Team 隔离态)]
+    subgraph Sandbox ["沙箱层 (Sandboxes)"]
+        Main["主工作区 (Solo 并发态)"]
+        WT["Headless Worktree (Team 隔离态)"]
     end
     
-    L3 -->|4. 物理读写| 沙箱层
-    沙箱层 -->|5. 探针验证返回| L2
+    L3 -->|4. 物理读写| Sandbox
+    Sandbox -->|5. 探针验证返回| L2
 ```
 
 ## 🚀 主要功能深度剖析 (Core Features)
