@@ -8,7 +8,7 @@ import {
 import * as fs from "fs/promises";
 import * as path from "path";
 import { fileURLToPath } from "url";
-import { exec } from "child_process";
+import { execFile } from "child_process";
 import { promisify } from "util";
 import { createWorktree, commitAndPushWorktree, removeWorktree } from "./worktree-manager.js";
 
@@ -17,7 +17,7 @@ let activeTaskWorktreePath: string | null = null;
 let activeTaskId: string | null = null;
 
 
-const execAsync = promisify(exec);
+const execFileAsync = promisify(execFile);
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
@@ -53,14 +53,14 @@ server.setRequestHandler(ListToolsRequestSchema, async () => {
   return {
     tools: [
       {
-        {
         name: "cowork_start_task",
         description: "Claims a task and creates an isolated Git Worktree sandbox for it. All subsequent file operations will be transparently redirected to this sandbox.",
         inputSchema: {
           type: "object",
           properties: {
             task_id: { type: "string" },
-            base_branch: { type: "string", description: "Default is 'agent-sync'" }
+            base_branch: { type: "string", description: "Default is 'agent-sync'" },
+            contract_path: { type: "string" }
           },
           required: ["task_id"]
         }
@@ -170,13 +170,41 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
     try {
       const args = request.params.arguments as any;
       const projectRoot = process.env.PROJECT_ROOT || process.cwd();
-      
-      activeTaskWorktreePath = await createWorktree(projectRoot, args.task_id, args.base_branch);
+
+      // Determine delegation mode from optional contract_path
+      let delegationMode = "blackbox";
+      if (args && args.contract_path) {
+        try {
+          const contractPathInput = args.contract_path as string;
+          const contractAbsolute = path.isAbsolute(contractPathInput)
+            ? contractPathInput
+            : path.resolve(projectRoot, contractPathInput);
+          const contractData = await fs.readFile(contractAbsolute, "utf-8");
+          const contractJson = JSON.parse(contractData);
+          delegationMode = contractJson.delegation_mode || "blackbox";
+        } catch {
+          // If contract can't be read or parsed, default to blackbox per spec
+          delegationMode = "blackbox";
+        }
+      }
+
+      if (delegationMode === "orchestrated") {
+        activeTaskWorktreePath = await createWorktree(projectRoot, args.task_id, args.base_branch);
+      } else {
+        // blackbox: do not create a new worktree; use project root
+        activeTaskWorktreePath = projectRoot;
+      }
       activeTaskId = args.task_id;
-      
-      return {
-        content: [{ type: "text", text: `Task ${args.task_id} claimed. Worktree Sandbox created at ${activeTaskWorktreePath}. All cowork_* file tools are now physically redirected to this sandbox.` }]
-      };
+
+      if (delegationMode === "orchestrated") {
+        return {
+          content: [{ type: "text", text: `Task ${args.task_id} claimed. Worktree Sandbox created at ${activeTaskWorktreePath}. All cowork_* file tools are now physically redirected to this sandbox.` }]
+        };
+      } else {
+        return {
+          content: [{ type: "text", text: `Task ${args.task_id} claimed. Delegation mode: blackbox. Sandbox path set to ${activeTaskWorktreePath}.` }]
+        };
+      }
     } catch (error: any) {
       return { content: [{ type: "text", text: `Error starting task sandbox: ${error.message}` }], isError: true };
     }
@@ -295,7 +323,7 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
       const contract = JSON.parse(contractData);
       const allowedFiles = contract.allowed_files || [];
 
-      const { stdout } = await execAsync(`git diff --name-only ${baseline_commit}`, { cwd: projectRoot });
+      const { stdout } = await execFileAsync("git", ["diff", "--name-only", baseline_commit], { cwd: projectRoot });
       
 const changedFiles = stdout.split('\n').map(f => f.trim()).filter(f => f.length > 0);
       
@@ -339,7 +367,7 @@ const changedFiles = stdout.split('\n').map(f => f.trim()).filter(f => f.length 
       }
 
       const projectRoot = process.env.PROJECT_ROOT || process.cwd();
-      const { stdout } = await execAsync(`git diff ${baseline_commit}`, { cwd: projectRoot });
+      const { stdout } = await execFileAsync("git", ["diff", baseline_commit], { cwd: projectRoot });
 
       return {
         content: [

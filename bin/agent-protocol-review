@@ -85,46 +85,71 @@ if (!expectedArtifact) {
 console.log(`🔍 Detected pending review for gate: ${currentGate}`);
 console.log(`📄 Expected decision artifact: ${expectedArtifact}`);
 
-// 3. Resolve Registry & Agent
+// 3. Resolve Registry & Agent / Delegation Mode
 const registryPath = path.join(PROJECT_ROOT, '.agent-state', 'registry.json');
-let reviewerAgentId = "mock-isolated-reviewer";
+let reviewerAgentId = null;
+let delegationMode = dispatch.delegation_mode || "solo";
 
 if (fs.existsSync(registryPath)) {
   try {
     const registry = JSON.parse(fs.readFileSync(registryPath, 'utf8'));
-    const reviewers = (registry.agents || []).filter(a => (a.capabilities || []).includes('is_isolated_reviewer'));
+    const reviewers = (registry.agents || []).filter(a => (a.capabilities || []).includes('blackbox_executor'));
     if (reviewers.length > 0) {
       reviewerAgentId = reviewers[0].id;
+      if (reviewers[0].delegation_mode) {
+        delegationMode = reviewers[0].delegation_mode;
+      }
     }
   } catch (e) {
-    console.warn("⚠️ Failed to parse registry.json. Falling back to mock reviewer.");
+    console.warn("⚠️ Failed to parse registry.json. Using default solo mode.");
   }
 }
 
-console.log(`🤖 Selected Reviewer Agent: ${reviewerAgentId}`);
-console.log(`⏳ Spawning isolated SubAgent process... (Mocked for V0.8 validation)`);
+console.log(`🤖 Selected Reviewer Agent: ${reviewerAgentId || 'default-blackbox'}`);
+console.log(`⚙️ Delegation Mode: ${delegationMode}`);
 
-// 4. Mock the Detached Sub-Process Execution
-// In a real production scenario, this would execute: execSync(`opencode run -m "openai/gpt-5.4" ...`)
-const artifactFullPath = path.join(PROJECT_ROOT, expectedArtifact);
+// 4. Secure Artifact Path (strictly inside .agent-state/tasks/)
+const tasksDir = path.resolve(PROJECT_ROOT, '.agent-state', 'tasks');
+const artifactFullPath = path.resolve(tasksDir, expectedArtifact);
+const resolvedTasksDir = path.resolve(tasksDir);
+
+if (!artifactFullPath.startsWith(resolvedTasksDir + path.sep) && artifactFullPath !== resolvedTasksDir) {
+  console.error("❌ Path traversal detected in expectedArtifact. Must resolve inside .agent-state/tasks/");
+  process.exit(1);
+}
+
 const artifactDir = path.dirname(artifactFullPath);
-
 if (!fs.existsSync(artifactDir)) {
   fs.mkdirSync(artifactDir, { recursive: true });
 }
 
-console.log(`⏳ Spawning isolated SubAgent process...`);
+// 5. Execute Real Blackbox Validation or Orchestrated Delegation
+const taskName = `agent-protocol-review:${currentGate}`;
+const verifyCommand = `node -e ${JSON.stringify(`const fs=require('fs'); try { const d=JSON.parse(fs.readFileSync(${JSON.stringify(artifactFullPath)},'utf8')); if(!d.decision) process.exit(1); } catch(e){ process.exit(1); }`)}`;
+
 try {
-  // Use execSync to simulate a detached external LLM tool generating the decision.
-  const command = `node -e "const fs=require('fs'); fs.writeFileSync('${artifactFullPath}', JSON.stringify({reviewer: 'SubAgent-Mock-${reviewerAgentId}', decision: 'Approved', timestamp: new Date().toISOString(), comments: 'Approved via automated background agent-protocol-review daemon simulation.'}, null, 2), 'utf8');"`;
-  execSync(command, { stdio: 'inherit' });
-  console.log(`✅ SubAgent process completed. Wrote decision to ${expectedArtifact}`);
+  if (delegationMode === 'orchestrated') {
+    const orchestratedAgent = reviewerAgentId || 'default-orchestrator';
+    console.log(`⏳ Delegating to orchestrated agent: ${orchestratedAgent}...`);
+    const command = `${orchestratedAgent} run --task="${taskName}"`;
+    execSync(command, { stdio: 'inherit' });
+  } else {
+    console.log(`⏳ Spawning Blackbox validation via opencode-bridge...`);
+    const command = `opencode-bridge run ${taskName} --verify="${verifyCommand}"`;
+    execSync(command, { stdio: 'inherit' });
+  }
+  console.log(`✅ SubAgent process completed. Decision artifact expected at ${expectedArtifact}`);
 } catch (e) {
   console.error("❌ Isolated SubAgent process failed.");
   process.exit(1);
 }
 
-// 5. Read Decision & Advance State
+// 6. Read Decision & Advance State
+if (!fs.existsSync(artifactFullPath)) {
+  console.error("❌ Decision artifact was not produced by the review process.");
+  process.exit(1);
+}
+
 const decisionRead = JSON.parse(fs.readFileSync(artifactFullPath, 'utf8'));
 if (decisionRead.decision === "Approved") {
   const nextGate = deriveNextGate(currentGate);

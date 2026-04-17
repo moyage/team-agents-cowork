@@ -6,6 +6,7 @@
     "owner",
     "status",
     "goal",
+    "delegation_mode",
     "allowed_files",
     "required_outputs",
     "must_run_commands",
@@ -16,6 +17,15 @@
     "task_id": { "type": "string" },
     "role": { "type": "string" },
     "owner": { "type": "string" },
+    "delegation_mode": {
+      "type": "string",
+      "enum": ["blackbox", "orchestrated"],
+      "default": "blackbox"
+    },
+    "capability_requirements": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
     "status": {
       "type": "string",
       "enum": [

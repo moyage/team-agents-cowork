@@ -17,5 +17,11 @@ nodes:
   - id: qa_sign_off
     type: ai_execution
     description: "Perform an automated QA pass on the deployed staging environment URL."
-    is_isolated_reviewer: true
+    delegation_mode: orchestrated
+    capability_requirements: ["cursor-human-in-loop"]
+    task_spec:
+      requirements: ["Execute strictly according to constraints"]
+      constraints: ["Do not mutate the codebase unless explicitly required"]
+      verify_command: "true"
+      complexity_hint: "medium"
     depends_on: ["deploy_to_staging"]

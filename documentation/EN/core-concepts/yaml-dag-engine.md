@@ -1,55 +1,73 @@
-# The YAML DAG Engine
+# YAML DAG Engine
 
-At the heart of the framework is the **YAML Directed Acyclic Graph (DAG) Engine**. This engine parses your intent and dynamically connects heterogeneous agents.
+In Team Mode, the L3 Orchestrator relies on the **YAML DAG Engine** to manage the execution flow. A Directed Acyclic Graph (DAG) provides a deterministic, transparent, and strictly ordered structure for complex task execution.
 
-## How It Works
-Instead of directly executing prompts, each AI node in the YAML generates an `execution-contract.json`. The Local Bus waits for an Agent (matching the required capabilities) to claim and execute the contract.
+## Why YAML?
 
-## Concrete Example 1: `feature-development.yaml`
-```yaml
-id: feature-development
-description: "Implement feature from plan -> validate -> create PR."
-use_when: "The user wants to implement a specific, well-defined feature."
-nodes:
-  - id: build_feature
-    type: ai_execution
-    description: "Build the feature according to the specifications."
-    depends_on: []
-  - id: validate_feature
-    type: bash
-    command: "npm test"
-    depends_on: ["build_feature"]
+We chose YAML for authoring workflows because it is:
+1. **Declarative**: Focus on *what* needs to be done, not *how*.
+2. **Human-Readable**: Accessible to non-engineers, domain experts, and prompt engineers.
+3. **Machine-Parseable**: Easily integrated with our L1 execution protocol and state management.
+
+## Core Components of a DAG
+
+A standard workflow consists of three primary blocks:
+
+1. **Global Context**: Defines the shared state, initial inputs, and overarching goals.
+2. **Nodes**: Represent L2 Agents assigned to specific tasks.
+3. **Edges (Dependencies)**: Define the flow of execution and data injection between nodes.
+
+```mermaid
+graph TD
+    Start((Start)) --> Node1[Research Agent]
+    Node1 --> Node2[Drafting Agent]
+    Node1 --> Node3[Fact-Check Agent]
+    Node2 --> Node4[Review Agent]
+    Node3 --> Node4
+    Node4 --> End((End))
+    
+    classDef agent fill:#f9f,stroke:#333,stroke-width:2px;
+    class Node1,Node2,Node3,Node4 agent;
 ```
 
-## Concrete Example 2: `assist.yaml`
+## Schema Overview
+
+Every node in the DAG must comply with the Harness Engineering (L4) specifications.
+
 ```yaml
-id: assist
-description: "General Q&A, debugging, and exploration."
-use_when: "The user is exploring the codebase or searching for bugs."
+version: "1.0"
+name: "Article Generation Pipeline"
+
+global_context:
+  topic: "Quantum Computing Advances 2026"
+
 nodes:
-  - id: analyze_request
-    type: ai_execution
-    description: "Analyze the request and provide a debugging strategy."
-    depends_on: []
+  - id: researcher
+    agent_profile: "L2_DeepSearch"
+    task: "Gather the top 5 recent breakthroughs in ${topic}."
+    tools: ["search_api", "read_url"]
+    
+  - id: drafter
+    agent_profile: "L2_TechnicalWriter"
+    depends_on: ["researcher"]
+    task: "Write a 500-word summary using data from the researcher."
+    inject_context:
+      - source_node: "researcher"
+        target_variable: "research_data"
+        
+  - id: reviewer
+    agent_profile: "L2_Critic"
+    depends_on: ["drafter"]
+    task: "Review the draft for technical accuracy."
+    inject_context:
+      - source_node: "drafter"
+        target_variable: "draft_text"
+
+output: "reviewer.final_output"
 ```
 
-## Concrete Example 3: `custom-deploy-pipeline.yaml`
-```yaml
-id: custom-deploy-pipeline
-description: "Deploy to staging with QA sign-off."
-use_when: "The user wants to deploy the feature branch to staging."
-nodes:
-  - id: build_project
-    type: bash
-    command: "npm run build"
-    depends_on: []
-  - id: deploy_to_staging
-    type: bash
-    command: "aws s3 sync ./dist s3://staging-bucket --delete"
-    depends_on: ["build_project"]
-  - id: qa_sign_off
-    type: ai_execution
-    description: "Perform QA on the staging URL."
-    is_isolated_reviewer: true
-    depends_on: ["deploy_to_staging"]
-```
+## Execution Semantics
+
+- **Parallelism**: If nodes do not have intersecting `depends_on` arrays, the L3 Engine executes them concurrently.
+- **Data Injection**: The `inject_context` block maps the output of a completed node into the prompt context of a downstream node.
+- **Failure Handling**: If a node fails (e.g., L0 API timeout), the engine auto-retries based on the node's configuration before marking the graph as failed.

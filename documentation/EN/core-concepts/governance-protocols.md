@@ -13,9 +13,12 @@ This forces the LLM to ground its attention before acting.
 *   **Reasoning:** Why this strategy was chosen over hand-coding.
 
 ## 2. Strict Separation of Duties (SoD) & Smart Delegation
-The Orchestrator (L2) is physically barred from hand-writing complex source code or documentation patches using rudimentary shell scripts (`cat/echo/python`).
-*   **For coding tasks:** The Orchestrator MUST use `opencode run` to dispatch the work to specialized L3 Executor agents.
-*   **For specialized tasks (e.g., Docs):** The Orchestrator MUST use `delegate_task` to spawn isolated SubAgents with dedicated context.
+The Orchestrator (L2) is physically barred from hand-writing complex source code or documentation patches using rudimentary shell scripts (`cat/echo/python`). 
+
+**Dual-Mode Orchestration:** The framework supports a hybrid approach via the `delegation_mode` property (`blackbox` or `orchestrated`):
+
+*   **For standard coding tasks (Blackbox Mode):** The Orchestrator MUST use `opencode-bridge run <task> --verify="<verify_command>"` to dispatch the work to the L3 Blackbox environment. Under the OpenCode v3.0 standard, L2 (Orchestrator) simply writes the test scripts / verify probes, and L3 (OpenCode) executes the solution. The L3 blackbox chooses the agent and model autonomously; L2 NEVER micromanages OpenCode's internal logic.
+*   **For specialized tasks (Orchestrated Mode):** For tasks requiring human-in-the-loop, QA, or architecture review, L2 shifts into `orchestrated` mode. It uses `delegate_task` to spawn isolated SubAgents with dedicated context, specifying `capability_requirements` (e.g. `["cursor-human-in-loop"]`) to route specific sub-tasks to highly specialized naked agents or environments.
 
 ## 3. Anti-Token-Explosion & Context Pinning
 As iterations progress, chat histories expand, causing the LLM to lose sight of early constraints (`SYSTEM_PROMPT`).

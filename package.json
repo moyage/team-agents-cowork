@@ -1,6 +1,6 @@
 {
   "name": "team-agents-cowork",
-  "version": "0.8.4",
+  "version": "0.8.7",
   "description": "Protocol-First Collaboration System",
   "main": "src/mcp-server/src/index.js",
   "bin": {

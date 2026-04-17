@@ -5,10 +5,13 @@ nodes:
   - id: draft_plan
     type: ai_execution
     description: "Draft a comprehensive implementation plan for the new feature."
+    delegation_mode: orchestrated
+    capability_requirements: ["architect-core"]
     depends_on: []
   - id: implement_feature
     type: ai_execution
     description: "Implement the feature based on the approved plan."
+    delegation_mode: blackbox
     depends_on: ["draft_plan"]
   - id: validate_feature
     type: bash
@@ -17,5 +20,9 @@ nodes:
   - id: multi_agent_review
     type: ai_execution
     description: "Perform a comprehensive review of the new feature."
-    is_isolated_reviewer: true
+    task_spec:
+      requirements: ["Execute strictly according to constraints"]
+      constraints: ["Do not mutate the codebase unless explicitly required"]
+      verify_command: "true"
+      complexity_hint: "medium"
     depends_on: ["validate_feature"]

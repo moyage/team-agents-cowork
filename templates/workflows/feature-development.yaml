@@ -5,6 +5,7 @@ nodes:
   - id: build_feature
     type: ai_execution
     description: "Build the feature according to the specifications."
+    delegation_mode: blackbox
     depends_on: []
   - id: validate_feature
     type: bash

@@ -47,15 +47,16 @@ writeFileIfNotExists(path.join(agentStateDir, 'workflow', 'dispatch.json'), JSON
 const defaultRegistry = {
   agents: [
     {
-      id: "hermes-local",
+      id: "default-orchestrator",
       type: "orchestrator",
       capabilities: ["mcp_client", "terminal_access", "file_system"],
       description: "Local main brain executor"
     },
     {
-      id: "opencode-sisyphus",
+      id: "default-blackbox",
       type: "executor",
-      capabilities: ["terminal_access", "background_process", "is_isolated_reviewer"],
+      capabilities: ["terminal_access", "background_process", "blackbox_executor"],
+      delegation_mode: "blackbox",
       description: "CLI agent for execution and isolated gatekeeping"
     }
   ]

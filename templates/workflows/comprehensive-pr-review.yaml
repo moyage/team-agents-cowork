@@ -5,12 +5,20 @@ nodes:
   - id: syntax_review
     type: ai_execution
     description: "Review PR for syntax and style guidelines."
-    is_isolated_reviewer: true
+    task_spec:
+      requirements: ["Execute strictly according to constraints"]
+      constraints: ["Do not mutate the codebase unless explicitly required"]
+      verify_command: "true"
+      complexity_hint: "medium"
     depends_on: []
   - id: logic_review
     type: ai_execution
     description: "Review PR for logical correctness and edge cases."
-    is_isolated_reviewer: true
+    task_spec:
+      requirements: ["Execute strictly according to constraints"]
+      constraints: ["Do not mutate the codebase unless explicitly required"]
+      verify_command: "true"
+      complexity_hint: "medium"
     depends_on: []
   - id: synthesize_reviews
     type: ai_execution

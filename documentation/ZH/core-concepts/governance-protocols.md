@@ -14,8 +14,11 @@
 
 ## 2. 严格的职责分离 (SoD) 与智能委派
 物理禁止协调者 (L2) 使用简陋的 Shell 脚本（如 `cat/echo/python`）“手搓”复杂的源代码或文档补丁。
-*   **对于编码任务：** 协调者必须使用 `opencode run` 将工作派发给专职的 L3 执行智能体。
-*   **对于专项任务（如文档）：** 协调者必须使用 `delegate_task` 生成具备独立上下文的隔离子智能体 (SubAgent)。
+
+**双态编排 (Dual-Mode Orchestration)：** 框架通过 `delegation_mode` 属性（`blackbox` 或 `orchestrated`）支持混合方法：
+
+*   **对于编码任务（黑盒模式 Blackbox Mode）：** 协调者必须使用 `opencode-bridge run <task> --verify="<verify_command>"` 将工作派发给 L3 黑盒执行环境。在 OpenCode v3.0 标准下，L2（协调者）仅负责编写测试脚本/验证探针，L3 (OpenCode) 自主选择智能体和模型来执行解决方案。L2 绝不能微观管理 OpenCode 的内部逻辑。
+*   **对于专项任务（编排模式 Orchestrated Mode）：** 对于需要人类在环 (human-in-the-loop)、QA 或架构审查的任务，L2 切换到 `orchestrated` 模式。它使用 `delegate_task` 生成具备独立上下文的隔离子智能体 (SubAgent)，并指定 `capability_requirements`（例如 `["cursor-human-in-loop"]`），从而将特定的子任务路由到高度专业化的纯智能体或环境。
 
 ## 3. 反 Token 爆炸与上下文钉选 (Context Pinning)
 随着迭代的深入，聊天记录会急剧膨胀，导致 LLM 遗忘早期的系统约束 (`SYSTEM_PROMPT`)。

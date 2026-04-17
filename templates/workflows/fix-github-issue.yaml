@@ -17,5 +17,9 @@ nodes:
   - id: review_fix
     type: ai_execution
     description: "Review the implemented fix against the original issue requirements."
-    is_isolated_reviewer: true
+    task_spec:
+      requirements: ["Execute strictly according to constraints"]
+      constraints: ["Do not mutate the codebase unless explicitly required"]
+      verify_command: "true"
+      complexity_hint: "medium"
     depends_on: ["validate_fix"]

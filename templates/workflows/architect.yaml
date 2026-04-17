@@ -5,8 +5,12 @@ nodes:
   - id: sweep_architecture
     type: ai_execution
     description: "Analyze the codebase architecture and identify areas for complexity reduction."
+    delegation_mode: orchestrated
+    capability_requirements: ["opencode-core-only"]
     depends_on: []
   - id: propose_refactors
     type: ai_execution
     description: "Propose specific refactoring plans to improve codebase health."
+    delegation_mode: orchestrated
+    capability_requirements: ["cursor-human-in-loop"]
     depends_on: ["sweep_architecture"]

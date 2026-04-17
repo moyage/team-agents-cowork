@@ -13,5 +13,9 @@ nodes:
   - id: review_implementation
     type: ai_execution
     description: "Review the code against the provided plan to ensure all requirements are met."
-    is_isolated_reviewer: true
+    task_spec:
+      requirements: ["Execute strictly according to constraints"]
+      constraints: ["Do not mutate the codebase unless explicitly required"]
+      verify_command: "true"
+      complexity_hint: "medium"
     depends_on: ["validate_implementation"]
